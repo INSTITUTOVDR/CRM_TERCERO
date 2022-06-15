@@ -205,6 +205,43 @@ Public Class Clientes
             Return Error401()
         End Try
     End Function
+    <WebMethod()>
+    <ScriptMethod(ResponseFormat:=ResponseFormat.Json)>
+    Public Shared Function ContactosTipoBuscarTodo() As String
+        Try
+            Dim oDs As New DataSet
+
+            Dim oobjeto As New ContactosTipo
+
+            oDs = oobjeto.BuscarTodos
+            Dim IdTabla As Integer = 0
+
+            Dim e As ContactosTipoWS() = New ContactosTipoWS(oDs.Tables(IdTabla).Rows.Count - 1) {}
+
+            For i = 0 To oDs.Tables(IdTabla).Rows.Count - 1
+                e(i) = New ContactosTipoWS With {
+                    .IdContactoTipo = oDs.Tables(IdTabla).Rows(i).Item("IdContactoTipo").ToString(),
+                    .Nombre = oDs.Tables(IdTabla).Rows(i).Item("Nombre").ToString(),
+                    .Imagen = oDs.Tables(IdTabla).Rows(i).Item("Imagen").ToString(),
+                    .Activo = oDs.Tables(IdTabla).Rows(i).Item("Activo").ToString()
+                }
+            Next
+
+            Dim data = New With {
+                Key .Status = "200",
+                Key .Data = e
+            }
+
+            Dim serializer = New JavaScriptSerializer()
+            Dim json = serializer.Serialize(data)
+
+            Dim jsondatos = New JavaScriptSerializer().Serialize(data)
+
+            Return New JavaScriptSerializer().Serialize(data)
+        Catch ex As Exception
+            Return Error401()
+        End Try
+    End Function
 
     Public Shared Function Error401()
         Dim data = New With {
