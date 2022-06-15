@@ -14,9 +14,10 @@
     <link rel="shortcut icon" href="assets/images/logo/favicon.png" type="image/png"/>
 
 <link rel="stylesheet" href="assets/css/pages/fontawesome.css"/>
-<link rel="stylesheet" href="assets/css/pages/simple-datatables.css"/>
+<link rel="stylesheet" href="assets/css/pages/datatables.css"/>
+<link rel="stylesheet" href="assets/css/pages/icon.css" />
 </head>
-<body>
+<body onload="clienteLlenarTabla()">
     <form id="form1" runat="server">
         <div id="app">
         <div id="sidebar">
@@ -548,66 +549,66 @@
                                                         <div class="row">
                                                             <div class="col-md-6 col-12">
                                                                 <div class="form-group">
-                                                                    <label for="first-name-column">Nombre</label>
-                                                                    <input type="text" id="first-name-column" class="form-control"
-                                                                        placeholder="Nombre" name="fname-column"/>
+                                                                    <label for="txtNombre">Nombre</label>
+                                                                    <input type="text" id="txtNombre" class="form-control"
+                                                                        placeholder="Nombre" name="fname"/>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6 col-12">
                                                                 <div class="form-group">
-                                                                    <label for="last-name-column">Apellido</label>
-                                                                    <input type="text" id="last-name-column" class="form-control"
+                                                                    <label for="txtApellido">Apellido</label>
+                                                                    <input type="text" id="txtApellido" class="form-control"
                                                                         placeholder="Apellido" name="lname-column"/>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6 col-12">
                                                                 <div class="form-group">
-                                                                    <label for="country-Select">País</label>
+                                                                    <label for="cboPais">País</label>
                                                                     <fieldset class="form-group">
-                                                                        <select class="form-select" id="country-Select">
-                                                                            <option>Argentina</option>
-                                                                            <option>Uruguay</option>
-                                                                            <option>Brasil</option>
+                                                                        <select class="form-select" id="cboPais">
+                                                                            <option value="12">Argentina</option>
+                                                                            <option value="237">Uruguay</option>
+                                                                            <option value="31">Brasil</option>
                                                                         </select>
                                                                     </fieldset>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6 col-12">
                                                                 <div class="form-group">
-                                                                    <label for="province-Select">Provincia</label>
+                                                                    <label for="cboProvincia">Provincia</label>
                                                                     <fieldset class="form-group">
-                                                                        <select class="form-select" id="province-Select">
-                                                                            <option>Córdoba</option>
-                                                                            <option>Buenos Aires</option>
-                                                                            <option>Santa Fe</option>
+                                                                        <select class="form-select" id="cboProvincia">
+                                                                            <option value="8">Córdoba</option>
+                                                                            <option value="23">Buenos Aires</option>
+                                                                            <option value="15">Santa Fe</option>
                                                                         </select>
                                                                     </fieldset>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6 col-12">
                                                                 <div class="form-group">
-                                                                    <label for="city-Select">Ciudad</label>
+                                                                    <label for="cboCiudad">Ciudad</label>
                                                                     <fieldset class="form-group">
-                                                                        <select class="form-select" id="city-Select">
-                                                                            <option>Villa del Rosario</option>
-                                                                            <option>Pilar</option>
-                                                                            <option>Rio Segundo</option>
+                                                                        <select class="form-select" id="cboCiudad">
+                                                                            <option value="407">Villa del Rosario</option>
+                                                                            <option value="201">Pilar</option>
+                                                                            <option value="215">Rio Segundo</option>
                                                                         </select>
                                                                     </fieldset>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6 col-12">
                                                                 <div class="form-group">
-                                                                    <label for="adress-column">Direccion</label>
-                                                                    <input type="text" id="adress-column" class="form-control"
-                                                                        name="adress-column" placeholder="Direccion"/>
+                                                                    <label for="txtDireccion">Direccion</label>
+                                                                    <input type="text" id="txtDireccion" class="form-control"
+                                                                        name="direccion" placeholder="Direccion"/>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6 col-12">
                                                                 <div class="form-group">
-                                                                    <label for="date-of-birth-column">Fecha de Nacimiento</label>
-                                                                    <input type="date" id="date-of-birth-column" class="form-control"
-                                                                        name="date-of-birth-column" placeholder="Fecha de Nacimiento"/>
+                                                                    <label for="txtFechaNacimiento">Fecha de Nacimiento</label>
+                                                                    <input type="date" id="txtFechaNacimiento" class="form-control"
+                                                                        name="fechaNacimiento" placeholder="Fecha de Nacimiento"/>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -617,16 +618,16 @@
                                                         <div class="row">
                                                             <div class="col-md-6 col-12">
                                                                 <div class="form-group">
-                                                                    <label for="email-column">Email</label>
-                                                                    <input type="email" id="email-column" class="form-control"
-                                                                        placeholder="Email" name="email-column"/>
+                                                                   <label for="txtEmail">Email</label>
+                                                                    <input type="email" id="txtEmail" class="form-control"
+                                                                        placeholder="Email" name="email"/>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6 col-12">
                                                                 <div class="form-group">
-                                                                    <label for="phone-column">Teléfono</label>
-                                                                    <input type="tel" id="phone-column" class="form-control"
-                                                                        placeholder="Teléfono" name="phone-column"/>
+                                                                    <label for="txtTelefono">Teléfono</label>
+                                                                    <input type="tel" id="txtTelefono" class="form-control"
+                                                                        placeholder="Teléfono" name="phone"/>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6 col-12">
@@ -638,16 +639,16 @@
                                                         <div class="row">
                                                             <div class="col-md-6 col-12">
                                                                 <div class="form-group">
-                                                                    <label for="company-column">Empresa</label>
-                                                                    <input type="text" id="company-column" class="form-control"
-                                                                        name="company-column" placeholder="Empresa"/>
+                                                                    <label for="txtEmpresa">Empresa</label>
+                                                                    <input type="text" id="txtEmpresa" class="form-control"
+                                                                        name="company" placeholder="Empresa"/>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6 col-12">
                                                                 <div class="form-group">
-                                                                    <label for="cargo-column">Cargo</label>
-                                                                    <input type="text" id="cargo-column" class="form-control"
-                                                                        name="cargo-column" placeholder="Cargo"/>
+                                                                    <label for="txtCargo">Cargo</label>
+                                                                    <input type="text" id="txtCargo" class="form-control"
+                                                                        name="cargo" placeholder="Cargo"/>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -659,8 +660,8 @@
 
                                     <div class="row">
                                         <div class="col-12 d-flex justify-content-end">
-                                            <button type="submit" class="btn btn-primary me-1 mb-1">Enviar</button>
-                                            <button type="reset" class="btn btn-light-secondary me-1 mb-1">Limpiar</button>
+                                            <button type="button" class="btn btn-primary me-1 mb-1" onclick="validarCampos()">Enviar</button>
+                                            <button type="button" class="btn btn-light-secondary me-1 mb-1">Limpiar</button>
                                         </div>
                                     </div>
                                 </div>
@@ -671,285 +672,189 @@
             </div>
         </div>
     </section>
+    <!-- Modal Editar Cliente -->
+    <div class="modal fade text-left w-100" id="modalEditarCliente" tabindex="-1" role="dialog"
+        aria-labelledby="myModalLabel16" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl"
+            role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel16">Editar Cliente</h4>
+                    <button type="button" class="close" data-bs-dismiss="modal"
+                        aria-label="Close">
+                        <i data-feather="x"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="card">
+                        <div class="card-body p-0">
+                            <ul class="nav nav-tabs pb-4" id="editarClientesTab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link active" id="edit-basic-information-tab" data-bs-toggle="tab" href="#edit-basic-information" role="tab"
+                                        aria-controls="edit-basic-information" aria-selected="true">Información Básica</a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link" id="edit-contact-tab" data-bs-toggle="tab" href="#edit-contact" role="tab"
+                                        aria-controls="edit-contact" aria-selected="false">Contacto</a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link" id="edit-company-tab" data-bs-toggle="tab" href="#edit-company" role="tab"
+                                        aria-controls="edit-company" aria-selected="false">Empresa</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content" id="editTabContent">
 
+                                <div class="tab-pane fade show active" id="edit-basic-information" role="tabpanel" aria-labelledby="edit-basic-information-tab">
+                                    <div class="row">
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group">
+                                                <label for="txtEditNombre">Nombre</label>
+                                                <input type="text" id="txtEditNombre" class="form-control"
+                                                    placeholder="Nombre" name="fname"/>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group">
+                                                <label for="txtEditApellido">Apellido</label>
+                                                <input type="text" id="txtEditApellido" class="form-control"
+                                                    placeholder="Apellido" name="lname-column"/>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group">
+                                                <label for="cboEditPais">País</label>
+                                                <fieldset class="form-group">
+                                                    <select class="form-select" id="cboEditPais">
+                                                        <option value="12">Argentina</option>
+                                                        <option value="237">Uruguay</option>
+                                                        <option value="31">Brasil</option>
+                                                    </select>
+                                                </fieldset>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group">
+                                                <label for="cboEditProvincia">Provincia</label>
+                                                <fieldset class="form-group">
+                                                    <select class="form-select" id="cboEditProvincia">
+                                                        <option value="8">Córdoba</option>
+                                                        <option value="23">Buenos Aires</option>
+                                                        <option value="15">Santa Fe</option>
+                                                    </select>
+                                                </fieldset>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group">
+                                                <label for="cboEditCiudad">Ciudad</label>
+                                                <fieldset class="form-group">
+                                                    <select class="form-select" id="cboEditCiudad">
+                                                        <option value="407">Villa del Rosario</option>
+                                                        <option value="201">Pilar</option>
+                                                        <option value="215">Rio Segundo</option>
+                                                    </select>
+                                                </fieldset>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group">
+                                                <label for="txtEditDireccion">Direccion</label>
+                                                <input type="text" id="txtEditDireccion" class="form-control"
+                                                    name="direccion" placeholder="Direccion"/>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group">
+                                                <label for="txtEditFechaNacimiento">Fecha de Nacimiento</label>
+                                                <input type="date" id="txtEditFechaNacimiento" class="form-control"
+                                                    name="fechaNacimiento" placeholder="Fecha de Nacimiento"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane fade" id="edit-contact" role="tabpanel" aria-labelledby="edit-contact-tab">
+                                    <div class="row">
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group">
+                                                <label for="txtEditEmail">Email</label>
+                                                <input type="email" id="txtEditEmail" class="form-control"
+                                                    placeholder="Email" name="email"/>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group">
+                                                <label for="txtEditTelefono">Teléfono</label>
+                                                <input type="tel" id="txtEditTelefono" class="form-control"
+                                                    placeholder="Teléfono" name="phone"/>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <a href="#" class="btn icon btn-outline-secondary"><i data-feather="plus"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="edit-company" role="tabpanel" aria-labelledby="edit-company-tab">
+                                    <div class="row">
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group">
+                                                <label for="txtEditEmpresa">Empresa</label>
+                                                <input type="text" id="txtEditEmpresa" class="form-control"
+                                                    name="edit-company" placeholder="Empresa"/>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group">
+                                                <label for="txtEditCargo">Cargo</label>
+                                                <input type="text" id="txtEditCargo" class="form-control"
+                                                    name="cargo" placeholder="Cargo"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light-secondary"
+                        data-bs-dismiss="modal">
+                        <i class="bx bx-x d-block d-sm-none"></i>
+                        <span class="d-none d-sm-block">Close</span>
+                    </button>
+                    <button type="button" class="btn btn-primary ml-1"
+                        data-bs-dismiss="modal">
+                        <i class="bx bx-check d-block d-sm-none"></i>
+                        <span class="d-none d-sm-block">Accept</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Tabla Clientes  -->
     <section class="section">
         <div class="card">
             <div class="card-header">
                 Simple Datatable
             </div>
             <div class="card-body">
-                <table class="table table-striped" id="table1">
+                <table class="table table-hover" id="tablaClientes">
                     <thead>
                         <tr>
-                            <th>Nombre</th>
-                            <th>Apellido</th>
-                            <th>Email</th>
-                            <th>Teléfono</th>
-                            <th>Ciudad</th>
-                            <th>Estado</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Apellido</th>
+                            <th scope="col">Pais</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Teléfono</th>
+                            <th scope="col">Empresa</th>
+                            <th scope="col">Cargo</th>
+                            <th scope="col">Estado</th>
+                            <th scope="col">Editar</th>
+                            <th scope="col">Eliminar</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Graiden</td>
-                            <td>Lorem</td>
-                            <td>vehicula.aliquet@semconsequat.co.uk</td>
-                            <td>076 4820 8838</td>
-                            <td>Offenburg</td>
-                            <td>
-                                <span class="badge bg-success">Active</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Dale</td>
-                            <td>Ipsum</td>
-                            <td>fringilla.euismod.enim@quam.ca</td>
-                            <td>0500 527693</td>
-                            <td>New Quay</td>
-                            <td>
-                                <span class="badge bg-success">Active</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Nathaniel</td>
-                            <td>Dolo</td>
-                            <td>mi.Duis@diam.edu</td>
-                            <td>(012165) 76278</td>
-                            <td>Grumo Appula</td>
-                            <td>
-                                <span class="badge bg-danger">Inactive</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Darius</td>
-                            <td>Sit</td>
-                            <td>velit@nec.com</td>
-                            <td>0309 690 7871</td>
-                            <td>Ways</td>
-                            <td>
-                                <span class="badge bg-success">Active</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Oleg</td>
-                            <td>Amet </td>
-                            <td>rhoncus.id@Aliquamauctorvelit.net</td>
-                            <td>0500 441046</td>
-                            <td>Rossignol</td>
-                            <td>
-                                <span class="badge bg-success">Active</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Kermit</td>
-                            <td>Consectetur</td>
-                            <td>diam.Sed.diam@anteVivamusnon.org</td>
-                            <td>(01653) 27844</td>
-                            <td>Patna</td>
-                            <td>
-                                <span class="badge bg-success">Active</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Jermaine</td>
-                            <td>Adipisicing </td>
-                            <td>sodales@nuncsit.org</td>
-                            <td>0800 528324</td>
-                            <td>Mold</td>
-                            <td>
-                                <span class="badge bg-success">Active</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Ferdinand</td>
-                            <td>Elit </td>
-                            <td>gravida.molestie@tinciduntadipiscing.org</td>
-                            <td>(016977) 4107</td>
-                            <td>Marlborough</td>
-                            <td>
-                                <span class="badge bg-danger">Inactive</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Kuame</td>
-                            <td>Impedit</td>
-                            <td>Quisque.purus@mauris.org</td>
-                            <td>(0151) 561 8896</td>
-                            <td>Tresigallo</td>
-                            <td>
-                                <span class="badge bg-success">Active</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Deacon</td>
-                            <td>Aliquam</td>
-                            <td>Duis.a.mi@sociisnatoquepenatibus.com</td>
-                            <td>07740 599321</td>
-                            <td>Karapınar</td>
-                            <td>
-                                <span class="badge bg-success">Active</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Channing</td>
-                            <td>Nihil</td>
-                            <td>tempor.bibendum.Donec@ornarelectusante.ca</td>
-                            <td>0845 46 49</td>
-                            <td>Warrnambool</td>
-                            <td>
-                                <span class="badge bg-success">Active</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Aladdin</td>
-                            <td>Architecto</td>
-                            <td>sem.ut@pellentesqueafacilisis.ca</td>
-                            <td>0800 1111</td>
-                            <td>Bothey</td>
-                            <td>
-                                <span class="badge bg-success">Active</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Cruz</td>
-                            <td>Aspernatur</td>
-                            <td>non@quisturpisvitae.ca</td>
-                            <td>07624 944915</td>
-                            <td>Shikarpur</td>
-                            <td>
-                                <span class="badge bg-success">Active</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Keegan</td>
-                            <td>Eos</td>
-                            <td>molestie.dapibus@condimentumDonecat.edu</td>
-                            <td>0800 200103</td>
-                            <td>Assen</td>
-                            <td>
-                                <span class="badge bg-success">Active</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Ray</td>
-                            <td>Vitae</td>
-                            <td>placerat.eget@sagittislobortis.edu</td>
-                            <td>(0112) 896 6829</td>
-                            <td>Hofors</td>
-                            <td>
-                                <span class="badge bg-success">Active</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Maxwell</td>
-                            <td>Eius</td>
-                            <td>diam@dapibus.org</td>
-                            <td>0334 836 4028</td>
-                            <td>Thane</td>
-                            <td>
-                                <span class="badge bg-success">Active</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Carter</td>
-                            <td>Vel</td>
-                            <td>urna.justo.faucibus@orci.com</td>
-                            <td>07079 826350</td>
-                            <td>Biez</td>
-                            <td>
-                                <span class="badge bg-success">Active</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Stone</td>
-                            <td>Temporibus</td>
-                            <td>velit.Aliquam.nisl@sitametrisus.com</td>
-                            <td>0800 1111</td>
-                            <td>Olivar</td>
-                            <td>
-                                <span class="badge bg-success">Active</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Berk</td>
-                            <td>Aliquid</td>
-                            <td>fringilla.porttitor.vulputate@taciti.edu</td>
-                            <td>(0101) 043 2822</td>
-                            <td>Sanquhar</td>
-                            <td>
-                                <span class="badge bg-success">Active</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Philip</td>
-                            <td>Veritatis</td>
-                            <td>turpis@euenimEtiam.org</td>
-                            <td>0500 571108</td>
-                            <td>Okara</td>
-                            <td>
-                                <span class="badge bg-success">Active</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Kibo</td>
-                            <td>Magnam</td>
-                            <td>feugiat@urnajustofaucibus.co.uk</td>
-                            <td>07624 682306</td>
-                            <td>La Cisterna</td>
-                            <td>
-                                <span class="badge bg-success">Active</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Bruno</td>
-                            <td>Minus</td>
-                            <td>elit.Etiam.laoreet@luctuslobortisClass.edu</td>
-                            <td>07624 869434</td>
-                            <td>Rocca d"Arce</td>
-                            <td>
-                                <span class="badge bg-success">Active</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Leonard</td>
-                            <td>Omnis</td>
-                            <td>blandit.enim.consequat@mollislectuspede.net</td>
-                            <td>0800 1111</td>
-                            <td>Lobbes</td>
-                            <td>
-                                <span class="badge bg-success">Active</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Hamilton</td>
-                            <td>Quis</td>
-                            <td>mauris@diam.org</td>
-                            <td>0800 256 8788</td>
-                            <td>Sanzeno</td>
-                            <td>
-                                <span class="badge bg-success">Active</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Harding</td>
-                            <td>Recusandae</td>
-                            <td>Lorem.ipsum.dolor@etnetuset.com</td>
-                            <td>0800 1111</td>
-                            <td>Obaix</td>
-                            <td>
-                                <span class="badge bg-success">Active</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Emmanuel</td>
-                            <td>Deserunt</td>
-                            <td>eget.lacus.Mauris@feugiatSednec.org</td>
-                            <td>(016977) 8208</td>
-                            <td>Saint-Remy-Geest</td>
-                            <td>
-                                <span class="badge bg-success">Active</span>
-                            </td>
-                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -975,6 +880,189 @@
     </form>
     <script src="assets/js/app.js"></script>
 
-<script src="assets/js/extensions/simple-datatables.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="assets/js/jquery.dataTables.min.js"></script>
+<script src="assets/js/extensions/datatables.js"></script>
+    <script>
+        function validarCampos() {
+            let nombre = document.getElementById('txtNombre').value;
+            let apellido = document.getElementById('txtApellido').value;
+            let pais = document.getElementById('cboPais').value;
+            let provincia = document.getElementById('cboProvincia').value;
+            let ciudad = document.getElementById('cboCiudad').value;
+            let direccion = document.getElementById('txtDireccion').value;
+            let fechaNacimiento = document.getElementById('txtFechaNacimiento').value;
+            let email = document.getElementById('txtEmail').value;
+            let telefono = document.getElementById('txtTelefono').value;
+            let empresa = document.getElementById('txtEmpresa').value;
+            let cargo = document.getElementById('txtCargo').value;
+
+            let listaDeInputs = [nombre, apellido, pais, provincia, ciudad, direccion, fechaNacimiento, email, telefono, empresa, cargo]
+
+            if (listaDeInputs.includes("")) {
+                alertaError();
+            } else {
+                clienteAgregar();
+            }
+        }
+
+        function alertaError() {
+            Swal.fire({
+                title: "Error al agregar cliente",
+                text: "Complete todos los campos solicitados",
+                icon: "error"
+            });
+        }
+
+        function txtLimpiar() {
+            for (let i = 0; i < arguments.length; i++) {
+                const element = arguments[i];
+                document.getElementById(element).value = null
+            }
+        }
+
+        function clienteAgregar() {
+            var dateObj = new Date();
+            var month = dateObj.getUTCMonth() + 1; //months from 1-12
+            var day = dateObj.getUTCDate();
+            var year = dateObj.getUTCFullYear();
+
+            var fecha = day + "/" + month + "/" + year;
+
+            let nombre = document.getElementById('txtNombre').value;
+            let apellido = document.getElementById('txtApellido').value;
+            let pais = document.getElementById('cboPais').value;
+            let provincia = document.getElementById('cboProvincia').value;
+            let ciudad = document.getElementById('cboCiudad').value;
+            let direccion = document.getElementById('txtDireccion').value;
+            let fechaNacimiento = document.getElementById('txtFechaNacimiento').value;
+            let email = document.getElementById('txtEmail').value;
+            let telefono = document.getElementById('txtTelefono').value;
+            let empresa = document.getElementById('txtEmpresa').value;
+            let cargo = document.getElementById('txtCargo').value;
+
+            var cadena = {
+                Nombre: nombre,
+                Apellido: apellido,
+                IdPais: pais,
+                IdProvincia: provincia,
+                IdCiudad: ciudad,
+                Direccion: direccion,
+                CodPostal: '0',
+                FechaNacimiento: fechaNacimiento,
+                Correo: email,
+                Telefono: telefono,
+                IdOrganizacion: '1',
+                IdCargo: '1',
+                FechaIngreso: fecha,
+                IdEstado: '1',
+            };
+
+            var payload = {
+                cadena: JSON.stringify(cadena)
+            };
+
+            $.ajax({
+                type: "POST",
+                url: "Clientes.aspx/ClientesAgregar",
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(payload),
+                dataType: "json",
+                success: function (data) {
+                    var json = $.parseJSON(data.d);
+                    var status = json.Status;
+
+                    if (status == 200) {
+                        Swal.fire({
+                            title: "Éxito",
+                            html: "Datos agregados correctamente",
+                            icon: "success"
+                        });
+                        txtLimpiar('txtNombre', 'txtApellido', 'txtDireccion', 'txtFechaNacimiento', 'txtEmail', 'txtTelefono', 'txtEmpresa', 'txtCargo');
+                        clienteLlenarTabla();
+
+                    } else {
+                        Swal.fire({
+                            title: "LO SIENTO ALGO SALIO MAL",
+                            text: "Verifica los datos ingresados",
+                            icon: "error"
+                        });
+                    }
+                }
+            });
+        }
+
+        function clienteLlenarTabla() {
+            var tabla = $('#tablaClientes').DataTable();
+            tabla.destroy();
+            $('#tablaClientes').DataTable({
+                language: {
+                    url: "//cdn.datatables.net/plug-ins/1.12.1/i18n/es-ES.json"
+                },
+
+                ajax: {
+                     "type": "POST",
+                     "url": "Clientes.aspx/ClientesBuscarTodos",
+                     "contentType": "application/json; charset=utf-8",
+                     "dataType": "json",
+                     "dataSrc": function (data) {
+
+                         var json = $.parseJSON(data.d);
+
+                         if (json.Data.length > 0) {
+                             var return_data = new Array();
+                             for (var i = 0; i < json.Data.length; i++) {
+                                 return_data.push({
+                                     'IdCliente': json.Data[i].IdCliente,
+                                     'Nombre': json.Data[i].Nombre,
+                                     'Apellido': json.Data[i].Apellido,
+                                     'Pais': json.Data[i].IdPais,
+                                     'Email': json.Data[i].Correo,
+                                     'Teléfono': json.Data[i].Telefono,
+                                     'Empresa': json.Data[i].IdOrganizacion,
+                                     'Cargo': json.Data[i].IdCargo,
+                                     'Estado': json.Data[i].IdEstado
+                                 })
+                             }
+                             return return_data;
+                         } else {
+                             Swal.fire("NO HAY REGISTROS CARGADOS", "Gracias por consultar", "success");
+                         }
+                     }
+                 },
+                columns: [
+                    { 'data': 'Nombre' },
+                    { 'data': 'Apellido' },
+                    { 'data': 'Pais' },
+                    { 'data': 'Email' },
+                    { 'data': 'Teléfono' },
+                    { 'data': 'Empresa' },
+                    { 'data': 'Cargo' },
+                    { 'data': 'Estado' },
+                    {
+                        'data': 'IdCliente',
+                        orderable: false,
+                        'render': function (data, type, row) {
+                            return '<a onclick="clienteBuscarPorIdModal(' + row.IdUsuario + ')" data-bs-toggle="modal" data-bs-target="#modalEditarCliente"><i class="material-icons" role="button">edit</i></a> '
+                        }
+                    },
+                    {
+                        'data': 'IdCliente',
+                        orderable: false,
+                        'render': function (data, type, row) {
+                            return '<a onclick="clienteEliminar(' + row.IdUsuario + ')"><i class="material-icons" role="button">delete</i></a> '
+                        }
+                    },
+                ],
+            });
+
+        }
+
+        function clienteBuscarPorIdModal(id) {
+
+        }
+
+    </script>
 </body>
 </html>

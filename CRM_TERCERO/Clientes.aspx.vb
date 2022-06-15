@@ -15,15 +15,15 @@ Public Class Clientes
         Try
             Dim oDs As New DataSet
 
-            Dim oobjeto As New Clientes
+            Dim oobjeto As New Cliente
 
             oDs = oobjeto.BuscarTodos
             Dim IdTabla As Integer = 0
 
-            Dim e As UserWS() = New UserWS(oDs.Tables(IdTabla).Rows.Count - 1) {}
+            Dim e As ClienteWS() = New ClienteWS(oDs.Tables(IdTabla).Rows.Count - 1) {}
 
             For i = 0 To oDs.Tables(IdTabla).Rows.Count - 1
-                e(i) = New UserWS With {
+                e(i) = New ClienteWS With {
                     .IdCliente = oDs.Tables(IdTabla).Rows(i).Item("IdCliente").ToString(),
                     .Nombre = oDs.Tables(IdTabla).Rows(i).Item("Nombre").ToString(),
                     .Apellido = oDs.Tables(IdTabla).Rows(i).Item("Apellido").ToString(),
@@ -38,8 +38,7 @@ Public Class Clientes
                     .IdOrganizacion = oDs.Tables(IdTabla).Rows(i).Item("IdOrganizacion").ToString(),
                     .IdCargo = oDs.Tables(IdTabla).Rows(i).Item("IdCargo").ToString(),
                     .FechaIngreso = oDs.Tables(IdTabla).Rows(i).Item("FechaIngreso").ToString(),
-                    .IdEstado = oDs.Tables(IdTabla).Rows(i).Item("IdEstado").ToString(),
-                
+                    .IdEstado = oDs.Tables(IdTabla).Rows(i).Item("IdEstado").ToString()
                 }
             Next
 
@@ -64,7 +63,7 @@ Public Class Clientes
     Public Shared Function ClientesAgregar(ByVal cadena As String) As String
         Try
             Dim jss As New JavaScriptSerializer()
-            Dim dict = jss.Deserialize(Of List(Of UserWS))("[" & cadena & "]")
+            Dim dict = jss.Deserialize(Of List(Of ClienteWS))("[" & cadena & "]")
 
             Dim Nombre = dict(0).Nombre.ToString
             Dim Apellido = dict(0).Apellido.ToString
@@ -83,7 +82,7 @@ Public Class Clientes
 
             Dim oDs As New DataSet
 
-            Dim oobjeto As New Clientes
+            Dim oobjeto As New Cliente
 
             oDs = oobjeto.Agregar(Nombre, Apellido, IdPais, IdProvincia, IdCiudad, Direccion, CodPostal, FechaNacimiento, Correo, Telefono, IdOrganizacion, IdCargo, FechaIngreso, IdEstado)
 
@@ -107,7 +106,7 @@ Public Class Clientes
     Public Shared Function ClientesModificar(ByVal cadena As String) As String
         Try
             Dim jss As New JavaScriptSerializer()
-            Dim dict = jss.Deserialize(Of List(Of UserWS))("[" & cadena & "]")
+            Dim dict = jss.Deserialize(Of List(Of ClienteWS))("[" & cadena & "]")
 
             Dim IdCliente = dict(0).IdCliente.ToString
             Dim Nombre = dict(0).Nombre.ToString
@@ -127,7 +126,7 @@ Public Class Clientes
 
             Dim oDs As New DataSet
 
-            Dim oobjeto As New Clientes
+            Dim oobjeto As New Cliente
 
             oDs = oobjeto.Modificar(IdCliente, Nombre, Apellido, IdPais, IdProvincia, IdCiudad, Direccion, CodPostal, FechaNacimiento, Correo, Telefono, IdOrganizacion, IdCargo, FechaIngreso, IdEstado)
 
@@ -151,13 +150,13 @@ Public Class Clientes
     Public Shared Function ClientesEliminar(ByVal cadena As String) As String
         Try
             Dim jss As New JavaScriptSerializer()
-            Dim dict = jss.Deserialize(Of List(Of UserWS))("[" & cadena & "]")
+            Dim dict = jss.Deserialize(Of List(Of ClienteWS))("[" & cadena & "]")
 
-            Dim IdLegajo = dict(0).IdCliente.ToString
+            Dim IdCliente = dict(0).IdCliente.ToString
 
             Dim oDs As New DataSet
 
-            Dim oobjeto As New Clientes
+            Dim oobjeto As New Cliente
 
             oDs = oobjeto.Eliminar(IdCliente)
 
