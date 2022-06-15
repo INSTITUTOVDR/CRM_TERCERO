@@ -8,10 +8,6 @@
     Public Property Direccion As String
     Public Property CodPostal As String
     Public Property FechaNacimiento As String
-    Public Property Correo As String
-    Public Property Telefono As String
-    Public Property IdOrganizacion As String
-    Public Property IdCargo As String
     Public Property FechaIngreso As String
     Public Property IdEstado As String
 End Class
