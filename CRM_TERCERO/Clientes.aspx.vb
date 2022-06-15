@@ -72,7 +72,7 @@ Public Class Clientes
 
             Dim data = New With {
                 Key .Status = "200",
-                Key .IdUsuario = oDs.Tables(IdTabla).Rows(0).Item("ID_Usuario").ToString(),
+                Key .IdUsuario = oDs.Tables(IdTabla).Rows(0).Item("IdCliente").ToString(),
                 .Nombre = oDs.Tables(IdTabla).Rows(0).Item("Nombre").ToString(),
                     .Apellido = oDs.Tables(IdTabla).Rows(0).Item("Apellido").ToString(),
                     .IdPais = oDs.Tables(IdTabla).Rows(0).Item("IdPais").ToString(),
