@@ -230,6 +230,7 @@
     <Content Include="Librerias\Microsoft.Practices.Unity.dll" />
     <Content Include="Librerias\Microsoft.Practices.Unity.Interception.dll" />
     <Content Include="Librerias\System.Configuration.dll" />
+    <Content Include="template-ABM.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -265,6 +266,13 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="template-ABM.aspx.designer.vb">
+      <DependentUpon>template-ABM.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="template-ABM.aspx.vb">
+      <DependentUpon>template-ABM.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
