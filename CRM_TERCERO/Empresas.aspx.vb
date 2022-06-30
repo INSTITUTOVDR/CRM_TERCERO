@@ -35,7 +35,7 @@ Public Class Empresas
                     .EmpresaTipo = oDs.Tables(IdTabla).Rows(i).Item("EmpresaTipo").ToString(),
                     .Observaciones = oDs.Tables(IdTabla).Rows(i).Item("Observaciones").ToString(),
                     .Prioridad = oDs.Tables(IdTabla).Rows(i).Item("Prioridad").ToString(),
-                    .FechaInicioActividad = oDs.Tables(IdTabla).Rows(i).Item("FechaInicioActividad").ToString(),
+                    .FechaInicioActividad = oDs.Tables(IdTabla).Rows(i).Item("Fecha").ToString(),
                     .Estado = oDs.Tables(IdTabla).Rows(i).Item("Estado").ToString()
                 }
             Next
@@ -77,8 +77,58 @@ Public Class Empresas
             Dim FechaInicioActividad = dict(0).FechaInicioActividad.ToString
             Dim Estado = dict(0).Estado.ToString
 
+
+            Dim obj As New Random()
+            Dim posibles As String = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
+            Dim longitud As Integer = posibles.Length
+            Dim letra As Char
+            Dim longitudnuevacadena As Integer = 3
+            Dim nuevacadena As String = ""
+            For i As Integer = 0 To longitudnuevacadena - 1
+                letra = posibles(obj.[Next](longitud))
+                nuevacadena += letra.ToString()
+            Next
+
+            Dim fecha As String
+            fecha = Date.Now.Year.ToString + Date.Now.Month.ToString + Date.Now.Day.ToString + Date.Now.TimeOfDay.TotalMinutes.ToString
+
+
+            Dim nombre As String
+            nombre = fecha & nuevacadena
+
+            Dim rutaServidor As String = "C:\Users\Guille-ASUS\Desktop\TSDS\PP2\Proyecto\CRM_TERCERO\CRM_TERCERO\ImagenesEmpresas\"
+
+            ' Dim rutaServidor As String = "G:\FerozoWebHosting\alladioseguridad.com.ar\public_html\Admin\Frontend\ArchivosCapacitacion\"
+            Dim urlBD As String = rutaServidor & nombre & "." & "png"
+
+            ''aca convertir el base 64 a url absoluta
+            'Dim fileContents As Byte() = Convert.FromBase64String(Excel.ToString())
+            'Dim filename As String = Path.Combine(Path.GetTempPath(), Path.ChangeExtension(Guid.NewGuid().ToString(), ".xlsx"))
+            'File.WriteAllBytes(filename, fileContents)
+
+
+            'ExceltoDT(filename)
+            ''aca convertir el base 64 a url absoluta
+            Dim fileContents As Byte() = Convert.FromBase64String(Imagen.ToString()),
+                        ruta As String = urlBD
+            'ruta as String = "G:\FerozoWebHosting\alladioseguridad.com.ar\public_html\Admin\Frontend\PdfPermisos"
+
+
+
+            Dim fs As IO.FileStream
+            fs = IO.File.Create(ruta)
+            fs.Write(fileContents, 0, fileContents.Length)
+            fs.Close()
+
+
+
+            Dim rutaAbsoluta As String = "/ImagenesEmpresas/" & nombre & "." & "png"
+
+
+
+
             Dim oobjeto As New Empresa
-            oobjeto.Agregar(RazonSocial, Fantasia, NroCuit, IdLocalidad, Domicilio, Lat, Lng, Imagen, EmpresaTipo, Observaciones, Prioridad, FechaInicioActividad, Estado)
+            oobjeto.Agregar(RazonSocial, Fantasia, NroCuit, IdLocalidad, Domicilio, Lat, Lng, rutaAbsoluta, EmpresaTipo, Observaciones, Prioridad, FechaInicioActividad, Estado)
 
             Dim data = New With {
                 Key .Status = "200"

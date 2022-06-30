@@ -11,6 +11,6 @@
     Public Property EmpresaTipo As Integer
     Public Property Observaciones As String
     Public Property Prioridad As Integer
-    Public Property FechaInicioActividad As Date
+    Public Property FechaInicioActividad As String
     Public Property Estado As Integer
 End Class

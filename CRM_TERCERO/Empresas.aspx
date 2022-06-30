@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="assets/css/pages/datatables.css" />
     <link rel="stylesheet" href="assets/css/pages/icon.css" />
 </head>
-<body onload="llenarTabla()">
+<body onload="llenarTabla(); provinciasLlenarCbo()">
     <form id="form1" runat="server">
         <div id="app">
             <!--Barra Lateral -->
@@ -446,9 +446,15 @@
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6 col-12">
+                                                            <div id="visorArchivo2">
+                                                                <!--Aqui se desplegará el fichero-->
+                                                            </div>
+                                                            <span id="cadena"></span>
+                                                        </div>
+                                                        <div class="col-md-6 col-12">
                                                             <div class="form-group">
                                                                 <label for="txtImagen">Imagen</label>
-                                                                <input class="form-control" type="file" id="txtImagen" />
+                                                                <input class="form-control" type="file" id="btnImagen" onchange="return validarExt3()" accept="image/*" />
                                                             </div>
                                                         </div>
                                                         <div class="col-12">
@@ -481,18 +487,16 @@
                                                                 <label for="selectProvincia">Provincia</label>
                                                                 <fieldset class="form-group">
                                                                     <select class="form-select" id="selectProvincia">
-                                                                        <option value="1">Opción 1</option>
-                                                                        <option value="2">Opción 2</option>
-                                                                        <option value="3">Opción 3</option>
+
                                                                     </select>
                                                                 </fieldset>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6 col-12">
                                                             <div class="form-group">
-                                                                <label for="selectLocalidad">Localidad</label>
+                                                                <label for="selectIdLocalidad">Localidad</label>
                                                                 <fieldset class="form-group">
-                                                                    <select class="form-select" id="selectLocalidad">
+                                                                    <select class="form-select" id="selectIdLocalidad">
                                                                         <option value="1">Opción 1</option>
                                                                         <option value="2">Opción 2</option>
                                                                         <option value="3">Opción 3</option>
@@ -542,7 +546,7 @@
                                                         </div>
                                                         <div class="col-12 d-flex justify-content-end">
                                                             <button type="button" class="btn btn-secondary me-1 mb-1">Cancelar</button>
-                                                            <button type="button" class="btn btn-primary me-1 mb-1" onclick="validarCampos()">Enviar</button>
+                                                            <button type="button" class="btn btn-primary me-1 mb-1" onclick="agregarDocCap()">Enviar</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -555,7 +559,7 @@
                         <!-- Botón mostrar modal -->
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalEditar">Mostrar Modal(reemplazar por lápiz en la tabla)</button>
                         <!-- Modal Editar-->
-                        <div class="modal fade text-left w-100" id="modalEditar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel16" aria-hidden="true">
+                        <div class="modal fade text-left w-100" id="modalEditarEmpresa" tabindex="-1" role="dialog" aria-labelledby="myModalLabel16" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -565,91 +569,143 @@
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <div class="card">
-                                            <div class="card-body p-0">
-                                                <div class="row">
-                                                    <div class="col-12">
-                                                        <h5 class="card-title text-muted">Título Sección 1</h5>
+                                        <div class="form">
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <h5 class="card-title text-muted">Información Básica</h5>
+                                                </div>
+                                                <div class="col-md-6 col-12">
+                                                    <div class="form-group">
+                                                        <input type="text" id="txtEditEmpresa" hidden="hidden" />
+                                                        <label for="txtEditRazonSocial">Razón Social</label>
+                                                        <input type="text" id="txtEditRazonSocial" class="form-control" placeholder="Razón Social" />
                                                     </div>
-                                                    <div class="col-md-6 col-12">
-                                                        <div class="form-group">
-                                                            <label for="EditTextBox1">Text Box 1</label>
-                                                            <input type="text" id="EditTextBox1" class="form-control" placeholder="Text Box 1" />
-                                                        </div>
+                                                </div>
+                                                <div class="col-md-6 col-12">
+                                                    <div class="form-group">
+                                                        <label for="txtEditFantasia">Fantasia</label>
+                                                        <input type="text" id="txtEditFantasia" class="form-control" placeholder="Fantasia" />
                                                     </div>
-                                                    <div class="col-md-6 col-12">
-                                                        <div class="form-group">
-                                                            <label for="EditTextBox2">Text Box 2</label>
-                                                            <input type="text" id="EditTextBox2" class="form-control" placeholder="Text Box 2" />
-                                                        </div>
+                                                </div>
+                                                <div class="col-md-6 col-12">
+                                                    <div class="form-group">
+                                                        <label for="txtEditNroCuit">Número de CUIT</label>
+                                                        <input type="text" id="txtEditNroCuit" class="form-control" placeholder="CUIT" />
                                                     </div>
-                                                    <div class="col-md-6 col-12">
-                                                        <div class="form-group">
-                                                            <label for="editSelect1">Select 1</label>
-                                                            <fieldset class="form-group">
-                                                                <select class="form-select" id="editSelect1">
-                                                                    <option value="1">Opción 1</option>
-                                                                    <option value="2">Opción 2</option>
-                                                                    <option value="3">Opción 3</option>
-                                                                </select>
-                                                            </fieldset>
-                                                        </div>
+                                                </div>
+                                                <div class="col-md-6 col-12">
+                                                    <div class="form-group">
+                                                        <label for="txtEditFechaInicioActividad">Fecha de Inicio de Actividad</label>
+                                                        <input type="date" id="txtEditFechaInicioActividad" class="form-control" />
                                                     </div>
-                                                    <div class="col-md-6 col-12">
-                                                        <div class="form-group">
-                                                            <label for="editSelect2">Select 2</label>
-                                                            <fieldset class="form-group">
-                                                                <select class="form-select" id="editSelect2">
-                                                                    <option value="1">Opción 1</option>
-                                                                    <option value="2">Opción 2</option>
-                                                                    <option value="3">Opción 3</option>
-                                                                </select>
-                                                            </fieldset>
-                                                        </div>
+                                                </div>
+                                                <div class="col-md-6 col-12">
+                                                    <div class="form-group">
+                                                        <label for="selectEditEmpresaTipo">Tipo de Empresa</label>
+                                                        <fieldset class="form-group">
+                                                            <select class="form-select" id="selectEditEmpresaTipo">
+                                                                <option value="1">Opción 1</option>
+                                                                <option value="2">Opción 2</option>
+                                                                <option value="3">Opción 3</option>
+                                                            </select>
+                                                        </fieldset>
                                                     </div>
-                                                    <div class="col-12">
-                                                        <hr />
-                                                        <h5 class="card-title text-muted mt-2">Título Sección 2</h5>
+                                                </div>
+                                                <div class="col-md-6 col-12">
+                                                    <div class="form-group">
+                                                        <label for="txtEditImagen">Imagen</label>
+                                                        <input class="form-control" type="file" id="txtEditImagen" />
                                                     </div>
-                                                    <div class="col-md-6 col-12">
-                                                        <div class="form-group">
-                                                            <label for="EditTextBox3">Text Box 3</label>
-                                                            <input type="text" id="EditTextBox3" class="form-control" placeholder="Text Box 3" />
-                                                        </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <hr />
+                                                    <h5 class="card-title text-muted mt-2">Información de Contacto</h5>
+                                                </div>
+                                                <div class="col-md-6 col-12">
+                                                    <div class="form-group">
+                                                        <label for="selectEditContactoTipo">Contacto</label>
+                                                        <fieldset class="form-group">
+                                                            <select class="form-select" id="selectEditContactoTipo">
+                                                                <option value="1">Opción 1</option>
+                                                                <option value="2">Opción 2</option>
+                                                                <option value="3">Opción 3</option>
+                                                            </select>
+                                                        </fieldset>
                                                     </div>
-                                                    <div class="col-md-6 col-12">
-                                                        <div class="form-group">
-                                                            <label for="EditTextBox4">Text Box 4</label>
-                                                            <input type="text" id="EditTextBox4" class="form-control" placeholder="Text Box 4" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6 col-12">
-                                                        <div class="form-group">
-                                                            <label for="EditTextBox5">Text Box 5</label>
-                                                            <input type="text" id="EditTextBox5" class="form-control" placeholder="Text Box 5" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-12">
-                                                        <hr />
-                                                        <h5 class="card-title text-muted mt-2">Título Sección 3</h5>
-                                                    </div>
-                                                    <div class="col-md-6 col-12">
-                                                        <div class="form-group">
-                                                            <label for="EditTextBox6">Text Box 6</label>
-                                                            <input type="text" id="EditTextBox6" class="form-control" placeholder="Text Box 6" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6 col-12">
-                                                        <div class="form-group">
-                                                            <label for="EditTextBox7">Text Box 7</label>
-                                                            <input type="text" id="EditTextBox7" class="form-control" placeholder="Text Box 7" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6 col-12">
+                                                </div>
+                                                <div class="col-md-6 col-12">
+                                                    <div class="form-group mt-4">
                                                         <a href="#" class="btn icon btn-outline-secondary"><i data-feather="plus"></i></a>
                                                     </div>
                                                 </div>
-
+                                                <div class="col-12">
+                                                    <hr />
+                                                    <h5 class="card-title text-muted mt-2">Información Geográfica</h5>
+                                                </div>
+                                                <div class="col-md-6 col-12">
+                                                    <div class="form-group">
+                                                        <label for="selectEditProvincia">Provincia</label>
+                                                        <fieldset class="form-group">
+                                                            <select class="form-select" id="selectEditProvincia">
+                                                                <option value="1">Opción 1</option>
+                                                                <option value="2">Opción 2</option>
+                                                                <option value="3">Opción 3</option>
+                                                            </select>
+                                                        </fieldset>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-12">
+                                                    <div class="form-group">
+                                                        <label for="selectEditLocalidad">Localidad</label>
+                                                        <fieldset class="form-group">
+                                                            <select class="form-select" id="selectEditLocalidad">
+                                                                <option value="1">Opción 1</option>
+                                                                <option value="2">Opción 2</option>
+                                                                <option value="3">Opción 3</option>
+                                                            </select>
+                                                        </fieldset>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-12">
+                                                    <div class="form-group">
+                                                        <label for="txtEditDomicilio">Domicilio</label>
+                                                        <input type="text" id="txtEditDomicilio" class="form-control" placeholder="Domicilio" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-12">
+                                                    <div class="form-group">
+                                                        <label for="txtEditLat">Latitud</label>
+                                                        <input type="text" id="txtEditLat" class="form-control" placeholder="Latitud" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-12">
+                                                    <div class="form-group">
+                                                        <label for="txtEditLng">Longitud</label>
+                                                        <input type="text" id="txtEditLng" class="form-control" placeholder="Longitud" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <hr />
+                                                    <h5 class="card-title text-muted mt-2">Otra Información</h5>
+                                                </div>
+                                                <div class="col-md-6 col-12">
+                                                    <div class="form-floating">
+                                                        <textarea class="form-control" placeholder="Observaciones" id="txtEditObservaciones"></textarea>
+                                                        <label for="txtEditObservaciones">Observaciones</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-12">
+                                                    <div class="form-group">
+                                                        <label for="txtEditPrioridad">Prioridad</label>
+                                                        <input type="text" id="txtEditPrioridad" class="form-control" placeholder="Prioridad" />
+                                                    </div>
+                                                </div>
+                                                <div class="form-check">
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" id="chkEditEstado" class="form-check-input" />
+                                                        <label for="checkbox1">Estado</label>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -660,7 +716,7 @@
                                         </button>
                                         <button type="button" class="btn btn-primary ml-1" data-bs-dismiss="modal">
                                             <i class="bx bx-check d-block d-sm-none"></i>
-                                            <span class="d-none d-sm-block">Aceptar</span>
+                                            <span class="d-none d-sm-block" onclick="empresaModificar()">Modificar</span>
                                         </button>
                                     </div>
                                 </div>
@@ -720,9 +776,11 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="assets/js/jquery.dataTables.min.js"></script>
     <script src="assets/js/extensions/datatables.js"></script>
+
     <script>
         function validarCampos() {
-            let listaValoresInputs = generarListaDeInputs("txtRazonSocial", "txtFantasia", "txtNroCuit", "selectLocalidad", "txtDomicilio", "txtLat", "txtLng", "txtImagen", "selectEmpresaTipo", "txtObservaciones", "txtPrioridad", "txtFechaInicioActividad")
+            let listaValoresInputs = generarListaDeInputs("txtRazonSocial", "txtFantasia", "txtNroCuit", "selectIdLocalidad", "txtDomicilio", "txtLat", "txtLng", "txtImagen", "selectEmpresaTipo", "txtObservaciones", "txtPrioridad", "txtFechaInicioActividad")
+
             let esValido = true
 
             for (var i = 0; i < listaValoresInputs.length; i++) {
@@ -739,23 +797,54 @@
             esValido ? empresaAgregar() : alertaError();
         }
 
+        function validarCamposEdit() {
+            let listaValoresInputs = generarListaDeInputs("txtEditRazonSocial", "txtEditFantasia", "txtEditNroCuit", "selectIdLocalidad", "txtEditDomicilio", "txtEditLat", "txtEditLng", "txtEditImagen", "selectEmpresaTipo", "txtEditObservaciones", "txtEditPrioridad", "txtEditFechaInicioActividad")
+            let esValido = true
+
+            for (var i = 0; i < listaValoresInputs.length; i++) {
+                let input = listaValoresInputs[i]
+                if (input.value == "") {
+                    input.classList.add("is-invalid");
+                    esValido = false;
+                    alertaError();
+                } else {
+                    input.classList.remove("is-invalid");
+                }
+            }
+
+            esValido ? empresaModificar() : alertaError();
+        }
+
         function empresaAgregar() {
-            let listaValoresInputs = generarListaDeInputs("txtRazonSocial", "txtFantasia", "txtNroCuit", "selectLocalidad", "txtDomicilio", "txtLat", "txtLng", "txtImagen", "selectEmpresaTipo", "txtObservaciones", "txtPrioridad", "txtFechaInicioActividad")
+            let RazonSocial = document.getElementById('txtRazonSocial').value
+            let Fantasia = document.getElementById('txtFantasia').value
+            let NroCuit = document.getElementById('txtNroCuit').value
+            let IdLocalidad = document.getElementById('selectIdLocalidad').value
+            let Domicilio = document.getElementById('txtDomicilio').value
+            let Lat = document.getElementById('txtLat').value
+            let Lng = document.getElementById('txtLng').value
+            let Imagen = document.getElementById('btnImagen').value
+            let EmpresaTipo = document.getElementById('selectEmpresaTipo').value
+            let Observaciones = document.getElementById('txtObservaciones').value
+            let Prioridad = document.getElementById('txtPrioridad').value
+            let FechaInicioActividad = document.getElementById('txtFechaInicioActividad').value
+            //let Estado = document.getElementById('txtEstado').value
 
             var cadena = {
-                RazonSocial: listaValoresInputs[0],
-                Fantasia: listaValoresInputs[1],
-                NroCuit: listaValoresInputs[2],
-                IdLocalidad: listaValoresInputs[3],
-                Domicilio: listaValoresInputs[4],
-                Lat: listaValoresInputs[5],
-                Lng: listaValoresInputs[6],
-                Imagen: listaValoresInputs[7],
-                EmpresaTipo: listaValoresInputs[8],
-                Observaciones: listaValoresInputs[9],
-                Prioridad: listaValoresInputs[10],
-                FechaInicioActividad: listaValoresInputs[11],
-                Estado: listaValoresInputs[12]
+                RazonSocial: RazonSocial,
+                Fantasia: Fantasia,
+                NroCuit: NroCuit,
+                IdLocalidad: IdLocalidad,
+                Domicilio: Domicilio,
+                Lat: Lat,
+                Lng: Lng,
+                Imagen: Imagen,
+                EmpresaTipo: EmpresaTipo,
+                Observaciones: Observaciones,
+                Prioridad: Prioridad,
+                FechaInicioActividad: FechaInicioActividad,
+                Estado: "1"
+
             }
 
             var payload = {
@@ -778,9 +867,75 @@
                             html: "Datos agregados correctamente",
                             icon: "success"
                         });
-                        txtLimpiar("txtRazonSocial", "txtFantasia", "txtNroCuit", "selectLocalidad", "txtDomicilio", "txtLat", "txtLng", "txtImagen", "selectEmpresaTipo", "txtObservaciones", "txtPrioridad", "txtFechaInicioActividad");
-                       empresaLlenarTabla();
+                        txtLimpiar("txtRazonSocial", "txtFantasia", "txtNroCuit", "selectIdLocalidad", "txtDomicilio", "txtLat", "txtLng", "txtImagen", "selectEmpresaTipo", "txtObservaciones", "txtPrioridad", "txtFechaInicioActividad");
+                        llenarTabla()
 
+                    } else {
+                        Swal.fire({
+                            title: "LO SIENTO ALGO SALIO MAL",
+                            text: "Verifica los datos ingresados",
+                            icon: "error"
+                        });
+                    }
+                }
+            });
+        }
+
+        function empresaModificar() {
+            let IdEmpresa = document.getElementById('txtEditIdEmpresa').value
+            let RazonSocial = document.getElementById('txtEditRazonSocial').value
+            let Fantasia = document.getElementById('txtEditFantasia').value
+            let NroCuit = document.getElementById('txtEditNroCuit').value
+            let IdLocalidad = document.getElementById('selectEditIdLocalidad').value
+            let Domicilio = document.getElementById('txtEditDomicilio').value
+            let Lat = document.getElementById('txtEditLat').value
+            let Lng = document.getElementById('txtEditLng').value
+            let Imagen = document.getElementById('txtEditImagen').value
+            let EmpresaTipo = document.getElementById('selectEditEmpresaTipo').value
+            let Observaciones = document.getElementById('txtEditObservaciones').value
+            let Prioridad = document.getElementById('txtEditPrioridad').value
+            let FechaInicioActividad = document.getElementById('txtEditFechaInicioActividad').value
+            //let Estado = document.getElementById('txtEditEstado').value
+
+            var cadena = {
+                IdEmpresa: IdEmpresa,
+                RazonSocial: RazonSocial,
+                Fantasia: Fantasia,
+                NroCuit: NroCuit,
+                IdLocalidad: IdLocalidad,
+                Domicilio: Domicilio,
+                Lat: Lat,
+                Lng: Lng,
+                Imagen: Imagen,
+                EmpresaTipo: EmpresaTipo,
+                Observaciones: Observaciones,
+                Prioridad: Prioridad,
+                FechaInicioActividad: FechaInicioActividad,
+                Estado: "1"
+            }
+
+            var payload = {
+                cadena: JSON.stringify(cadena)
+            };
+
+            $.ajax({
+                type: "POST",
+                url: "Empresas.aspx/EmpresasModificar",
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(payload),
+                dataType: "json",
+                success: function (data) {
+                    var json = $.parseJSON(data.d);
+                    var status = json.Status;
+
+                    if (status == 200) {
+                        Swal.fire({
+                            title: "Éxito",
+                            html: "Datos modificados correctamente",
+                            icon: "success"
+                        });
+                        //txtLimpiar("txtRazonSocial", "txtFantasia", "txtNroCuit", "selectIdLocalidad", "txtDomicilio", "txtLat", "txtLng", "txtImagen", "selectEmpresaTipo", "txtObservaciones", "txtPrioridad", "txtFechaInicioActividad");
+                        llenarTabla()
                     } else {
                         Swal.fire({
                             title: "LO SIENTO ALGO SALIO MAL",
@@ -793,7 +948,71 @@
 
         }
 
+        function empresaBuscarPorIdModal(id) {
+            let IdEmpresa = document.getElementById('txtEditIdEmpresa')
+            IdEmpresa.value = id
+            let RazonSocial = document.getElementById('txtEditRazonSocial')
+            let Fantasia = document.getElementById('txtEditFantasia')
+            let NroCuit = document.getElementById('txtEditNroCuit')
+            let IdLocalidad = document.getElementById('selectEditLocalidad')
+            let Domicilio = document.getElementById('txtEditDomicilio')
+            let Lat = document.getElementById('txtEditLat')
+            let Lng = document.getElementById('txtEditLng')
+            //let Imagen = document.getElementById('txtEditImagen')
+            let EmpresaTipo = document.getElementById('selectEditEmpresaTipo')
+            let Observaciones = document.getElementById('txtEditObservaciones')
+            let Prioridad = document.getElementById('txtEditPrioridad')
+            let FechaInicioActividad = document.getElementById('txtEditFechaInicioActividad')
+            //let Estado = document.getElementById('txtEditEstado')
+
+            var cadena = {
+                IdEmpresa: id
+            }
+            var payload = {
+                cadena: JSON.stringify(cadena)
+            }
+
+            $.ajax({
+                type: "POST",
+                url: "Empresas.aspx/EmpresasBuscarPorId",
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(payload),
+                dataType: "json",
+                success: function (data) {
+                    var json = $.parseJSON(data.d);
+                    var status = json.Status;
+                    if (status == 200) {
+                        //IdEmpresa.value = json.IdEmpresa
+                        RazonSocial.value = json.RazonSocial
+                        Fantasia.value = json.Fantasia
+                        NroCuit.value = json.NroCuit
+                        IdLocalidad.value = json.IdLocalidad
+                        Domicilio.value = json.Domicilio
+                        Lat.value = json.Lat
+                        Lng.value = json.Lng
+                        //Imagen.value = json.Imagen
+                        EmpresaTipo.value = json.EmpresaTipo
+                        Observaciones.value = json.Observaciones
+                        Prioridad.value = json.Prioridad
+                        FechaInicioActividad.value = json.FechaInicioActividad
+                        //Estado.value = json.Estado
+                    } else {
+                        Swal.fire({
+                            title: "LO SIENTO ALGO SALIO MAL",
+                            html: "Verifica los datos ingresados",
+                            type: "warning",
+                            showCancelButton: false,
+                            showConfirmButton: true,
+                            cancelButtonColor: "#DD6B55",
+                            confirmButtonColor: "#DD6B55",
+                        });
+                    }
+                }
+            });
+        }
+
         function llenarTabla() {
+
             var tabla = $('#tablaEmpresas').DataTable();
             tabla.destroy();
 
@@ -808,7 +1027,6 @@
                     "contentType": "application/json; charset=utf-8",
                     "dataType": "json",
                     "dataSrc": function (data) {
-
                         var json = $.parseJSON(data.d);
 
                         if (json.Data.length > 0) {
@@ -850,17 +1068,17 @@
                     { 'data': 'Estado' },
 
                     {
-                        'data': 'IdCliente',
+                        'data': 'IdEmpresa',
                         orderable: false,
                         'render': function (data, type, row) {
-                            return '<a onclick="clienteBuscarPorIdModal(' + row.IdUsuario + ')" data-bs-toggle="modal" data-bs-target="#modalEditarCliente"><i class="material-icons" role="button">edit</i></a> '
+                            return '<a onclick="empresaBuscarPorIdModal(' + row.IdEmpresa + ')" data-bs-toggle="modal" data-bs-target="#modalEditarEmpresa"><i class="material-icons" role="button">edit</i></a> '
                         }
                     },
                     {
                         'data': 'IdCliente',
                         orderable: false,
                         'render': function (data, type, row) {
-                            return '<a onclick="clienteEliminar(' + row.IdUsuario + ')"><i class="material-icons" role="button">delete</i></a> '
+                            return '<a onclick="clienteEliminar(' + row.IdEmpresa + ')"><i class="material-icons" role="button">delete</i></a> '
                         }
                     },
                 ],
@@ -868,6 +1086,211 @@
 
 
         }
+
+        function validarExt3() {
+            var archivoInput = document.getElementById('btnImagen');
+            var archivoRuta = archivoInput.value;
+            document.getElementById('visorArchivo2').innerHTML = ""
+
+            var extPermitidas = /(.png|.jpg|.jpeg)$/i;
+            if (!extPermitidas.exec(archivoRuta)) {
+                Swal.fire({
+                    title: "LO SIENTO ALGO SALIO MAL",
+                    text: "Verifica el archivo ingresado",
+                    icon: "error"
+                });
+                archivoInput.value = '';
+                return false;
+            } else {
+                if (archivoInput.files.length) {
+
+                    for (let i = 0; i < archivoInput.files.length; i++) {
+                        let visor = new FileReader();
+                        visor.onload = function (e) {
+                            document.getElementById('visorArchivo2').innerHTML +=
+                                '<embed src="' + e.target.result + '" width="400" height="375" />';
+                            console.log(e.target.result);
+                            let cadena = document.getElementById("cadena");
+                            cadena.innerHTML = e.target.result;
+                        };
+
+                        visor.readAsDataURL(archivoInput.files[i]);
+                    }
+                }
+                /// document.getElementById("nombreArchivo2").style = "display:none;margin-left:-100px";
+                //document.getElementById("nombreArchivo2").innerHTML = archivoRuta;
+            }
+
+
+        }
+
+        function agregarDocCap() {
+
+            var archivoInput = document.getElementById('btnImagen');
+            var archivoRuta = archivoInput.value;
+
+            //console.log(archivoRuta.split(".").pop());
+            // var ext = archivoRuta.split(".").pop();
+
+
+
+            //console.log(archivo);
+            let cadena = document.getElementById("cadena").innerHTML;
+            //data:application/vnd.ms-excel;base64
+
+
+            if (cadena.includes("data:image/png;base64,")) {
+                var res = cadena.split("data:image/png;base64,");
+                var cadenaFinalImagen = res[1];
+
+            } else if (cadena.includes("data:image/jpg;base64,")) {
+                var res = cadena.split("data:image/jpg;base64,");
+                var cadenaFinalImagen = res[1];
+
+            } else if (cadena.includes("data:image/jpeg;base64,")) {
+                var res = cadena.split("data:image/jpeg;base64,");
+                var cadenaFinalImagen = res[1];
+            }
+
+            console.log(cadenaFinalImagen);
+
+            Swal.fire({
+                title: "Espere...",
+                html: "<br><img src='https://crear.net.ar/CLIENTES/loader.gif'>",
+                type: "warning",
+                showCancelButton: false,
+                showConfirmButton: false,
+                cancelButtonColor: "#DD6B55",
+                confirmButtonColor: "#DD6B55",
+
+            });
+
+            let RazonSocial = document.getElementById('txtRazonSocial').value
+            let Fantasia = document.getElementById('txtFantasia').value
+            let NroCuit = document.getElementById('txtNroCuit').value
+            let IdLocalidad = document.getElementById('selectIdLocalidad').value
+            let Domicilio = document.getElementById('txtDomicilio').value
+            let Lat = document.getElementById('txtLat').value
+            let Lng = document.getElementById('txtLng').value
+            let Imagen = document.getElementById('btnImagen').value
+            let EmpresaTipo = document.getElementById('selectEmpresaTipo').value
+            let Observaciones = document.getElementById('txtObservaciones').value
+            let Prioridad = document.getElementById('txtPrioridad').value
+            let FechaInicioActividad = document.getElementById('txtFechaInicioActividad').value
+            //let Estado = document.getElementById('txtEstado').value
+            if (RazonSocial == "") {
+                Swal.fire({
+                    title: "Lo siento",
+                    html: "<br>Ingrese una descripción por favor",
+                    type: "warning",
+                    showCancelButton: false,
+                    showConfirmButton: false,
+                    cancelButtonColor: "#DD6B55",
+                    confirmButtonColor: "#DD6B55",
+                });
+                return
+            }
+            var cadenaJson = {
+                RazonSocial: RazonSocial,
+                Fantasia: Fantasia,
+                NroCuit: NroCuit,
+                IdLocalidad: IdLocalidad,
+                Domicilio: Domicilio,
+                Lat: Lat,
+                Lng: Lng,
+                Imagen: cadenaFinalImagen,
+                EmpresaTipo: EmpresaTipo,
+                Observaciones: Observaciones,
+                Prioridad: Prioridad,
+                FechaInicioActividad: FechaInicioActividad,
+                Estado: "1"
+
+            }
+
+
+            let jsonPush = { cadena: JSON.stringify(cadenaJson) };
+            console.log(jsonPush)
+
+            $.ajax({
+                type: "POST",
+                url: "Empresas.aspx/EmpresasAgregar",
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(jsonPush),
+                dataType: "json",
+                success: function (data) {
+                    var json = $.parseJSON(data.d);
+
+                    var status = json.Status;
+                    if (status == 200) {
+
+                        Swal.fire({
+                            title: "OK",
+                            html: "<br>Datos guardados con éxito<br><br><br>",
+                            type: "warning",
+                            showCancelButton: false,
+                            showConfirmButton: true,
+                            cancelButtonColor: "#DD6B55",
+                            confirmButtonColor: "#DD6B55",
+
+                        });
+
+                    } else {
+                        Swal.fire({
+                            title: "LO SIENTO 😅",
+                            html: "<br>Algo salió mal. Verifique si selecciono archivo<br><br><br>",
+                            type: "warning",
+                            showCancelButton: false,
+                            showConfirmButton: true,
+                            cancelButtonColor: "#DD6B55",
+                            confirmButtonColor: "#DD6B55",
+
+
+                        });
+                    }
+
+                }
+            });
+        }
+
+        function provinciasLlenarCbo() {
+
+            $.ajax({
+                type: "POST",
+                url: "https://crear.net.ar/api/searchProvincesApi",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+
+                    var json = data;
+
+                    if (json.data.length > 0) {
+                        var lista_de_provincias = new Array();
+                        for (var i = 0; i < json.data.length; i++) {
+                            lista_de_provincias.push({
+                                'Nombre': json.data[i].Nombre,
+                                'Id_Provincia': json.data[i].IdProvincia
+                            })
+                        }
+                        const select = document.getElementById('selectProvincia');
+                        for (let provincia of lista_de_provincias) {
+                            let nuevaOpcion = document.createElement("option");
+                            nuevaOpcion.value = provincia.IdProvincia;
+                            nuevaOpcion.text = provincia.Nombre;
+                            select.add(nuevaOpcion);
+                            // select.appendChild(nuevaOpcion); <-- Así tambien funciona
+                        }
+                    } else {
+                        Swal.fire("NO HAY REGISTROS CARGADOS", "Gracias por consultar", "success");
+                    }
+
+
+
+                }
+            });
+
+
+        }
+
 
         //recibe el id de los inputs y devuelve un array de los elementos
         function generarListaDeInputs() {
