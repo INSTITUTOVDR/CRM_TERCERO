@@ -230,6 +230,10 @@
     <Content Include="Librerias\Microsoft.Practices.Unity.dll" />
     <Content Include="Librerias\Microsoft.Practices.Unity.Interception.dll" />
     <Content Include="Librerias\System.Configuration.dll" />
+    <Content Include="Proyectos.aspx" />
+    <Content Include="ProyectosTipo.aspx" />
+    <Content Include="Scripts\proyecto.js" />
+    <Content Include="Scripts\proyectostipo.js" />
     <Content Include="template-ABM.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -266,6 +270,20 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Proyectos.aspx.designer.vb">
+      <DependentUpon>Proyectos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Proyectos.aspx.vb">
+      <DependentUpon>Proyectos.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="ProyectosTipo.aspx.designer.vb">
+      <DependentUpon>ProyectosTipo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProyectosTipo.aspx.vb">
+      <DependentUpon>ProyectosTipo.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="template-ABM.aspx.designer.vb">
       <DependentUpon>template-ABM.aspx</DependentUpon>
