@@ -84,6 +84,37 @@ Public Class ContactoTipos
         End Try
     End Function
 
+    '<WebMethod()>
+    '<ScriptMethod(ResponseFormat:=ResponseFormat.Json)>
+    'Public Shared Function ContactoTiposAgregar(ByVal cadena As String) As String
+    '    Try
+    '        Dim jss As New JavaScriptSerializer()
+    '        Dim dict = jss.Deserialize(Of List(Of ContactoTiposWS))("[" & cadena & "]")
+
+    '        Dim Nombre = dict(0).Nombre.ToString
+    '        'Dim Imagen = dict(0).Imagen.ToString
+    '        Dim Activo = dict(0).Activo.ToString
+
+    '        Dim oDs As New DataSet
+
+    '        Dim oobjeto As New Contacto_Tipos
+
+    '        oDs = oobjeto.ContactoTiposAgregar(Nombre, "", Activo)
+
+    '        Dim data = New With {
+    '            Key .Status = "200"
+    '        }
+
+    '        Dim serializer = New JavaScriptSerializer()
+    '        Dim json = serializer.Serialize(data)
+
+    '        Dim jsondatos = New JavaScriptSerializer().Serialize(data)
+
+    '        Return New JavaScriptSerializer().Serialize(data)
+    '    Catch ex As Exception
+    '        Return Error401()
+    '    End Try
+
     <WebMethod()>
     <ScriptMethod(ResponseFormat:=ResponseFormat.Json)>
     Public Shared Function ContactoTiposAgregar(ByVal cadena As String) As String
@@ -95,11 +126,55 @@ Public Class ContactoTipos
             Dim Imagen = dict(0).Imagen.ToString
             Dim Activo = dict(0).Activo.ToString
 
-            Dim oDs As New DataSet
+            Dim obj As New Random()
+            Dim posibles As String = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
+            Dim longitud As Integer = posibles.Length
+            Dim letra As Char
+            Dim longitudnuevacadena As Integer = 3
+            Dim nuevacadena As String = ""
+            For i As Integer = 0 To longitudnuevacadena - 1
+                letra = posibles(obj.[Next](longitud))
+                nuevacadena += letra.ToString()
+            Next
+
+
+            Dim nom As String
+            nom = nuevacadena
+            'fecha & 
+
+            Dim rutaServidor As String = "C:\Users\Guille-ASUS\Desktop\TSDS\PP2\Proyecto\CRM_TERCERO\CRM_TERCERO\ImagenesEmpresas\"
+
+            ' Dim rutaServidor As String = "G:\FerozoWebHosting\alladioseguridad.com.ar\public_html\Admin\Frontend\ArchivosCapacitacion\"
+            Dim urlBD As String = rutaServidor & nom & "." & "png"
+
+            ''aca convertir el base 64 a url absoluta
+            'Dim fileContents As Byte() = Convert.FromBase64String(Excel.ToString())
+            'Dim filename As String = Path.Combine(Path.GetTempPath(), Path.ChangeExtension(Guid.NewGuid().ToString(), ".xlsx"))
+            'File.WriteAllBytes(filename, fileContents)
+
+
+            'ExceltoDT(filename)
+            ''aca convertir el base 64 a url absoluta
+            Dim fileContents As Byte() = Convert.FromBase64String(Imagen.ToString()),
+                        ruta As String = urlBD
+            'ruta as String = "G:\FerozoWebHosting\alladioseguridad.com.ar\public_html\Admin\Frontend\PdfPermisos"
+
+
+
+            Dim fs As IO.FileStream
+            fs = IO.File.Create(ruta)
+            fs.Write(fileContents, 0, fileContents.Length)
+            fs.Close()
+
+
+
+            Dim rutaAbsoluta As String = "/ImagenesEmpresas/" & nom & "." & "png"
+
+
+
 
             Dim oobjeto As New Contacto_Tipos
-
-            oDs = oobjeto.ContactoTiposAgregar(Nombre, Imagen, Activo)
+            oobjeto.ContactoTiposAgregar(Nombre, Imagen, Activo)
 
             Dim data = New With {
                 Key .Status = "200"

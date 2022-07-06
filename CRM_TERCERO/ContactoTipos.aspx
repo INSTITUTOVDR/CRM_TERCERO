@@ -181,31 +181,44 @@
                                                         <div class="col-12">
                                                             <h5 class="card-title text-muted">Contacto</h5>
                                                         </div>
-                                                        <div class="col-md-6 col-12">
-                                                            <div class="form-group">
-                                                                <label for="txt_IdContactoTipo">Id</label>
-                                                                <input type="text" id="txt_IdContactoTipo" class="form-control" placeholder="Id" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6 col-12">
+                                                        <div class="col-md-5 col-12">
                                                             <div class="form-group">
                                                                 <label for="cbo_Nombre">Nombre</label>
                                                                 <fieldset class="form-group">
                                                                      <select class="form-select" id="cbo_Nombre">
-                                                                         <option value="12">Facebook</option>
-                                                                         <option value="237">Fax</option>
-                                                                         <option value="31">Mail</option>
+                                                                         <option value="1">Facebook personal</option>
+                                                                         <option value="2">Facebook trabajo</option>
+                                                                         <option value="3">Fax personal</option>
+                                                                         <option value="4">Fax trabajo</option>
+                                                                         <option value="5">Instagram personal</option>
+                                                                         <option value="6">Instagram trabajo</option>
+                                                                         <option value="7">Mail personal</option>
+                                                                         <option value="8">Mail trabajo</option>
+                                                                         <option value="9">Teléfono fijo personal</option>
+                                                                         <option value="10">Teléfono fijo trabajo</option>
+                                                                         <option value="11">Telegram personal</option>
+                                                                         <option value="12">Telegram trabajo</option>
+                                                                         <option value="13">Skype personal</option>
+                                                                         <option value="14">Skype trabajo</option>
+                                                                         <option value="15">WhatsApp personal</option>
+                                                                         <option value="16">WhatsApp trabajo</option>
                                                                      </select>
                                                                 </fieldset>
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-6 col-12">
+                                                        <%--<div class="col-md-5 col-12">
+                                                            <div id="visorArchivo2">
+                                                                <!--Aqui se desplegará el fichero-->
+                                                            </div>
+                                                        <span style="display: none" id="cadena"></span>
+                                                        </div>--%>
+                                                        <div class="col-md-5 col-12">
                                                             <div class="form-group">
                                                                 <label for="txt_Imagen">Imagen</label>
-                                                                <input class="form-control" type="file" id="cmd_Imagen" onchange="return validarExt3()" accept="image/*" />
+                                                                <input class="form-control" type="file" id="btn_Imagen" onchange="return validarExt3()" accept="image/*" />
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-6 col-12">
+                                                        <div class="col-md-2 col-12">
                                                             <div class="form-group">
                                                                 <label for="chk_Activo">Activo</label>
                                                                 <asp:CheckBox ID="chk_Activo" runat="server" />
@@ -213,7 +226,7 @@
                                                         </div>
                                                         <div class="col-12 d-flex justify-content-end">
                                                             <button type="button" class="btn btn-secondary me-1 mb-1">Cancelar</button>
-                                                            <button type="button" class="btn btn-primary me-1 mb-1">Enviar</button>
+                                                            <button type="button" class="btn btn-primary me-1 mb-1" onclick="validarCampos()">Enviar</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -241,12 +254,6 @@
                                                 <div class="row">
                                                     <div class="col-12">
                                                         <h5 class="card-title text-muted">Contacto</h5>
-                                                    </div>
-                                                    <div class="col-md-6 col-12">
-                                                        <div class="form-group">
-                                                            <label for="txt_IdContactoTipo">Id</label>
-                                                            <input type="text" id="txtEdit_IdContactoTipo" class="form-control" placeholder="Id" />
-                                                        </div>
                                                     </div>
                                                     <div class="col-md-6 col-12">
                                                         <div class="form-group">
@@ -299,20 +306,6 @@
                                                 <th scope="col">Activo</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
-<%--                                            <tr>
-                                                <td>Dolor sit.</td>
-                                                <td>Amet, consectetur.</td>
-                                                <td>Adipiscing elit.</td>
-                                                <td>Fusce vel.</td>
-                                                <td>Sapien elit.</td>
-                                                <td>In malesuada.</td>
-                                                <td>Semper mi.</td>
-                                                <td>Id sollicitudin.</td>
-                                                <td>Urna fermentum.</td>
-                                                <td>Ut fusce.</td>
-                                            </tr>--%>
-                                        </tbody>
                                     </table>
                                 </div>
                             </div>
@@ -336,23 +329,16 @@
             </div>
         </div>
     </form>
-    <script src="assets/js/app.js"></script>
-
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="assets/js/jquery.dataTables.min.js"></script>
-    <script src="assets/js/extensions/datatables.js"></script>
-
-    <script src="assets/js/extensions/datatables.js"></script>
+ 
 
     <script>
 
         function validarCampos() {
             let nombre = document.getElementById('cbo_Nombre').value;
-            let imagen = document.getElementById('txt_Imagen').value;
+           
             let activo = document.getElementById('chk_Activo').value;
 
-            let listaDeInputs = [nombre, imagen, activo]
+            let listaDeInputs = [nombre, activo]
 
             if (listaDeInputs.includes("")) {
                 alertaError();
@@ -379,12 +365,17 @@
         function ContactoTiposAgregar() {
 
             let nombre = document.getElementById('cbo_Nombre').value;
-            let imagen = document.getElementById('txt_Imagen').value;
-            let activo = document.getElementById('chk_Activo').value;
+          
+            let activo = ""
+            if (document.getElementById('chk_Activo').checked = true) {
+                activo = true
+           } else {
+                activo = false
+            }
 
             var cadena = {
                 Nombre: nombre,
-                Imagen: imagen,
+                
                 Activo: activo,
             };
 
@@ -487,6 +478,132 @@
         //        }
         //    });
         //}
+       
+        function validarExt3() {
+            var archivoInput = document.getElementById('btn_Imagen');
+            var archivoRuta = archivoInput.value;
+            document.getElementById('visorArchivo2').innerHTML = ""
+
+            var extPermitidas = /(.png|.jpg|.jpeg)$/i;
+            if (!extPermitidas.exec(archivoRuta)) {
+                Swal.fire({
+                    title: "LO SIENTO ALGO SALIO MAL",
+                    text: "Verifica el archivo ingresado",
+                    icon: "error"
+                });
+                archivoInput.value = '';
+                return false;
+            } else {
+                if (archivoInput.files.length) {
+
+                    for (let i = 0; i < archivoInput.files.length; i++) {
+                        let visor = new FileReader();
+                        visor.onload = function (e) {
+                            document.getElementById('visorArchivo2').innerHTML +=
+                                '<embed src="' + e.target.result + '" width="400" height="375" />';
+                            // console.log(e.target.result);
+                            let cadena = document.getElementById("cadena");
+                            cadena.innerHTML = e.target.result;
+                        };
+
+                        visor.readAsDataURL(archivoInput.files[i]);
+                    }
+                }
+                /// document.getElementById("nombreArchivo2").style = "display:none;margin-left:-100px";
+                //document.getElementById("nombreArchivo2").innerHTML = archivoRuta;
+            }
+
+
+        }
+
+        function agregarDocCap() {
+
+            var archivoInput = document.getElementById('btn_Imagen');
+            var archivoRuta = archivoInput.value;
+
+            let cadena = document.getElementById("cadena").innerHTML;
+
+            if (cadena.includes("data:image/png;base64,")) {
+                var res = cadena.split("data:image/png;base64,");
+                var cadenaFinalImagen = res[1];
+
+            } else if (cadena.includes("data:image/jpg;base64,")) {
+                var res = cadena.split("data:image/jpg;base64,");
+                var cadenaFinalImagen = res[1];
+
+            } else if (cadena.includes("data:image/jpeg;base64,")) {
+                var res = cadena.split("data:image/jpeg;base64,");
+                var cadenaFinalImagen = res[1];
+            }
+
+            Swal.fire({
+                title: "Espere...",
+                html: "<br><img src='https://crear.net.ar/CLIENTES/loader.gif'>",
+                type: "warning",
+                showCancelButton: false,
+                showConfirmButton: false,
+                cancelButtonColor: "#DD6B55",
+                confirmButtonColor: "#DD6B55",
+                didOpen: () => {
+                    Swal.showLoading()
+                }
+            });
+
+            let Nombre = document.getElementById('cbo_Nombre').value
+            let Lat = document.getElementById('txtLat').value
+            let Lng = document.getElementById('txtLng').value
+            let Imagen = document.getElementById('btn_Imagen').value
+            let Activo = document.getElementById('chk_Activo').value
+
+            var cadenaJson = {
+                Nombre: Nombre,
+                Lat: Lat,
+                Lng: Lng,
+                Imagen: cadenaFinalImagen,
+                Activo: Activo,
+            }
+
+            let jsonPush = { cadena: JSON.stringify(cadenaJson) };
+
+            $.ajax({
+                type: "POST",
+                url: "ContactoTipos.aspx/ContactoTiposAgregar",
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(jsonPush),
+                dataType: "json",
+                success: function (data) {
+                    var json = $.parseJSON(data.d);
+
+                    var status = json.Status;
+                    if (status == 200) {
+                        Swal.fire({
+                            title: "Éxito",
+                            html: "Datos agregados correctamente",
+                            icon: "success"
+                        });
+                        txtLimpiar("cbo_Nombre", "txtLat", "txtLng", "txt_Imagen", "chk_Activo");
+                        llenarTabla();
+                    } else {
+                        Swal.fire({
+                            title: "LO SIENTO ALGO SALIO MAL",
+                            text: "Verifica los datos ingresados",
+                            icon: "error"
+                        });
+                    }
+                }
+            });
+        }
+
     </script>
+
+       <script src="assets/js/app.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="assets/js/jquery.dataTables.min.js"></script>
+    <script src="assets/js/extensions/datatables.js"></script>
+
+    <script src="assets/js/extensions/datatables.js"></script>
+
 </body>
 </html>

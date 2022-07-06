@@ -49,7 +49,7 @@
       <HintPath>..\..\..\Librerias\UTILES\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data">
-      <HintPath>..\..\..\Librerias\UTILES\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
+      <HintPath>..\..\..\goodappsvdr\CAVALLOINMOBILIARIA\dll\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.ServiceLocation">
       <HintPath>..\..\..\Librerias\UTILES\Microsoft.Practices.ServiceLocation.dll</HintPath>
