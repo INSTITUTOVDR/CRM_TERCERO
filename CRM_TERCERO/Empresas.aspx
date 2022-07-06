@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="assets/css/pages/datatables.css" />
     <link rel="stylesheet" href="assets/css/pages/icon.css" />
 </head>
-<body onload="llenarTabla(); provinciasLlenarCbo()">
+<body onload="llenarTabla(); provinciasLlenarCbo('selectIdProvincia');provinciasLlenarCbo('selectEditIdProvincia')">
     <form id="form1" runat="server">
         <div id="app">
             <!--Barra Lateral -->
@@ -449,7 +449,7 @@
                                                             <div id="visorArchivo2">
                                                                 <!--Aqui se desplegará el fichero-->
                                                             </div>
-                                                            <span id="cadena"></span>
+                                                            <span style="display: none" id="cadena"></span>
                                                         </div>
                                                         <div class="col-md-6 col-12">
                                                             <div class="form-group">
@@ -484,10 +484,10 @@
                                                         </div>
                                                         <div class="col-md-6 col-12">
                                                             <div class="form-group">
-                                                                <label for="selectProvincia">Provincia</label>
+                                                                <label for="selectIdProvincia">Provincia</label>
                                                                 <fieldset class="form-group">
-                                                                    <select class="form-select" id="selectProvincia">
-
+                                                                    <select class="form-select" id="selectIdProvincia" onchange="localidadesBuscarPorProvincia(this)">
+                                                                        <option selected="selected" disabled="disabled">Seleccione una provincia</option>
                                                                     </select>
                                                                 </fieldset>
                                                             </div>
@@ -496,10 +496,8 @@
                                                             <div class="form-group">
                                                                 <label for="selectIdLocalidad">Localidad</label>
                                                                 <fieldset class="form-group">
-                                                                    <select class="form-select" id="selectIdLocalidad">
-                                                                        <option value="1">Opción 1</option>
-                                                                        <option value="2">Opción 2</option>
-                                                                        <option value="3">Opción 3</option>
+                                                                    <select class="form-select" id="selectIdLocalidad" disabled="disabled">
+                                                                        <option selected="selected" disabled="disabled">Seleccione una Localidad</option>
                                                                     </select>
                                                                 </fieldset>
                                                             </div>
@@ -556,8 +554,6 @@
                                 </div>
                             </div>
                         </section>
-                        <!-- Botón mostrar modal -->
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalEditar">Mostrar Modal(reemplazar por lápiz en la tabla)</button>
                         <!-- Modal Editar-->
                         <div class="modal fade text-left w-100" id="modalEditarEmpresa" tabindex="-1" role="dialog" aria-labelledby="myModalLabel16" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl" role="document">
@@ -644,21 +640,19 @@
                                                 </div>
                                                 <div class="col-md-6 col-12">
                                                     <div class="form-group">
-                                                        <label for="selectEditProvincia">Provincia</label>
+                                                        <label for="selectEditIdProvincia">Provincia</label>
                                                         <fieldset class="form-group">
-                                                            <select class="form-select" id="selectEditProvincia">
-                                                                <option value="1">Opción 1</option>
-                                                                <option value="2">Opción 2</option>
-                                                                <option value="3">Opción 3</option>
+                                                            <select class="form-select" id="selectEditIdProvincia">
+                                                                <option selected="selected" disabled="disabled">Seleccione una provincia</option>
                                                             </select>
                                                         </fieldset>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6 col-12">
                                                     <div class="form-group">
-                                                        <label for="selectEditLocalidad">Localidad</label>
+                                                        <label for="selectEditIdLocalidad">Localidad</label>
                                                         <fieldset class="form-group">
-                                                            <select class="form-select" id="selectEditLocalidad">
+                                                            <select class="form-select" id="selectEditIdLocalidad">
                                                                 <option value="1">Opción 1</option>
                                                                 <option value="2">Opción 2</option>
                                                                 <option value="3">Opción 3</option>
@@ -706,6 +700,9 @@
                                                         <label for="checkbox1">Estado</label>
                                                     </div>
                                                 </div>
+                                                <div class="form-group">
+                                                    <input type="text" id="txtEditIdEmpresa" hidden="hidden"/>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -734,6 +731,7 @@
                                                 <th scope="col">Razon Social</th>
                                                 <th scope="col">Fantasia</th>
                                                 <th scope="col">CUIT</th>
+                                                <th scope="col">Provincia</th>
                                                 <th scope="col">Localidad</th>
                                                 <th scope="col">Domicilio</th>
                                                 <th scope="col">Tipo</th>
@@ -779,7 +777,7 @@
 
     <script>
         function validarCampos() {
-            let listaValoresInputs = generarListaDeInputs("txtRazonSocial", "txtFantasia", "txtNroCuit", "selectIdLocalidad", "txtDomicilio", "txtLat", "txtLng", "txtImagen", "selectEmpresaTipo", "txtObservaciones", "txtPrioridad", "txtFechaInicioActividad")
+            let listaValoresInputs = generarListaDeInputs("txtRazonSocial", "txtFantasia", "txtNroCuit","selectIdProvincia", "selectIdLocalidad", "txtDomicilio", "txtLat", "txtLng", "txtImagen", "selectEmpresaTipo", "txtObservaciones", "txtPrioridad", "txtFechaInicioActividad")
 
             let esValido = true
 
@@ -798,7 +796,7 @@
         }
 
         function validarCamposEdit() {
-            let listaValoresInputs = generarListaDeInputs("txtEditRazonSocial", "txtEditFantasia", "txtEditNroCuit", "selectIdLocalidad", "txtEditDomicilio", "txtEditLat", "txtEditLng", "txtEditImagen", "selectEmpresaTipo", "txtEditObservaciones", "txtEditPrioridad", "txtEditFechaInicioActividad")
+            let listaValoresInputs = generarListaDeInputs("txtEditRazonSocial", "txtEditFantasia", "txtEditNroCuit","selectIdProvincia", "selectIdLocalidad", "txtEditDomicilio", "txtEditLat", "txtEditLng", "txtEditImagen", "selectEmpresaTipo", "txtEditObservaciones", "txtEditPrioridad", "txtEditFechaInicioActividad")
             let esValido = true
 
             for (var i = 0; i < listaValoresInputs.length; i++) {
@@ -819,6 +817,7 @@
             let RazonSocial = document.getElementById('txtRazonSocial').value
             let Fantasia = document.getElementById('txtFantasia').value
             let NroCuit = document.getElementById('txtNroCuit').value
+            let IdProvincia = document.getElementById('selectIdProvincia').value
             let IdLocalidad = document.getElementById('selectIdLocalidad').value
             let Domicilio = document.getElementById('txtDomicilio').value
             let Lat = document.getElementById('txtLat').value
@@ -834,6 +833,7 @@
                 RazonSocial: RazonSocial,
                 Fantasia: Fantasia,
                 NroCuit: NroCuit,
+                IdProvincia: IdProvincia,
                 IdLocalidad: IdLocalidad,
                 Domicilio: Domicilio,
                 Lat: Lat,
@@ -867,8 +867,8 @@
                             html: "Datos agregados correctamente",
                             icon: "success"
                         });
-                        txtLimpiar("txtRazonSocial", "txtFantasia", "txtNroCuit", "selectIdLocalidad", "txtDomicilio", "txtLat", "txtLng", "txtImagen", "selectEmpresaTipo", "txtObservaciones", "txtPrioridad", "txtFechaInicioActividad");
-                        llenarTabla()
+                        txtLimpiar("txtRazonSocial", "txtFantasia", "txtNroCuit","selectIdProvincia", "selectIdLocalidad", "txtDomicilio", "txtLat", "txtLng", "txtImagen", "selectEmpresaTipo", "txtObservaciones", "txtPrioridad", "txtFechaInicioActividad");
+                        llenarTabla();
 
                     } else {
                         Swal.fire({
@@ -886,6 +886,7 @@
             let RazonSocial = document.getElementById('txtEditRazonSocial').value
             let Fantasia = document.getElementById('txtEditFantasia').value
             let NroCuit = document.getElementById('txtEditNroCuit').value
+            let IdProvincia = document.getElementById('selectEditIdProvincia').value
             let IdLocalidad = document.getElementById('selectEditIdLocalidad').value
             let Domicilio = document.getElementById('txtEditDomicilio').value
             let Lat = document.getElementById('txtEditLat').value
@@ -902,6 +903,7 @@
                 RazonSocial: RazonSocial,
                 Fantasia: Fantasia,
                 NroCuit: NroCuit,
+                IdProvincia: IdProvincia,
                 IdLocalidad: IdLocalidad,
                 Domicilio: Domicilio,
                 Lat: Lat,
@@ -934,7 +936,7 @@
                             html: "Datos modificados correctamente",
                             icon: "success"
                         });
-                        //txtLimpiar("txtRazonSocial", "txtFantasia", "txtNroCuit", "selectIdLocalidad", "txtDomicilio", "txtLat", "txtLng", "txtImagen", "selectEmpresaTipo", "txtObservaciones", "txtPrioridad", "txtFechaInicioActividad");
+                        //txtLimpiar("txtRazonSocial", "txtFantasia", "txtNroCuit","selectIdProvincia", "selectIdLocalidad", "txtDomicilio", "txtLat", "txtLng", "txtImagen", "selectEmpresaTipo", "txtObservaciones", "txtPrioridad", "txtFechaInicioActividad");
                         llenarTabla()
                     } else {
                         Swal.fire({
@@ -954,7 +956,9 @@
             let RazonSocial = document.getElementById('txtEditRazonSocial')
             let Fantasia = document.getElementById('txtEditFantasia')
             let NroCuit = document.getElementById('txtEditNroCuit')
-            let IdLocalidad = document.getElementById('selectEditLocalidad')
+            let IdProvincia = document.getElementById('selectEditIdProvincia')
+            localidadesBuscarPorProvinciaEdit(IdProvincia)
+            let IdLocalidad = document.getElementById('selectEditIdLocalidad')
             let Domicilio = document.getElementById('txtEditDomicilio')
             let Lat = document.getElementById('txtEditLat')
             let Lng = document.getElementById('txtEditLng')
@@ -986,6 +990,7 @@
                         RazonSocial.value = json.RazonSocial
                         Fantasia.value = json.Fantasia
                         NroCuit.value = json.NroCuit
+                        IdProvincia.value = json.IdProvincia
                         IdLocalidad.value = json.IdLocalidad
                         Domicilio.value = json.Domicilio
                         Lat.value = json.Lat
@@ -1037,6 +1042,7 @@
                                     'RazonSocial': json.Data[i].RazonSocial,
                                     'Fantasia': json.Data[i].Fantasia,
                                     'NroCuit': json.Data[i].NroCuit,
+                                    'IdProvincia': json.Data[i].IdProvincia,
                                     'IdLocalidad': json.Data[i].IdLocalidad,
                                     'Domicilio': json.Data[i].Domicilio,
                                     'Lat': json.Data[i].Lat,
@@ -1059,6 +1065,7 @@
                     { 'data': 'RazonSocial' },
                     { 'data': 'Fantasia' },
                     { 'data': 'NroCuit' },
+                    { 'data': 'IdProvincia' },
                     { 'data': 'IdLocalidad' },
                     { 'data': 'Domicilio' },
                     { 'data': 'EmpresaTipo' },
@@ -1109,7 +1116,7 @@
                         visor.onload = function (e) {
                             document.getElementById('visorArchivo2').innerHTML +=
                                 '<embed src="' + e.target.result + '" width="400" height="375" />';
-                            console.log(e.target.result);
+                            // console.log(e.target.result);
                             let cadena = document.getElementById("cadena");
                             cadena.innerHTML = e.target.result;
                         };
@@ -1129,15 +1136,7 @@
             var archivoInput = document.getElementById('btnImagen');
             var archivoRuta = archivoInput.value;
 
-            //console.log(archivoRuta.split(".").pop());
-            // var ext = archivoRuta.split(".").pop();
-
-
-
-            //console.log(archivo);
             let cadena = document.getElementById("cadena").innerHTML;
-            //data:application/vnd.ms-excel;base64
-
 
             if (cadena.includes("data:image/png;base64,")) {
                 var res = cadena.split("data:image/png;base64,");
@@ -1152,8 +1151,6 @@
                 var cadenaFinalImagen = res[1];
             }
 
-            console.log(cadenaFinalImagen);
-
             Swal.fire({
                 title: "Espere...",
                 html: "<br><img src='https://crear.net.ar/CLIENTES/loader.gif'>",
@@ -1162,12 +1159,15 @@
                 showConfirmButton: false,
                 cancelButtonColor: "#DD6B55",
                 confirmButtonColor: "#DD6B55",
-
+                didOpen: () => {
+                    Swal.showLoading()
+                }
             });
 
             let RazonSocial = document.getElementById('txtRazonSocial').value
             let Fantasia = document.getElementById('txtFantasia').value
             let NroCuit = document.getElementById('txtNroCuit').value
+            let IdProvincia = document.getElementById('selectIdProvincia').value
             let IdLocalidad = document.getElementById('selectIdLocalidad').value
             let Domicilio = document.getElementById('txtDomicilio').value
             let Lat = document.getElementById('txtLat').value
@@ -1178,22 +1178,12 @@
             let Prioridad = document.getElementById('txtPrioridad').value
             let FechaInicioActividad = document.getElementById('txtFechaInicioActividad').value
             //let Estado = document.getElementById('txtEstado').value
-            if (RazonSocial == "") {
-                Swal.fire({
-                    title: "Lo siento",
-                    html: "<br>Ingrese una descripción por favor",
-                    type: "warning",
-                    showCancelButton: false,
-                    showConfirmButton: false,
-                    cancelButtonColor: "#DD6B55",
-                    confirmButtonColor: "#DD6B55",
-                });
-                return
-            }
+
             var cadenaJson = {
                 RazonSocial: RazonSocial,
                 Fantasia: Fantasia,
                 NroCuit: NroCuit,
+                IdProvincia: IdProvincia,
                 IdLocalidad: IdLocalidad,
                 Domicilio: Domicilio,
                 Lat: Lat,
@@ -1204,12 +1194,9 @@
                 Prioridad: Prioridad,
                 FechaInicioActividad: FechaInicioActividad,
                 Estado: "1"
-
             }
 
-
             let jsonPush = { cadena: JSON.stringify(cadenaJson) };
-            console.log(jsonPush)
 
             $.ajax({
                 type: "POST",
@@ -1222,56 +1209,35 @@
 
                     var status = json.Status;
                     if (status == 200) {
-
                         Swal.fire({
-                            title: "OK",
-                            html: "<br>Datos guardados con éxito<br><br><br>",
-                            type: "warning",
-                            showCancelButton: false,
-                            showConfirmButton: true,
-                            cancelButtonColor: "#DD6B55",
-                            confirmButtonColor: "#DD6B55",
-
+                            title: "Éxito",
+                            html: "Datos agregados correctamente",
+                            icon: "success"
                         });
-
+                        txtLimpiar("txtRazonSocial", "txtFantasia", "txtNroCuit","selectIdProvincia", "selectIdLocalidad", "txtDomicilio", "txtLat", "txtLng", "txtImagen", "selectEmpresaTipo", "txtObservaciones", "txtPrioridad", "txtFechaInicioActividad");
+                        llenarTabla();
                     } else {
                         Swal.fire({
-                            title: "LO SIENTO 😅",
-                            html: "<br>Algo salió mal. Verifique si selecciono archivo<br><br><br>",
-                            type: "warning",
-                            showCancelButton: false,
-                            showConfirmButton: true,
-                            cancelButtonColor: "#DD6B55",
-                            confirmButtonColor: "#DD6B55",
-
-
+                            title: "LO SIENTO ALGO SALIO MAL",
+                            text: "Verifica los datos ingresados",
+                            icon: "error"
                         });
                     }
-
                 }
             });
         }
 
-        function provinciasLlenarCbo() {
-
+        function provinciasLlenarCbo(idSelect) {
             $.ajax({
                 type: "POST",
-                url: "https://crear.net.ar/api/searchProvincesApi",
+                url: "Empresas.aspx/ProvinciasBuscarTodo",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (data) {
-
-                    var json = data;
-
-                    if (json.data.length > 0) {
-                        var lista_de_provincias = new Array();
-                        for (var i = 0; i < json.data.length; i++) {
-                            lista_de_provincias.push({
-                                'Nombre': json.data[i].Nombre,
-                                'Id_Provincia': json.data[i].IdProvincia
-                            })
-                        }
-                        const select = document.getElementById('selectProvincia');
+                    var json = $.parseJSON(data.d);
+                    if (json.Data.length > 0) {
+                        var lista_de_provincias = json.Data
+                        const select = document.getElementById(idSelect);
                         for (let provincia of lista_de_provincias) {
                             let nuevaOpcion = document.createElement("option");
                             nuevaOpcion.value = provincia.IdProvincia;
@@ -1282,16 +1248,109 @@
                     } else {
                         Swal.fire("NO HAY REGISTROS CARGADOS", "Gracias por consultar", "success");
                     }
-
-
-
                 }
             });
-
-
         }
 
+        function localidadesBuscarPorProvincia(selectProvincia) {
+            let idProvincia = selectProvincia.value
+            document.getElementById("selectIdLocalidad").options.length = 0;
+            document.getElementById("selectIdLocalidad").disabled = false
+            var cadena = {
+                idProvincia: idProvincia
+            }
+            var payload = {
+                cadena: JSON.stringify(cadena)
+            }
 
+            Swal.fire({
+                title: 'Por favor espere',
+                text: "Cargando...",
+                html: `<img src="assets/images/svg-loaders/oval.svg" class="me-4" style="width: 3rem" alt="audio">`,
+                allowOutsideClick: false,
+                showConfirmButton: false,
+            });
+
+            $.ajax({
+                type: "POST",
+                url: "Empresas.aspx/LocalidadesBuscarPorProvincia",
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(payload),
+                dataType: "json",
+                success: function (data) {
+                    swal.close();
+                    var json = $.parseJSON(data.d);
+                    if (json.Data.length > 0) {
+                        var lista_de_localidades = json.Data
+                        const select = document.getElementById('selectIdLocalidad');
+                        let primeraOpcion = document.createElement("option");
+                        primeraOpcion.text = "Seleccione una localidad"
+                        primeraOpcion.selected = "selected"
+                        primeraOpcion.disabled = "disabled"
+                        select.add(primeraOpcion)
+                        for (let localidad of lista_de_localidades) {
+                            let nuevaOpcion = document.createElement("option");
+                            nuevaOpcion.value = localidad.IdLocalidad;
+                            nuevaOpcion.text = localidad.Nombre;
+                            select.add(nuevaOpcion);
+                            // select.appendChild(nuevaOpcion); <-- Así tambien funciona
+                        }
+                    } else {
+                        Swal.fire("NO HAY REGISTROS CARGADOS", "Gracias por consultar", "success");
+                    }
+                }
+            });
+        }
+
+        function localidadesBuscarPorProvinciaEdit(selectProvincia) {
+            let idProvincia = selectProvincia.value
+            document.getElementById("selectEditIdLocalidad").options.length = 0;
+            document.getElementById("selectEditIdLocalidad").disabled = false
+            var cadena = {
+                idProvincia: idProvincia
+            }
+            var payload = {
+                cadena: JSON.stringify(cadena)
+            }
+
+            Swal.fire({
+                title: 'Por favor espere',
+                text: "Cargando...",
+                html: `<img src="assets/images/svg-loaders/oval.svg" class="me-4" style="width: 3rem" alt="audio">`,
+                allowOutsideClick: false,
+                showConfirmButton: false,
+            });
+
+            $.ajax({
+                type: "POST",
+                url: "Empresas.aspx/LocalidadesBuscarPorProvincia",
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(payload),
+                dataType: "json",
+                success: function (data) {
+                    swal.close();
+                    var json = $.parseJSON(data.d);
+                    if (json.Data.length > 0) {
+                        var lista_de_localidades = json.Data
+                        const select = document.getElementById('selectEditIdLocalidad');
+                        let primeraOpcion = document.createElement("option");
+                        primeraOpcion.text = "Seleccione una localidad"
+                        primeraOpcion.selected = "selected"
+                        primeraOpcion.disabled = "disabled"
+                        select.add(primeraOpcion)
+                        for (let localidad of lista_de_localidades) {
+                            let nuevaOpcion = document.createElement("option");
+                            nuevaOpcion.value = localidad.IdLocalidad;
+                            nuevaOpcion.text = localidad.Nombre;
+                            select.add(nuevaOpcion);
+                            // select.appendChild(nuevaOpcion); <-- Así tambien funciona
+                        }
+                    } else {
+                        Swal.fire("NO HAY REGISTROS CARGADOS", "Gracias por consultar", "success");
+                    }
+                }
+            });
+        }
         //recibe el id de los inputs y devuelve un array de los elementos
         function generarListaDeInputs() {
             const listaId = []

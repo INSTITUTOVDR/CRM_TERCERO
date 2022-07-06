@@ -1,7 +1,10 @@
-﻿Imports System.Web.Script.Serialization
+﻿Imports System.IO
+Imports System.Net
+Imports System.Web.Script.Serialization
 Imports System.Web.Script.Services
 Imports System.Web.Services
 Imports AD
+Imports Newtonsoft.Json.Linq
 
 Public Class Empresas
     Inherits System.Web.UI.Page
@@ -27,6 +30,7 @@ Public Class Empresas
                     .RazonSocial = oDs.Tables(IdTabla).Rows(i).Item("RazonSocial").ToString(),
                     .Fantasia = oDs.Tables(IdTabla).Rows(i).Item("Fantasia").ToString(),
                     .NroCuit = oDs.Tables(IdTabla).Rows(i).Item("NroCuit").ToString(),
+                    .IdProvincia = oDs.Tables(IdTabla).Rows(i).Item("IdProvincia").ToString(),
                     .IdLocalidad = oDs.Tables(IdTabla).Rows(i).Item("IdLocalidad").ToString(),
                     .Domicilio = oDs.Tables(IdTabla).Rows(i).Item("Domicilio").ToString(),
                     .Lat = oDs.Tables(IdTabla).Rows(i).Item("Lat").ToString(),
@@ -66,6 +70,7 @@ Public Class Empresas
             Dim RazonSocial = dict(0).RazonSocial.ToString
             Dim Fantasia = dict(0).Fantasia.ToString
             Dim NroCuit = dict(0).NroCuit.ToString
+            Dim IdProvincia = dict(0).IdProvincia.ToString
             Dim IdLocalidad = dict(0).IdLocalidad.ToString
             Dim Domicilio = dict(0).Domicilio.ToString
             Dim Lat = dict(0).Lat.ToString
@@ -128,7 +133,7 @@ Public Class Empresas
 
 
             Dim oobjeto As New Empresa
-            oobjeto.Agregar(RazonSocial, Fantasia, NroCuit, IdLocalidad, Domicilio, Lat, Lng, rutaAbsoluta, EmpresaTipo, Observaciones, Prioridad, FechaInicioActividad, Estado)
+            oobjeto.Agregar(RazonSocial, Fantasia, NroCuit, IdProvincia, IdLocalidad, Domicilio, Lat, Lng, rutaAbsoluta, EmpresaTipo, Observaciones, Prioridad, FechaInicioActividad, Estado)
 
             Dim data = New With {
                 Key .Status = "200"
@@ -156,6 +161,7 @@ Public Class Empresas
             Dim RazonSocial = dict(0).RazonSocial.ToString
             Dim Fantasia = dict(0).Fantasia.ToString
             Dim NroCuit = dict(0).NroCuit.ToString
+            Dim IdProvincia = dict(0).IdProvincia.ToString
             Dim IdLocalidad = dict(0).IdLocalidad.ToString
             Dim Domicilio = dict(0).Domicilio.ToString
             Dim Lat = dict(0).Lat.ToString
@@ -169,7 +175,7 @@ Public Class Empresas
 
             Dim oobjeto As New Empresa
 
-            oobjeto.Modificar(IdEmpresa, RazonSocial, Fantasia, NroCuit, IdLocalidad, Domicilio, Lat, Lng, Imagen, EmpresaTipo, Observaciones, Prioridad, FechaInicioActividad, Estado)
+            oobjeto.Modificar(IdEmpresa, RazonSocial, Fantasia, NroCuit, IdProvincia, IdLocalidad, Domicilio, Lat, Lng, Imagen, EmpresaTipo, Observaciones, Prioridad, FechaInicioActividad, Estado)
 
             Dim data = New With {
                 Key .Status = "200"
@@ -207,6 +213,7 @@ Public Class Empresas
                     .RazonSocial = oDs.Tables(IdTabla).Rows(0).Item("RazonSocial").ToString(),
                     .Fantasia = oDs.Tables(IdTabla).Rows(0).Item("Fantasia").ToString(),
                     .NroCuit = oDs.Tables(IdTabla).Rows(0).Item("NroCuit").ToString(),
+                    .IdProvincia = oDs.Tables(IdTabla).Rows(0).Item("IdProvincia").ToString(),
                     .IdLocalidad = oDs.Tables(IdTabla).Rows(0).Item("IdLocalidad").ToString(),
                     .Domicilio = oDs.Tables(IdTabla).Rows(0).Item("Domicilio").ToString(),
                     .Lat = oDs.Tables(IdTabla).Rows(0).Item("Lat").ToString(),
@@ -230,6 +237,106 @@ Public Class Empresas
         End Try
 
     End Function
+
+    <WebMethod()>
+    <ScriptMethod(ResponseFormat:=ResponseFormat.Json)>
+    Public Shared Function ProvinciasBuscarTodo() As String
+        Try
+            ServicePointManager.SecurityProtocol = CType(3072, SecurityProtocolType)
+
+            Dim request As HttpWebRequest = TryCast(WebRequest.Create("https://crear.net.ar/api/searchProvincesApi"), HttpWebRequest)
+            request.Method = "GET"
+            request.ContentType = "application/json"
+            ' request.Headers.Add("Authorization: BEARER eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MTEzMzA0NTgsInR5cGUiOiJleHRlcm5hbCIsInVzZXIiOiJqb25hdGFuZXplMjMyM0BnbWFpbC5jb20ifQ.13SBgDeyPueRYBfcnk8UE5JDON6ov00_vCx2dvDUxcQLfRCKnU3lnI-kgjOTeOiyRsdMY5HmVFclZ3vJL3crsg")
+            Dim response As HttpWebResponse = TryCast(request.GetResponse(), HttpWebResponse)
+            Dim reader As StreamReader = New StreamReader(response.GetResponseStream())
+            Dim resp As String = reader.ReadToEnd()
+
+            Dim IdTabla As Integer = 0
+            'Dim Nombre As String = ""
+            'Dim IdProvincia As Integer = 0
+
+            Dim json2 As JObject = JObject.Parse(resp)
+
+            'For Each Row In json2("data")
+            '    Nombre = Row("Nombre")
+            '    IdProvincia = Row("Id_Provincia")
+
+            'Next
+
+            Dim e As ProvinciaWS() = New ProvinciaWS(json2("data").Count - 1) {}
+            For i = 0 To json2("data").Count - 1
+                e(i) = New ProvinciaWS With {
+                    .IdProvincia = json2("data").Item(i).Item("Id_Provincia"),
+                    .Nombre = json2("data").Item(i).Item("Nombre")
+                }
+            Next
+
+            Dim data = New With {
+                Key .Status = "200",
+                Key .Data = e
+            }
+
+            Dim serializer = New JavaScriptSerializer()
+            Dim json = serializer.Serialize(data)
+
+            Dim jsondatos = New JavaScriptSerializer().Serialize(data)
+
+            Return New JavaScriptSerializer().Serialize(data)
+        Catch ex As Exception
+            Return Error401()
+        End Try
+
+    End Function
+
+    <WebMethod()>
+    <ScriptMethod(ResponseFormat:=ResponseFormat.Json)>
+    Public Shared Function LocalidadesBuscarPorProvincia(ByVal cadena As String) As String
+        Try
+            ServicePointManager.SecurityProtocol = CType(3072, SecurityProtocolType)
+
+            Dim jss As New JavaScriptSerializer()
+            jss.MaxJsonLength = 500000000
+            Dim dict = jss.Deserialize(Of List(Of ProvinciaWS))("[" & cadena & "]")
+            Dim IdProvincia = dict(0).IdProvincia.ToString
+
+            Dim request As HttpWebRequest = TryCast(WebRequest.Create("https://crear.net.ar/api/searchLocationByProvinceId?provinceId=" & IdProvincia), HttpWebRequest)
+            request.Method = "GET"
+            request.ContentType = "application/json"
+            ' request.Headers.Add("Authorization: BEARER eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MTEzMzA0NTgsInR5cGUiOiJleHRlcm5hbCIsInVzZXIiOiJqb25hdGFuZXplMjMyM0BnbWFpbC5jb20ifQ.13SBgDeyPueRYBfcnk8UE5JDON6ov00_vCx2dvDUxcQLfRCKnU3lnI-kgjOTeOiyRsdMY5HmVFclZ3vJL3crsg")
+            Dim response As HttpWebResponse = TryCast(request.GetResponse(), HttpWebResponse)
+            Dim reader As StreamReader = New StreamReader(response.GetResponseStream())
+            Dim resp As String = reader.ReadToEnd()
+
+            Dim IdTabla As Integer = 0
+
+            Dim json2 As JObject = JObject.Parse(resp)
+
+            Dim e As LocalidadWS() = New LocalidadWS(json2("data").Count - 1) {}
+            For i = 0 To json2("data").Count - 1
+                e(i) = New LocalidadWS With {
+                    .IdLocalidad = json2("data").Item(i).Item("Id_Localidad"),
+                    .Nombre = json2("data").Item(i).Item("Nombre")
+                }
+            Next
+
+            Dim data = New With {
+                Key .Status = "200",
+                Key .Data = e
+            }
+
+            Dim serializer = New JavaScriptSerializer()
+            Dim json = serializer.Serialize(data)
+
+            Dim jsondatos = New JavaScriptSerializer().Serialize(data)
+
+            Return New JavaScriptSerializer().Serialize(data)
+        Catch ex As Exception
+            Return Error401()
+        End Try
+
+    End Function
+
 
     Public Shared Function Error401()
         Dim data = New With {

@@ -87,6 +87,7 @@
     <Compile Include="ContactosTipoWS.vb" />
     <Compile Include="Empresa.vb" />
     <Compile Include="EmpresaWS.vb" />
+    <Compile Include="LocalidadWS.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -103,6 +104,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="ProvinciaWS.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
