@@ -211,15 +211,15 @@ Public Class Clientes
         Try
             Dim oDs As New DataSet
 
-            Dim oobjeto As New ContactosTipo
+            Dim oobjeto As New Cliente
 
             oDs = oobjeto.BuscarTodos
             Dim IdTabla As Integer = 0
 
-            Dim e As ContactosTipoWS() = New ContactosTipoWS(oDs.Tables(IdTabla).Rows.Count - 1) {}
+            Dim e As ContactoTiposWS() = New ContactoTiposWS(oDs.Tables(IdTabla).Rows.Count - 1) {}
 
             For i = 0 To oDs.Tables(IdTabla).Rows.Count - 1
-                e(i) = New ContactosTipoWS With {
+                e(i) = New ContactoTiposWS With {
                     .IdContactoTipo = oDs.Tables(IdTabla).Rows(i).Item("IdContactoTipo").ToString(),
                     .Nombre = oDs.Tables(IdTabla).Rows(i).Item("Nombre").ToString(),
                     .Imagen = oDs.Tables(IdTabla).Rows(i).Item("Imagen").ToString(),

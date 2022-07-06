@@ -223,6 +223,7 @@
     <Content Include="assets\js\pages\form-editor.js" />
     <Content Include="assets\js\pages\horizontal-layout.js" />
     <Content Include="Clientes.aspx" />
+    <Content Include="ContactoTipos.aspx" />
     <Content Include="index.aspx" />
     <Content Include="Librerias\Microsoft.Practices.EnterpriseLibrary.Common.dll" />
     <Content Include="Librerias\Microsoft.Practices.EnterpriseLibrary.Data.dll" />
@@ -239,6 +240,13 @@
     <Compile Include="Clientes.aspx.vb">
       <DependentUpon>Clientes.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ContactoTipos.aspx.designer.vb">
+      <DependentUpon>ContactoTipos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ContactoTipos.aspx.vb">
+      <DependentUpon>ContactoTipos.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="index.aspx.designer.vb">
       <DependentUpon>index.aspx</DependentUpon>
