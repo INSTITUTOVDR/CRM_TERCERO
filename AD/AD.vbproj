@@ -105,6 +105,12 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="ProvinciaWS.vb" />
+    <Compile Include="Proyecto.vb" />
+    <Compile Include="ProyectoTipo.vb" />
+    <Compile Include="ProyectoTipoWS.vb" />
+    <Compile Include="ProyectoWS.vb" />
+    <Compile Include="Sucursal.vb" />
+    <Compile Include="SucursalWS.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
