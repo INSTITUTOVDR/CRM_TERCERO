@@ -110,6 +110,7 @@
     <Compile Include="ProyectoTipoWS.vb" />
     <Compile Include="ProyectoWS.vb" />
     <Compile Include="Sucursal.vb" />
+    <Compile Include="Sucursal2.vb" />
     <Compile Include="SucursalWS.vb" />
   </ItemGroup>
   <ItemGroup>

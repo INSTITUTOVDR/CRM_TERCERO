@@ -238,6 +238,7 @@
     <Content Include="ProyectosTipo.aspx" />
     <Content Include="Scripts\proyecto.js" />
     <Content Include="Scripts\proyectostipo.js" />
+    <Content Include="Sucursales.aspx" />
     <Content Include="template-ABM.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -294,6 +295,13 @@
     </Compile>
     <Compile Include="ProyectosTipo.aspx.vb">
       <DependentUpon>ProyectosTipo.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Sucursales.aspx.designer.vb">
+      <DependentUpon>Sucursales.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sucursales.aspx.vb">
+      <DependentUpon>Sucursales.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="template-ABM.aspx.designer.vb">
