@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="assets/css/pages/fontawesome.css" />
     <link rel="stylesheet" href="assets/css/pages/datatables.css" />
     <link rel="stylesheet" href="assets/css/pages/icon.css" />
+
 </head>
 <body onload="BuscarTodos2();EmpresasBuscarTodos();ProyectosTipoBuscarTodos()">
     <form id="form2" runat="server">
