@@ -22,6 +22,7 @@ Public Class Empresas
             oDs = oobjeto.BuscarTodos
             Dim IdTabla As Integer = 0
 
+
             Dim e As EmpresaWS() = New EmpresaWS(oDs.Tables(IdTabla).Rows.Count - 1) {}
 
             For i = 0 To oDs.Tables(IdTabla).Rows.Count - 1
