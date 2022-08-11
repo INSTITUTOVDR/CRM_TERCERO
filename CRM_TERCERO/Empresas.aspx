@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="assets/css/pages/datatables.css" />
     <link rel="stylesheet" href="assets/css/pages/icon.css" />
 </head>
-<body onload="llenarTabla(); provinciasLlenarCbo('selectIdProvincia');provinciasLlenarCbo('selectEditIdProvincia')">
+<body onload="">
     <form id="form1" runat="server">
         <div id="app">
             <!--Barra Lateral -->
@@ -445,17 +445,21 @@
                                                                 </fieldset>
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-6 col-12">
-                                                            <div id="visorArchivo2">
-                                                                <!--Aqui se desplegará el fichero-->
-                                                            </div>
-                                                            <span style="display: none" id="cadena"></span>
+                                                        <div class="col-md-6 col-12">                                                           
                                                         </div>
                                                         <div class="col-md-6 col-12">
                                                             <div class="form-group">
-                                                                <label for="txtImagen">Imagen</label>
-                                                                <input class="form-control" type="file" id="btnImagen" onchange="return validarExt3()" accept="image/*" />
+                                                                <label for="btnImagen">Imagen</label>
+                                                                <input class="form-control" type="file" id="btnImagen" onchange="return validarExt('btnImagen', 'visorImagen','cadena')" accept="image/*" />
                                                             </div>
+                                                        </div>
+                                                        <div class="col-md-6 col-12">                                                           
+                                                        </div>
+                                                        <div class="col-md-6 col-12">
+                                                            <div id="visorImagen">
+                                                                <!--Aqui se desplegará el fichero-->
+                                                            </div>
+                                                            <span style="display: none" id="cadena"></span>
                                                         </div>
                                                         <div class="col-12">
                                                             <hr />
@@ -607,11 +611,19 @@
                                                         </fieldset>
                                                     </div>
                                                 </div>
+                                                <div class="col-md-6 col-12"></div>
                                                 <div class="col-md-6 col-12">
                                                     <div class="form-group">
-                                                        <label for="txtEditImagen">Imagen</label>
-                                                        <input class="form-control" type="file" id="txtEditImagen" />
+                                                        <label for="btnEditImagen">Imagen</label>
+                                                        <input class="form-control" type="file" id="btnEditImagen" onchange="return validarExt('btnEditImagen','visorEditImagen','cadena2')" accept="image/*" />                                                        
                                                     </div>
+                                                </div>
+                                                <div class="col-md-6 col-12"></div>
+                                                <div class="col-md-6 col-12">
+                                                    <div id="visorEditImagen">
+                                                        <!-- Imagen acá -->
+                                                    </div>
+                                                    <span style="display: none" id="cadena2"></span>
                                                 </div>
                                                 <div class="col-12">
                                                     <hr />
@@ -642,7 +654,7 @@
                                                     <div class="form-group">
                                                         <label for="selectEditIdProvincia">Provincia</label>
                                                         <fieldset class="form-group">
-                                                            <select class="form-select" id="selectEditIdProvincia">
+                                                            <select class="form-select" id="selectEditIdProvincia" onchange="localidadesBuscarPorProvinciaEdit(this,0)">
                                                                 <option selected="selected" disabled="disabled">Seleccione una provincia</option>
                                                             </select>
                                                         </fieldset>
@@ -652,10 +664,7 @@
                                                     <div class="form-group">
                                                         <label for="selectEditIdLocalidad">Localidad</label>
                                                         <fieldset class="form-group">
-                                                            <select class="form-select" id="selectEditIdLocalidad">
-                                                                <option value="1">Opción 1</option>
-                                                                <option value="2">Opción 2</option>
-                                                                <option value="3">Opción 3</option>
+                                                            <select class="form-select" id="selectEditIdLocalidad">                                                                
                                                             </select>
                                                         </fieldset>
                                                     </div>
@@ -731,7 +740,6 @@
                                                 <th scope="col">Razon Social</th>
                                                 <th scope="col">Fantasia</th>
                                                 <th scope="col">CUIT</th>
-                                                <th scope="col">Provincia</th>
                                                 <th scope="col">Localidad</th>
                                                 <th scope="col">Domicilio</th>
                                                 <th scope="col">Tipo</th>
@@ -776,8 +784,14 @@
     <script src="assets/js/extensions/datatables.js"></script>
 
     <script>
+        $( document ).ready(function() {
+            llenarTabla();
+            provinciasLlenarCbo('selectIdProvincia');
+            provinciasLlenarCbo('selectEditIdProvincia');
+        });
+
         function validarCampos() {
-            let listaValoresInputs = generarListaDeInputs("txtRazonSocial", "txtFantasia", "txtNroCuit","selectIdProvincia", "selectIdLocalidad", "txtDomicilio", "txtLat", "txtLng", "txtImagen", "selectEmpresaTipo", "txtObservaciones", "txtPrioridad", "txtFechaInicioActividad")
+            let listaValoresInputs = generarListaDeInputs("txtRazonSocial", "txtFantasia", "txtNroCuit", "selectIdLocalidad", "txtDomicilio", "txtLat", "txtLng", "txtImagen", "selectEmpresaTipo", "txtObservaciones", "txtPrioridad", "txtFechaInicioActividad")
 
             let esValido = true
 
@@ -796,7 +810,7 @@
         }
 
         function validarCamposEdit() {
-            let listaValoresInputs = generarListaDeInputs("txtEditRazonSocial", "txtEditFantasia", "txtEditNroCuit","selectIdProvincia", "selectIdLocalidad", "txtEditDomicilio", "txtEditLat", "txtEditLng", "txtEditImagen", "selectEmpresaTipo", "txtEditObservaciones", "txtEditPrioridad", "txtEditFechaInicioActividad")
+            let listaValoresInputs = generarListaDeInputs("txtEditRazonSocial", "txtEditFantasia", "txtEditNroCuit", "selectIdLocalidad", "txtEditDomicilio", "txtEditLat", "txtEditLng", "txtEditImagen", "selectEmpresaTipo", "txtEditObservaciones", "txtEditPrioridad", "txtEditFechaInicioActividad")
             let esValido = true
 
             for (var i = 0; i < listaValoresInputs.length; i++) {
@@ -817,7 +831,6 @@
             let RazonSocial = document.getElementById('txtRazonSocial').value
             let Fantasia = document.getElementById('txtFantasia').value
             let NroCuit = document.getElementById('txtNroCuit').value
-            let IdProvincia = document.getElementById('selectIdProvincia').value
             let IdLocalidad = document.getElementById('selectIdLocalidad').value
             let Domicilio = document.getElementById('txtDomicilio').value
             let Lat = document.getElementById('txtLat').value
@@ -833,7 +846,6 @@
                 RazonSocial: RazonSocial,
                 Fantasia: Fantasia,
                 NroCuit: NroCuit,
-                IdProvincia: IdProvincia,
                 IdLocalidad: IdLocalidad,
                 Domicilio: Domicilio,
                 Lat: Lat,
@@ -844,7 +856,6 @@
                 Prioridad: Prioridad,
                 FechaInicioActividad: FechaInicioActividad,
                 Estado: "1"
-
             }
 
             var payload = {
@@ -867,9 +878,8 @@
                             html: "Datos agregados correctamente",
                             icon: "success"
                         });
-                        txtLimpiar("txtRazonSocial", "txtFantasia", "txtNroCuit","selectIdProvincia", "selectIdLocalidad", "txtDomicilio", "txtLat", "txtLng", "txtImagen", "selectEmpresaTipo", "txtObservaciones", "txtPrioridad", "txtFechaInicioActividad");
+                        txtLimpiar("txtRazonSocial", "txtFantasia", "txtNroCuit", "selectIdLocalidad", "txtDomicilio", "txtLat", "txtLng", "txtImagen", "selectEmpresaTipo", "txtObservaciones", "txtPrioridad", "txtFechaInicioActividad");
                         llenarTabla();
-
                     } else {
                         Swal.fire({
                             title: "LO SIENTO ALGO SALIO MAL",
@@ -882,42 +892,57 @@
         }
 
         function empresaModificar() {
+
+            var archivoInput = document.getElementById('btnEditImagen');
+            var archivoRuta = archivoInput.value;
+
+            let cadena = document.getElementById("cadena2").innerHTML;
+
+            if (cadena.includes("data:image/png;base64,")) {
+                var res = cadena.split("data:image/png;base64,");
+                var cadenaFinalImagen = res[1];
+            } else if (cadena.includes("data:image/jpg;base64,")) {
+                var res = cadena.split("data:image/jpg;base64,");
+                var cadenaFinalImagen = res[1];
+            } else if (cadena.includes("data:image/jpeg;base64,")) {
+                var res = cadena.split("data:image/jpeg;base64,");
+                var cadenaFinalImagen = res[1];
+            }
+
             let IdEmpresa = document.getElementById('txtEditIdEmpresa').value
             let RazonSocial = document.getElementById('txtEditRazonSocial').value
             let Fantasia = document.getElementById('txtEditFantasia').value
             let NroCuit = document.getElementById('txtEditNroCuit').value
-            let IdProvincia = document.getElementById('selectEditIdProvincia').value
             let IdLocalidad = document.getElementById('selectEditIdLocalidad').value
             let Domicilio = document.getElementById('txtEditDomicilio').value
             let Lat = document.getElementById('txtEditLat').value
             let Lng = document.getElementById('txtEditLng').value
-            let Imagen = document.getElementById('txtEditImagen').value
+            let Imagen = document.getElementById('btnEditImagen').value
             let EmpresaTipo = document.getElementById('selectEditEmpresaTipo').value
             let Observaciones = document.getElementById('txtEditObservaciones').value
             let Prioridad = document.getElementById('txtEditPrioridad').value
             let FechaInicioActividad = document.getElementById('txtEditFechaInicioActividad').value
             //let Estado = document.getElementById('txtEditEstado').value
 
-            var cadena = {
+            var cadenaJson = {
                 IdEmpresa: IdEmpresa,
                 RazonSocial: RazonSocial,
                 Fantasia: Fantasia,
                 NroCuit: NroCuit,
-                IdProvincia: IdProvincia,
                 IdLocalidad: IdLocalidad,
                 Domicilio: Domicilio,
                 Lat: Lat,
                 Lng: Lng,
-                Imagen: Imagen,
+                Imagen: cadenaFinalImagen,
                 EmpresaTipo: EmpresaTipo,
                 Observaciones: Observaciones,
                 Prioridad: Prioridad,
                 FechaInicioActividad: FechaInicioActividad,
                 Estado: "1"
-            }
+            }           
 
             var payload = {
-                cadena: JSON.stringify(cadena)
+                cadena: JSON.stringify(cadenaJson)
             };
 
             $.ajax({
@@ -936,7 +961,7 @@
                             html: "Datos modificados correctamente",
                             icon: "success"
                         });
-                        //txtLimpiar("txtRazonSocial", "txtFantasia", "txtNroCuit","selectIdProvincia", "selectIdLocalidad", "txtDomicilio", "txtLat", "txtLng", "txtImagen", "selectEmpresaTipo", "txtObservaciones", "txtPrioridad", "txtFechaInicioActividad");
+                        //txtLimpiar("txtRazonSocial", "txtFantasia", "txtNroCuit", "selectIdLocalidad", "txtDomicilio", "txtLat", "txtLng", "txtImagen", "selectEmpresaTipo", "txtObservaciones", "txtPrioridad", "txtFechaInicioActividad");
                         llenarTabla()
                     } else {
                         Swal.fire({
@@ -947,7 +972,6 @@
                     }
                 }
             });
-
         }
 
         function empresaBuscarPorIdModal(id) {
@@ -956,13 +980,12 @@
             let RazonSocial = document.getElementById('txtEditRazonSocial')
             let Fantasia = document.getElementById('txtEditFantasia')
             let NroCuit = document.getElementById('txtEditNroCuit')
-            let IdProvincia = document.getElementById('selectEditIdProvincia')
-            localidadesBuscarPorProvinciaEdit(IdProvincia)
+            let IdProvincia = document.getElementById('selectEditIdProvincia')           
             let IdLocalidad = document.getElementById('selectEditIdLocalidad')
             let Domicilio = document.getElementById('txtEditDomicilio')
             let Lat = document.getElementById('txtEditLat')
             let Lng = document.getElementById('txtEditLng')
-            //let Imagen = document.getElementById('txtEditImagen')
+            let Imagen = document.getElementById('visorEditImagen')
             let EmpresaTipo = document.getElementById('selectEditEmpresaTipo')
             let Observaciones = document.getElementById('txtEditObservaciones')
             let Prioridad = document.getElementById('txtEditPrioridad')
@@ -991,15 +1014,18 @@
                         Fantasia.value = json.Fantasia
                         NroCuit.value = json.NroCuit
                         IdProvincia.value = json.IdProvincia
-                        IdLocalidad.value = json.IdLocalidad
+                        localidadesBuscarPorProvinciaEdit(IdProvincia,json.IdLocalidad)                     
+                        //IdLocalidad.value = json.IdLocalidad
                         Domicilio.value = json.Domicilio
                         Lat.value = json.Lat
                         Lng.value = json.Lng
-                        //Imagen.value = json.Imagen
+                        Imagen.innerHTML = ""
+                        Imagen.innerHTML += '<img src="' + json.Imagen + '" width="200" alt="Imagen de la Empresa"/>';
+                        // Imagen.src = json.Imagen
                         EmpresaTipo.value = json.EmpresaTipo
                         Observaciones.value = json.Observaciones
                         Prioridad.value = json.Prioridad
-                        FechaInicioActividad.value = json.FechaInicioActividad
+                        FechaInicioActividad.value = new Date(json.FechaInicioActividad).toISOString().slice(0,10)
                         //Estado.value = json.Estado
                     } else {
                         Swal.fire({
@@ -1042,7 +1068,6 @@
                                     'RazonSocial': json.Data[i].RazonSocial,
                                     'Fantasia': json.Data[i].Fantasia,
                                     'NroCuit': json.Data[i].NroCuit,
-                                    'IdProvincia': json.Data[i].IdProvincia,
                                     'IdLocalidad': json.Data[i].IdLocalidad,
                                     'Domicilio': json.Data[i].Domicilio,
                                     'Lat': json.Data[i].Lat,
@@ -1065,7 +1090,6 @@
                     { 'data': 'RazonSocial' },
                     { 'data': 'Fantasia' },
                     { 'data': 'NroCuit' },
-                    { 'data': 'IdProvincia' },
                     { 'data': 'IdLocalidad' },
                     { 'data': 'Domicilio' },
                     { 'data': 'EmpresaTipo' },
@@ -1073,31 +1097,24 @@
                     { 'data': 'Prioridad' },
                     { 'data': 'FechaInicioActividad' },
                     { 'data': 'Estado' },
-
-                    {
-                        'data': 'IdEmpresa',
-                        orderable: false,
-                        'render': function (data, type, row) {
-                            return '<a onclick="empresaBuscarPorIdModal(' + row.IdEmpresa + ')" data-bs-toggle="modal" data-bs-target="#modalEditarEmpresa"><i class="material-icons" role="button">edit</i></a> '
+                    { 'data': 'IdEmpresa', orderable: false,
+                      'render': function (data, type, row) {
+                        return '<a onclick="empresaBuscarPorIdModal(' + row.IdEmpresa + ')" data-bs-toggle="modal" data-bs-target="#modalEditarEmpresa"><i class="material-icons" role="button">edit</i></a>'
                         }
                     },
-                    {
-                        'data': 'IdCliente',
-                        orderable: false,
-                        'render': function (data, type, row) {
-                            return '<a onclick="clienteEliminar(' + row.IdEmpresa + ')"><i class="material-icons" role="button">delete</i></a> '
+                    {'data': 'IdCliente', orderable: false,
+                     'render': function (data, type, row) {
+                        return '<a onclick="clienteEliminar(' + row.IdEmpresa + ')"><i class="material-icons" role="button">delete</i></a> '
                         }
                     },
                 ],
             });
-
-
         }
 
-        function validarExt3() {
-            var archivoInput = document.getElementById('btnImagen');
+        function validarExt(imagen, visorImagen, cadenaImagen) {
+            var archivoInput = document.getElementById(imagen);
             var archivoRuta = archivoInput.value;
-            document.getElementById('visorArchivo2').innerHTML = ""
+            document.getElementById(visorImagen).innerHTML = ""
 
             var extPermitidas = /(.png|.jpg|.jpeg)$/i;
             if (!extPermitidas.exec(archivoRuta)) {
@@ -1110,27 +1127,25 @@
                 return false;
             } else {
                 if (archivoInput.files.length) {
-
                     for (let i = 0; i < archivoInput.files.length; i++) {
                         let visor = new FileReader();
                         visor.onload = function (e) {
-                            document.getElementById('visorArchivo2').innerHTML +=
-                                '<embed src="' + e.target.result + '" width="400" height="375" />';
+                            document.getElementById(visorImagen).innerHTML +=
+                            '<embed src="' + e.target.result + '" width="200"/>';
                             // console.log(e.target.result);
-                            let cadena = document.getElementById("cadena");
+                            let cadena = document.getElementById(cadenaImagen);
+                            cadena.innerHTML = "";
                             cadena.innerHTML = e.target.result;
                         };
-
                         visor.readAsDataURL(archivoInput.files[i]);
                     }
                 }
                 /// document.getElementById("nombreArchivo2").style = "display:none;margin-left:-100px";
                 //document.getElementById("nombreArchivo2").innerHTML = archivoRuta;
             }
-
-
         }
 
+        //reemplaza a la función "empresaAgregar"
         function agregarDocCap() {
 
             var archivoInput = document.getElementById('btnImagen');
@@ -1141,11 +1156,9 @@
             if (cadena.includes("data:image/png;base64,")) {
                 var res = cadena.split("data:image/png;base64,");
                 var cadenaFinalImagen = res[1];
-
             } else if (cadena.includes("data:image/jpg;base64,")) {
                 var res = cadena.split("data:image/jpg;base64,");
                 var cadenaFinalImagen = res[1];
-
             } else if (cadena.includes("data:image/jpeg;base64,")) {
                 var res = cadena.split("data:image/jpeg;base64,");
                 var cadenaFinalImagen = res[1];
@@ -1167,7 +1180,6 @@
             let RazonSocial = document.getElementById('txtRazonSocial').value
             let Fantasia = document.getElementById('txtFantasia').value
             let NroCuit = document.getElementById('txtNroCuit').value
-            let IdProvincia = document.getElementById('selectIdProvincia').value
             let IdLocalidad = document.getElementById('selectIdLocalidad').value
             let Domicilio = document.getElementById('txtDomicilio').value
             let Lat = document.getElementById('txtLat').value
@@ -1183,7 +1195,6 @@
                 RazonSocial: RazonSocial,
                 Fantasia: Fantasia,
                 NroCuit: NroCuit,
-                IdProvincia: IdProvincia,
                 IdLocalidad: IdLocalidad,
                 Domicilio: Domicilio,
                 Lat: Lat,
@@ -1302,7 +1313,7 @@
             });
         }
 
-        function localidadesBuscarPorProvinciaEdit(selectProvincia) {
+        function localidadesBuscarPorProvinciaEdit(selectProvincia, idLocalidad) {
             let idProvincia = selectProvincia.value
             document.getElementById("selectEditIdLocalidad").options.length = 0;
             document.getElementById("selectEditIdLocalidad").disabled = false
@@ -1332,7 +1343,7 @@
                     var json = $.parseJSON(data.d);
                     if (json.Data.length > 0) {
                         var lista_de_localidades = json.Data
-                        const select = document.getElementById('selectEditIdLocalidad');
+                        let select = document.getElementById('selectEditIdLocalidad');
                         let primeraOpcion = document.createElement("option");
                         primeraOpcion.text = "Seleccione una localidad"
                         primeraOpcion.selected = "selected"
@@ -1345,12 +1356,17 @@
                             select.add(nuevaOpcion);
                             // select.appendChild(nuevaOpcion); <-- Así tambien funciona
                         }
+                        if (idLocalidad != 0){
+                            select.value = idLocalidad
+                        }
+                        
                     } else {
                         Swal.fire("NO HAY REGISTROS CARGADOS", "Gracias por consultar", "success");
                     }
                 }
             });
         }
+        
         //recibe el id de los inputs y devuelve un array de los elementos
         function generarListaDeInputs() {
             const listaId = []

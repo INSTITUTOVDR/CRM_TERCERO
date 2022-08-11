@@ -30,7 +30,6 @@ Public Class Empresas
                     .RazonSocial = oDs.Tables(IdTabla).Rows(i).Item("RazonSocial").ToString(),
                     .Fantasia = oDs.Tables(IdTabla).Rows(i).Item("Fantasia").ToString(),
                     .NroCuit = oDs.Tables(IdTabla).Rows(i).Item("NroCuit").ToString(),
-                    .IdProvincia = oDs.Tables(IdTabla).Rows(i).Item("IdProvincia").ToString(),
                     .IdLocalidad = oDs.Tables(IdTabla).Rows(i).Item("IdLocalidad").ToString(),
                     .Domicilio = oDs.Tables(IdTabla).Rows(i).Item("Domicilio").ToString(),
                     .Lat = oDs.Tables(IdTabla).Rows(i).Item("Lat").ToString(),
@@ -70,7 +69,6 @@ Public Class Empresas
             Dim RazonSocial = dict(0).RazonSocial.ToString
             Dim Fantasia = dict(0).Fantasia.ToString
             Dim NroCuit = dict(0).NroCuit.ToString
-            Dim IdProvincia = dict(0).IdProvincia.ToString
             Dim IdLocalidad = dict(0).IdLocalidad.ToString
             Dim Domicilio = dict(0).Domicilio.ToString
             Dim Lat = dict(0).Lat.ToString
@@ -101,7 +99,7 @@ Public Class Empresas
             Dim nombre As String
             nombre = fecha & nuevacadena
 
-            Dim rutaServidor As String = "C:\Users\Guille-ASUS\Desktop\TSDS\PP2\Proyecto\CRM_TERCERO\CRM_TERCERO\ImagenesEmpresas\"
+            Dim rutaServidor As String = "C:\Users\Guille\Desktop\TSDS\PP2\Proyecto\CRM_TERCERO\CRM_TERCERO\ImagenesEmpresas\"
 
             ' Dim rutaServidor As String = "G:\FerozoWebHosting\alladioseguridad.com.ar\public_html\Admin\Frontend\ArchivosCapacitacion\"
             Dim urlBD As String = rutaServidor & nombre & "." & "png"
@@ -125,15 +123,10 @@ Public Class Empresas
             fs.Write(fileContents, 0, fileContents.Length)
             fs.Close()
 
-
-
             Dim rutaAbsoluta As String = "/ImagenesEmpresas/" & nombre & "." & "png"
 
-
-
-
             Dim oobjeto As New Empresa
-            oobjeto.Agregar(RazonSocial, Fantasia, NroCuit, IdProvincia, IdLocalidad, Domicilio, Lat, Lng, rutaAbsoluta, EmpresaTipo, Observaciones, Prioridad, FechaInicioActividad, Estado)
+            oobjeto.Agregar(RazonSocial, Fantasia, NroCuit, IdLocalidad, Domicilio, Lat, Lng, rutaAbsoluta, EmpresaTipo, Observaciones, Prioridad, FechaInicioActividad, Estado)
 
             Dim data = New With {
                 Key .Status = "200"
@@ -161,7 +154,6 @@ Public Class Empresas
             Dim RazonSocial = dict(0).RazonSocial.ToString
             Dim Fantasia = dict(0).Fantasia.ToString
             Dim NroCuit = dict(0).NroCuit.ToString
-            Dim IdProvincia = dict(0).IdProvincia.ToString
             Dim IdLocalidad = dict(0).IdLocalidad.ToString
             Dim Domicilio = dict(0).Domicilio.ToString
             Dim Lat = dict(0).Lat.ToString
@@ -173,9 +165,40 @@ Public Class Empresas
             Dim FechaInicioActividad = dict(0).FechaInicioActividad.ToString
             Dim Estado = dict(0).Estado.ToString
 
+            Dim obj As New Random()
+            Dim posibles As String = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
+            Dim longitud As Integer = posibles.Length
+            Dim letra As Char
+            Dim longitudnuevacadena As Integer = 3
+            Dim nuevacadena As String = ""
+            For i As Integer = 0 To longitudnuevacadena - 1
+                letra = posibles(obj.[Next](longitud))
+                nuevacadena += letra.ToString()
+            Next
+
+            Dim fecha As String
+            fecha = Date.Now.Year.ToString + Date.Now.Month.ToString + Date.Now.Day.ToString + Date.Now.TimeOfDay.TotalMinutes.ToString
+
+            Dim nombre As String
+            nombre = fecha & nuevacadena
+
+            Dim rutaServidor As String = "C:\Users\Guille\Desktop\TSDS\PP2\Proyecto\CRM_TERCERO\CRM_TERCERO\ImagenesEmpresas\"
+
+            Dim urlBD As String = rutaServidor & nombre & "." & "png"
+
+            Dim fileContents As Byte() = Convert.FromBase64String(Imagen.ToString()),
+                        ruta As String = urlBD
+
+            Dim fs As IO.FileStream
+            fs = IO.File.Create(ruta)
+            fs.Write(fileContents, 0, fileContents.Length)
+            fs.Close()
+
+            Dim rutaAbsoluta As String = "/ImagenesEmpresas/" & nombre & "." & "png"
+
             Dim oobjeto As New Empresa
 
-            oobjeto.Modificar(IdEmpresa, RazonSocial, Fantasia, NroCuit, IdProvincia, IdLocalidad, Domicilio, Lat, Lng, Imagen, EmpresaTipo, Observaciones, Prioridad, FechaInicioActividad, Estado)
+            oobjeto.Modificar(IdEmpresa, RazonSocial, Fantasia, NroCuit, IdLocalidad, Domicilio, Lat, Lng, rutaAbsoluta, EmpresaTipo, Observaciones, Prioridad, FechaInicioActividad, Estado)
 
             Dim data = New With {
                 Key .Status = "200"
@@ -201,11 +224,12 @@ Public Class Empresas
 
             Dim IdEmpresa = dict(0).IdEmpresa.ToString
 
-            Dim oDs As New DataSet
-            Dim oobjeto As New Empresa
+            Dim oDs As New DataSet, oobjeto As New Empresa
             oDs = oobjeto.BuscarPorId(IdEmpresa)
 
             Dim IdTabla As Integer = 0
+
+            Dim IdProvincia = LocalidadBuscarIdProvincia(oDs.Tables(IdTabla).Rows(0).Item("IdLocalidad").ToString())
 
             Dim data = New With {
                 Key .Status = "200",
@@ -213,7 +237,7 @@ Public Class Empresas
                     .RazonSocial = oDs.Tables(IdTabla).Rows(0).Item("RazonSocial").ToString(),
                     .Fantasia = oDs.Tables(IdTabla).Rows(0).Item("Fantasia").ToString(),
                     .NroCuit = oDs.Tables(IdTabla).Rows(0).Item("NroCuit").ToString(),
-                    .IdProvincia = oDs.Tables(IdTabla).Rows(0).Item("IdProvincia").ToString(),
+                    .IdProvincia = IdProvincia.ToString(),
                     .IdLocalidad = oDs.Tables(IdTabla).Rows(0).Item("IdLocalidad").ToString(),
                     .Domicilio = oDs.Tables(IdTabla).Rows(0).Item("Domicilio").ToString(),
                     .Lat = oDs.Tables(IdTabla).Rows(0).Item("Lat").ToString(),
@@ -235,7 +259,6 @@ Public Class Empresas
         Catch ex As Exception
             Return Error401()
         End Try
-
     End Function
 
     <WebMethod()>
@@ -345,5 +368,18 @@ Public Class Empresas
         Dim serializer = New JavaScriptSerializer()
         Dim json = serializer.Serialize(data)
         Return New JavaScriptSerializer().Serialize(data)
+    End Function
+
+    Public Shared Function LocalidadBuscarIdProvincia(idLocalidad As String) As Integer
+        ServicePointManager.SecurityProtocol = CType(3072, SecurityProtocolType)
+        Dim request As HttpWebRequest = TryCast(WebRequest.Create("https://crear.net.ar/api/searchLocationByIdLocation?idLocalidad=" & idLocalidad), HttpWebRequest)
+        request.Method = "GET"
+        request.ContentType = "application/json"
+        Dim response As HttpWebResponse = TryCast(request.GetResponse(), HttpWebResponse)
+        Dim reader As New StreamReader(response.GetResponseStream())
+        Dim resp As String = reader.ReadToEnd()
+        Dim json2 As JObject = JObject.Parse(resp)
+        Dim idProvincia As Integer = json2("data").Item(0).Item("Id_Provincia")
+        Return idProvincia
     End Function
 End Class
