@@ -424,7 +424,7 @@
                                                         </div>
                                                         <div class="col-md-6 col-12">
                                                             <div class="form-group">
-                                                                <label for="selectIdProyectoTipo">IdProyectoTipo</label>
+                                                                <label for="selectIdProyectoTipo">ProyectoTipo</label>
                                                                 <fieldset class="form-group">
                                                                     <select class="form-select" id="selectIdProyectoTipo">
                                                                     </select>
@@ -437,7 +437,7 @@
                                                         </div>
                                                         <div class="col-md-6 col-12">
                                                             <div class="form-group">
-                                                                <label for="selectIdEmpresa">IdEmpresa</label>
+                                                                <label for="selectIdEmpresa">Empresa</label>
                                                                 <fieldset class="form-group">
                                                                     <select class="form-select" id="selectIdEmpresa" onchange="sucursalesBuscarPorIdEmpresa(this)">
                                                                     </select>
@@ -446,7 +446,7 @@
                                                         </div>
                                                         <div class="col-md-6 col-12">
                                                             <div class="form-group">
-                                                                <label for="selectIdSucursal">IdSucursal</label>
+                                                                <label for="selectIdSucursal">Sucursal</label>
                                                                 <fieldset class="form-group">
                                                                     <select class="form-select" id="selectIdSucursal">
                                                                     </select>
