@@ -88,7 +88,10 @@
     <Compile Include="ContactoTiposWS.vb" />
     <Compile Include="Contacto_Tipos.vb" />
     <Compile Include="Empresa.vb" />
+    <Compile Include="EmpresaTipo.vb" />
+    <Compile Include="EmpresaTipoWS.vb" />
     <Compile Include="EmpresaWS.vb" />
+    <Compile Include="Img.vb" />
     <Compile Include="LocalidadWS.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">

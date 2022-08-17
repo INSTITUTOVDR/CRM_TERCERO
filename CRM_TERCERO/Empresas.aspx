@@ -438,14 +438,12 @@
                                                                 <label for="selectEmpresaTipo">Tipo de Empresa</label>
                                                                 <fieldset class="form-group">
                                                                     <select class="form-select" id="selectEmpresaTipo">
-                                                                        <option value="1">Opción 1</option>
-                                                                        <option value="2">Opción 2</option>
-                                                                        <option value="3">Opción 3</option>
+                                                                        <option selected="selected" disabled="disabled">Seleccione</option>
                                                                     </select>
                                                                 </fieldset>
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-6 col-12">                                                           
+                                                        <div class="col-md-6 col-12">
                                                         </div>
                                                         <div class="col-md-6 col-12">
                                                             <div class="form-group">
@@ -453,7 +451,7 @@
                                                                 <input class="form-control" type="file" id="btnImagen" onchange="return validarExt('btnImagen', 'visorImagen','cadena')" accept="image/*" />
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-6 col-12">                                                           
+                                                        <div class="col-md-6 col-12">
                                                         </div>
                                                         <div class="col-md-6 col-12">
                                                             <div id="visorImagen">
@@ -529,9 +527,15 @@
                                                             <h5 class="card-title text-muted mt-2">Otra Información</h5>
                                                         </div>
                                                         <div class="col-md-6 col-12">
-                                                            <div class="form-floating">
-                                                                <textarea class="form-control" placeholder="Observaciones" id="txtObservaciones"></textarea>
-                                                                <label for="txtObservaciones">Observaciones</label>
+                                                            <div class="form-group">
+                                                                <label for="selectEstado">Estado</label>
+                                                                <fieldset class="form-group">
+                                                                    <select class="form-select" id="selectEstado">
+                                                                        <option selected="selected" disabled="disabled">Seleccione</option>
+                                                                        <option value="1">Habilitado</option>
+                                                                        <option value="0">Deshabilitado</option>
+                                                                    </select>
+                                                                </fieldset>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6 col-12">
@@ -540,15 +544,15 @@
                                                                 <input type="text" id="txtPrioridad" class="form-control" placeholder="Prioridad" />
                                                             </div>
                                                         </div>
-                                                        <div class="form-check">
-                                                            <div class="checkbox">
-                                                                <input type="checkbox" id="chkEstado" class="form-check-input" />
-                                                                <label for="checkbox1">Estado</label>
+                                                        <div class="col-md-6 col-12">
+                                                            <div class="form-floating">
+                                                                <textarea class="form-control" placeholder="Observaciones" id="txtObservaciones"></textarea>
+                                                                <label for="txtObservaciones">Observaciones</label>
                                                             </div>
                                                         </div>
                                                         <div class="col-12 d-flex justify-content-end">
                                                             <button type="button" class="btn btn-secondary me-1 mb-1">Cancelar</button>
-                                                            <button type="button" class="btn btn-primary me-1 mb-1" onclick="agregarDocCap()">Enviar</button>
+                                                            <button type="button" class="btn btn-primary me-1 mb-1" onclick="empresaAgregar()">Enviar</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -604,9 +608,7 @@
                                                         <label for="selectEditEmpresaTipo">Tipo de Empresa</label>
                                                         <fieldset class="form-group">
                                                             <select class="form-select" id="selectEditEmpresaTipo">
-                                                                <option value="1">Opción 1</option>
-                                                                <option value="2">Opción 2</option>
-                                                                <option value="3">Opción 3</option>
+                                                                <option selected="selected" disabled="disabled">Seleccione</option>
                                                             </select>
                                                         </fieldset>
                                                     </div>
@@ -615,7 +617,7 @@
                                                 <div class="col-md-6 col-12">
                                                     <div class="form-group">
                                                         <label for="btnEditImagen">Imagen</label>
-                                                        <input class="form-control" type="file" id="btnEditImagen" onchange="return validarExt('btnEditImagen','visorEditImagen','cadena2')" accept="image/*" />                                                        
+                                                        <input class="form-control" type="file" id="btnEditImagen" onchange="return validarExt('btnEditImagen','visorEditImagen','cadena2')" accept="image/*" />
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6 col-12"></div>
@@ -664,7 +666,7 @@
                                                     <div class="form-group">
                                                         <label for="selectEditIdLocalidad">Localidad</label>
                                                         <fieldset class="form-group">
-                                                            <select class="form-select" id="selectEditIdLocalidad">                                                                
+                                                            <select class="form-select" id="selectEditIdLocalidad">
                                                             </select>
                                                         </fieldset>
                                                     </div>
@@ -692,9 +694,15 @@
                                                     <h5 class="card-title text-muted mt-2">Otra Información</h5>
                                                 </div>
                                                 <div class="col-md-6 col-12">
-                                                    <div class="form-floating">
-                                                        <textarea class="form-control" placeholder="Observaciones" id="txtEditObservaciones"></textarea>
-                                                        <label for="txtEditObservaciones">Observaciones</label>
+                                                    <div class="form-group">
+                                                        <label for="selectEditEstado">Estado</label>
+                                                        <fieldset class="form-group">
+                                                            <select class="form-select" id="selectEditEstado">
+                                                                <option selected="selected" disabled="disabled">Seleccione</option>
+                                                                <option value="1">Habilitado</option>
+                                                                <option value="0">Deshabilitado</option>
+                                                            </select>
+                                                        </fieldset>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6 col-12">
@@ -703,14 +711,14 @@
                                                         <input type="text" id="txtEditPrioridad" class="form-control" placeholder="Prioridad" />
                                                     </div>
                                                 </div>
-                                                <div class="form-check">
-                                                    <div class="checkbox">
-                                                        <input type="checkbox" id="chkEditEstado" class="form-check-input" />
-                                                        <label for="checkbox1">Estado</label>
+                                                <div class="col-md-6 col-12">
+                                                    <div class="form-floating">
+                                                        <textarea class="form-control" placeholder="Observaciones" id="txtEditObservaciones"></textarea>
+                                                        <label for="txtEditObservaciones">Observaciones</label>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <input type="text" id="txtEditIdEmpresa" hidden="hidden"/>
+                                                    <input type="text" id="txtEditIdEmpresa" hidden="hidden" />
                                                 </div>
                                             </div>
                                         </div>
@@ -784,10 +792,12 @@
     <script src="assets/js/extensions/datatables.js"></script>
 
     <script>
-        $( document ).ready(function() {
+        $(document).ready(function () {
             llenarTabla();
             provinciasLlenarCbo('selectIdProvincia');
             provinciasLlenarCbo('selectEditIdProvincia');
+            empresaTiposLlenarCbo('selectEmpresaTipo');
+            empresaTiposLlenarCbo('selectEditEmpresaTipo');
         });
 
         function validarCampos() {
@@ -827,70 +837,6 @@
             esValido ? empresaModificar() : alertaError();
         }
 
-        function empresaAgregar() {
-            let RazonSocial = document.getElementById('txtRazonSocial').value
-            let Fantasia = document.getElementById('txtFantasia').value
-            let NroCuit = document.getElementById('txtNroCuit').value
-            let IdLocalidad = document.getElementById('selectIdLocalidad').value
-            let Domicilio = document.getElementById('txtDomicilio').value
-            let Lat = document.getElementById('txtLat').value
-            let Lng = document.getElementById('txtLng').value
-            let Imagen = document.getElementById('btnImagen').value
-            let EmpresaTipo = document.getElementById('selectEmpresaTipo').value
-            let Observaciones = document.getElementById('txtObservaciones').value
-            let Prioridad = document.getElementById('txtPrioridad').value
-            let FechaInicioActividad = document.getElementById('txtFechaInicioActividad').value
-            //let Estado = document.getElementById('txtEstado').value
-
-            var cadena = {
-                RazonSocial: RazonSocial,
-                Fantasia: Fantasia,
-                NroCuit: NroCuit,
-                IdLocalidad: IdLocalidad,
-                Domicilio: Domicilio,
-                Lat: Lat,
-                Lng: Lng,
-                Imagen: Imagen,
-                EmpresaTipo: EmpresaTipo,
-                Observaciones: Observaciones,
-                Prioridad: Prioridad,
-                FechaInicioActividad: FechaInicioActividad,
-                Estado: "1"
-            }
-
-            var payload = {
-                cadena: JSON.stringify(cadena)
-            };
-
-            $.ajax({
-                type: "POST",
-                url: "Empresas.aspx/EmpresasAgregar",
-                contentType: "application/json; charset=utf-8",
-                data: JSON.stringify(payload),
-                dataType: "json",
-                success: function (data) {
-                    var json = $.parseJSON(data.d);
-                    var status = json.Status;
-
-                    if (status == 200) {
-                        Swal.fire({
-                            title: "Éxito",
-                            html: "Datos agregados correctamente",
-                            icon: "success"
-                        });
-                        txtLimpiar("txtRazonSocial", "txtFantasia", "txtNroCuit", "selectIdLocalidad", "txtDomicilio", "txtLat", "txtLng", "txtImagen", "selectEmpresaTipo", "txtObservaciones", "txtPrioridad", "txtFechaInicioActividad");
-                        llenarTabla();
-                    } else {
-                        Swal.fire({
-                            title: "LO SIENTO ALGO SALIO MAL",
-                            text: "Verifica los datos ingresados",
-                            icon: "error"
-                        });
-                    }
-                }
-            });
-        }
-
         function empresaModificar() {
 
             var archivoInput = document.getElementById('btnEditImagen');
@@ -922,7 +868,7 @@
             let Observaciones = document.getElementById('txtEditObservaciones').value
             let Prioridad = document.getElementById('txtEditPrioridad').value
             let FechaInicioActividad = document.getElementById('txtEditFechaInicioActividad').value
-            //let Estado = document.getElementById('txtEditEstado').value
+            let Estado = document.getElementById('selectEditEstado').value
 
             var cadenaJson = {
                 IdEmpresa: IdEmpresa,
@@ -938,8 +884,8 @@
                 Observaciones: Observaciones,
                 Prioridad: Prioridad,
                 FechaInicioActividad: FechaInicioActividad,
-                Estado: "1"
-            }           
+                Estado: Estado
+            }
 
             var payload = {
                 cadena: JSON.stringify(cadenaJson)
@@ -962,7 +908,7 @@
                             icon: "success"
                         });
                         //txtLimpiar("txtRazonSocial", "txtFantasia", "txtNroCuit", "selectIdLocalidad", "txtDomicilio", "txtLat", "txtLng", "txtImagen", "selectEmpresaTipo", "txtObservaciones", "txtPrioridad", "txtFechaInicioActividad");
-                        llenarTabla()
+                        llenarTabla();
                     } else {
                         Swal.fire({
                             title: "LO SIENTO ALGO SALIO MAL",
@@ -975,12 +921,21 @@
         }
 
         function empresaBuscarPorIdModal(id) {
+            Swal.fire({
+                title: 'Por favor espere',
+                text: "Cargando...",
+                html: `<img src="assets/images/svg-loaders/oval.svg" class="me-4" style="width: 3rem" alt="audio">`,
+                allowOutsideClick: false,
+                showConfirmButton: false,
+            });
+
+
             let IdEmpresa = document.getElementById('txtEditIdEmpresa')
             IdEmpresa.value = id
             let RazonSocial = document.getElementById('txtEditRazonSocial')
             let Fantasia = document.getElementById('txtEditFantasia')
             let NroCuit = document.getElementById('txtEditNroCuit')
-            let IdProvincia = document.getElementById('selectEditIdProvincia')           
+            let IdProvincia = document.getElementById('selectEditIdProvincia')
             let IdLocalidad = document.getElementById('selectEditIdLocalidad')
             let Domicilio = document.getElementById('txtEditDomicilio')
             let Lat = document.getElementById('txtEditLat')
@@ -990,7 +945,7 @@
             let Observaciones = document.getElementById('txtEditObservaciones')
             let Prioridad = document.getElementById('txtEditPrioridad')
             let FechaInicioActividad = document.getElementById('txtEditFechaInicioActividad')
-            //let Estado = document.getElementById('txtEditEstado')
+            let Estado = document.getElementById('selectEditEstado')
 
             var cadena = {
                 IdEmpresa: id
@@ -1014,7 +969,7 @@
                         Fantasia.value = json.Fantasia
                         NroCuit.value = json.NroCuit
                         IdProvincia.value = json.IdProvincia
-                        localidadesBuscarPorProvinciaEdit(IdProvincia,json.IdLocalidad)                     
+                        localidadesBuscarPorProvinciaEdit(IdProvincia, json.IdLocalidad)
                         //IdLocalidad.value = json.IdLocalidad
                         Domicilio.value = json.Domicilio
                         Lat.value = json.Lat
@@ -1025,8 +980,9 @@
                         EmpresaTipo.value = json.EmpresaTipo
                         Observaciones.value = json.Observaciones
                         Prioridad.value = json.Prioridad
-                        FechaInicioActividad.value = new Date(json.FechaInicioActividad).toISOString().slice(0,10)
-                        //Estado.value = json.Estado
+                        FechaInicioActividad.value = new Date((json.FechaInicioActividad).split("/").reverse().join("-")).toISOString().split('T')[0]
+                        Estado.value = json.Estado
+                        $('#modalEditarEmpresa').modal('show')
                     } else {
                         Swal.fire({
                             title: "LO SIENTO ALGO SALIO MAL",
@@ -1097,14 +1053,16 @@
                     { 'data': 'Prioridad' },
                     { 'data': 'FechaInicioActividad' },
                     { 'data': 'Estado' },
-                    { 'data': 'IdEmpresa', orderable: false,
-                      'render': function (data, type, row) {
-                        return '<a onclick="empresaBuscarPorIdModal(' + row.IdEmpresa + ')" data-bs-toggle="modal" data-bs-target="#modalEditarEmpresa"><i class="material-icons" role="button">edit</i></a>'
+                    {
+                        'data': 'IdEmpresa', orderable: false,
+                        'render': function (data, type, row) {
+                            return '<a onclick="empresaBuscarPorIdModal(' + row.IdEmpresa + ')"><i class="material-icons" role="button">edit</i></a>'
                         }
                     },
-                    {'data': 'IdCliente', orderable: false,
-                     'render': function (data, type, row) {
-                        return '<a onclick="clienteEliminar(' + row.IdEmpresa + ')"><i class="material-icons" role="button">delete</i></a> '
+                    {
+                        'data': 'IdCliente', orderable: false,
+                        'render': function (data, type, row) {
+                            return '<a onclick="clienteEliminar(' + row.IdEmpresa + ')"><i class="material-icons" role="button">delete</i></a> '
                         }
                     },
                 ],
@@ -1131,7 +1089,7 @@
                         let visor = new FileReader();
                         visor.onload = function (e) {
                             document.getElementById(visorImagen).innerHTML +=
-                            '<embed src="' + e.target.result + '" width="200"/>';
+                                '<embed src="' + e.target.result + '" width="200"/>';
                             // console.log(e.target.result);
                             let cadena = document.getElementById(cadenaImagen);
                             cadena.innerHTML = "";
@@ -1146,7 +1104,7 @@
         }
 
         //reemplaza a la función "empresaAgregar"
-        function agregarDocCap() {
+        function empresaAgregar() {
 
             var archivoInput = document.getElementById('btnImagen');
             var archivoRuta = archivoInput.value;
@@ -1164,17 +1122,25 @@
                 var cadenaFinalImagen = res[1];
             }
 
+            //Swal.fire({
+            //    title: "Espere...",
+            //    html: "<br><img src='https://crear.net.ar/CLIENTES/loader.gif'>",
+            //    type: "warning",
+            //    showCancelButton: false,
+            //    showConfirmButton: false,
+            //    cancelButtonColor: "#DD6B55",
+            //    confirmButtonColor: "#DD6B55",
+            //    didOpen: () => {
+            //        Swal.showLoading()
+            //    }
+            //});
+
             Swal.fire({
-                title: "Espere...",
-                html: "<br><img src='https://crear.net.ar/CLIENTES/loader.gif'>",
-                type: "warning",
-                showCancelButton: false,
+                title: 'Por favor espere',
+                text: "Cargando...",
+                html: `<img src="assets/images/svg-loaders/oval.svg" class="me-4" style="width: 3rem" alt="audio">`,
+                allowOutsideClick: false,
                 showConfirmButton: false,
-                cancelButtonColor: "#DD6B55",
-                confirmButtonColor: "#DD6B55",
-                didOpen: () => {
-                    Swal.showLoading()
-                }
             });
 
             let RazonSocial = document.getElementById('txtRazonSocial').value
@@ -1189,7 +1155,7 @@
             let Observaciones = document.getElementById('txtObservaciones').value
             let Prioridad = document.getElementById('txtPrioridad').value
             let FechaInicioActividad = document.getElementById('txtFechaInicioActividad').value
-            //let Estado = document.getElementById('txtEstado').value
+            let Estado = document.getElementById('selectEstado').value
 
             var cadenaJson = {
                 RazonSocial: RazonSocial,
@@ -1204,7 +1170,7 @@
                 Observaciones: Observaciones,
                 Prioridad: Prioridad,
                 FechaInicioActividad: FechaInicioActividad,
-                Estado: "1"
+                Estado: Estado
             }
 
             let jsonPush = { cadena: JSON.stringify(cadenaJson) };
@@ -1216,6 +1182,7 @@
                 data: JSON.stringify(jsonPush),
                 dataType: "json",
                 success: function (data) {
+                    swal.close();
                     var json = $.parseJSON(data.d);
 
                     var status = json.Status;
@@ -1225,8 +1192,8 @@
                             html: "Datos agregados correctamente",
                             icon: "success"
                         });
-                        txtLimpiar("txtRazonSocial", "txtFantasia", "txtNroCuit","selectIdProvincia", "selectIdLocalidad", "txtDomicilio", "txtLat", "txtLng", "txtImagen", "selectEmpresaTipo", "txtObservaciones", "txtPrioridad", "txtFechaInicioActividad");
                         llenarTabla();
+                        txtLimpiar("txtRazonSocial", "txtFantasia", "txtNroCuit", "selectIdProvincia", "selectIdLocalidad", "txtDomicilio", "txtLat", "txtLng", "txtImagen", "selectEmpresaTipo", "txtObservaciones", "txtPrioridad", "txtFechaInicioActividad");
                     } else {
                         Swal.fire({
                             title: "LO SIENTO ALGO SALIO MAL",
@@ -1356,17 +1323,17 @@
                             select.add(nuevaOpcion);
                             // select.appendChild(nuevaOpcion); <-- Así tambien funciona
                         }
-                        if (idLocalidad != 0){
+                        if (idLocalidad != 0) {
                             select.value = idLocalidad
                         }
-                        
+
                     } else {
                         Swal.fire("NO HAY REGISTROS CARGADOS", "Gracias por consultar", "success");
                     }
                 }
             });
         }
-        
+
         //recibe el id de los inputs y devuelve un array de los elementos
         function generarListaDeInputs() {
             const listaId = []
@@ -1390,6 +1357,33 @@
                 const element = arguments[i];
                 document.getElementById(element).value = null
             }
+        }
+
+        function empresaTiposLlenarCbo(idSelect) {
+            $.ajax({
+                type: "POST",
+                url: "Empresas.aspx/EmpresaTiposBuscarTodo",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    var json = $.parseJSON(data.d);
+                    if (json.Data.length > 0) {
+                        var lista_empresa_tipos = json.Data
+                        const select = document.getElementById(idSelect);
+                        for(let tipo of lista_empresa_tipos) {
+                            if (tipo.Activo){
+                                let nuevaOpcion = document.createElement("option");
+                                nuevaOpcion.value = tipo.IdEmpresaTipo;
+                                nuevaOpcion.text = tipo.Nombre;
+                                select.add(nuevaOpcion);
+                                // select.appendChild(nuevaOpcion); <-- Así tambien funciona
+                            }
+                        }
+                    } else {
+                        Swal.fire("NO HAY REGISTROS CARGADOS", "Gracias por consultar", "success");
+                    }
+                }
+            });
         }
     </script>
 </body>
