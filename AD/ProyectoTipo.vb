@@ -4,7 +4,7 @@ Public Class ProyectoTipo
 
     Dim o_Database As Database
     Public Sub New()
-        o_Database = DatabaseFactory.CreateDatabase("Conn")
+        o_Database = DatabaseFactory.CreateDatabase("ConnCRM")
     End Sub
     Public Function ProyectoTipoBuscarTodos() As DataSet
         Return o_Database.ExecuteDataSet("ProyectosTipoBuscarTodos")

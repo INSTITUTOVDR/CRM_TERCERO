@@ -4,7 +4,7 @@ Public Class EmpresaTipo
 
     Dim o_Database As Database
     Public Sub New()
-        o_Database = DatabaseFactory.CreateDatabase("Conn")
+        o_Database = DatabaseFactory.CreateDatabase("ConnCRM")
     End Sub
     Public Function BuscarTodos() As EmpresaTipoWS()
         Dim IdTabla As Integer = 0
