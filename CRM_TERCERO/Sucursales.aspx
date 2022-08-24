@@ -20,10 +20,6 @@
 <body onload="SucursalLlenarTabla(); SucursalesCboEmpresa(); provinciasLlenarCbo('selectProvincia'); provinciasLlenarCbo('editselectProvincia')" >
     <form id="form1" runat="server">
         <div id="app">
-
-
-
-
             <!--Barra Lateral -->
             <div id="sidebar">
                 <div class="sidebar-wrapper active">
@@ -425,7 +421,7 @@
                                                         <div class="col-md-6 col-12">
                                                             <div class="form-group">
                                                                 <label for="txtNombre">Nombre</label>
-                                                                <input type="text" id="txtNombre" class="form-control" placeholder="Ingrese Nombre de la Empresa" />
+                                                                <input type="text" id="txtNombre" class="form-control" placeholder="Ingrese Nombre Sucursal" />
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6 col-12">
@@ -493,8 +489,9 @@
                                                             <label for="Activo">Estado</label>
                                                             <fieldset class="form-group">
                                                                 <select class="form-select" id="selectEstado" placeholder="?">
-                                                                    <option value="1">SI</option>
-                                                                    <option value="2">NO</option>
+                                                                    <option selected="selected" disabled="disabled">Seleccione</option>
+                                                                    <option value="1">Habilitado</option>
+                                                                    <option value="2">Deshabilitado</option>
                                                                 </select>
                                                             </fieldset>
                                                         </div>
@@ -562,7 +559,7 @@
                                                         <div class="form-group">
                                                             <label for="editselectProvincia">Provincia</label>
                                                             <fieldset class="form-group">
-                                                                <select class="form-select" id="editselectProvincia" onchange="localidadesBuscarPorProvinciaEdit(this)">
+                                                                <select class="form-select" id="editselectProvincia" onchange="localidadesBuscarPorProvinciaEdit(this,0)">
                                                                     <option selected="selected" disabled="disabled">Seleccione una provincia </option>
                                                                 </select>
                                                             </fieldset>
@@ -618,8 +615,9 @@
                                                             <label for="editselectActivo">Activo</label>
                                                             <fieldset class="form-group">
                                                                 <select class="form-select" id="editselectEstado">
-                                                                    <option value="1">SI</option>
-                                                                    <option value="2">NO</option>
+                                                                    <option selected="selected" disabled="disabled">Seleccione</option>
+                                                                    <option value="1">Habilitado</option>
+                                                                    <option value="0">Deshabilitado</option>
 
                                                                 </select>
                                                             </fieldset>
@@ -663,11 +661,8 @@
                                                 <th scope="col">Empresa</th>
                                                 <th scope="col">Nombre</th>
                                                 <th scope="col">Fantasia</th>
-                                                <th scope="col">Provincia</th>
                                                 <th scope="col">Localidad</th>
                                                 <th scope="col">Domicilio</th>
-                                                <th scope="col">Latitud</th>
-                                                <th scope="col">Longitud</th>
                                                 <th scope="col">Observaciones</th>
                                                 <th scope="col">Prioridad</th>
                                                 <th scope="col">Estado</th>
@@ -825,17 +820,18 @@
                     var json = $.parseJSON(data.d);
                     var status = json.Status;
                     if (status == 200) {
-                        empresa.value = json.IdEmpresa;
-                        nombre.value = json.Nombre;
-                        fantasia.value = json.Fantasia;
-                        provincia.value = json.IdProvincia;
-                        localidad.value = json.IdLocalidad;
-                        domicilio.value = json.Domicilio;
-                        latitud.value = json.Lat;
-                        longitud.value = json.Lng;
-                        observaciones.value = json.Observaciones;
-                        prioridad.value = json.Prioridad;
-                        estado.value = json.Estado;
+                        empresa.value = json.IdEmpresa
+                        nombre.value = json.Nombre
+                        fantasia.value = json.Fantasia
+                        provincia.value = json.IdProvincia
+                        /*localidad.value = json.IdLocalidad;*/
+                        localidadesBuscarPorProvinciaEdit(provincia, json.IdLocalidad)
+                        domicilio.value = json.Domicilio
+                        latitud.value = json.Lat
+                        longitud.value = json.Lng
+                        observaciones.value = json.Observaciones
+                        prioridad.value = json.Prioridad
+                        estado.value = json.Estado
                     } else {
                         Swal.fire({
                             title: "LO SIENTO ALGO SALIO MAL",
@@ -872,14 +868,11 @@
                                     'IdEmpresa': json.Data[i].IdEmpresa,
                                     'Nombre': json.Data[i].Nombre,
                                     'Fantasia': json.Data[i].Fantasia,
-                                    'IdProvincia': json.Data[i].IdProvincia,
                                     'IdLocalidad': json.Data[i].IdLocalidad,
                                     'Domicilio': json.Data[i].Domicilio,
-                                    'Lat': json.Data[i].Lat,
-                                    'Lng': json.Data[i].Lng,
                                     'Observaciones': json.Data[i].Observaciones,
                                     'Prioridad': json.Data[i].Prioridad,
-                                    'Estado': json.Data[i].Estado
+                                    'Estado': json.Data[i].Estado == 1 ? 'checked' : ''
                                 })
                             }
                             return return_data;
@@ -892,14 +885,20 @@
                     { 'data': 'IdEmpresa' },
                     { 'data': 'Nombre' },
                     { 'data': 'Fantasia' },
-                    { 'data': 'IdProvincia' },
                     { 'data': 'IdLocalidad' },
                     { 'data': 'Domicilio' },
-                    { 'data': 'Lat' },
-                    { 'data': 'Lng' },
                     { 'data': 'Observaciones' },
                     { 'data': 'Prioridad' },
-                    { 'data': 'Estado' },
+                    /* { 'data': 'Estado' },*/
+                    {
+                        'data': 'Estado', orderable: false,
+                        'render': function (data, type, row) {
+                            // return '<input type="checkbox" class="editor-active" ' + row.Estado + ' >'
+                            return `<div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" ` + row.Estado + ` onchange="cambiarEstado(` + row.IdSucursal+ `)">
+                                    </div>`
+                        }
+                    },
                     {
                         'data': 'IdSucursal',
                         orderable: false,
@@ -914,6 +913,7 @@
                             return '<a onclick="SucursalesEliminar(' + row.IdSucursal + ')"><i class="material-icons" role="button">delete</i></a> '
                         }
                     },
+
                 ],
             });
         }
@@ -977,6 +977,7 @@
                             cancelButtonColor: "#DD6B55",
                             confirmButtonColor: "#DD6B55",
                         })
+                        SucursalLlenarTabla();
                     } else {
                         Swal.fire({
                             title: "LO SIENTO ALGO SALIO MAL",
@@ -1051,6 +1052,7 @@
         function localidadesBuscarPorProvincia(selectProvincia) {
             let idProvincia = selectProvincia.value
             document.getElementById("selectLocalidad").options.length = 0;
+            document.getElementById("selectLocalidad").disabled = false
             var cadena = {
                 IdProvincia: idProvincia
             }
@@ -1059,6 +1061,7 @@
             }
             Swal.fire({
                 title: 'Por favor espere',
+                text: "Cargando...",
                 html: `<img src="assets/images/svg-loaders/oval.svg" class="me-4" style="width: 3rem" alt="audio">`,
                 allowOutsideClick: false,
                 showConfirmButton: false,
@@ -1093,9 +1096,10 @@
                 }
             });
         }
-        function localidadesBuscarPorProvinciaEdit(selectProvincia) {
+        function localidadesBuscarPorProvinciaEdit(selectProvincia, idLocalidad) {
             let idProvincia = selectProvincia.value
             document.getElementById("editselectLocalidad").options.length = 0;
+            document.getElementById("editselectLocalidad").disabled = false
             var cadena = {
                 IdProvincia: idProvincia
             }
@@ -1104,10 +1108,12 @@
             }
             Swal.fire({
                 title: 'Por favor espere',
+                text: "Cargando...",
                 html: `<img src="assets/images/svg-loaders/oval.svg" class="me-4" style="width: 3rem" alt="audio">`,
                 allowOutsideClick: false,
                 showConfirmButton: false,
             });
+
             $.ajax({
                 type: "POST",
                 url: "Sucursales.aspx/LocalidadesBuscarPorProvincia",
@@ -1131,6 +1137,9 @@
                             nuevaOpcion.text = localidad.Nombre;
                             select.add(nuevaOpcion);
                             // select.appendChild(nuevaOpcion); <-- Así tambien funciona
+                        }
+                        if (idLocalidad != 0) {
+                            select.value = idLocalidad
                         }
                     } else {
                         Swal.fire("NO HAY REGISTROS CARGADOS", "Gracias por consultar", "success");
@@ -1162,6 +1171,151 @@
                 }
             });
         }
+
+        function localidadesBuscarPorProvincia(selectProvincia) {
+            let idProvincia = selectProvincia.value
+            document.getElementById("selectLocalidad").options.length = 0;
+            document.getElementById("selectLocalidad").disabled = false
+            var cadena = {
+                idProvincia: idProvincia
+            }
+            var payload = {
+                cadena: JSON.stringify(cadena)
+            }
+
+            Swal.fire({
+                title: 'Por favor espere',
+                text: "Cargando...",
+                html: `<img src="assets/images/svg-loaders/oval.svg" class="me-4" style="width: 3rem" alt="audio">`,
+                allowOutsideClick: false,
+                showConfirmButton: false,
+            });
+
+            $.ajax({
+                type: "POST",
+                url: "Sucursales.aspx/LocalidadesBuscarPorProvincia",
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(payload),
+                dataType: "json",
+                success: function (data) {
+                    swal.close();
+                    var json = $.parseJSON(data.d);
+                    if (json.Data.length > 0) {
+                        var lista_de_localidades = json.Data
+                        const select = document.getElementById('selectLocalidad');
+                        let primeraOpcion = document.createElement("option");
+                        primeraOpcion.text = "Seleccione una localidad"
+                        primeraOpcion.selected = "selected"
+                        primeraOpcion.disabled = "disabled"
+                        select.add(primeraOpcion)
+                        for (let localidad of lista_de_localidades) {
+                            let nuevaOpcion = document.createElement("option");
+                            nuevaOpcion.value = localidad.IdLocalidad;
+                            nuevaOpcion.text = localidad.Nombre;
+                            select.add(nuevaOpcion);
+                            // select.appendChild(nuevaOpcion); <-- Así tambien funciona
+                        }
+                    } else {
+                        Swal.fire("NO HAY REGISTROS CARGADOS", "Gracias por consultar", "success");
+                    }
+                }
+            });
+        }
+
+        function localidadesBuscarPorProvinciaEdit(selectProvincia, idLocalidad) {
+            let idProvincia = selectProvincia.value
+            document.getElementById("editselectLocalidad").options.length = 0;
+            document.getElementById("editselectLocalidad").disabled = false
+            var cadena = {
+                idProvincia: idProvincia
+            }
+            var payload = {
+                cadena: JSON.stringify(cadena)
+            }
+
+            Swal.fire({
+                title: 'Por favor espere',
+                text: "Cargando...",
+                html: `<img src="assets/images/svg-loaders/oval.svg" class="me-4" style="width: 3rem" alt="audio">`,
+                allowOutsideClick: false,
+                showConfirmButton: false,
+            });
+
+            $.ajax({
+                type: "POST",
+                url: "Empresas.aspx/LocalidadesBuscarPorProvincia",
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(payload),
+                dataType: "json",
+                success: function (data) {
+                    swal.close();
+                    var json = $.parseJSON(data.d);
+                    if (json.Data.length > 0) {
+                        var lista_de_localidades = json.Data
+                        let select = document.getElementById('editselectLocalidad');
+                        let primeraOpcion = document.createElement("option");
+                        primeraOpcion.text = "Seleccione una localidad"
+                        primeraOpcion.selected = "selected"
+                        primeraOpcion.disabled = "disabled"
+                        select.add(primeraOpcion)
+                        for (let localidad of lista_de_localidades) {
+                            let nuevaOpcion = document.createElement("option");
+                            nuevaOpcion.value = localidad.IdLocalidad;
+                            nuevaOpcion.text = localidad.Nombre;
+                            select.add(nuevaOpcion);
+                            // select.appendChild(nuevaOpcion); <-- Así tambien funciona
+                        }
+                        if (idLocalidad != 0) {
+                            select.value = idLocalidad
+                        }
+
+                    } else {
+                        Swal.fire("NO HAY REGISTROS CARGADOS", "Gracias por consultar", "success");
+                    }
+                }
+            });
+        }
+        function cambiarEstado(id) {
+
+            var cadena = {
+                IdSucursal: id
+            }
+            var payload = {
+                cadena: JSON.stringify(cadena)
+            }
+
+            $.ajax({
+                type: "POST",
+                url: "Sucursales.aspx/SucursalesCambiarEstado",
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(payload),
+                dataType: "json",
+                success: function (data) {
+                    var json = $.parseJSON(data.d);
+                    var status = json.Status;
+                    if (status == 200) {
+                        Swal.fire({
+                            title: "Éxito",
+                            html: "Datos modificados correctamente",
+                            icon: "success"
+                        });
+                        // llenarTabla();
+                    } else {
+                        Swal.fire({
+                            title: "LO SIENTO ALGO SALIO MAL",
+                            html: "Verifica los datos ingresados",
+                            type: "warning",
+                            showCancelButton: false,
+                            showConfirmButton: true,
+                            cancelButtonColor: "#DD6B55",
+                            confirmButtonColor: "#DD6B55",
+                        });
+                    }
+                }
+            });
+
+        }
+
         
     </script>
 
