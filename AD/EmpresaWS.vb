@@ -3,7 +3,7 @@
     Public Property RazonSocial As String
     Public Property Fantasia As String
     Public Property NroCuit As String
-    Public Property IdLocalidad As Integer
+    Public Property IdLocalidad As String
     Public Property Domicilio As String
     Public Property Lat As String
     Public Property Lng As String

@@ -22,7 +22,6 @@ Public Class Empresas
             oDs = oobjeto.BuscarTodos
             Dim IdTabla As Integer = 0
 
-
             Dim e As EmpresaWS() = New EmpresaWS(oDs.Tables(IdTabla).Rows.Count - 1) {}
 
             For i = 0 To oDs.Tables(IdTabla).Rows.Count - 1
@@ -31,7 +30,7 @@ Public Class Empresas
                     .RazonSocial = oDs.Tables(IdTabla).Rows(i).Item("RazonSocial").ToString(),
                     .Fantasia = oDs.Tables(IdTabla).Rows(i).Item("Fantasia").ToString(),
                     .NroCuit = oDs.Tables(IdTabla).Rows(i).Item("NroCuit").ToString(),
-                    .IdLocalidad = oDs.Tables(IdTabla).Rows(i).Item("IdLocalidad").ToString(),
+                    .IdLocalidad = LocalidadBuscarNombre(oDs.Tables(IdTabla).Rows(i).Item("IdLocalidad").ToString()).ToString(),
                     .Domicilio = oDs.Tables(IdTabla).Rows(i).Item("Domicilio").ToString(),
                     .Lat = oDs.Tables(IdTabla).Rows(i).Item("Lat").ToString(),
                     .Lng = oDs.Tables(IdTabla).Rows(i).Item("Lng").ToString(),
@@ -64,81 +63,40 @@ Public Class Empresas
     <ScriptMethod(ResponseFormat:=ResponseFormat.Json)>
     Public Shared Function EmpresasAgregar(ByVal cadena As String) As String
         Try
-            Dim jss As New JavaScriptSerializer()
-            Dim dict = jss.Deserialize(Of List(Of EmpresaWS))("[" & cadena & "]")
+            'Dim jss As New JavaScriptSerializer()
+            Dim dict = New JavaScriptSerializer().Deserialize(Of List(Of EmpresaWS))("[" & cadena & "]")
 
-            Dim RazonSocial = dict(0).RazonSocial.ToString
-            Dim Fantasia = dict(0).Fantasia.ToString
-            Dim NroCuit = dict(0).NroCuit.ToString
-            Dim IdLocalidad = dict(0).IdLocalidad.ToString
-            Dim Domicilio = dict(0).Domicilio.ToString
-            Dim Lat = dict(0).Lat.ToString
-            Dim Lng = dict(0).Lng.ToString
-            Dim Imagen = dict(0).Imagen.ToString
-            Dim EmpresaTipo = dict(0).EmpresaTipo.ToString
-            Dim Observaciones = dict(0).Observaciones.ToString
-            Dim Prioridad = dict(0).Prioridad.ToString
-            Dim FechaInicioActividad = dict(0).FechaInicioActividad.ToString
-            Dim Estado = dict(0).Estado.ToString
+            'Dim RazonSocial = dict(0).RazonSocial.ToString
+            'Dim Fantasia = dict(0).Fantasia.ToString
+            'Dim NroCuit = dict(0).NroCuit.ToString
+            'Dim IdLocalidad = dict(0).IdLocalidad.ToString
+            'Dim Domicilio = dict(0).Domicilio.ToString
+            'Dim Lat = dict(0).Lat.ToString
+            'Dim Lng = dict(0).Lng.ToString
+            'Dim Imagen = dict(0).Imagen.ToString
+            'Dim EmpresaTipo = dict(0).EmpresaTipo.ToString
+            'Dim Observaciones = dict(0).Observaciones.ToString
+            'Dim Prioridad = dict(0).Prioridad.ToString
+            'Dim FechaInicioActividad = dict(0).FechaInicioActividad.ToString
+            'Dim Estado = dict(0).Estado.ToString
+            'Dim rutaAbsoluta As String = New Img().Guardar("ImagenesEmpresas", Imagen)
 
+            Dim oobjeto = New Empresa()
+            oobjeto.Agregar(dict)
 
-            Dim obj As New Random()
-            Dim posibles As String = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
-            Dim longitud As Integer = posibles.Length
-            Dim letra As Char
-            Dim longitudnuevacadena As Integer = 3
-            Dim nuevacadena As String = ""
-            For i As Integer = 0 To longitudnuevacadena - 1
-                letra = posibles(obj.[Next](longitud))
-                nuevacadena += letra.ToString()
-            Next
-
-            Dim fecha As String
-            fecha = Date.Now.Year.ToString + Date.Now.Month.ToString + Date.Now.Day.ToString + Date.Now.TimeOfDay.TotalMinutes.ToString
-
-
-            Dim nombre As String
-            nombre = fecha & nuevacadena
-
-            Dim rutaServidor As String = "C:\Users\Guille\Desktop\TSDS\PP2\Proyecto\CRM_TERCERO\CRM_TERCERO\ImagenesEmpresas\"
-
-            ' Dim rutaServidor As String = "G:\FerozoWebHosting\alladioseguridad.com.ar\public_html\Admin\Frontend\ArchivosCapacitacion\"
-            Dim urlBD As String = rutaServidor & nombre & "." & "png"
-
-            ''aca convertir el base 64 a url absoluta
-            'Dim fileContents As Byte() = Convert.FromBase64String(Excel.ToString())
-            'Dim filename As String = Path.Combine(Path.GetTempPath(), Path.ChangeExtension(Guid.NewGuid().ToString(), ".xlsx"))
-            'File.WriteAllBytes(filename, fileContents)
-
-
-            'ExceltoDT(filename)
-            ''aca convertir el base 64 a url absoluta
-            Dim fileContents As Byte() = Convert.FromBase64String(Imagen.ToString()),
-                        ruta As String = urlBD
-            'ruta as String = "G:\FerozoWebHosting\alladioseguridad.com.ar\public_html\Admin\Frontend\PdfPermisos"
-
-
-
-            Dim fs As IO.FileStream
-            fs = IO.File.Create(ruta)
-            fs.Write(fileContents, 0, fileContents.Length)
-            fs.Close()
-
-            Dim rutaAbsoluta As String = "/ImagenesEmpresas/" & nombre & "." & "png"
-
-            Dim oobjeto As New Empresa
-            oobjeto.Agregar(RazonSocial, Fantasia, NroCuit, IdLocalidad, Domicilio, Lat, Lng, rutaAbsoluta, EmpresaTipo, Observaciones, Prioridad, FechaInicioActividad, Estado)
+            'oobjeto.Agregar(RazonSocial, Fantasia, NroCuit, IdLocalidad, Domicilio, Lat, Lng, rutaAbsoluta, EmpresaTipo, Observaciones, Prioridad, FechaInicioActividad, Estado)
 
             Dim data = New With {
                 Key .Status = "200"
             }
 
-            Dim serializer = New JavaScriptSerializer()
-            Dim json = serializer.Serialize(data)
+
+            'Dim serializer = New JavaScriptSerializer()
+            'Dim json = New JavaScriptSerializer().Serialize(data)
 
             Dim jsondatos = New JavaScriptSerializer().Serialize(data)
 
-            Return New JavaScriptSerializer().Serialize(data)
+            Return jsondatos
         Catch ex As Exception
             Return Error401()
         End Try
@@ -159,43 +117,20 @@ Public Class Empresas
             Dim Domicilio = dict(0).Domicilio.ToString
             Dim Lat = dict(0).Lat.ToString
             Dim Lng = dict(0).Lng.ToString
-            Dim Imagen = dict(0).Imagen.ToString
+            Dim Imagen = dict(0).Imagen
             Dim EmpresaTipo = dict(0).EmpresaTipo.ToString
             Dim Observaciones = dict(0).Observaciones.ToString
             Dim Prioridad = dict(0).Prioridad.ToString
             Dim FechaInicioActividad = dict(0).FechaInicioActividad.ToString
             Dim Estado = dict(0).Estado.ToString
+            Dim rutaAbsoluta As String
 
-            Dim obj As New Random()
-            Dim posibles As String = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
-            Dim longitud As Integer = posibles.Length
-            Dim letra As Char
-            Dim longitudnuevacadena As Integer = 3
-            Dim nuevacadena As String = ""
-            For i As Integer = 0 To longitudnuevacadena - 1
-                letra = posibles(obj.[Next](longitud))
-                nuevacadena += letra.ToString()
-            Next
-
-            Dim fecha As String
-            fecha = Date.Now.Year.ToString + Date.Now.Month.ToString + Date.Now.Day.ToString + Date.Now.TimeOfDay.TotalMinutes.ToString
-
-            Dim nombre As String
-            nombre = fecha & nuevacadena
-
-            Dim rutaServidor As String = "C:\Users\Guille\Desktop\TSDS\PP2\Proyecto\CRM_TERCERO\CRM_TERCERO\ImagenesEmpresas\"
-
-            Dim urlBD As String = rutaServidor & nombre & "." & "png"
-
-            Dim fileContents As Byte() = Convert.FromBase64String(Imagen.ToString()),
-                        ruta As String = urlBD
-
-            Dim fs As IO.FileStream
-            fs = IO.File.Create(ruta)
-            fs.Write(fileContents, 0, fileContents.Length)
-            fs.Close()
-
-            Dim rutaAbsoluta As String = "/ImagenesEmpresas/" & nombre & "." & "png"
+            'Si se modifica la imagen guarda la nueva, sino busca la ruta absoluta de la que ya tenia
+            If Imagen <> Nothing Then
+                rutaAbsoluta = New Img().Guardar("ImagenesEmpresas", Imagen.ToString)
+            Else
+                rutaAbsoluta = New Empresa().BuscarPorId(IdEmpresa).Tables(0).Rows(0).Item("Imagen").ToString()
+            End If
 
             Dim oobjeto As New Empresa
 
@@ -231,6 +166,7 @@ Public Class Empresas
             Dim IdTabla As Integer = 0
 
             Dim IdProvincia = LocalidadBuscarIdProvincia(oDs.Tables(IdTabla).Rows(0).Item("IdLocalidad").ToString())
+            Dim fecha As Date = oDs.Tables(IdTabla).Rows(0).Item("FechaInicioActividad").ToString()
 
             Dim data = New With {
                 Key .Status = "200",
@@ -247,7 +183,7 @@ Public Class Empresas
                     .EmpresaTipo = oDs.Tables(IdTabla).Rows(0).Item("EmpresaTipo").ToString(),
                     .Observaciones = oDs.Tables(IdTabla).Rows(0).Item("Observaciones").ToString(),
                     .Prioridad = oDs.Tables(IdTabla).Rows(0).Item("Prioridad").ToString(),
-                    .FechaInicioActividad = oDs.Tables(IdTabla).Rows(0).Item("FechaInicioActividad").ToString(),
+                    .FechaInicioActividad = fecha.ToShortDateString(),
                     .Estado = oDs.Tables(IdTabla).Rows(0).Item("Estado").ToString()
             }
 
@@ -383,4 +319,62 @@ Public Class Empresas
         Dim idProvincia As Integer = json2("data").Item(0).Item("Id_Provincia")
         Return idProvincia
     End Function
+
+    Public Shared Function LocalidadBuscarNombre(idLocalidad As String) As String
+        ServicePointManager.SecurityProtocol = CType(3072, SecurityProtocolType)
+        Dim request As HttpWebRequest = TryCast(WebRequest.Create("https://crear.net.ar/api/searchLocationByIdLocation?idLocalidad=" & idLocalidad), HttpWebRequest)
+        request.Method = "GET"
+        request.ContentType = "application/json"
+        Dim response As HttpWebResponse = TryCast(request.GetResponse(), HttpWebResponse)
+        Dim reader As New StreamReader(response.GetResponseStream())
+        Dim resp As String = reader.ReadToEnd()
+        Dim json2 As JObject = JObject.Parse(resp)
+        Dim Nombre As String = json2("data").Item(0).Item("Nombre")
+        Return Nombre
+    End Function
+
+
+
+    <WebMethod()>
+    <ScriptMethod(ResponseFormat:=ResponseFormat.Json)>
+    Public Shared Function EmpresaTiposBuscarTodo() As String
+        Try
+            Dim e As EmpresaTipoWS() = New EmpresaTipo().BuscarTodos
+
+            Dim data = New With {
+                Key .Status = "200",
+                Key .Data = e
+            }
+
+            Dim jsondatos = New JavaScriptSerializer().Serialize(data)
+
+            Return jsondatos
+        Catch ex As Exception
+            Return Error401()
+        End Try
+    End Function
+
+    <WebMethod()>
+    <ScriptMethod(ResponseFormat:=ResponseFormat.Json)>
+    Public Shared Function EmpresasCambiarEstado(ByVal cadena As String) As String
+        Try
+            Dim dict = New JavaScriptSerializer().Deserialize(Of List(Of EmpresaWS))("[" & cadena & "]")
+
+            Dim IdEmpresa = dict(0).IdEmpresa.ToString
+
+            Dim oobjeto As New Empresa
+            oobjeto.CambiarEstado(IdEmpresa)
+
+            Dim data = New With {
+                Key .Status = "200"
+            }
+
+            Dim jsondatos = New JavaScriptSerializer().Serialize(data)
+
+            Return jsondatos
+        Catch ex As Exception
+            Return Error401()
+        End Try
+    End Function
+
 End Class
