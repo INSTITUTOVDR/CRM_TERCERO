@@ -25,4 +25,7 @@ Public Class Sucursal2
     Public Function CboEmpresa() As DataSet
         Return o_Database.ExecuteDataSet("SucursalesCboEmpresas")
     End Function
+    Public Sub CambiarEstado(IdSucursal As Integer)
+        o_Database.ExecuteScalar("SucursalesModificarEstado", IdSucursal)
+    End Sub
 End Class

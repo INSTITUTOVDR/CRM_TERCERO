@@ -32,7 +32,7 @@ Public Class Sucursales
                     .Nombre = oDs.Tables(IdTabla).Rows(i).Item("Nombre").ToString(),
                     .Fantasia = oDs.Tables(IdTabla).Rows(i).Item("Fantasia").ToString(),
                     .IdProvincia = oDs.Tables(IdTabla).Rows(i).Item("IdProvincia").ToString(),
-                    .IdLocalidad = oDs.Tables(IdTabla).Rows(i).Item("IdLocalidad").ToString(),
+                    .IdLocalidad = LocalidadBuscarNombre(oDs.Tables(IdTabla).Rows(i).Item("IdLocalidad").ToString()).ToString(),
                     .Domicilio = oDs.Tables(IdTabla).Rows(i).Item("Domicilio").ToString(),
                     .Lat = oDs.Tables(IdTabla).Rows(i).Item("Lat").ToString(),
                     .Lng = oDs.Tables(IdTabla).Rows(i).Item("Lng").ToString(),
@@ -73,6 +73,8 @@ Public Class Sucursales
             oDs = oobjeto.BuscarPorId(IdSucursal)
 
             Dim IdTabla As Integer = 0
+
+            Dim IdProvincia = LocalidadBuscarIdProvincia(oDs.Tables(IdTabla).Rows(0).Item("IdLocalidad").ToString())
 
             Dim data = New With {
                 Key .Status = "200",
@@ -339,5 +341,53 @@ Public Class Sucursales
             Return Error401()
         End Try
 
+    End Function
+
+    Public Shared Function LocalidadBuscarIdProvincia(idLocalidad As String) As Integer
+        ServicePointManager.SecurityProtocol = CType(3072, SecurityProtocolType)
+        Dim request As HttpWebRequest = TryCast(WebRequest.Create("https://crear.net.ar/api/searchLocationByIdLocation?idLocalidad=" & idLocalidad), HttpWebRequest)
+        request.Method = "GET"
+        request.ContentType = "application/json"
+        Dim response As HttpWebResponse = TryCast(request.GetResponse(), HttpWebResponse)
+        Dim reader As New StreamReader(response.GetResponseStream())
+        Dim resp As String = reader.ReadToEnd()
+        Dim json2 As JObject = JObject.Parse(resp)
+        Dim idProvincia As Integer = json2("data").Item(0).Item("Id_Provincia")
+        Return idProvincia
+    End Function
+
+    <WebMethod()>
+    <ScriptMethod(ResponseFormat:=ResponseFormat.Json)>
+    Public Shared Function SucursalesCambiarEstado(ByVal cadena As String) As String
+        Try
+            Dim dict = New JavaScriptSerializer().Deserialize(Of List(Of SucursalWS))("[" & cadena & "]")
+
+            Dim IdSucursal = dict(0).IdSucursal.ToString
+
+            Dim oobjeto As New Sucursal2
+            oobjeto.CambiarEstado(IdSucursal)
+
+            Dim data = New With {
+                Key .Status = "200"
+            }
+
+            Dim jsondatos = New JavaScriptSerializer().Serialize(data)
+
+            Return jsondatos
+        Catch ex As Exception
+            Return Error401()
+        End Try
+    End Function
+    Public Shared Function LocalidadBuscarNombre(idLocalidad As String) As String
+        ServicePointManager.SecurityProtocol = CType(3072, SecurityProtocolType)
+        Dim request As HttpWebRequest = TryCast(WebRequest.Create("https://crear.net.ar/api/searchLocationByIdLocation?idLocalidad=" & idLocalidad), HttpWebRequest)
+        request.Method = "GET"
+        request.ContentType = "application/json"
+        Dim response As HttpWebResponse = TryCast(request.GetResponse(), HttpWebResponse)
+        Dim reader As New StreamReader(response.GetResponseStream())
+        Dim resp As String = reader.ReadToEnd()
+        Dim json2 As JObject = JObject.Parse(resp)
+        Dim Nombre As String = json2("data").Item(0).Item("Nombre")
+        Return Nombre
     End Function
 End Class
