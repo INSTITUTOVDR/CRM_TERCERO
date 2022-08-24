@@ -468,7 +468,7 @@
                                                         </div>
                                                         <div class="col-12 d-flex justify-content-end">
                                                             <button type="button" class="btn btn-secondary me-1 mb-1">Cancelar</button>
-                                                            <button type="button" class="btn btn-primary me-1 mb-1" onclick="agregar()">Enviar</button>
+                                                            <button type="button" class="btn btn-primary me-1 mb-1" onclick="validar()">Agregar</button>
                                                         </div>
                                                     </div>
                                                 </div>

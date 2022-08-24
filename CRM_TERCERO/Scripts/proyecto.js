@@ -65,8 +65,9 @@ function agregar() {
                 txtNombre.value = "";
                 txtDescripcion.value = "";
 
-                ProyectosBuscarTodos();
+                BuscarTodos2();
 
+                
 
 
             } else {
@@ -514,14 +515,14 @@ function BuscarTodos2() {
 <div class="col-md-4">
         <div class="card">
             <div class="card-content">
-                    <img src="${element.Imagen}" class="card-img-top">
+                    <img src="${element.Imagen}" class="card-img-top" style="width:50px; height:50px">
                 <div class="card-body">
                             <h4 class="card-title">${element.Nombre}</h4>
                             <p class="card-text">
                                ${element.Descripcion}
                             </p>
                         <div style="display:flex;justify-content:flex-end" >
-                        <img src="${element.ImagenPTipo}" style="width:40px; height:40px">
+                        <img src="${element.ImagenPTipo}" style="width:10px; height:10px">
                         </div>
                     <div class="card-footer d-flex justify-content-between">
                         <span>Card Footer</span>
