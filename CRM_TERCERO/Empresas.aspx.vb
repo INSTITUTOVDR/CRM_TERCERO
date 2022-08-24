@@ -30,7 +30,7 @@ Public Class Empresas
                     .RazonSocial = oDs.Tables(IdTabla).Rows(i).Item("RazonSocial").ToString(),
                     .Fantasia = oDs.Tables(IdTabla).Rows(i).Item("Fantasia").ToString(),
                     .NroCuit = oDs.Tables(IdTabla).Rows(i).Item("NroCuit").ToString(),
-                    .IdLocalidad = oDs.Tables(IdTabla).Rows(i).Item("IdLocalidad").ToString(),
+                    .IdLocalidad = LocalidadBuscarNombre(oDs.Tables(IdTabla).Rows(i).Item("IdLocalidad").ToString()).ToString(),
                     .Domicilio = oDs.Tables(IdTabla).Rows(i).Item("Domicilio").ToString(),
                     .Lat = oDs.Tables(IdTabla).Rows(i).Item("Lat").ToString(),
                     .Lng = oDs.Tables(IdTabla).Rows(i).Item("Lng").ToString(),
@@ -320,6 +320,21 @@ Public Class Empresas
         Return idProvincia
     End Function
 
+    Public Shared Function LocalidadBuscarNombre(idLocalidad As String) As String
+        ServicePointManager.SecurityProtocol = CType(3072, SecurityProtocolType)
+        Dim request As HttpWebRequest = TryCast(WebRequest.Create("https://crear.net.ar/api/searchLocationByIdLocation?idLocalidad=" & idLocalidad), HttpWebRequest)
+        request.Method = "GET"
+        request.ContentType = "application/json"
+        Dim response As HttpWebResponse = TryCast(request.GetResponse(), HttpWebResponse)
+        Dim reader As New StreamReader(response.GetResponseStream())
+        Dim resp As String = reader.ReadToEnd()
+        Dim json2 As JObject = JObject.Parse(resp)
+        Dim Nombre As String = json2("data").Item(0).Item("Nombre")
+        Return Nombre
+    End Function
+
+
+
     <WebMethod()>
     <ScriptMethod(ResponseFormat:=ResponseFormat.Json)>
     Public Shared Function EmpresaTiposBuscarTodo() As String
@@ -329,6 +344,29 @@ Public Class Empresas
             Dim data = New With {
                 Key .Status = "200",
                 Key .Data = e
+            }
+
+            Dim jsondatos = New JavaScriptSerializer().Serialize(data)
+
+            Return jsondatos
+        Catch ex As Exception
+            Return Error401()
+        End Try
+    End Function
+
+    <WebMethod()>
+    <ScriptMethod(ResponseFormat:=ResponseFormat.Json)>
+    Public Shared Function EmpresasCambiarEstado(ByVal cadena As String) As String
+        Try
+            Dim dict = New JavaScriptSerializer().Deserialize(Of List(Of EmpresaWS))("[" & cadena & "]")
+
+            Dim IdEmpresa = dict(0).IdEmpresa.ToString
+
+            Dim oobjeto As New Empresa
+            oobjeto.CambiarEstado(IdEmpresa)
+
+            Dim data = New With {
+                Key .Status = "200"
             }
 
             Dim jsondatos = New JavaScriptSerializer().Serialize(data)

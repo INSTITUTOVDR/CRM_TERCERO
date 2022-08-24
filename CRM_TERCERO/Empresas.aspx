@@ -740,7 +740,7 @@
                         <!--Tabla -->
                         <section class="section">
                             <div class="card">
-                                <div class="card-header">Simple Datatable</div>
+                                <div class="card-header">Empresas</div>
                                 <div class="card-body">
                                     <table class="table table-hover" id="tablaEmpresas">
                                         <thead>
@@ -753,10 +753,9 @@
                                                 <th scope="col">Tipo</th>
                                                 <th scope="col">Observaciones</th>
                                                 <th scope="col">Prioridad</th>
-                                                <th scope="col">Fecha de Inicio de Actividad</th>
+                                                <th scope="col">Inicio de Activ.</th>
                                                 <th scope="col">Estado</th>
                                                 <th scope="col">Editar</th>
-                                                <th scope="col">Eliminar</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -1033,7 +1032,7 @@
                                     'Observaciones': json.Data[i].Observaciones,
                                     'Prioridad': json.Data[i].Prioridad,
                                     'FechaInicioActividad': json.Data[i].FechaInicioActividad,
-                                    'Estado': json.Data[i].Estado
+                                    'Estado': json.Data[i].Estado == 1 ? 'checked':''
                                 })
                             }
                             return return_data;
@@ -1052,17 +1051,20 @@
                     { 'data': 'Observaciones' },
                     { 'data': 'Prioridad' },
                     { 'data': 'FechaInicioActividad' },
-                    { 'data': 'Estado' },
+                    //{ 'data': 'Estado' },
+                    {
+                        'data': 'Estado', orderable: false,
+                        'render': function (data, type, row) {
+                           // return '<input type="checkbox" class="editor-active" ' + row.Estado + ' >'
+                           return `<div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" ` + row.Estado + ` onchange="cambiarEstado(` + row.IdEmpresa + `)">
+                                    </div>`
+                        }
+                    },
                     {
                         'data': 'IdEmpresa', orderable: false,
                         'render': function (data, type, row) {
                             return '<a onclick="empresaBuscarPorIdModal(' + row.IdEmpresa + ')"><i class="material-icons" role="button">edit</i></a>'
-                        }
-                    },
-                    {
-                        'data': 'IdCliente', orderable: false,
-                        'render': function (data, type, row) {
-                            return '<a onclick="clienteEliminar(' + row.IdEmpresa + ')"><i class="material-icons" role="button">delete</i></a> '
                         }
                     },
                 ],
@@ -1384,6 +1386,47 @@
                     }
                 }
             });
+        }
+
+        function cambiarEstado(id){
+
+            var cadena = {
+                IdEmpresa: id
+            }
+            var payload = {
+                cadena: JSON.stringify(cadena)
+            }
+
+            $.ajax({
+                type: "POST",
+                url: "Empresas.aspx/EmpresasCambiarEstado",
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(payload),
+                dataType: "json",
+                success: function (data) {
+                    var json = $.parseJSON(data.d);
+                    var status = json.Status;
+                    if (status == 200) {
+                        Swal.fire({
+                            title: "Éxito",
+                            html: "Datos modificados correctamente",
+                            icon: "success"
+                        });
+                       // llenarTabla();
+                    }else{
+                        Swal.fire({
+                            title: "LO SIENTO ALGO SALIO MAL",
+                            html: "Verifica los datos ingresados",
+                            type: "warning",
+                            showCancelButton: false,
+                            showConfirmButton: true,
+                            cancelButtonColor: "#DD6B55",
+                            confirmButtonColor: "#DD6B55",
+                        });
+                    }
+                }
+            });
+
         }
     </script>
 </body>

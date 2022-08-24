@@ -33,4 +33,8 @@ Public Class Empresa
     Public Function BuscarPorId(IdEmpresa As Integer) As DataSet
         Return o_Database.ExecuteDataSet("EmpresasBuscarPorId", IdEmpresa)
     End Function
+    Public Sub CambiarEstado(IdEmresa As Integer)
+        o_Database.ExecuteScalar("EmpresasModificarEstado", IdEmresa)
+    End Sub
+
 End Class
