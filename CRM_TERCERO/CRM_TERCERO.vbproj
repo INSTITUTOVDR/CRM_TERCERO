@@ -106,6 +106,7 @@
     <Content Include="assets\css\pages\filepond.css" />
     <Content Include="assets\css\pages\fontawesome.css" />
     <Content Include="assets\css\pages\form-element-select.css" />
+    <Content Include="assets\css\pages\icon.css" />
     <Content Include="assets\css\pages\quill.css" />
     <Content Include="assets\css\pages\rater-js.css" />
     <Content Include="assets\css\pages\simple-datatables.css" />
@@ -221,6 +222,7 @@
     <Content Include="assets\js\extensions\ui-chartjs.js" />
     <Content Include="assets\js\extensions\ui-chartjs.js.LICENSE.txt" />
     <Content Include="assets\js\extensions\ui-todolist.js" />
+    <Content Include="assets\js\jquery.dataTables.min.js" />
     <Content Include="assets\js\pages\dashboard.js" />
     <Content Include="assets\js\pages\dashboard.js.LICENSE.txt" />
     <Content Include="assets\js\pages\form-editor.js" />
