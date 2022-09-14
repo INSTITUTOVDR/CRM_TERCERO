@@ -26,7 +26,7 @@
                     <div class="sidebar-header position-relative">
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="logo">
-                                <a href="#">
+                                <a href="IndexPrueba.aspx">
                                     <img src="assets/images/logo/logo.svg" alt="Logo" srcset="" />
                                 </a>
                             </div>
@@ -55,282 +55,41 @@
                     <div class="sidebar-menu">
                         <ul class="menu">
                             <li class="sidebar-title">Menu</li>
-                             <li class="sidebar-item  ">
-                                <a href="Sucursales.aspx" class='sidebar-link'>
-                                    <i class="bi bi-grid-fill"></i>
-                                      <span>Sucursales</span>
+                             
+                            <li class="sidebar-item  ">
+                                <a href="ContactoTipos.aspx" class='sidebar-link'>
+                                    <i class="bi bi-telephone-plus"></i>
+                                      <span>Contactos Tipo</span>
                                 </a>
                             </li>
-                            <li class="sidebar-item  ">
+                             <li class="sidebar-item  ">
                                 <a href="Empresas.aspx" class='sidebar-link'>
-                                    <i class="bi bi-grid-fill"></i>
+                                    <i class="bi bi-graph-up-arrow"></i>
                                       <span>Empresas</span>
                                 </a>
                             </li>
-                            <li class="sidebar-item  ">
+
+                            <li class="sidebar-item  has-sub">
                                 <a href="Proyectos.aspx" class='sidebar-link'>
-                                    <i class="bi bi-grid-fill"></i>
-                                      <span>Proyectos</span>
+                                     <i class="bi bi-clipboard2-data"></i>
+                                    <span>Proyectos</span>
+
                                 </a>
+                                <ul class="submenu">
+                                    <li class="submenu-item">
+                                        <a href="ProyectosTipo.aspx">
+                                             <i class="bi bi-clipboard2-check"></i>
+                                                <span>Tipos de Proyectos</span>
+                                       </a>
+                                    </li>
+                                </ul>
                             </li>
-                            <li class="sidebar-item  ">
-                                <a href="ProyectosTipo.aspx" class='sidebar-link'>
-                                    <i class="bi bi-grid-fill"></i>
-                                      <span>Proyectos Tipos</span>
-                                </a>
-                            </li>
+
                             <li class="sidebar-item  ">
                                 <a href="Sucursales.aspx" class='sidebar-link'>
-                                    <i class="bi bi-grid-fill"></i>
+                                    <i class="bi bi-building"></i>
                                       <span>Sucursales</span>
                                 </a>
-                            </li>
-                            <li class="sidebar-item  ">
-                                <a href="ContactoTipos.aspx" class='sidebar-link'>
-                                    <i class="bi bi-grid-fill"></i>
-                                      <span>Contacto Tipos</span>
-                                </a>
-                            </li>
-                            <li class="sidebar-item  ">
-                                <a href="index.html" class='sidebar-link'>
-                                    <i class="bi bi-grid-fill"></i>
-                                    <span>Dashboard</span>
-                                </a>
-                            </li>
-
-                            <li class="sidebar-item  has-sub">
-                                <a href="#" class='sidebar-link'>
-                                    <i class="bi bi-stack"></i>
-                                    <span>Components</span>
-                                </a>
-                                <ul class="submenu">
-                                    <li class="submenu-item">
-                                        <a href="#">Item1</a>
-                                    </li>
-                                    <li class="submenu-item">
-                                        <a href="#">Item2</a>
-                                    </li>
-                                </ul>
-                            </li>
-
-                            <li class="sidebar-item  has-sub">
-                                <a href="#" class='sidebar-link'>
-                                    <i class="bi bi-collection-fill"></i>
-                                    <span>Extra Components</span>
-                                </a>
-                                <ul class="submenu">
-                                    <li class="submenu-item">
-                                        <a href="#">Item1</a>
-                                    </li>
-                                    <li class="submenu-item">
-                                        <a href="#">Item2</a>
-                                    </li>
-                                </ul>
-                            </li>
-
-                            <li class="sidebar-item has-sub">
-                                <a href="#" class='sidebar-link'>
-                                    <i class="bi bi-grid-1x2-fill"></i>
-                                    <span>Layouts</span>
-                                </a>
-                                <ul class="submenu">
-                                    <li class="submenu-item">
-                                        <a href="#">Item1</a>
-                                    </li>
-                                    <li class="submenu-item">
-                                        <a href="#">Item2</a>
-                                    </li>
-                                </ul>
-                            </li>
-
-                            <li class="sidebar-title">Forms &amp; Tables</li>
-
-                            <li class="sidebar-item  has-sub">
-                                <a href="#" class='sidebar-link'>
-                                    <i class="bi bi-hexagon-fill"></i>
-                                    <span>Form Elements</span>
-                                </a>
-                                <ul class="submenu">
-                                    <li class="submenu-item">
-                                        <a href="#">Item1</a>
-                                    </li>
-                                    <li class="submenu-item">
-                                        <a href="#">Item2</a>
-                                    </li>
-                                </ul>
-                            </li>
-
-                            <li class="sidebar-item">
-                                <a href="form-layout.html" class='sidebar-link'>
-                                    <i class="bi bi-file-earmark-medical-fill"></i>
-                                    <span>Form Layout</span>
-                                </a>
-                            </li>
-
-                            <li class="sidebar-item  has-sub">
-                                <a href="#" class='sidebar-link'>
-                                    <i class="bi bi-pen-fill"></i>
-                                    <span>Form Editor</span>
-                                </a>
-                                <ul class="submenu">
-                                    <li class="submenu-item">
-                                        <a href="#">Item1</a>
-                                    </li>
-                                    <li class="submenu-item">
-                                        <a href="#">Item2</a>
-                                    </li>
-                                </ul>
-                            </li>
-
-                            <li class="sidebar-item">
-                                <a href="table.html" class='sidebar-link'>
-                                    <i class="bi bi-grid-1x2-fill"></i>
-                                    <span>Table</span>
-                                </a>
-                            </li>
-
-                            <li class="sidebar-item  has-sub">
-                                <a href="#" class='sidebar-link'>
-                                    <i class="bi bi-file-earmark-spreadsheet-fill"></i>
-                                    <span>Datatables</span>
-                                </a>
-                                <ul class="submenu">
-                                    <li class="submenu-item">
-                                        <a href="#">Item1</a>
-                                    </li>
-                                    <li class="submenu-item">
-                                        <a href="#">Item2</a>
-                                    </li>
-                                </ul>
-                            </li>
-
-                            <li class="sidebar-title">Extra UI</li>
-
-                            <li class="sidebar-item  has-sub">
-                                <a href="#" class='sidebar-link'>
-                                    <i class="bi bi-pentagon-fill"></i>
-                                    <span>Widgets</span>
-                                </a>
-                                <ul class="submenu">
-                                    <li class="submenu-item">
-                                        <a href="#">Item1</a>
-                                    </li>
-                                    <li class="submenu-item">
-                                        <a href="#">Item2</a>
-                                    </li>
-                                </ul>
-                            </li>
-
-                            <li class="sidebar-item  has-sub">
-                                <a href="#" class='sidebar-link'>
-                                    <i class="bi bi-egg-fill"></i>
-                                    <span>Icons</span>
-                                </a>
-                                <ul class="submenu">
-                                    <li class="submenu-item">
-                                        <a href="#">Item1</a>
-                                    </li>
-                                    <li class="submenu-item">
-                                        <a href="#">Item2</a>
-                                    </li>
-                                </ul>
-                            </li>
-
-                            <li class="sidebar-item  has-sub">
-                                <a href="#" class='sidebar-link'>
-                                    <i class="bi bi-bar-chart-fill"></i>
-                                    <span>Charts</span>
-                                </a>
-                                <ul class="submenu">
-                                    <li class="submenu-item">
-                                        <a href="#">Item1</a>
-                                    </li>
-                                    <li class="submenu-item">
-                                        <a href="#">Item2</a>
-                                    </li>
-                                </ul>
-                            </li>
-
-                            <li class="sidebar-item">
-                                <a href="ui-file-uploader.html" class='sidebar-link'>
-                                    <i class="bi bi-cloud-arrow-up-fill"></i>
-                                    <span>File Uploader</span>
-                                </a>
-                            </li>
-
-                            <li class="sidebar-item  has-sub">
-                                <a href="#" class='sidebar-link'>
-                                    <i class="bi bi-map-fill"></i>
-                                    <span>Maps</span>
-                                </a>
-                                <ul class="submenu">
-                                    <li class="submenu-item">
-                                        <a href="#">Item1</a>
-                                    </li>
-                                    <li class="submenu-item">
-                                        <a href="#">Item2</a>
-                                    </li>
-                                </ul>
-                            </li>
-
-                            <li class="sidebar-title">Pages</li>
-
-                            <li class="sidebar-item  ">
-                                <a href="application-email.html" class='sidebar-link'>
-                                    <i class="bi bi-envelope-fill"></i>
-                                    <span>Email Application</span>
-                                </a>
-                            </li>
-
-                            <li class="sidebar-item  ">
-                                <a href="application-chat.html" class='sidebar-link'>
-                                    <i class="bi bi-chat-dots-fill"></i>
-                                    <span>Chat Application</span>
-                                </a>
-                            </li>
-
-                            <li class="sidebar-item  ">
-                                <a href="application-gallery.html" class='sidebar-link'>
-                                    <i class="bi bi-image-fill"></i>
-                                    <span>Photo Gallery</span>
-                                </a>
-                            </li>
-
-                            <li class="sidebar-item  ">
-                                <a href="application-checkout.html" class='sidebar-link'>
-                                    <i class="bi bi-basket-fill"></i>
-                                    <span>Checkout Page</span>
-                                </a>
-                            </li>
-
-                            <li class="sidebar-item  has-sub">
-                                <a href="#" class='sidebar-link'>
-                                    <i class="bi bi-person-badge-fill"></i>
-                                    <span>Authentication</span>
-                                </a>
-                                <ul class="submenu">
-                                    <li class="submenu-item">
-                                        <a href="#">Item1</a>
-                                    </li>
-                                    <li class="submenu-item">
-                                        <a href="#">Item2</a>
-                                    </li>
-                                </ul>
-                            </li>
-
-                            <li class="sidebar-item  has-sub">
-                                <a href="#" class='sidebar-link'>
-                                    <i class="bi bi-x-octagon-fill"></i>
-                                    <span>Errors</span>
-                                </a>
-                                <ul class="submenu">
-                                    <li class="submenu-item">
-                                        <a href="#">Item1</a>
-                                    </li>
-                                    <li class="submenu-item">
-                                        <a href="#">Item2</a>
-                                    </li>
-                                </ul>
                             </li>
                         </ul>
                     </div>
@@ -380,7 +139,7 @@
                                     <a href="#" data-bs-toggle="dropdown" aria-expanded="false">
                                         <div class="user-menu d-flex">
                                             <div class="user-name text-end me-3">
-                                                <h6 class="mb-0 text-gray-600">John Ducky</h6>
+                                                <h6 class="mb-0 text-gray-600">Arecubia</h6>
                                                 <p class="mb-0 text-sm text-gray-600">Administrador</p>
                                             </div>
                                             <div class="user-img d-flex align-items-center">
@@ -416,14 +175,13 @@
                         <div class="page-title">
                             <div class="row">
                                 <div class="col-12 col-md-6 order-md-1 order-last">
-                                    <h3>Ejemplo de ABM</h3>
-                                    <p class="text-subtitle text-muted">Este es un ejemplo de abm con dos columnas.</p>
+                                    <h3>Administrar sucursales</h3>
                                 </div>
                                 <div class="col-12 col-md-6 order-md-2 order-first">
                                     <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                                         <ol class="breadcrumb">
-                                            <li class="breadcrumb-item"><a href="#">Inicio</a></li>
-                                            <li class="breadcrumb-item active" aria-current="page">Ejemplo ABM</li>
+                                            <li class="breadcrumb-item"><a href="IndexPrueba.aspx">Inicio</a></li>
+                                            <li class="breadcrumb-item active" aria-current="page">Sucursales</li>
                                         </ol>
                                     </nav>
                                 </div>
@@ -442,13 +200,13 @@
                                                 <div class="form">
                                                     <div class="row">
                                                         <div class="col-12">
-                                                            <h5 class="card-title text-muted">Información Básica</h5>
+                                                            <h5 class="card-title text-muted">Información básica</h5>
                                                         </div>
                                                         <div class="col-md-6 col-12">
                                                             <label for="Empresa">Empresa</label>
                                                             <fieldset class="form-group">
-                                                                <select class="form-select" id="selectEmpresa" placeholder="Seleccionar Empresa">
-                                                                    <option selected="selected" disabled="disabled">Seleccione una Empresa </option>
+                                                                <select class="form-select" id="selectEmpresa" placeholder="Seleccionar empresa">
+                                                                    <option selected="selected" disabled="disabled">Seleccione una empresa </option>
                                                                 </select>
                                                             </fieldset>
                                                         </div>
@@ -456,13 +214,13 @@
                                                         <div class="col-md-6 col-12">
                                                             <div class="form-group">
                                                                 <label for="txtNombre">Nombre</label>
-                                                                <input type="text" id="txtNombre" class="form-control" placeholder="Ingrese Nombre Sucursal" />
+                                                                <input type="text" id="txtNombre" class="form-control" placeholder="Ingrese nombre sucursal" />
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6 col-12">
                                                             <div class="form-group">
                                                                 <label for="txtFantasia">Fantasía</label>
-                                                                <input type="text" id="txtFantasia" class="form-control" placeholder="Ingrese Nombre de Fantasía" />
+                                                                <input type="text" id="txtFantasia" class="form-control" placeholder="Ingrese nombre de fantasía" />
                                                             </div>
                                                         </div>
                                                         <div class="col-12">
@@ -472,7 +230,7 @@
                                                           <div class="col-md-6 col-12">
                                                             <label for="Provincia">Provincia</label>
                                                             <fieldset class="form-group">
-                                                                <select class="form-select" id="selectProvincia" placeholder="Seleccionar Provincia" onchange="localidadesBuscarPorProvincia(this)">
+                                                                <select class="form-select" id="selectProvincia" placeholder="Seleccionar provincia" onchange="localidadesBuscarPorProvincia(this)">
                                                                <option selected="selected" disabled="disabled">Seleccione una provincia</option>
                                                                 </select>
                                                             </fieldset>
@@ -480,7 +238,7 @@
                                                           <div class="col-md-6 col-12">
                                                             <label for="Localidad">Localidad</label>
                                                             <fieldset class="form-group">
-                                                                <select class="form-select" id="selectLocalidad" placeholder="Seleccionar Localidad" >
+                                                                <select class="form-select" id="selectLocalidad" placeholder="Seleccionar localidad" >
                                                                   <option selected="selected" disabled="disabled">Seleccione una localidad</option>
                                                                 </select>
                                                             </fieldset>
@@ -488,20 +246,20 @@
                                                         <div class="col-md-6 col-12">
                                                             <div class="form-group">
                                                                 <label for="txtDomicilio">Domicilio</label>
-                                                                <input type="text" id="txtDomicilio" class="form-control" placeholder="Ingrese Domicilio" />
+                                                                <input type="text" id="txtDomicilio" class="form-control" placeholder="Ingrese domicilio" />
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6 col-12">
                                                             <div class="form-group">
                                                                 <label for="txtLat">Latitud</label>
-                                                                <input type="text" id="txtLat" class="form-control" placeholder="Ingrese Latitud" />
+                                                                <input type="text" id="txtLat" class="form-control" placeholder="Ingrese latitud" />
                                                             </div>
                                                         </div>
 
                                                         <div class="col-md-6 col-12">
                                                             <div class="form-group">
                                                                 <label for="txtLng">Longitud</label>
-                                                                <input type="text" id="txtLng" class="form-control" placeholder="Ingrese Longitud" />
+                                                                <input type="text" id="txtLng" class="form-control" placeholder="Ingrese longitud" />
                                                             </div>
                                                         </div>
                                                         <div class="col-12">
@@ -511,20 +269,20 @@
                                                            <div class="col-md-6 col-12">
                                                             <div class="form-group">
                                                                 <label for="txtObservaciones">Observaciones</label>
-                                                                <input type="text" id="txtObservaciones" class="form-control" placeholder="Describir Observaciones" />
+                                                                <input type="text" id="txtObservaciones" class="form-control" placeholder="Describir observaciones" />
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6 col-12">
                                                             <div class="form-group">
                                                                 <label for="txt">Prioridad</label>
-                                                                <input type="text" id="txtPrioridad" class="form-control" placeholder="Prioridad" />
+                                                                <input type="text" id="txtPrioridad" class="form-control" placeholder="Ingrese número de prioridad" />
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6 col-12">
                                                             <label for="Activo">Estado</label>
                                                             <fieldset class="form-group">
                                                                 <select class="form-select" id="selectEstado" placeholder="?">
-                                                                    <option selected="selected" disabled="disabled">Seleccione</option>
+                                                                    <option selected="selected" disabled="disabled">Seleccione estado</option>
                                                                     <option value="1">Habilitado</option>
                                                                     <option value="2">Deshabilitado</option>
                                                                 </select>
@@ -558,7 +316,7 @@
                                             <div class="card-body p-0">
                                                 <div class="row">
                                                     <div class="col-12">
-                                                        <h5 class="card-title text-muted">Informacion Basica</h5>
+                                                        <h5 class="card-title text-muted">Información básica</h5>
                                                     </div>
 
 
@@ -576,19 +334,19 @@
                                                     <div class="col-md-6 col-12">
                                                         <div class="form-group">
                                                             <label for="editittxtNombre">Nombre</label>
-                                                            <input type="text" id="edittxtNombre" class="form-control" placeholder="Ingrese Nombre de la empresa" />
+                                                            <input type="text" id="edittxtNombre" class="form-control" placeholder="Ingrese nombre de la empresa" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6 col-12">
                                                         <div class="form-group">
-                                                            <label for="edittxtFantasia">Fantasia</label>
-                                                            <input type="text" id="edittxtFantasia" class="form-control" placeholder="Ingrese Nombre de Fantasia" />
+                                                            <label for="edittxtFantasia">Fantasía</label>
+                                                            <input type="text" id="edittxtFantasia" class="form-control" placeholder="Ingrese nombre de fantasía" />
                                                         </div>
                                                     </div>
 
                                                     <div class="col-12">
                                                         <hr />
-                                                        <h5 class="card-title text-muted mt-2">Ubicacion</h5>
+                                                        <h5 class="card-title text-muted mt-2">Ubicación</h5>
                                                     </div>
                                                      <div class="col-md-6 col-12">
                                                         <div class="form-group">
@@ -613,20 +371,20 @@
                                                     <div class="col-md-6 col-12">
                                                         <div class="form-group">
                                                             <label for="edittxtDomicilio">Domicilio</label>
-                                                            <input type="text" id="edittxtDomicilio" class="form-control" placeholder="Ingrese Domicilio" />
+                                                            <input type="text" id="edittxtDomicilio" class="form-control" placeholder="Ingrese domicilio" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6 col-12">
                                                         <div class="form-group">
                                                             <label for="edittxtLat">Latitud</label>
-                                                            <input type="text" id="edittxtLat" class="form-control" placeholder="Ingrese Latitud" />
+                                                            <input type="text" id="edittxtLat" class="form-control" placeholder="Ingrese latitud" />
                                                         </div>
                                                     </div>
 
                                                     <div class="col-md-6 col-12">
                                                         <div class="form-group">
                                                             <label for="edittxtLng">Longitud</label>
-                                                            <input type="text" id="edittxtLng" class="form-control" placeholder="Ingrese Longitud" />
+                                                            <input type="text" id="edittxtLng" class="form-control" placeholder="Ingrese longitud" />
                                                         </div>
                                                     </div>
                                                     <div class="col-12">
@@ -636,13 +394,13 @@
                                                      <div class="col-md-6 col-12">
                                                         <div class="form-group">
                                                             <label for="edittxtObservaciones">Observaciones</label>
-                                                            <input type="text" id="edittxtObservaciones" class="form-control" placeholder="Describir Observaciones" />
+                                                            <input type="text" id="edittxtObservaciones" class="form-control" placeholder="Describir observaciones" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6 col-12">
                                                         <div class="form-group">
                                                             <label for="edittxtPrioridad">Prioridad</label>
-                                                            <input type="text" id="edittxtPrioridad" class="form-control" placeholder="Prioridad" />
+                                                            <input type="text" id="edittxtPrioridad" class="form-control" placeholder="Ingrese número de prioridad" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6 col-12">
@@ -650,7 +408,7 @@
                                                             <label for="editselectActivo">Activo</label>
                                                             <fieldset class="form-group">
                                                                 <select class="form-select" id="editselectEstado">
-                                                                    <option selected="selected" disabled="disabled">Seleccione</option>
+                                                                    <option selected="selected" disabled="disabled">Seleccione estado</option>
                                                                     <option value="1">Habilitado</option>
                                                                     <option value="0">Deshabilitado</option>
 
@@ -687,7 +445,7 @@
                             <div class="card">
                                 <div class="card-header"></div>
                                 <div class="card-body">
-                                    <label>Grilla de Sucursales</label>
+                                    <label>Listado de sucursales</label>
                                     <table class="table table-hover" id="tablaSucursales">
 
                                         <thead>

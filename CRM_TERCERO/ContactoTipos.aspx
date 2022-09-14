@@ -52,49 +52,43 @@
                             </div>
                         </div>
                     </div>
-                    <div class="sidebar-menu">
+              <div class="sidebar-menu">
                         <ul class="menu">
                             <li class="sidebar-title">Menu</li>
+                             
                             <li class="sidebar-item  ">
-                                <a href="Sucursales.aspx" class='sidebar-link'>
-                                    <i class="bi bi-grid-fill"></i>
-                                      <span>Sucursales</span>
+                                <a href="ContactoTipos.aspx" class='sidebar-link'>
+                                    <i class="bi bi-telephone-plus"></i>
+                                      <span>Contactos Tipo</span>
                                 </a>
                             </li>
-                            <li class="sidebar-item  ">
+                             <li class="sidebar-item  ">
                                 <a href="Empresas.aspx" class='sidebar-link'>
-                                    <i class="bi bi-grid-fill"></i>
+                                    <i class="bi bi-graph-up-arrow"></i>
                                       <span>Empresas</span>
                                 </a>
                             </li>
-                            <li class="sidebar-item  ">
+
+                            <li class="sidebar-item  has-sub">
                                 <a href="Proyectos.aspx" class='sidebar-link'>
-                                    <i class="bi bi-grid-fill"></i>
-                                      <span>Proyectos</span>
+                                     <i class="bi bi-clipboard2-data"></i>
+                                    <span>Proyectos</span>
+
                                 </a>
+                                <ul class="submenu">
+                                    <li class="submenu-item">
+                                        <a href="ProyectosTipo.aspx">
+                                             <i class="bi bi-clipboard2-check"></i>
+                                                <span>Tipos de Proyectos</span>
+                                       </a>
+                                    </li>
+                                </ul>
                             </li>
-                            <li class="sidebar-item  ">
-                                <a href="ProyectosTipo.aspx" class='sidebar-link'>
-                                    <i class="bi bi-grid-fill"></i>
-                                      <span>Proyectos Tipos</span>
-                                </a>
-                            </li>
+
                             <li class="sidebar-item  ">
                                 <a href="Sucursales.aspx" class='sidebar-link'>
-                                    <i class="bi bi-grid-fill"></i>
+                                    <i class="bi bi-building"></i>
                                       <span>Sucursales</span>
-                                </a>
-                            </li>
-                            <li class="sidebar-item  ">
-                                <a href="ContactoTipos.aspx" class='sidebar-link'>
-                                    <i class="bi bi-grid-fill"></i>
-                                      <span>Contacto Tipos</span>
-                                </a>
-                            </li>
-                            <li class="sidebar-item  ">
-                                <a href="index.html" class='sidebar-link'>
-                                    <i class="bi bi-grid-fill"></i>
-                                    <span>Dashboard</span>
                                 </a>
                             </li>
                         </ul>
