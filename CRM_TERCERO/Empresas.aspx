@@ -90,7 +90,7 @@
                                     <i class="bi bi-grid-fill"></i>
                                       <span>Contacto Tipos</span>
                                 </a>
-                            </li>                          
+                            </li>
                             <li class="sidebar-item  ">
                                 <a href="index.html" class='sidebar-link'>
                                     <i class="bi bi-grid-fill"></i>
@@ -503,18 +503,19 @@
                                                                 <label for="selectContactoTipo">Contacto</label>
                                                                 <fieldset class="form-group">
                                                                     <select class="form-select" id="selectContactoTipo">
-                                                                        <option value="1">Opción 1</option>
-                                                                        <option value="2">Opción 2</option>
-                                                                        <option value="3">Opción 3</option>
+                                                                        <option selected="selected" disabled="disabled">Seleccione</option>
                                                                     </select>
                                                                 </fieldset>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6 col-12">
                                                             <div class="form-group mt-4">
-                                                                <a href="#" class="btn icon btn-outline-secondary"><i data-feather="plus"></i></a>
+                                                                <button type="button" class="btn icon btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#modalContactoTipo"><i data-feather="plus"></i></button>
                                                             </div>
                                                         </div>
+                                                        <div class="row" id="FormasContacto">
+
+                                                        </div>                                                       
                                                         <div class="col-12">
                                                             <hr />
                                                             <h5 class="card-title text-muted mt-2">Información Geográfica</h5>
@@ -680,7 +681,7 @@
                                                 </div>
                                                 <div class="col-md-6 col-12">
                                                     <div class="form-group mt-4">
-                                                        <a href="#" class="btn icon btn-outline-secondary"><i data-feather="plus"></i></a>
+                                                        <a href="modalContactoTipo()" class="btn icon btn-outline-secondary"><i data-feather="plus"></i></a>
                                                     </div>
                                                 </div>
                                                 <div class="col-12">
@@ -772,6 +773,65 @@
                             </div>
                         </div>
 
+                         <!-- Modal Contacto Tipo-->
+                        <div class="modal fade text-left w-100" id="modalContactoTipo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel17" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Agregar forma de contacto</h4>
+                                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                            <i data-feather="x"></i>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="form">
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <h5 class="card-title text-muted">Información de Contacto</h5>
+                                                </div>
+                                                <div class="col-md-6 col-12">
+                                                    <div class="form-group">
+                                                        <input type="text" id="txtIdContactoTipo" hidden="hidden" />
+                                                        <label for="txtValorContactoTipo">Valor</label>
+                                                        <input type="text" id="txtValorContactoTipo" class="form-control" placeholder="Valor" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-12">
+                                                    <div class="form-group">
+                                                        <label for="txtCargoContactoTipo">Cargo</label>
+                                                        <input type="text" id="txtCargoContactoTipo" class="form-control" placeholder="Cargo" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-12">
+                                                    <div class="form-group">
+                                                        <label for="selectEditEstado">Estado</label>
+                                                        <fieldset class="form-group">
+                                                            <select class="form-select" id="selectEstadoContactoTipo">
+                                                                <option selected="selected" disabled="disabled">Seleccione</option>
+                                                                <option value="1">Habilitado</option>
+                                                                <option value="0">Deshabilitado</option>
+                                                            </select>
+                                                        </fieldset>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                            <i class="bx bx-x d-block d-sm-none"></i>
+                                            <span class="d-none d-sm-block">Cancelar</span>
+                                        </button>
+                                        <button type="button" class="btn btn-primary ml-1" data-bs-dismiss="modal">
+                                            <i class="bx bx-check d-block d-sm-none"></i>
+                                            <span class="d-none d-sm-block" onclick="formaContactoAgregar()">Agregar</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
                         <!--Tabla -->
                         <section class="section">
                             <div class="card">
@@ -832,6 +892,8 @@
             provinciasLlenarCbo('selectEditIdProvincia');
             empresaTiposLlenarCbo('selectEmpresaTipo');
             empresaTiposLlenarCbo('selectEditEmpresaTipo');
+            contactoTiposLlenarCbo('selectContactoTipo');
+            //$('#modalContactoTipo').modal('show')
         });
 
         function validarCampos() {
@@ -1423,6 +1485,34 @@
             });
         }
 
+       function contactoTiposLlenarCbo(idSelect){
+            $.ajax({
+                type: "POST",
+                url: "Empresas.aspx/ContactoTiposBuscarTodos",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    var json = $.parseJSON(data.d);
+                    if (json.Data.length > 0) {
+                        var lista_contacto_tipos = json.Data
+                        const select = document.getElementById(idSelect);
+                        for(let tipo of lista_contacto_tipos) {
+                            if (tipo.Activo){
+                                let nuevaOpcion = document.createElement("option");
+                                nuevaOpcion.value = tipo.IdContactoTipo;
+                                nuevaOpcion.text = tipo.Nombre;
+                                select.add(nuevaOpcion);
+                                // select.appendChild(nuevaOpcion); <-- Así tambien funciona
+                            }
+                        }
+                    } else {
+                        Swal.fire("NO HAY REGISTROS CARGADOS", "Gracias por consultar", "success");
+                    }
+                }
+            });
+
+        }
+
         function cambiarEstado(id){
 
             var cadena = {
@@ -1461,8 +1551,26 @@
                     }
                 }
             });
+        }
+
+        function formaContactoAgregar(){
+            let IdContactoTipo = document.getElementById('selectContactoTipo').value;
+            let Valor = document.getElementById('txtValorContactoTipo').value;
+            let Cargo = document.getElementById('txtCargoContactoTipo').value;
+            let Estado = document.getElementById('selectEstadoContactoTipo').value;
+
+            let divFormasContacto = document.getElementById('FormasContacto')
+
+            let nuevaFormaContacto = document.createElement("div")
+            nuevaFormaContacto.classList.add("col-1")
+            let imagenContacto = document.createElement("img")
+            imagenContacto.src="./ImagenesEmpresas/20228101097,34734655167ORi.png"
+            imagenContacto.width = 50
+            divFormasContacto.appendChild(nuevaFormaContacto)
+            nuevaFormaContacto.appendChild(imagenContacto)
 
         }
+
     </script>
 </body>
 </html>
