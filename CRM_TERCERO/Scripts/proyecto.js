@@ -525,7 +525,6 @@ function BuscarTodos2() {
                         <img src="${element.ImagenPTipo}" style="width:10px; height:10px">
                         </div>
                     <div class="card-footer d-flex justify-content-between">
-                        <span>Card Footer</span>
                         <button class="btn btn-light-primary">${element.Sucursal}</button>
                     </div>
                 </div>

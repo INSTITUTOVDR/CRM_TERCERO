@@ -231,7 +231,7 @@
     <Content Include="ContactoTipos.aspx" />
     <Content Include="Empresas.aspx" />
     <Content Include="index.aspx" />
-    <Content Include="IndexPrueba.aspx" />
+    <Content Include="Informaciones.aspx" />
     <Content Include="Librerias\Microsoft.Practices.EnterpriseLibrary.Common.dll" />
     <Content Include="Librerias\Microsoft.Practices.EnterpriseLibrary.Data.dll" />
     <Content Include="Librerias\Microsoft.Practices.ServiceLocation.dll" />
@@ -259,6 +259,7 @@
     </Compile>
     <Compile Include="ContactoTipos.aspx.vb">
       <DependentUpon>ContactoTipos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Empresas.aspx.designer.vb">
       <DependentUpon>Empresas.aspx</DependentUpon>
@@ -274,11 +275,11 @@
       <DependentUpon>index.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
-    <Compile Include="IndexPrueba.aspx.designer.vb">
-      <DependentUpon>IndexPrueba.aspx</DependentUpon>
+    <Compile Include="Informaciones.aspx.designer.vb">
+      <DependentUpon>Informaciones.aspx</DependentUpon>
     </Compile>
-    <Compile Include="IndexPrueba.aspx.vb">
-      <DependentUpon>IndexPrueba.aspx</DependentUpon>
+    <Compile Include="Informaciones.aspx.vb">
+      <DependentUpon>Informaciones.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />

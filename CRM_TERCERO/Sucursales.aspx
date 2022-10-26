@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="assets/css/pages/datatables.css" />
     <link rel="stylesheet" href="assets/css/pages/icon.css" />
 </head>
-<body onload="SucursalLlenarTabla(); SucursalesCboEmpresa(); provinciasLlenarCbo('selectProvincia'); provinciasLlenarCbo('editselectProvincia')" >
+<body onload="SucursalLlenarTabla(); SucursalesCboEmpresa(); provinciasLlenarCbo('selectProvincia'); provinciasLlenarCbo('editselectProvincia')">
     <form id="form1" runat="server">
         <div id="app">
             <!--Barra Lateral -->
@@ -26,7 +26,7 @@
                     <div class="sidebar-header position-relative">
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="logo">
-                                <a href="IndexPrueba.aspx">
+                                <a href="#">
                                     <img src="assets/images/logo/logo.svg" alt="Logo" srcset="" />
                                 </a>
                             </div>
@@ -55,32 +55,46 @@
                     <div class="sidebar-menu">
                         <ul class="menu">
                             <li class="sidebar-title">Menu</li>
-                             
+
                             <li class="sidebar-item  ">
                                 <a href="ContactoTipos.aspx" class='sidebar-link'>
                                     <i class="bi bi-telephone-plus"></i>
-                                      <span>Contactos Tipo</span>
+                                    <span>Contactos Tipo</span>
                                 </a>
                             </li>
-                             <li class="sidebar-item  ">
+                            <li class="sidebar-item  ">
                                 <a href="Empresas.aspx" class='sidebar-link'>
                                     <i class="bi bi-graph-up-arrow"></i>
-                                      <span>Empresas</span>
+                                    <span>Empresas</span>
+                                </a>
+                            </li>
+
+                            <li class="sidebar-item">
+                                <a href="Informaciones.aspx" class='sidebar-link'>
+                                    <i class="bi bi-info-circle"></i>
+                                    <span>Informaciones</span>
+
                                 </a>
                             </li>
 
                             <li class="sidebar-item  has-sub">
                                 <a href="Proyectos.aspx" class='sidebar-link'>
-                                     <i class="bi bi-clipboard2-data"></i>
+                                    <i class="bi bi-clipboard2-data"></i>
                                     <span>Proyectos</span>
 
                                 </a>
                                 <ul class="submenu">
                                     <li class="submenu-item">
                                         <a href="ProyectosTipo.aspx">
-                                             <i class="bi bi-clipboard2-check"></i>
-                                                <span>Tipos de Proyectos</span>
-                                       </a>
+                                            <i class="bi bi-clipboard2-check"></i>
+                                            <span>Tipos de Proyectos</span>
+                                        </a>
+                                    </li>
+                                    <li class="submenu-item">
+                                        <a href="Proyectos.aspx">
+                                            <i class="bi bi-clipboard2-check"></i>
+                                            <span>Proyectos</span>
+                                        </a>
                                     </li>
                                 </ul>
                             </li>
@@ -88,14 +102,13 @@
                             <li class="sidebar-item  ">
                                 <a href="Sucursales.aspx" class='sidebar-link'>
                                     <i class="bi bi-building"></i>
-                                      <span>Sucursales</span>
+                                    <span>Sucursales</span>
                                 </a>
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
-
             <div id="main" class='layout-navbar'>
                 <header class='mb-3'>
                     <nav class="navbar navbar-expand navbar-light ">
@@ -227,19 +240,19 @@
                                                             <hr />
                                                             <h5 class="card-title text-muted mt-2">Ubicación</h5>
                                                         </div>
-                                                          <div class="col-md-6 col-12">
+                                                        <div class="col-md-6 col-12">
                                                             <label for="Provincia">Provincia</label>
                                                             <fieldset class="form-group">
                                                                 <select class="form-select" id="selectProvincia" placeholder="Seleccionar provincia" onchange="localidadesBuscarPorProvincia(this)">
-                                                               <option selected="selected" disabled="disabled">Seleccione una provincia</option>
+                                                                    <option selected="selected" disabled="disabled">Seleccione una provincia</option>
                                                                 </select>
                                                             </fieldset>
                                                         </div>
-                                                          <div class="col-md-6 col-12">
+                                                        <div class="col-md-6 col-12">
                                                             <label for="Localidad">Localidad</label>
                                                             <fieldset class="form-group">
-                                                                <select class="form-select" id="selectLocalidad" placeholder="Seleccionar localidad" >
-                                                                  <option selected="selected" disabled="disabled">Seleccione una localidad</option>
+                                                                <select class="form-select" id="selectLocalidad" placeholder="Seleccionar localidad">
+                                                                    <option selected="selected" disabled="disabled">Seleccione una localidad</option>
                                                                 </select>
                                                             </fieldset>
                                                         </div>
@@ -266,7 +279,7 @@
                                                             <hr />
                                                             <h5 class="card-title text-muted mt-2">Extras</h5>
                                                         </div>
-                                                           <div class="col-md-6 col-12">
+                                                        <div class="col-md-6 col-12">
                                                             <div class="form-group">
                                                                 <label for="txtObservaciones">Observaciones</label>
                                                                 <input type="text" id="txtObservaciones" class="form-control" placeholder="Describir observaciones" />
@@ -348,7 +361,7 @@
                                                         <hr />
                                                         <h5 class="card-title text-muted mt-2">Ubicación</h5>
                                                     </div>
-                                                     <div class="col-md-6 col-12">
+                                                    <div class="col-md-6 col-12">
                                                         <div class="form-group">
                                                             <label for="editselectProvincia">Provincia</label>
                                                             <fieldset class="form-group">
@@ -358,7 +371,7 @@
                                                             </fieldset>
                                                         </div>
                                                     </div>
-                                                     <div class="col-md-6 col-12">
+                                                    <div class="col-md-6 col-12">
                                                         <div class="form-group">
                                                             <label for="editselectLocalidad">Localidad</label>
                                                             <fieldset class="form-group">
@@ -391,7 +404,7 @@
                                                         <hr />
                                                         <h5 class="card-title text-muted mt-2">Extras</h5>
                                                     </div>
-                                                     <div class="col-md-6 col-12">
+                                                    <div class="col-md-6 col-12">
                                                         <div class="form-group">
                                                             <label for="edittxtObservaciones">Observaciones</label>
                                                             <input type="text" id="edittxtObservaciones" class="form-control" placeholder="Describir observaciones" />
@@ -411,14 +424,12 @@
                                                                     <option selected="selected" disabled="disabled">Seleccione estado</option>
                                                                     <option value="1">Habilitado</option>
                                                                     <option value="0">Deshabilitado</option>
-
                                                                 </select>
                                                             </fieldset>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <input type="text" id="edittxtIdSucursal" hidden="hidden" />
-
                                                     </div>
                                                 </div>
                                             </div>
@@ -450,7 +461,6 @@
 
                                         <thead>
                                             <tr>
-
                                                 <th scope="col">Empresa</th>
                                                 <th scope="col">Nombre</th>
                                                 <th scope="col">Fantasia</th>
@@ -461,7 +471,6 @@
                                                 <th scope="col">Estado</th>
                                                 <th scope="col">Modificar</th>
                                                 <th scope="col">Eliminar</th>
-
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -508,7 +517,7 @@
             let observaciones = document.getElementById('txtObservaciones').value;
             let prioridad = document.getElementById('txtPrioridad').value;
             let estado = document.getElementById('selectEstado').value;
-            let listaDeInputs = [empresa, nombre, fantasia,provincia, localidad, domicilio, latitud, longitud, observaciones, prioridad, estado]
+            let listaDeInputs = [empresa, nombre, fantasia, provincia, localidad, domicilio, latitud, longitud, observaciones, prioridad, estado]
             if (listaDeInputs.includes("")) {
                 alertaError();
             } else {
@@ -544,7 +553,7 @@
                 IdEmpresa: empresa,
                 Nombre: nombre,
                 Fantasia: fantasia,
-                IdProvincia : provincia,
+                IdProvincia: provincia,
                 IdLocalidad: localidad,
                 Domicilio: domicilio,
                 Lat: latitud,
@@ -688,7 +697,7 @@
                         'render': function (data, type, row) {
                             // return '<input type="checkbox" class="editor-active" ' + row.Estado + ' >'
                             return `<div class="form-check form-switch">
-                                        <input class="form-check-input" type="checkbox" ` + row.Estado + ` onchange="cambiarEstado(` + row.IdSucursal+ `)">
+                                        <input class="form-check-input" type="checkbox" ` + row.Estado + ` onchange="cambiarEstado(` + row.IdSucursal + `)">
                                     </div>`
                         }
                     },
@@ -726,7 +735,7 @@
                             let nuevaOpcion = document.createElement("option");
                             nuevaOpcion.value = empresa.IdEmpresa;
                             nuevaOpcion.text = empresa.Fantasia;
-                          // select.add(nuevaOpcion);
+                            // select.add(nuevaOpcion);
                             select.appendChild(nuevaOpcion);
                         }
                         const selectEdit = document.getElementById("editselectEmpresa");

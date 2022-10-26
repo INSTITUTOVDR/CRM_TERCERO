@@ -52,7 +52,7 @@
                             </div>
                         </div>
                     </div>
-              <div class="sidebar-menu">
+                   <div class="sidebar-menu">
                         <ul class="menu">
                             <li class="sidebar-title">Menu</li>
                              
@@ -69,6 +69,14 @@
                                 </a>
                             </li>
 
+                            <li class="sidebar-item">
+                                <a href="Informaciones.aspx" class='sidebar-link'>
+                                     <i class="bi bi-info-circle"></i>
+                                    <span>Informaciones</span>
+
+                                </a>
+                                </li>
+
                             <li class="sidebar-item  has-sub">
                                 <a href="Proyectos.aspx" class='sidebar-link'>
                                      <i class="bi bi-clipboard2-data"></i>
@@ -82,7 +90,13 @@
                                                 <span>Tipos de Proyectos</span>
                                        </a>
                                     </li>
-                                </ul>
+                                    <li class="submenu-item">
+                                        <a href="Proyectos.aspx">
+                                             <i class="bi bi-clipboard2-check"></i>
+                                                <span>Proyectos</span>
+                                       </a>
+                                    </li>
+                                    </ul>
                             </li>
 
                             <li class="sidebar-item  ">
