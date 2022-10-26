@@ -92,6 +92,8 @@
     <Compile Include="EmpresaTipoWS.vb" />
     <Compile Include="EmpresaWS.vb" />
     <Compile Include="Img.vb" />
+    <Compile Include="LandingClass.vb" />
+    <Compile Include="LandingWS.vb" />
     <Compile Include="LocalidadWS.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">

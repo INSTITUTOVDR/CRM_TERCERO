@@ -23,12 +23,14 @@ Public Class ProyectosTipo
             Dim Nombre = dict(0).Nombre.ToString
             Dim Descripcion = dict(0).Descripcion.ToString
             Dim IdEstado = dict(0).IdEstado.ToString
+            Dim Imagen = dict(0).Imagen.ToString
+
 
             Dim oDs As New DataSet
 
             Dim oobjeto As New ProyectoTipo
 
-            oDs = oobjeto.ProyectoTipoAgregar(Nombre, Descripcion, "", IdEstado)
+            oDs = oobjeto.ProyectoTipoAgregar(Nombre, Descripcion, Imagen, IdEstado)
 
             'oDs = oobjeto.BuscarTodosSistema
 

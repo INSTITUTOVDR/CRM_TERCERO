@@ -1,6 +1,4 @@
-﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="ProyectosTipo.aspx.vb" Inherits="CRM_TERCERO.ProyectosTipo" %>
-
-<!DOCTYPE html>
+﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="Landings.aspx.vb" Inherits="CRM_TERCERO.Landing" %>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
@@ -16,9 +14,9 @@
     <link rel="stylesheet" href="assets/css/pages/fontawesome.css" />
     <link rel="stylesheet" href="assets/css/pages/datatables.css" />
     <link rel="stylesheet" href="assets/css/pages/icon.css" />
-</head>
 
-<body onload="BuscarTodos2()">
+    </head>
+<body onload="">
     <form id="form2" runat="server">
         <div id="app">
             <!--Barra Lateral -->
@@ -91,7 +89,7 @@
                                     <i class="bi bi-grid-fill"></i>
                                       <span>Contacto Tipos</span>
                                 </a>
-                            </li>                           
+                            </li>
                             <li class="sidebar-item  ">
                                 <a href="index.html" class='sidebar-link'>
                                     <i class="bi bi-grid-fill"></i>
@@ -414,167 +412,97 @@
                 </header>
                 <div id="main-content">
                     <div class="page-heading">
-                      
+                        <div class="page-title">
+                            <div class="row">
+                             
+                            
+                            </div>
+                        </div>
 
                         <section id="multiple-column-form">
                             <div class="row match-height">
                                 <div class="col-12">
                                     <div class="card">
                                         <div class="card-header">
-                                            <h4 class="card-title">Proyectos Tipo</h4>
+                                            <h4 class="card-title">Bienvenido a ARECUBIA</h4>
+                                            <h4 class="card-title">Ingrese sus datos por favor</h4>
                                         </div>
-                                        <div class="card-content">
-                                            <div class="card-body">
-                                                <div class="form">
-                                                    <div class="row">
-                                                        <div class="col-md-6 col-12">
-                                                            <div class="form-group">
-                                                                <label for="textBox1">Nombre</label>
-                                                                <input type="text" id="txtNombre" class="form-control" placeholder="Nombre" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6 col-12">
-                                                            <div class="form-group">
-                                                                <label for="textBox2">Descripcion</label>
-                                                                <input type="text" id="txtDescripcion" class="form-control" placeholder="Descripcion" />
-                                                            </div>
-                                                        </div>
+                                        
+                                      
+                                                
+                                                  
                                                        
-                                                         <div class="col-md-6 col-12">
-                                                            <div class="form-group">
-                                                                <label for="btnImagen">Imagen</label>
-                                                                <input class="form-control" type="file" id="btnImagen" onchange="return validarExt('btnImagen', 'visorImagen','cadena')" accept="image/*" />
-                                                            </div>
-                                                        </div>
-                                                          <div class="col-md-6 col-12">
-                                                        </div>
-                                                        <div class="col-md-6 col-12">
-                                                            <div id="visorImagen">
-                                                        </div>
                                                      
-                                                        <div class="col-md-6 col-12">
-                                                            <div class="form-group">
-                                                                <label for="selectIdEstado">IdEstado</label>
-                                                                <fieldset class="form-group">
-                                                                    <select class="form-select" id="selectIdEstado">
-                                                                        <option value="1">Opción 1</option>
-                                                                        <option value="2">Opción 2</option>
-                                                                        <option value="3">Opción 3</option>
-                                                                    </select>
-                                                                </fieldset>
-                                                            </div>
-                                                        </div>
+                                                       
+                                                    
+                                                      
+                                                       
+                                                       
+                                                    
+
+                                                                              <div class="row">
+                                                                                <div class="form-group">
+                                                                                    <div class="form-group">
+                                                                                        <label for="txtNombre">Nombre</label>
+                                                                                        <input type="text" id="txtNombre" class="form-control"
+                                                                                            placeholder="Nombre" name="fname" />
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="form-group">
+                                                                                    <label for="txtApellido">Apellido</label>
+                                                                                    <input type="text" id="txtApellido" class="form-control"
+                                                                                        placeholder="Apellido" name="lname-column" />
+                                                                                </div>
+
+                                                                                <div class="form-group">
+                                                                                    <div class="form-group">
+                                                                                        <label for="txtGmail">Correo electronico</label>
+                                                                                        <input type="email" id="txtGmail" class="form-control"
+                                                                                            placeholder="Correo electronico" name="lname-column" />
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="form-group">
+                                                                                    <label for="Telefono">Telefono</label>
+                                                                                    <input type="text" id="txtTelefono" class="form-control"
+                                                                                        placeholder="Numero de telefono" name="lname-column" />
+                                                                                </div>
+
+                                                                                <div class="form-group">
+                                                                                    <div class="form-group">
+                                                                                        <label for="IdCanal">¿Cómo nos conoció?</label>
+                                                                                        <fieldset class="form-group">
+                                                                                            <select class="form-select" id="selectedIdCanal">
+                                                                                                <option value="1">Facebook</option>
+                                                                                                <option value="201">Local</option>
+                                                                                                <option value="215">Referidos</option>
+                                                                                            </select>
+                                                                                        </fieldset>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                            </div>
+
+                                                                            <label for="txtAgregado">¿Quieres agregar algo más?</label>
+                                                                            <input type="text" id="txtAlgoMas" class="form-control"
+                                                                                placeholder="Agrega algo más" name="lname-column" />
+
+
+                                                     
                                                         <div class="col-12 d-flex justify-content-end">
                                                             <button type="button" class="btn btn-secondary me-1 mb-1">Cancelar</button>
-                                                            <button type="button" class="btn btn-primary me-1 mb-1" onclick="agregar()">Enviar</button>
+                                                            <button type="button" class="btn btn-primary me-1 mb-1" onclick="validar()">Agregar</button>
                                                         </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                               </div>
+                                    </div>
+                                
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </section>
-                       <%-- <!-- Botón mostrar modal -->
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalEditar">Mostrar Modal(reemplazar por lápiz en la tabla)</button>--%>
-                        <!-- Modal Editar-->
-                        <div class="modal fade text-left w-100" id="modalEditar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel16" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h4 class="modal-title" id="myModalLabel16">Título Modal</h4>
-                                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                                            <i data-feather="x"></i>
-                                        </button>
-                                    </div>
-                                     <section id="multiple-column-form">
-                            <div class="row match-height">
-                                <div class="col-12">
-                                    <div class="card">
-                                        <div class="card-header">
-                                            <h4 class="card-title">Proyectos Tipo</h4>
-                                        </div>
-                                        <div class="card-content">
-                                            <div class="card-body">
-                                                <div class="form">
-                                                    <div class="row">
-                                                        <div class="col-md-6 col-12">
-                                                            <div class="form-group">
-                                                                <label for="textBox1">Nombre</label>
-                                                                <input type="text" id="txtNombre" class="form-control" placeholder="Nombre" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6 col-12">
-                                                            <div class="form-group">
-                                                                <label for="textBox2">Descripcion</label>
-                                                                <input type="text" id="txtDescripcion" class="form-control" placeholder="Descripcion" />
-                                                            </div>
-                                                        </div>
-                                                       
-                                                         <div class="col-md-6 col-12">
-                                                            <div class="form-group">
-                                                                <label for="btnImagen">Imagen</label>
-                                                                <input class="form-control" type="file" id="btnImagen" onchange="return validarExt('btnImagen', 'visorImagen','cadena')" accept="image/*" />
-                                                            </div>
-                                                        </div>
-                                                          <div class="col-md-6 col-12">
-                                                        </div>
-                                                        <div class="col-md-6 col-12">
-                                                            <div id="visorImagen">
-                                                        </div>
-                                                     
-                                                        <div class="col-md-6 col-12">
-                                                            <div class="form-group">
-                                                                <label for="selectIdEstado">IdEstado</label>
-                                                                <fieldset class="form-group">
-                                                                    <select class="form-select" id="selectIdEstado">
-                                                                        <option value="1">Opción 1</option>
-                                                                        <option value="2">Opción 2</option>
-                                                                        <option value="3">Opción 3</option>
-                                                                    </select>
-                                                                </fieldset>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-12 d-flex justify-content-end">
-                                                            <button type="button" class="btn btn-secondary me-1 mb-1">Cancelar</button>
-                                                            <button type="button" class="btn btn-primary me-1 mb-1" onclick="agregar()">Enviar</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
-                                </div>
-                            </div>
-                        </div>
-
-                                     <div class="row" id="divTarjetas" style="cursor:pointer">
-
-                                     </div>
-                                   <%-- <table class="table table-hover" id="tablaProyectosTipo" style="display:none">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">Nombre</th>
-                                                <th scope="col">Descripcion</th>
-                                                <th scope="col">Imagen</th>
-                                                <th scope="col">Estado</th>
-                                                <th scope="col">Editar</th>
-                                                <th scope="col">Eliminar</th>
-                                         </tr>
-                                        </thead>
-                                        <tbody>
-                                         
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </section>--%>
-
-                    </div>
+                               
+            </section>
+               
+                
 
                     <footer>
                         <div class="footer clearfix mb-0 text-muted">
@@ -587,11 +515,13 @@
                                 </p>
                             </div>
                         </div>
+                       
                     </footer>
-                </div>
-            </div>
-        </div>
+                    </div>
+                   </div>
     </form>
+
+   
     <script src="assets/js/app.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -599,10 +529,120 @@
     <script src="assets/js/jquery.dataTables.min.js"></script>
     <script src="assets/js/extensions/datatables.js"></script>
 
-  <script src="Scripts/proyectostipo.js"></script>
+
+    <script>
+
+
+function validar() {
+    let nombre = document.getElementById('txtNombre').value
+    let apellido = document.getElementById('txtApellido').value
+    if (nombre == "" || apellido == "") {
+        alerta();
+    } else {
+        agregar();
+    }
+}
+
+function agregar() {
+    let nombre = document.getElementById('txtNombre').value
+    let apellido = document.getElementById('txtApellido').value
+    let gmail = document.getElementById('txtGmail').value
+    let telefono = document.getElementById('txtTelefono').value
+    let canal = document.getElementById('selectedIdCanal').value
+    let algomas = document.getElementById('txtAlgoMas').value
 
 
 
-</body>
-</html>
+    var cadena = {
+        Nombre: nombre,
+        Apellido: apellido,
+        Gmail: gmail,
+        Telefono: telefono,
+        IdCanal: canal,
+        AlgoMas: algomas
+
+    };
+    var payload = { cadena: JSON.stringify(cadena) };
+    $.ajax({
+        type: "POST",
+        url: "Landings.aspx/LandingsAgregar",
+        contentType: "application/json; charset=utf-8",
+        data: JSON.stringify(payload),
+        dataType: "json",
+        success: function (data) {
+            var json = $.parseJSON(data.d);
+            var status = json.Status;
+
+            if (status == 200) {
+
+                Swal.fire({
+                    title: "OK",
+                    html: "Datos agregados correctamente",
+                    type: "success",
+                    showCancelButton: false,
+                    showConfirmButton: true,
+                    cancelButtonColor: "#DD6B55",
+                    confirmButtonColor: "#DD6B55",
+                })
+
+                txtNombre.value = "";
+                txtApellido.value = "";
+
+              
+
+            } else {
+                Swal.fire({
+                    title: "LO SIENTO ALGO SALIO MAL",
+                    html: "Verifica los datos ingresados",
+                    type: "warning",
+                    showCancelButton: false,
+                    showConfirmButton: true,
+                    cancelButtonColor: "#DD6B55",
+                    confirmButtonColor: "#DD6B55",
+
+                });
+
+            }
+
+        }
+    });
+
+}
+function alerta() {
+    Swal.fire({
+        title: "Error al agregar cliente",
+        text: "Complete todos los campos solicitados",
+        icon: "error"
+    });
+        }
+
+
+//        function CanalesBuscarTodos() {
+
+//    $.ajax({
+//        type: "POST",
+//        url: "Laqndings.aspx/CanalBuscarTodos",
+//        contentType: "application/json; charset=utf-8",
+//        //data: JSON.stringify(payload),
+//        dataType: "json",
+//        success: function (data) {
+
+//            var json = $.parseJSON(data.d);
+//            console.log(json)
+//            $("#selectIdCanal").append('<option value="0" class="form-control">Seleccione</option>');
+
+//            for (var i = 0; i < json.Data.length; i++) {
+//                var datosJson = json.Data[i];
+//                // searchMotivoEdit(datosJson.Id);
+//                $("#selectIdCanal").append('<option value="' + datosJson.IdProyectoTipo + '" class="form-control">' + datosJson.Nombre + '</option>');
+//            }
+//        }
+
+//    });
+//}
+     
+    </script>
+    </body>
+    </html>
+
 

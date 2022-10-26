@@ -60,7 +60,7 @@ function agregar() {
                 txtNombre.value = "";
                 txtDescripcion.value = "";
 
-                ProyectosTipoBuscarTodos();
+                BuscarTodos2();
 
 
             } else {
@@ -410,7 +410,7 @@ function BuscarTodos2() {
                     let template = '';
                     array1.forEach(element => {
                         template += `
-<div class="col-md-4">
+<div class="col-md-2">
                 <div class="card">
                     <div class="card-content">
                         <div class="card-body">
@@ -418,13 +418,24 @@ function BuscarTodos2() {
                             <p class="card-text">
                                ${element.Descripcion}
                             </p>
+
+
+                    <div style="display:flex;justify-content:flex-start" >
+                    <img src="${element.Imagen}" class="card-img-top" style="width:50px; height:50px">
+                      
                         </div>
-                        <img class="img-fluid w-100" src="${element.Imagen}"  style="height:150px !important" alt="Card image cap">
-                    </div>
+
+                        </div>
+                      </div>
                     <div class="card-footer d-flex justify-content-between">
-                        <span>Card Footer</span>
-                        <button class="btn btn-light-primary">${element.IdEstado}</button>
+                      <span>Estado</span>
+                        <p class="card-text">${element.IdEstado}</p>
+                        <div class="card-footer d-flex justify-content-between">                   
+                       
+                    <a data-bs-toggle="modal" data-bs-target="#modalEditar"><i class="material-icons" role="button">edit</i></a>
                     </div>
+                    </div>
+
                 </div>
  </div>
 
@@ -437,6 +448,7 @@ function BuscarTodos2() {
 
 
                 }
+
 
             } else {
                 Swal.fire({
@@ -456,6 +468,40 @@ function BuscarTodos2() {
     });
 }
 
+
+function validarExt(imagen, visorImagen, cadenaImagen) {
+    var archivoInput = document.getElementById(imagen);
+    var archivoRuta = archivoInput.value;
+    document.getElementById(visorImagen).innerHTML = ""
+
+    var extPermitidas = /(.png|.jpg|.jpeg)$/i;
+    if (!extPermitidas.exec(archivoRuta)) {
+        Swal.fire({
+            title: "LO SIENTO ALGO SALIO MAL",
+            text: "Verifica el archivo ingresado",
+            icon: "error"
+        });
+        archivoInput.value = '';
+        return false;
+    } else {
+        if (archivoInput.files.length) {
+            for (let i = 0; i < archivoInput.files.length; i++) {
+                let visor = new FileReader();
+                visor.onload = function (e) {
+                    document.getElementById(visorImagen).innerHTML +=
+                        '<embed src="' + e.target.result + '" width="200"/>';
+                    // console.log(e.target.result);
+                    let cadena = document.getElementById(cadenaImagen);
+                    cadena.innerHTML = "";
+                    cadena.innerHTML = e.target.result;
+                };
+                visor.readAsDataURL(archivoInput.files[i]);
+            }
+        }
+        /// document.getElementById("nombreArchivo2").style = "display:none;margin-left:-100px";
+        //document.getElementById("nombreArchivo2").innerHTML = archivoRuta;
+    }
+}
 
 function EmpresasBuscarTodos() {
     let lista_empresa = []
