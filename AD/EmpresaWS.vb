@@ -13,4 +13,5 @@
     Public Property Prioridad As Integer
     Public Property FechaInicioActividad As String
     Public Property Estado As Integer
+    Public Property FormasContacto As List(Of EmpresaContactoTipoWS)
 End Class
