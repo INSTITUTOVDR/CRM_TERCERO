@@ -187,37 +187,19 @@
                 </header>
                 <div id="main-content">
                     <div class="page-heading">
-                        <div class="page-title">
-                            <div class="row">
-                                <div class="col-12 col-md-6 order-md-1 order-last">
-                                    <h3>Ejemplo de ABM</h3>
-                                    <p class="text-subtitle text-muted">Este es un ejemplo de abm con dos columnas.</p>
-                                </div>
-                                <div class="col-12 col-md-6 order-md-2 order-first">
-                                    <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
-                                        <ol class="breadcrumb">
-                                            <li class="breadcrumb-item"><a href="#">Inicio</a></li>
-                                            <li class="breadcrumb-item active" aria-current="page">Ejemplo ABM</li>
-                                        </ol>
-                                    </nav>
-                                </div>
-                            </div>
-                        </div>
+                      
 
                         <section id="multiple-column-form">
                             <div class="row match-height">
                                 <div class="col-12">
                                     <div class="card">
                                         <div class="card-header">
-                                            <h4 class="card-title">Proyectos</h4>
+                                            <h4 class="card-title">Proyectos Tipo</h4>
                                         </div>
                                         <div class="card-content">
                                             <div class="card-body">
                                                 <div class="form">
                                                     <div class="row">
-                                                        <div class="col-12">
-                                                            <h5 class="card-title text-muted">Título Sección 1</h5>
-                                                        </div>
                                                         <div class="col-md-6 col-12">
                                                             <div class="form-group">
                                                                 <label for="textBox1">Nombre</label>
@@ -233,16 +215,16 @@
                                                        
                                                          <div class="col-md-6 col-12">
                                                             <div class="form-group">
-                                                                <label for="txtImagen">Imagen</label>
-                                                                <input class="form-control" type="file" id="btnImagen" onchange="return validarExt3()" accept="image/*" />
+                                                                <label for="btnImagen">Imagen</label>
+                                                                <input class="form-control" type="file" id="btnImagen" onchange="return validarExt('btnImagen', 'visorImagen','cadena')" accept="image/*" />
                                                             </div>
                                                         </div>
-
-
-                                                        <div class="col-12">
-                                                            <hr />
-                                                            <h5 class="card-title text-muted mt-2">Título Sección 2</h5>
+                                                          <div class="col-md-6 col-12">
                                                         </div>
+                                                        <div class="col-md-6 col-12">
+                                                            <div id="visorImagen">
+                                                        </div>
+                                                     
                                                         <div class="col-md-6 col-12">
                                                             <div class="form-group">
                                                                 <label for="selectIdEstado">IdEstado</label>
@@ -254,10 +236,6 @@
                                                                     </select>
                                                                 </fieldset>
                                                             </div>
-                                                        </div>
-                                                    
-                                                        <div class="col-md-6 col-12">
-                                                            <a href="#" class="btn icon btn-outline-secondary"><i data-feather="plus"></i></a>
                                                         </div>
                                                         <div class="col-12 d-flex justify-content-end">
                                                             <button type="button" class="btn btn-secondary me-1 mb-1">Cancelar</button>
@@ -271,8 +249,8 @@
                                 </div>
                             </div>
                         </section>
-                        <!-- Botón mostrar modal -->
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalEditar">Mostrar Modal(reemplazar por lápiz en la tabla)</button>
+                       <%-- <!-- Botón mostrar modal -->
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalEditar">Mostrar Modal(reemplazar por lápiz en la tabla)</button>--%>
                         <!-- Modal Editar-->
                         <div class="modal fade text-left w-100" id="modalEditar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel16" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl" role="document">
@@ -283,13 +261,17 @@
                                             <i data-feather="x"></i>
                                         </button>
                                     </div>
-                                    <div class="modal-body">
-                                        <div class="card">
-                                            <div class="card-body p-0">
-                                                     <div class="row">
-                                                        <div class="col-12">
-                                                            <h5 class="card-title text-muted">Título Sección 1</h5>
-                                                        </div>
+                                     <section id="multiple-column-form">
+                            <div class="row match-height">
+                                <div class="col-12">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h4 class="card-title">Proyectos Tipo</h4>
+                                        </div>
+                                        <div class="card-content">
+                                            <div class="card-body">
+                                                <div class="form">
+                                                    <div class="row">
                                                         <div class="col-md-6 col-12">
                                                             <div class="form-group">
                                                                 <label for="textBox1">Nombre</label>
@@ -303,18 +285,18 @@
                                                             </div>
                                                         </div>
                                                        
-                                                          <div class="col-md-6 col-12">
+                                                         <div class="col-md-6 col-12">
                                                             <div class="form-group">
-                                                                <label for="ImagenEmpresa">Imagen</label>
-                                                        <img src="" id="ImagenEmpresa" height ="200" />
+                                                                <label for="btnImagen">Imagen</label>
+                                                                <input class="form-control" type="file" id="btnImagen" onchange="return validarExt('btnImagen', 'visorImagen','cadena')" accept="image/*" />
                                                             </div>
                                                         </div>
-
-
-                                                        <div class="col-12">
-                                                            <hr />
-                                                            <h5 class="card-title text-muted mt-2">Título Sección 2</h5>
+                                                          <div class="col-md-6 col-12">
                                                         </div>
+                                                        <div class="col-md-6 col-12">
+                                                            <div id="visorImagen">
+                                                        </div>
+                                                     
                                                         <div class="col-md-6 col-12">
                                                             <div class="form-group">
                                                                 <label for="selectIdEstado">IdEstado</label>
@@ -327,32 +309,26 @@
                                                                 </fieldset>
                                                             </div>
                                                         </div>
-                                                    
-                                                        <div class="col-md-6 col-12">
-                                                            <a href="#" class="btn icon btn-outline-secondary"><i data-feather="plus"></i></a>
-                                                        </div>
                                                         <div class="col-12 d-flex justify-content-end">
                                                             <button type="button" class="btn btn-secondary me-1 mb-1">Cancelar</button>
                                                             <button type="button" class="btn btn-primary me-1 mb-1" onclick="agregar()">Enviar</button>
                                                         </div>
                                                     </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                        </section>
+                                </div>
+                            </div>
                         </div>
-
-                        <!--Tabla -->
-                        <section class="section">
-                            <div class="card">
-                                <div class="card-header">Simple Datatable</div>
-                                <div class="card-body">
 
                                      <div class="row" id="divTarjetas" style="cursor:pointer">
 
                                      </div>
-                                    <table class="table table-hover" id="tablaProyectosTipo" style="display:none">
+                                   <%-- <table class="table table-hover" id="tablaProyectosTipo" style="display:none">
                                         <thead>
                                             <tr>
                                                 <th scope="col">Nombre</th>
@@ -369,7 +345,7 @@
                                     </table>
                                 </div>
                             </div>
-                        </section>
+                        </section>--%>
 
                     </div>
 

@@ -30,7 +30,7 @@ Public Class Proyectos
 
             Dim oobjeto As New Proyecto
             Dim IdProyecto As Integer
-            IdProyecto = oobjeto.ProyectoAgregar(Nombre, Descripcion, IdEmpresa, IdSucursal, IdProyectoTipo, "", IdEstado)
+            IdProyecto = oobjeto.ProyectoAgregar(Nombre, Descripcion, IdEmpresa, IdSucursal, IdProyectoTipo, IdEstado)
 
             oDs = oobjeto.ProyectoEstadoAgregar(IdProyecto, 1)
 

@@ -13,9 +13,9 @@ Public Class Proyecto
         Return o_Database.ExecuteDataSet("ProyectosBuscarPorId", IdProyecto)
     End Function
 
-    Public Function ProyectoAgregar(Nombre As String, Descripcion As String, IdEmpresa As Integer, IdSucursal As Integer, IdProyectoTipo As Integer, Imagen As String, IdEstado As Integer) As Double
+    Public Function ProyectoAgregar(Nombre As String, Descripcion As String, IdEmpresa As Integer, IdSucursal As Integer, IdProyectoTipo As Integer, IdEstado As Integer) As Double
         Try
-            Return o_Database.ExecuteScalar("ProyectosAgregar", Nombre, Descripcion, IdEmpresa, IdSucursal, IdProyectoTipo, Imagen, IdEstado)
+            Return o_Database.ExecuteScalar("ProyectosAgregar", Nombre, Descripcion, IdEmpresa, IdSucursal, IdProyectoTipo, IdEstado)
         Catch ex As Exception
         End Try
     End Function

@@ -19,13 +19,12 @@ function validar() {
     }
 }
 
-function agregar() {
+function agregar(){
     let nombre = document.getElementById('txtNombre').value
     let descripcion = document.getElementById('txtDescripcion').value
     let idEmpresa = document.getElementById('selectIdEmpresa').value
     let idSucursal = document.getElementById('selectIdSucursal').value
     let idProyectoTipo = document.getElementById('selectIdProyectoTipo').value
-    let imagen = document.getElementById('ImagenEmpresa').value
 
 
 
@@ -35,7 +34,6 @@ function agregar() {
         IdEmpresa: idEmpresa,
         IdSucursal: idSucursal,
         IdProyectoTipo: idProyectoTipo,
-        Imagen: imagen,
         IdEstado: 1
 
     };
@@ -512,20 +510,23 @@ function BuscarTodos2() {
                     let template = '';
                     array1.forEach(element => {
                         template += `
-<div class="col-md-4">
+<div class="col-md-2">
         <div class="card">
             <div class="card-content">
-                    <img src="${element.Imagen}" class="card-img-top" style="width:50px; height:50px">
+                    
                 <div class="card-body">
                             <h4 class="card-title">${element.Nombre}</h4>
                             <p class="card-text">
                                ${element.Descripcion}
                             </p>
-                        <div style="display:flex;justify-content:flex-end" >
-                        <img src="${element.ImagenPTipo}" style="width:10px; height:10px">
+                        
+                        <div style="display:flex;justify-content:flex-start" >
+                    <img src="${element.Imagen}" class="card-img-top" style="width:50px; height:50px">
+                        <img src="${element.ImagenPTipo}" style="width:50px; height:50px">
                         </div>
-                    <div class="card-footer d-flex justify-content-between">
-                        <button class="btn btn-light-primary">${element.Sucursal}</button>
+                    <div class="card-footer d-flex justify-content-between">                     
+                       
+                    <a data-bs-toggle="modal" data-bs-target="#modalEditar"><i class="material-icons" role="button">edit</i></a>
                     </div>
                 </div>
             </div>
@@ -555,7 +556,6 @@ function BuscarTodos2() {
                 });
 
             }
-
         }
     });
 }

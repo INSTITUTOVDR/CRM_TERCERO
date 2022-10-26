@@ -188,22 +188,6 @@
                 </header>
                 <div id="main-content">
                     <div class="page-heading">
-                        <div class="page-title">
-                            <div class="row">
-                                <div class="col-12 col-md-6 order-md-1 order-last">
-                                    <h3>Ejemplo de ABM</h3>
-                                    <p class="text-subtitle text-muted">Este es un ejemplo de abm con dos columnas.</p>
-                                </div>
-                                <div class="col-12 col-md-6 order-md-2 order-first">
-                                    <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
-                                        <ol class="breadcrumb">
-                                            <li class="breadcrumb-item"><a href="#">Inicio</a></li>
-                                            <li class="breadcrumb-item active" aria-current="page">Ejemplo ABM</li>
-                                        </ol>
-                                    </nav>
-                                </div>
-                            </div>
-                        </div>
 
                         <section id="multiple-column-form">
                             <div class="row match-height">
@@ -262,18 +246,8 @@
                                                                 </fieldset>
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-6 col-12">
-                                                            <div class="form-group">
-                                                                <label for="ImagenEmpresa">Imagen</label>
-                                                                <img src="" id="ImagenEmpresa" height="200" />
-                                                            </div>
-
-
-
-                                                        </div>
-                                                        <div class="col-md-6 col-12">
-                                                            <a href="#" class="btn icon btn-outline-secondary"><i data-feather="plus"></i></a>
-                                                        </div>
+                                                        
+                                                        
                                                         <div class="col-12 d-flex justify-content-end">
                                                             <button type="button" class="btn btn-secondary me-1 mb-1">Cancelar</button>
                                                             <button type="button" class="btn btn-primary me-1 mb-1" onclick="validar()">Agregar</button>
@@ -287,7 +261,7 @@
                             </div>
                         </section>
                         <!-- Botón mostrar modal -->
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalEditar">Mostrar Modal(reemplazar por lápiz en la tabla)</button>
+                        <%--<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalEditar">Mostrar Modal(reemplazar por lápiz en la tabla)</button>--%>
                         <!-- Modal Editar-->
                         <div class="modal fade text-left w-100" id="modalEditar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel16" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl" role="document">
@@ -298,132 +272,83 @@
                                             <i data-feather="x"></i>
                                         </button>
                                     </div>
-                                    <div class="modal-body">
-                                        <div class="card">
-                                            <div class="card-body p-0">
-                                                <div class="row">
-                                                    <div class="col-12">
-                                                        <h5 class="card-title text-muted">Informacion Proyecto</h5>
-                                                    </div>
-                                                    <div class="col-md-6 col-12">
-                                                        <div class="form-group">
-                                                            <label for="txtNombre">Nombre</label>
-                                                            <input type="text" id="txtNombreModificar" class="form-control" placeholder="Ingrese nombre" />
+                                      <section id="multiple-column-form">
+                            <div class="row match-height">
+                                <div class="col-12">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h4 class="card-title">Proyectos</h4>
+                                        </div>
+                                        <div class="card-content">
+                                            <div class="card-body">
+                                                <div class="form">
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <h5 class="card-title text-muted">Informacion Proyecto</h5>
+                                                        </div>
+                                                        <div class="col-md-6 col-12">
+                                                            <div class="form-group">
+                                                                <label for="txtNombre">Nombre</label>
+                                                                <input type="text" id="txtNombre" class="form-control" placeholder="Ingrese nombre" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6 col-12">
+                                                            <div class="form-group">
+                                                                <label for="txtDescripcion">Descripcion</label>
+                                                                <input type="text" id="txtDescripcion" class="form-control" placeholder="Ingrese descripcion" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6 col-12">
+                                                            <div class="form-group">
+                                                                <label for="selectIdProyectoTipo">ProyectoTipo</label>
+                                                                <fieldset class="form-group">
+                                                                    <select class="form-select" id="selectIdProyectoTipo">
+                                                                    </select>
+                                                                </fieldset>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <hr />
+                                                            <h5 class="card-title text-muted mt-2">Informacion Empresa</h5>
+                                                        </div>
+                                                        <div class="col-md-6 col-12">
+                                                            <div class="form-group">
+                                                                <label for="selectIdEmpresa">Empresa</label>
+                                                                <fieldset class="form-group">
+                                                                    <select class="form-select" id="selectIdEmpresa" onchange="sucursalesBuscarPorIdEmpresa(this)">
+                                                                    </select>
+                                                                </fieldset>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6 col-12">
+                                                            <div class="form-group">
+                                                                <label for="selectIdSucursal">Sucursal</label>
+                                                                <fieldset class="form-group">
+                                                                    <select class="form-select" id="selectIdSucursal">
+                                                                    </select>
+                                                                </fieldset>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                        
+                                                        <div class="col-12 d-flex justify-content-end">
+                                                            <button type="button" class="btn btn-secondary me-1 mb-1">Cancelar</button>
+                                                            <button type="button" class="btn btn-primary me-1 mb-1" onclick="validar()">Agregar</button>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-6 col-12">
-                                                        <div class="form-group">
-                                                            <label for="txtDescripcion">Descripcion</label>
-                                                            <input type="text" id="txtDescripcionModificar" class="form-control" placeholder="Ingrese descripcion" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6 col-12">
-                                                        <div class="form-group">
-                                                            <label for="selectIdProyectoTipo">IdProyectoTipo</label>
-                                                            <fieldset class="form-group">
-                                                                <select class="form-select" id="selectIdProyectoTipoModificar">
-                                                                    <option value="1">Opción 1</option>
-                                                                    <option value="2">Opción 2</option>
-                                                                    <option value="3">Opción 3</option>
-                                                                </select>
-                                                            </fieldset>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-12">
-                                                        <hr />
-                                                        <h5 class="card-title text-muted mt-2">Informacion Empresa</h5>
-                                                    </div>
-                                                    <div class="col-md-6 col-12">
-                                                        <div class="form-group">
-                                                            <label for="selectIdEmpresa">IdEmpresa</label>
-                                                            <fieldset class="form-group">
-                                                                <select class="form-select" id="selectIdEmpresaModificar">
-                                                                    <option value="1">Opción 1</option>
-                                                                    <option value="2">Opción 2</option>
-                                                                    <option value="3">Opción 3</option>
-                                                                </select>
-                                                            </fieldset>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6 col-12">
-                                                        <div class="form-group">
-                                                            <label for="selectIdSucursal">IdSucursal</label>
-                                                            <fieldset class="form-group">
-                                                                <select class="form-select" id="selectIdSucursalModificar">
-                                                                    <option value="1">Opción 1</option>
-                                                                    <option value="2">Opción 2</option>
-                                                                    <option value="3">Opción 3</option>
-                                                                </select>
-                                                            </fieldset>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6 col-12">
-                                                        <div class="form-group">
-                                                            <label for="txtImagen">Imagen</label>
-                                                            <input class="form-control" type="file" id="txtImagenModificar" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6 col-12">
-                                                        <div class="form-group">
-                                                            <label for="selectIdEstado">IdEstado</label>
-                                                            <fieldset class="form-group">
-                                                                <select class="form-select" id="selectIdEstadoModificar">
-                                                                    <option value="1">Opción 1</option>
-                                                                    <option value="2">Opción 2</option>
-                                                                    <option value="3">Opción 3</option>
-                                                                </select>
-                                                            </fieldset>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6 col-12">
-                                                        <a href="#" class="btn icon btn-outline-secondary"><i data-feather="plus"></i></a>
-                                                    </div>
-                                                    <div class="col-12 d-flex justify-content-end">
-                                                        <button type="button" class="btn btn-secondary me-1 mb-1" data-bs-dismiss="modal">Cancelar</button>
-                                                        <button type="button" class="btn btn-primary me-1 mb-1" onclick="modificar()">Enviar</button>
-                                                    </div>
-
-                                                    <span id="IdProyecto"></span>
-
                                                 </div>
-
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-
-                        <!--Tabla -->
-                        <section class="section">
-                            <div class="card">
-                                <div class="card-header">Simple Datatable</div>
-                                <div class="card-body">
-
-                                    <div class="row" id="divTarjetas" style="cursor: pointer">
-                                    </div>
-                                    <table class="table table-hover" id="tablaProyectos" style="display: none">
-
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">Nombre</th>
-                                                <th scope="col">Descripcion</th>
-                                                <th scope="col">Empresa</th>
-                                                <th scope="col">Sucursal</th>
-                                                <th scope="col">Proyecto Tipo</th>
-                                                <th scope="col">Imagen</th>
-                                                <th scope="col">Estado</th>
-                                                <th scope="col">Editar</th>
-                                                <th scope="col">Eliminar</th>
-
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                        </tbody>
-                                    </table>
+                        </section>
                                 </div>
                             </div>
-                        </section>
+                        </div>                      
+
+                    <div class="row" id="divTarjetas" style="cursor: pointer">
+                    </div>                                   
 
                     </div>
 
