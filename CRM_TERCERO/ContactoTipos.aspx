@@ -52,57 +52,21 @@
                             </div>
                         </div>
                     </div>
-                   <div class="sidebar-menu">
+                    <div class="sidebar-menu">
                         <ul class="menu">
                             <li class="sidebar-title">Menu</li>
-                             
+
                             <li class="sidebar-item  ">
-                                <a href="ContactoTipos.aspx" class='sidebar-link'>
-                                    <i class="bi bi-telephone-plus"></i>
-                                      <span>Contactos Tipo</span>
+                                <a href="Clientes.aspx" class='sidebar-link'>
+                                    <i class="fa-solid fa-users-medical"></i>
+                                    <span>Clientes</span>
                                 </a>
-                            </li>
-                             <li class="sidebar-item  ">
-                                <a href="Empresas.aspx" class='sidebar-link'>
-                                    <i class="bi bi-graph-up-arrow"></i>
-                                      <span>Empresas</span>
-                                </a>
-                            </li>
-
-                            <li class="sidebar-item">
-                                <a href="Informaciones.aspx" class='sidebar-link'>
-                                     <i class="bi bi-info-circle"></i>
-                                    <span>Informaciones</span>
-
-                                </a>
-                                </li>
-
-                            <li class="sidebar-item  has-sub">
-                                <a href="Proyectos.aspx" class='sidebar-link'>
-                                     <i class="bi bi-clipboard2-data"></i>
-                                    <span>Proyectos</span>
-
-                                </a>
-                                <ul class="submenu">
-                                    <li class="submenu-item">
-                                        <a href="ProyectosTipo.aspx">
-                                             <i class="bi bi-clipboard2-check"></i>
-                                                <span>Tipos de Proyectos</span>
-                                       </a>
-                                    </li>
-                                    <li class="submenu-item">
-                                        <a href="Proyectos.aspx">
-                                             <i class="bi bi-clipboard2-check"></i>
-                                                <span>Proyectos</span>
-                                       </a>
-                                    </li>
-                                    </ul>
                             </li>
 
                             <li class="sidebar-item  ">
-                                <a href="Sucursales.aspx" class='sidebar-link'>
-                                    <i class="bi bi-building"></i>
-                                      <span>Sucursales</span>
+                                <a href="ContactoTipos.aspx" class='sidebar-link'>
+                                    <i class="fa-solid fa-phone-plus"></i>
+                                    <span>Tipos de contacto</span>
                                 </a>
                             </li>
                         </ul>
@@ -217,31 +181,44 @@
                                                         <div class="col-12">
                                                             <h5 class="card-title text-muted">Contacto</h5>
                                                         </div>
-                                                        <div class="col-md-6 col-12">
-                                                            <div class="form-group">
-                                                                <label for="txt_IdContactoTipo">Id</label>
-                                                                <input type="text" id="txt_IdContactoTipo" class="form-control" placeholder="Id" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6 col-12">
+                                                        <div class="col-md-5 col-12">
                                                             <div class="form-group">
                                                                 <label for="cbo_Nombre">Nombre</label>
                                                                 <fieldset class="form-group">
                                                                      <select class="form-select" id="cbo_Nombre">
-                                                                         <option value="Facebook">Facebook</option>
-                                                                         <option value="Fax">Fax</option>
-                                                                         <option value="Mail">Mail</option>
+                                                                         <option value="Facebook personal">Facebook personal</option>
+                                                                         <option value="Facebook trabajo">Facebook trabajo</option>
+                                                                         <option value="Fax personal">Fax personal</option>
+                                                                         <option value="Fax trabajo">Fax trabajo</option>
+                                                                         <option value="Instagram personal">Instagram personal</option>
+                                                                         <option value="Instagram trabajo">Instagram trabajo</option>
+                                                                         <option value="Mail personal">Mail personal</option>
+                                                                         <option value="Mail trabajo">Mail trabajo</option>
+                                                                         <option value="Teléfono fijo personal">Teléfono fijo personal</option>
+                                                                         <option value="Teléfono fijo trabajo">Teléfono fijo trabajo</option>
+                                                                         <option value="Telegram personal">Telegram personal</option>
+                                                                         <option value="Telegram trabajo">Telegram trabajo</option>
+                                                                         <option value="Skype personal">Skype personal</option>
+                                                                         <option value="Skype trabajo">Skype trabajo</option>
+                                                                         <option value="WhatsApp personal">WhatsApp personal</option>
+                                                                         <option value="WhatsApp trabajo">WhatsApp trabajo</option>
                                                                      </select>
                                                                 </fieldset>
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-6 col-12">
+                                                        <div class="col-md-5 col-12">
+                                                            <div id="visorArchivo2">
+                                                                <!--Aqui se desplegará el fichero-->
+                                                            </div>
+                                                        <span style="display: none" id="cadena"></span>
+                                                        </div>
+                                                        <div class="col-md-5 col-12">
                                                             <div class="form-group">
                                                                 <label for="txt_Imagen">Imagen</label>
-                                                                <input class="form-control" type="file" id="cmd_Imagen" onchange="return validarExt3()" accept="image/*" />
+                                                                <input class="form-control" type="file" id="btn_Imagen" onchange="return validarExt3()" accept="image/*" />
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-6 col-12">
+                                                        <div class="col-md-2 col-12">
                                                             <div class="form-group">
                                                                 <label for="chk_Activo">Activo</label>
                                                                 <asp:CheckBox ID="chk_Activo" runat="server" />
@@ -260,9 +237,9 @@
                             </div>
                         </section>
                         <!-- Botón mostrar modal -->
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalEditar">Mostrar Modal(reemplazar por lápiz en la tabla)</button>
+                        <%--<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalEditar">Mostrar Modal(reemplazar por lápiz en la tabla)</button>--%>
                         <!-- Modal Editar-->
-                        <div class="modal fade text-left w-100" id="modalEditar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel16" aria-hidden="true">
+                        <div class="modal fade text-left w-100" id="modalEditarContactoTipos" tabindex="-1" role="dialog" aria-labelledby="myModalLabel16" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -278,22 +255,24 @@
                                                     <div class="col-12">
                                                         <h5 class="card-title text-muted">Contacto</h5>
                                                     </div>
-                                                    <div class="col-md-6 col-12">
-                                                        <div class="form-group">
-                                                            <label for="txt_IdContactoTipo">Id</label>
-                                                            <input type="text" id="txtEdit_IdContactoTipo" class="form-control" placeholder="Id" />
-                                                        </div>
-                                                    </div>
+                                                    <input type="hidden" id="txtEdit_IdContactoTipo" />
                                                     <div class="col-md-6 col-12">
                                                         <div class="form-group">
                                                             <label for="txtEdit_Nombre">Nombre</label>
                                                             <input type="text" id="txtEdit_Nombre" class="form-control" placeholder="Nombre" />
                                                         </div>
                                                     </div>
+                                                    <div class="col-md-5 col-12">
+                                                            <div id="visorArchivo3">
+                                                                <!--Aqui se desplegará el fichero-->
+                                                            </div>
+                                                        <span style="display: none" id="cadena2"></span>
+                                                        </div>
                                                     <div class="col-md-6 col-12">
                                                             <div class="form-group">
-                                                                <label for="txtEdit_Imagen">Imagen</label>
-                                                                <input class="form-control" type="file" id="cmdEdit_Imagen" onchange="return validarExt3()" accept="image/*" />
+                                                                <label for="cmdEdit_Imagen">Imagen</label>
+                                                                <input class="form-control" type="file" id="cmdEdit_Imagen" onchange="return validarExt4()" accept="image/*" />
+
                                                             </div>
                                                     </div>
                                                     <div class="col-md-6 col-12">
@@ -314,7 +293,7 @@
                                         </button>
                                         <button type="button" class="btn btn-primary ml-1" data-bs-dismiss="modal">
                                             <i class="bx bx-check d-block d-sm-none"></i>
-                                            <span class="d-none d-sm-block">Aceptar</span>
+                                            <span class="d-none d-sm-block" onclick="ContactoTiposModificar()">Aceptar</span>
                                         </button>
                                     </div>
                                 </div>
@@ -336,20 +315,6 @@
                                                 <th scope="col">Eliminar</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
-<%--                                            <tr>
-                                                <td>Dolor sit.</td>
-                                                <td>Amet, consectetur.</td>
-                                                <td>Adipiscing elit.</td>
-                                                <td>Fusce vel.</td>
-                                                <td>Sapien elit.</td>
-                                                <td>In malesuada.</td>
-                                                <td>Semper mi.</td>
-                                                <td>Id sollicitudin.</td>
-                                                <td>Urna fermentum.</td>
-                                                <td>Ut fusce.</td>
-                                            </tr>--%>
-                                        </tbody>
                                     </table>
                                 </div>
                             </div>
@@ -373,20 +338,13 @@
             </div>
         </div>
     </form>
-    <script src="assets/js/app.js"></script>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="assets/js/jquery.dataTables.min.js"></script>
-    <script src="assets/js/extensions/datatables.js"></script>
-
-    <script src="assets/js/extensions/datatables.js"></script>
 
     <script>
 
         function validarCampos() {
             let nombre = document.getElementById('cbo_Nombre').value;
-            //let imagen = document.getElementById('txt_Imagen').value;
+
             let activo = document.getElementById('chk_Activo').value;
 
             let listaDeInputs = [nombre, activo]
@@ -400,7 +358,7 @@
 
         function alertaError() {
             Swal.fire({
-                title: "Error al agregar cliente.",
+                title: "Error al agregar los datos.",
                 text: "Complete todos los campos solicitados.",
                 icon: "error"
             });
@@ -416,13 +374,36 @@
         function ContactoTiposAgregar() {
 
             let nombre = document.getElementById('cbo_Nombre').value;
-            let imagen = document.getElementById('txt_Imagen').value;
-            let activo = document.getElementById('chk_Activo').value;
+
+            /*alert(nombre)*/
+            let activo = ""
+            if (document.getElementById('chk_Activo').checked = true) {
+                activo = true
+            } else {
+                activo = false
+            }
+
+            let imagen = document.getElementById("cadena").innerHTML;
+
+            if (imagen.includes("data:image/png;base64,")) {
+                var res = imagen.split("data:image/png;base64,");
+                var cadenaFinalImagen = res[1];
+
+            } else if (imagen.includes("data:image/jpg;base64,")) {
+                var res = imagen.split("data:image/jpg;base64,");
+                var cadenaFinalImagen = res[1];
+
+            } else if (imagen.includes("data:image/jpeg;base64,")) {
+                var res = imagen.split("data:image/jpeg;base64,");
+                var cadenaFinalImagen = res[1];
+            }
 
             var cadena = {
                 Nombre: nombre,
-                Imagen: imagen,
+
                 Activo: activo,
+
+                Imagen: cadenaFinalImagen
             };
 
             var payload = {
@@ -445,13 +426,76 @@
                             html: "Datos agregados correctamente.",
                             icon: "success"
                         });
-                        txtLimpiar('cbo_Nombre', 'txt_Imagen', 'chk_Activo');
+                        txtLimpiar('cbo_Nombre', 'chk_Activo');
                         ContactoTiposLlenarTabla();
 
                     } else {
                         Swal.fire({
                             title: "Lo sentimos, algo salió mal.",
                             text: "Verificá los datos ingresados.",
+                            icon: "error"
+                        });
+                    }
+                }
+            });
+        }
+
+        function ContactoTiposModificar() {
+
+            var archivoInput = document.getElementById('cmdEdit_Imagen');
+            var archivoRuta = archivoInput.value;
+
+            let cadena = document.getElementById("cadena2").innerHTML;
+
+            if (cadena.includes("data:image/png;base64,")) {
+                var res = cadena.split("data:image/png;base64,");
+                var cadenaFinalImagen = res[1];
+            } else if (cadena.includes("data:image/jpg;base64,")) {
+                var res = cadena.split("data:image/jpg;base64,");
+                var cadenaFinalImagen = res[1];
+            } else if (cadena.includes("data:image/jpeg;base64,")) {
+                var res = cadena.split("data:image/jpeg;base64,");
+                var cadenaFinalImagen = res[1];
+            }
+
+            let IdContactoTipo = document.getElementById('txtEdit_IdContactoTipo').value
+            let Nombre = document.getElementById('txtEdit_Nombre').value
+            let Imagen = document.getElementById('cmdEdit_Imagen').value
+            let Activo = document.getElementById('chkEdit_Activo').value
+
+            var cadenaJson = {
+                IdContactoTipo: IdContactoTipo,
+                Nombre: Nombre,
+                Imagen: cadenaFinalImagen,
+                Activo: Activo
+            }
+
+            var payload = {
+                cadena: JSON.stringify(cadenaJson)
+            };
+
+            $.ajax({
+                type: "POST",
+                url: "ContactoTipos.aspx/ContactoTiposModificar",
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(payload),
+                dataType: "json",
+                success: function (data) {
+                    var json = $.parseJSON(data.d);
+                    var status = json.Status;
+
+                    if (status == 200) {
+                        Swal.fire({
+                            title: "Éxito",
+                            html: "Datos modificados correctamente",
+                            icon: "success"
+                        });
+                        //txtLimpiar("txtRazonSocial", "txtFantasia", "txtNroCuit", "selectIdLocalidad", "txtDomicilio", "txtLat", "txtLng", "txtImagen", "selectEmpresaTipo", "txtObservaciones", "txtPrioridad", "txtFechaInicioActividad");
+                        llenarTabla();
+                    } else {
+                        Swal.fire({
+                            title: "LO SIENTO ALGO SALIO MAL",
+                            text: "Verifica los datos ingresados",
                             icon: "error"
                         });
                     }
@@ -515,6 +559,64 @@
 
         }
 
+        function ContactoTiposBuscarPorIdModal(id) {
+            //alert(id)
+            //Swal.fire({
+            //    title: 'Por favor espere',
+            //    text: "Cargando...",
+            //    html: `<img src="assets/images/svg-loaders/oval.svg" class="me-4" style="width: 3rem" alt="audio">`,
+            //    allowOutsideClick: false,
+            //    showConfirmButton: false,
+            //});
+
+
+            let IdContactoTipo = document.getElementById('txtEdit_IdContactoTipo')
+            IdContactoTipo.value = id
+            let Nombre = document.getElementById('txtEdit_Nombre')
+            let Imagen = document.getElementById('cmdEdit_Imagen')
+            let Activo = document.getElementById('chkEdit_Activo')
+
+            var cadena = {
+                IdContactoTipo: id
+            }
+            var payload = {
+                cadena: JSON.stringify(cadena)
+            }
+
+            /*            alert(payload)*/
+
+            $.ajax({
+                type: "POST",
+                url: "ContactoTipos.aspx/ContactoTiposBuscarPorId",
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(payload),
+                dataType: "json",
+                success: function (data) {
+                    var json = $.parseJSON(data.d);
+                    var status = json.Status;
+                    if (status == 200) {
+                        //IdContactoTipo.value = json.IdContactoTipo
+                        Nombre.value = json.Nombre
+                        Imagen.src = json.Imagen
+                        // Imagen.innerHTML += '<img src="' + json.Imagen + '" width="200" alt="Imagen del tipo de contacto"/>';
+                        // Imagen.src = json.Imagen
+                        Activo.value = json.Activo
+                        /* $('#modalEditarContactoTipos').modal('show')*/
+                    } else {
+                        Swal.fire({
+                            title: "Lo sentimos, algo salió mal",
+                            html: "Verifica los datos ingresados",
+                            type: "warning",
+                            showCancelButton: false,
+                            showConfirmButton: true,
+                            cancelButtonColor: "#DD6B55",
+                            confirmButtonColor: "#DD6B55",
+                        });
+                    }
+                }
+            });
+        }
+
         //function llenarTabla() {
         //    var tabla = $('#tabla1').DataTable();
         //    tabla.destroy();
@@ -524,6 +626,172 @@
         //        }
         //    });
         //}
+
+        function validarExt3() {
+            var archivoInput = document.getElementById('btn_Imagen');
+            var archivoRuta = archivoInput.value;
+            document.getElementById('visorArchivo2').innerHTML = ""
+
+            var extPermitidas = /(.png|.jpg|.jpeg)$/i;
+            if (!extPermitidas.exec(archivoRuta)) {
+                Swal.fire({
+                    title: "LO SIENTO ALGO SALIO MAL",
+                    text: "Verifica el archivo ingresado",
+                    icon: "error"
+                });
+                archivoInput.value = '';
+                return false;
+            } else {
+                if (archivoInput.files.length) {
+
+                    for (let i = 0; i < archivoInput.files.length; i++) {
+                        let visor = new FileReader();
+                        visor.onload = function (e) {
+                            document.getElementById('visorArchivo2').innerHTML +=
+                                '<embed src="' + e.target.result + '" width="400" height="375" />';
+                            // console.log(e.target.result);
+                            let cadena = document.getElementById("cadena");
+                            cadena.innerHTML = e.target.result;
+                        };
+
+                        visor.readAsDataURL(archivoInput.files[i]);
+                        //visorArchivo = visor;
+                        //console.log(visorArchivo);
+                    }
+                }
+                /// document.getElementById("nombreArchivo2").style = "display:none;margin-left:-100px";
+                //document.getElementById("nombreArchivo2").innerHTML = archivoRuta;
+            }
+
+
+        }
+
+        function validarExt4() {
+            var archivoInput = document.getElementById('cmdEdit_Imagen');
+            var archivoRuta = archivoInput.value;
+            document.getElementById('visorArchivo3').innerHTML = ""
+
+            var extPermitidas = /(.png|.jpg|.jpeg)$/i;
+            if (!extPermitidas.exec(archivoRuta)) {
+                Swal.fire({
+                    title: "LO SIENTO ALGO SALIO MAL",
+                    text: "Verifica el archivo ingresado",
+                    icon: "error"
+                });
+                archivoInput.value = '';
+                return false;
+            } else {
+                if (archivoInput.files.length) {
+
+                    for (let i = 0; i < archivoInput.files.length; i++) {
+                        let visor = new FileReader();
+                        visor.onload = function (e) {
+                            document.getElementById('visorArchivo3').innerHTML +=
+                                '<embed src="' + e.target.result + '" width="400" height="375" />';
+                            // console.log(e.target.result);
+                            let cadena = document.getElementById("cadena2");
+                            cadena.innerHTML = e.target.result;
+                        };
+
+                        visor.readAsDataURL(archivoInput.files[i]);
+                        //visorArchivo = visor;
+                        //console.log(visorArchivo);
+                    }
+                }
+                /// document.getElementById("nombreArchivo2").style = "display:none;margin-left:-100px";
+                //document.getElementById("nombreArchivo2").innerHTML = archivoRuta;
+            }
+
+
+        }
+
+        function agregarDocCap() {
+
+            var archivoInput = document.getElementById('btn_Imagen');
+            var archivoRuta = archivoInput.value;
+
+            let cadena = document.getElementById("cadena").innerHTML;
+
+            if (cadena.includes("data:image/png;base64,")) {
+                var res = cadena.split("data:image/png;base64,");
+                var cadenaFinalImagen = res[1];
+
+            } else if (cadena.includes("data:image/jpg;base64,")) {
+                var res = cadena.split("data:image/jpg;base64,");
+                var cadenaFinalImagen = res[1];
+
+            } else if (cadena.includes("data:image/jpeg;base64,")) {
+                var res = cadena.split("data:image/jpeg;base64,");
+                var cadenaFinalImagen = res[1];
+            }
+
+            Swal.fire({
+                title: "Espere...",
+                html: "<br><img src='https://crear.net.ar/CLIENTES/loader.gif'>",
+                type: "warning",
+                showCancelButton: false,
+                showConfirmButton: false,
+                cancelButtonColor: "#DD6B55",
+                confirmButtonColor: "#DD6B55",
+                didOpen: () => {
+                    Swal.showLoading()
+                }
+            });
+
+            let Nombre = document.getElementById('cbo_Nombre').value
+            let Lat = document.getElementById('txtLat').value
+            let Lng = document.getElementById('txtLng').value
+            let Imagen = document.getElementById('btn_Imagen').value
+            let Activo = document.getElementById('chk_Activo').value
+
+            var cadenaJson = {
+                Nombre: Nombre,
+                Lat: Lat,
+                Lng: Lng,
+                Imagen: cadenaFinalImagen,
+                Activo: Activo,
+            }
+
+            let jsonPush = { cadena: JSON.stringify(cadenaJson) };
+
+            $.ajax({
+                type: "POST",
+                url: "ContactoTipos.aspx/ContactoTiposAgregar",
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(jsonPush),
+                dataType: "json",
+                success: function (data) {
+                    var json = $.parseJSON(data.d);
+
+                    var status = json.Status;
+                    if (status == 200) {
+                        Swal.fire({
+                            title: "Éxito",
+                            html: "Datos agregados correctamente",
+                            icon: "success"
+                        });
+                        txtLimpiar("cbo_Nombre", "txtLat", "txtLng", "txt_Imagen", "chk_Activo");
+                        llenarTabla();
+                    } else {
+                        Swal.fire({
+                            title: "LO SIENTO ALGO SALIO MAL",
+                            text: "Verifica los datos ingresados",
+                            icon: "error"
+                        });
+                    }
+                }
+            });
+        }
+
     </script>
+
+       <script src="assets/js/app.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="assets/js/jquery.dataTables.min.js"></script>
+    <script src="assets/js/extensions/datatables.js"></script>
+
+    <script src="assets/js/extensions/datatables.js"></script>
 </body>
 </html>
