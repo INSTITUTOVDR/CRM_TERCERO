@@ -16,7 +16,7 @@ Public Class Contacto_Tipos
     End Function
 
     Public Function ContactoTiposModificar(ByVal IdContactoTipo As Integer, ByVal Nombre As String, ByVal Imagen As String, ByVal Activo As Boolean) As DataSet
-        o_Database.ExecuteDataSet("ContactoTiposModificar", Nombre, Imagen, Activo)
+        o_Database.ExecuteDataSet("ContactoTiposModificar", IdContactoTipo, Nombre, Imagen, Activo)
         Return Nothing
     End Function
 
