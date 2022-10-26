@@ -88,6 +88,8 @@
     <Compile Include="ContactoTiposWS.vb" />
     <Compile Include="Contacto_Tipos.vb" />
     <Compile Include="Empresa.vb" />
+    <Compile Include="EmpresaContactoTipos.vb" />
+    <Compile Include="EmpresaContactoTipoWS.vb" />
     <Compile Include="EmpresaTipo.vb" />
     <Compile Include="EmpresaTipoWS.vb" />
     <Compile Include="EmpresaWS.vb" />

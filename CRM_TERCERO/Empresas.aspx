@@ -16,6 +16,20 @@
     <link rel="stylesheet" href="assets/css/pages/fontawesome.css" />
     <link rel="stylesheet" href="assets/css/pages/datatables.css" />
     <link rel="stylesheet" href="assets/css/pages/icon.css" />
+    <style>
+         .img-wrap {
+            position: relative;
+        }
+        .img-wrap .close {
+            position: relative;
+            bottom: 15px;
+            left: 70px;
+            z-index: 100;
+            cursor: pointer;
+            color: red;
+
+        }
+    </style>
 </head>
 <body onload="">
     <form id="form1" runat="server">
@@ -510,12 +524,13 @@
                                                         </div>
                                                         <div class="col-md-6 col-12">
                                                             <div class="form-group mt-4">
-                                                                <button type="button" class="btn icon btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#modalContactoTipo"><i data-feather="plus"></i></button>
+                                                                <!-- data-bs-toggle="modal" data-bs-target="#modalContactoTipo" -->
+                                                                <button type="button" class="btn icon btn-outline-secondary" id="agregarContactoTipo"><i data-feather="plus"></i></button>
                                                             </div>
                                                         </div>
                                                         <div class="row" id="FormasContacto">
 
-                                                        </div>                                                       
+                                                        </div>
                                                         <div class="col-12">
                                                             <hr />
                                                             <h5 class="card-title text-muted mt-2">Información Geográfica</h5>
@@ -681,7 +696,7 @@
                                                 </div>
                                                 <div class="col-md-6 col-12">
                                                     <div class="form-group mt-4">
-                                                        <a href="modalContactoTipo()" class="btn icon btn-outline-secondary"><i data-feather="plus"></i></a>
+                                                        <a class="btn icon btn-outline-secondary" href="modalContactoTipo()" ><i data-feather="plus"></i></a>
                                                     </div>
                                                 </div>
                                                 <div class="col-12">
@@ -804,9 +819,9 @@
                                                 </div>
                                                 <div class="col-md-6 col-12">
                                                     <div class="form-group">
-                                                        <label for="selectEditEstado">Estado</label>
+                                                        <label for="selectContactoEstado">Estado</label>
                                                         <fieldset class="form-group">
-                                                            <select class="form-select" id="selectEstadoContactoTipo">
+                                                            <select class="form-select" id="selectContactoEstado">
                                                                 <option selected="selected" disabled="disabled">Seleccione</option>
                                                                 <option value="1">Habilitado</option>
                                                                 <option value="0">Deshabilitado</option>
@@ -824,7 +839,8 @@
                                         </button>
                                         <button type="button" class="btn btn-primary ml-1" data-bs-dismiss="modal">
                                             <i class="bx bx-check d-block d-sm-none"></i>
-                                            <span class="d-none d-sm-block" onclick="formaContactoAgregar()">Agregar</span>
+                                            <!-- onclick="formaContactoAgregar()" -->
+                                            <span class="d-none d-sm-block" id="addContactoBtn">Agregar</span>
                                         </button>
                                     </div>
                                 </div>
@@ -884,6 +900,7 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="assets/js/jquery.dataTables.min.js"></script>
     <script src="assets/js/extensions/datatables.js"></script>
+    <script src="Scripts/Empresa.js"></script>
 
     <script>
         $(document).ready(function () {
@@ -1269,7 +1286,8 @@
                 Observaciones: Observaciones,
                 Prioridad: Prioridad,
                 FechaInicioActividad: FechaInicioActividad,
-                Estado: Estado
+                Estado: Estado,
+                FormasContacto: contactoList
             }
 
             let jsonPush = { cadena: JSON.stringify(cadenaJson) };
@@ -1559,16 +1577,41 @@
             let Cargo = document.getElementById('txtCargoContactoTipo').value;
             let Estado = document.getElementById('selectEstadoContactoTipo').value;
 
-            let divFormasContacto = document.getElementById('FormasContacto')
+            var cadena = {
+                IdContactoTipo: IdContactoTipo
+            }
 
-            let nuevaFormaContacto = document.createElement("div")
-            nuevaFormaContacto.classList.add("col-1")
-            let imagenContacto = document.createElement("img")
-            imagenContacto.src="./ImagenesEmpresas/20228101097,34734655167ORi.png"
-            imagenContacto.width = 50
-            divFormasContacto.appendChild(nuevaFormaContacto)
-            nuevaFormaContacto.appendChild(imagenContacto)
+            var payload = {
+                cadena: JSON.stringify(cadena)
+            }
 
+            $.ajax({
+                type: "POST",
+                url: "Empresas.aspx/ContactoTiposBuscarPorId",
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(payload),
+                dataType: "json",
+                success: function (data) {
+
+                    var json = $.parseJSON(data.d);
+                    var status = json.Status;
+                    console.log(json)
+                    if (status == 200) {
+                        console.log(json.Imagen)
+                        let pathImagen = json.Imagen
+                        let divFormasContacto = document.getElementById('FormasContacto')
+                        let nuevaFormaContacto = document.createElement("div")
+                        nuevaFormaContacto.classList.add("col-1")
+                        nuevaFormaContacto.classList.add("img-wrap")
+                        let imagenContacto = document.createElement("img")
+                        imagenContacto.src=  "./ImagenesEmpresas/20228101097,34734655167ORi.png"//pathImagen
+                        imagenContacto.width = 50
+                        divFormasContacto.appendChild(nuevaFormaContacto)
+                        nuevaFormaContacto.innerHTML = " <span class='close'>&times;</span>"
+                        nuevaFormaContacto.appendChild(imagenContacto)
+                    }
+                }
+            });
         }
 
     </script>

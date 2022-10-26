@@ -66,6 +66,9 @@ Public Class Empresas
             'Dim jss As New JavaScriptSerializer()
             Dim dict = New JavaScriptSerializer().Deserialize(Of List(Of EmpresaWS))("[" & cadena & "]")
 
+            Dim ContactoTipos = New List(Of EmpresaContactoTipoWS)
+            ContactoTipos = dict(0).FormasContacto
+
             Dim RazonSocial = dict(0).RazonSocial.ToString
             Dim Fantasia = dict(0).Fantasia.ToString
             Dim NroCuit = dict(0).NroCuit.ToString
@@ -83,8 +86,10 @@ Public Class Empresas
 
             Dim oobjeto = New Empresa()
             'oobjeto.Agregar(dict)
+            Dim IdEmpresa = oobjeto.Agregar(RazonSocial, Fantasia, NroCuit, IdLocalidad, Domicilio, Lat, Lng, rutaAbsoluta, EmpresaTipo, Observaciones, Prioridad, FechaInicioActividad, Estado)
 
-            oobjeto.Agregar(RazonSocial, Fantasia, NroCuit, IdLocalidad, Domicilio, Lat, Lng, rutaAbsoluta, EmpresaTipo, Observaciones, Prioridad, FechaInicioActividad, Estado)
+            Dim oobjeto2 = New EmpresaContactoTipos
+            oobjeto2.Agregar(ContactoTipos, IdEmpresa)
 
             Dim data = New With {
                 Key .Status = "200"
@@ -369,6 +374,43 @@ Public Class Empresas
         Catch ex As Exception
             Return Error401()
         End Try
+    End Function
+
+    <WebMethod()>
+    <ScriptMethod(ResponseFormat:=ResponseFormat.Json)>
+    Public Shared Function ContactoTiposBuscarPorId(ByVal cadena As String) As String
+        Try
+            Dim jss As New JavaScriptSerializer()
+            Dim dict = jss.Deserialize(Of List(Of ContactoTiposWS))("[" & cadena & "]")
+
+            Dim IdContactoTipo = dict(0).IdContactoTipo.ToString
+
+            Dim oDs As New DataSet
+
+            Dim oobjeto As New Contacto_Tipos
+
+            oDs = oobjeto.ContactoTiposBuscarPorId(IdContactoTipo)
+
+            Dim IdTabla As Integer = 0
+
+            Dim data = New With {
+                Key .Status = "200",
+                Key .IdContactoTipo = oDs.Tables(IdTabla).Rows(0).Item("IdContactoTipo").ToString(),
+                    .Nombre = oDs.Tables(IdTabla).Rows(0).Item("Nombre").ToString(),
+                    .Imagen = oDs.Tables(IdTabla).Rows(0).Item("Imagen").ToString(),
+                    .Activo = oDs.Tables(IdTabla).Rows(0).Item("Activo").ToString()
+            }
+
+            Dim serializer = New JavaScriptSerializer()
+            Dim json = serializer.Serialize(data)
+
+            Dim jsondatos = New JavaScriptSerializer().Serialize(data)
+
+            Return New JavaScriptSerializer().Serialize(data)
+        Catch ex As Exception
+            Return Error401()
+        End Try
+
     End Function
 
     <WebMethod()>

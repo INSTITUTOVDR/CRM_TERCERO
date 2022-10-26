@@ -240,6 +240,7 @@
     <Content Include="Librerias\System.Configuration.dll" />
     <Content Include="Proyectos.aspx" />
     <Content Include="ProyectosTipo.aspx" />
+    <Content Include="Scripts\Empresa.js" />
     <Content Include="Scripts\proyecto.js" />
     <Content Include="Scripts\proyectostipo.js" />
     <Content Include="Sucursales.aspx" />
