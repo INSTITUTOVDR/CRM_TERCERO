@@ -84,7 +84,6 @@
     <Compile Include="Cliente.vb" />
     <Compile Include="ClienteWS.vb" />
     <Compile Include="ContactosTipo.vb" />
-    <Compile Include="ContactosTipoWS.vb" />
     <Compile Include="ContactoTiposWS.vb" />
     <Compile Include="Contacto_Tipos.vb" />
     <Compile Include="Empresa.vb" />

@@ -2,7 +2,7 @@
 Public Class Contacto_Tipos
     Dim o_Database As Database
     Public Sub New()
-        o_Database = DatabaseFactory.CreateDatabase("Conn")
+        o_Database = DatabaseFactory.CreateDatabase("ConnCRM")
     End Sub
     Public Function ContactoTiposBuscarPorId(ByVal IdContactoTipo As Integer) As DataSet
         Return o_Database.ExecuteDataSet("ContactoTiposBuscarPorId", IdContactoTipo)
