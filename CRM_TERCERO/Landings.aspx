@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="assets/css/pages/datatables.css" />
     <link rel="stylesheet" href="assets/css/pages/icon.css" />
 
-    </head>
+</head>
 <body onload="">
     <form id="form2" runat="server">
         <div id="app">
@@ -57,37 +57,37 @@
                             <li class="sidebar-item  ">
                                 <a href="Sucursales.aspx" class='sidebar-link'>
                                     <i class="bi bi-grid-fill"></i>
-                                      <span>Sucursales</span>
+                                    <span>Sucursales</span>
                                 </a>
                             </li>
                             <li class="sidebar-item  ">
                                 <a href="Empresas.aspx" class='sidebar-link'>
                                     <i class="bi bi-grid-fill"></i>
-                                      <span>Empresas</span>
+                                    <span>Empresas</span>
                                 </a>
                             </li>
                             <li class="sidebar-item  ">
                                 <a href="Proyectos.aspx" class='sidebar-link'>
                                     <i class="bi bi-grid-fill"></i>
-                                      <span>Proyectos</span>
+                                    <span>Proyectos</span>
                                 </a>
                             </li>
                             <li class="sidebar-item  ">
                                 <a href="ProyectosTipo.aspx" class='sidebar-link'>
                                     <i class="bi bi-grid-fill"></i>
-                                      <span>Proyectos Tipos</span>
+                                    <span>Proyectos Tipos</span>
                                 </a>
                             </li>
                             <li class="sidebar-item  ">
                                 <a href="Sucursales.aspx" class='sidebar-link'>
                                     <i class="bi bi-grid-fill"></i>
-                                      <span>Sucursales</span>
+                                    <span>Sucursales</span>
                                 </a>
                             </li>
                             <li class="sidebar-item  ">
                                 <a href="ContactoTipos.aspx" class='sidebar-link'>
                                     <i class="bi bi-grid-fill"></i>
-                                      <span>Contacto Tipos</span>
+                                    <span>Contacto Tipos</span>
                                 </a>
                             </li>
                             <li class="sidebar-item  ">
@@ -414,11 +414,8 @@
                     <div class="page-heading">
                         <div class="page-title">
                             <div class="row">
-                             
-                            
                             </div>
                         </div>
-
                         <section id="multiple-column-form">
                             <div class="row match-height">
                                 <div class="col-12">
@@ -427,83 +424,68 @@
                                             <h4 class="card-title">Bienvenido a ARECUBIA</h4>
                                             <h4 class="card-title">Ingrese sus datos por favor</h4>
                                         </div>
-                                        
-                                      
-                                                
-                                                  
-                                                       
-                                                     
-                                                       
-                                                    
-                                                      
-                                                       
-                                                       
-                                                    
+                                        <div class="card-content">
+                                            <div class="card-body">
+                                                <div class="form">
+                                                    <div class="row">
+                                                        <div class="form-group">
+                                                            <div class="form-group">
+                                                                <label for="txtNombre">Nombre</label>
+                                                                <input type="text" id="txtNombre" class="form-control"
+                                                                    placeholder="Nombre" name="fname" />
+                                                            </div>
+                                                        </div>
 
-                                                                              <div class="row">
-                                                                                <div class="form-group">
-                                                                                    <div class="form-group">
-                                                                                        <label for="txtNombre">Nombre</label>
-                                                                                        <input type="text" id="txtNombre" class="form-control"
-                                                                                            placeholder="Nombre" name="fname" />
-                                                                                    </div>
-                                                                                </div>
+                                                        <div class="form-group">
+                                                            <label for="txtApellido">Apellido</label>
+                                                            <input type="text" id="txtApellido" class="form-control"
+                                                                placeholder="Apellido" name="lname-column" />
+                                                        </div>
 
-                                                                                <div class="form-group">
-                                                                                    <label for="txtApellido">Apellido</label>
-                                                                                    <input type="text" id="txtApellido" class="form-control"
-                                                                                        placeholder="Apellido" name="lname-column" />
-                                                                                </div>
+                                                        <div class="form-group">
+                                                            <div class="form-group">
+                                                                <label for="txtGmail">Correo electronico</label>
+                                                                <input type="email" id="txtGmail" class="form-control"
+                                                                    placeholder="Correo electronico" name="lname-column" />
+                                                            </div>
+                                                        </div>
 
-                                                                                <div class="form-group">
-                                                                                    <div class="form-group">
-                                                                                        <label for="txtGmail">Correo electronico</label>
-                                                                                        <input type="email" id="txtGmail" class="form-control"
-                                                                                            placeholder="Correo electronico" name="lname-column" />
-                                                                                    </div>
-                                                                                </div>
+                                                        <div class="form-group">
+                                                            <label for="Telefono">Telefono</label>
+                                                            <input type="text" id="txtTelefono" class="form-control"
+                                                                placeholder="Numero de telefono" name="lname-column" />
+                                                        </div>
 
-                                                                                <div class="form-group">
-                                                                                    <label for="Telefono">Telefono</label>
-                                                                                    <input type="text" id="txtTelefono" class="form-control"
-                                                                                        placeholder="Numero de telefono" name="lname-column" />
-                                                                                </div>
+                                                        <div class="form-group">
+                                                            <label for="IdCanal">¿Cómo nos conoció?</label>
+                                                            <fieldset class="form-group">
+                                                                <select class="form-select" id="selectedIdCanal">
+                                                                    <option value="1">Facebook</option>
+                                                                    <option value="201">Local</option>
+                                                                    <option value="215">Referidos</option>
+                                                                </select>
+                                                            </fieldset>
+                                                        </div>
 
-                                                                                <div class="form-group">
-                                                                                    <div class="form-group">
-                                                                                        <label for="IdCanal">¿Cómo nos conoció?</label>
-                                                                                        <fieldset class="form-group">
-                                                                                            <select class="form-select" id="selectedIdCanal">
-                                                                                                <option value="1">Facebook</option>
-                                                                                                <option value="201">Local</option>
-                                                                                                <option value="215">Referidos</option>
-                                                                                            </select>
-                                                                                        </fieldset>
-                                                                                    </div>
-                                                                                </div>
+                                                        <div class="form-group">
+                                                            <label for="txtAgregado">¿Quieres agregar algo más?</label>
+                                                            <input type="text" id="txtAlgoMas" class="form-control"
+                                                                placeholder="Agrega algo más" name="lname-column" />
+                                                        </div>
 
-                                                                            </div>
-
-                                                                            <label for="txtAgregado">¿Quieres agregar algo más?</label>
-                                                                            <input type="text" id="txtAlgoMas" class="form-control"
-                                                                                placeholder="Agrega algo más" name="lname-column" />
-
-
-                                                     
                                                         <div class="col-12 d-flex justify-content-end">
                                                             <button type="button" class="btn btn-secondary me-1 mb-1">Cancelar</button>
                                                             <button type="button" class="btn btn-primary me-1 mb-1" onclick="validar()">Agregar</button>
                                                         </div>
-                                               </div>
-                                    </div>
-                                
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                               
-            </section>
-               
-                
-
+                                </div>
+                            </div>
+                        </section>
+                    </div>
                     <footer>
                         <div class="footer clearfix mb-0 text-muted">
                             <div class="float-start">
@@ -515,13 +497,14 @@
                                 </p>
                             </div>
                         </div>
-                       
+
                     </footer>
-                    </div>
-                   </div>
+                </div>
+            </div>
+        </div>
     </form>
 
-   
+
     <script src="assets/js/app.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -533,87 +516,87 @@
     <script>
 
 
-function validar() {
-    let nombre = document.getElementById('txtNombre').value
-    let apellido = document.getElementById('txtApellido').value
-    if (nombre == "" || apellido == "") {
-        alerta();
-    } else {
-        agregar();
-    }
-}
-
-function agregar() {
-    let nombre = document.getElementById('txtNombre').value
-    let apellido = document.getElementById('txtApellido').value
-    let gmail = document.getElementById('txtGmail').value
-    let telefono = document.getElementById('txtTelefono').value
-    let canal = document.getElementById('selectedIdCanal').value
-    let algomas = document.getElementById('txtAlgoMas').value
-
-
-
-    var cadena = {
-        Nombre: nombre,
-        Apellido: apellido,
-        Gmail: gmail,
-        Telefono: telefono,
-        IdCanal: canal,
-        AlgoMas: algomas
-
-    };
-    var payload = { cadena: JSON.stringify(cadena) };
-    $.ajax({
-        type: "POST",
-        url: "Landings.aspx/LandingsAgregar",
-        contentType: "application/json; charset=utf-8",
-        data: JSON.stringify(payload),
-        dataType: "json",
-        success: function (data) {
-            var json = $.parseJSON(data.d);
-            var status = json.Status;
-
-            if (status == 200) {
-
-                Swal.fire({
-                    title: "OK",
-                    html: "Datos agregados correctamente",
-                    type: "success",
-                    showCancelButton: false,
-                    showConfirmButton: true,
-                    cancelButtonColor: "#DD6B55",
-                    confirmButtonColor: "#DD6B55",
-                })
-
-                txtNombre.value = "";
-                txtApellido.value = "";
-
-              
-
+        function validar() {
+            let nombre = document.getElementById('txtNombre').value
+            let apellido = document.getElementById('txtApellido').value
+            if (nombre == "" || apellido == "") {
+                alerta();
             } else {
-                Swal.fire({
-                    title: "LO SIENTO ALGO SALIO MAL",
-                    html: "Verifica los datos ingresados",
-                    type: "warning",
-                    showCancelButton: false,
-                    showConfirmButton: true,
-                    cancelButtonColor: "#DD6B55",
-                    confirmButtonColor: "#DD6B55",
-
-                });
-
+                agregar();
             }
+        }
+
+        function agregar() {
+            let nombre = document.getElementById('txtNombre').value
+            let apellido = document.getElementById('txtApellido').value
+            let gmail = document.getElementById('txtGmail').value
+            let telefono = document.getElementById('txtTelefono').value
+            let canal = document.getElementById('selectedIdCanal').value
+            let algomas = document.getElementById('txtAlgoMas').value
+
+
+
+            var cadena = {
+                Nombre: nombre,
+                Apellido: apellido,
+                Gmail: gmail,
+                Telefono: telefono,
+                IdCanal: canal,
+                AlgoMas: algomas
+
+            };
+            var payload = { cadena: JSON.stringify(cadena) };
+            $.ajax({
+                type: "POST",
+                url: "Landings.aspx/LandingsAgregar",
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(payload),
+                dataType: "json",
+                success: function (data) {
+                    var json = $.parseJSON(data.d);
+                    var status = json.Status;
+
+                    if (status == 200) {
+
+                        Swal.fire({
+                            title: "OK",
+                            html: "Datos agregados correctamente",
+                            type: "success",
+                            showCancelButton: false,
+                            showConfirmButton: true,
+                            cancelButtonColor: "#DD6B55",
+                            confirmButtonColor: "#DD6B55",
+                        })
+
+                        txtNombre.value = "";
+                        txtApellido.value = "";
+
+
+
+                    } else {
+                        Swal.fire({
+                            title: "LO SIENTO ALGO SALIO MAL",
+                            html: "Verifica los datos ingresados",
+                            type: "warning",
+                            showCancelButton: false,
+                            showConfirmButton: true,
+                            cancelButtonColor: "#DD6B55",
+                            confirmButtonColor: "#DD6B55",
+
+                        });
+
+                    }
+
+                }
+            });
 
         }
-    });
-
-}
-function alerta() {
-    Swal.fire({
-        title: "Error al agregar cliente",
-        text: "Complete todos los campos solicitados",
-        icon: "error"
-    });
+        function alerta() {
+            Swal.fire({
+                title: "Error al agregar cliente",
+                text: "Complete todos los campos solicitados",
+                icon: "error"
+            });
         }
 
 
@@ -640,9 +623,9 @@ function alerta() {
 
 //    });
 //}
-     
+
     </script>
-    </body>
-    </html>
+</body>
+</html>
 
 
