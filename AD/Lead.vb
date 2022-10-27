@@ -19,4 +19,8 @@ Public Class Lead
     Public Function BuscarPorCanalPorMes() As DataSet
         Return o_Database.ExecuteDataSet("LeadsGetXCanalXMes")
     End Function
+    Public Function BuscarCanales() As DataSet
+        Return o_Database.ExecuteDataSet("BuscarCanales")
+    End Function
+
 End Class

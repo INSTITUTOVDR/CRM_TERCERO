@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="assets/css/pages/icon.css" />
 
 </head>
-<body onload="">
+<body onload="cargarCanales();">
     <form id="form2" runat="server">
         <div id="app">
             <!--Barra Lateral -->
@@ -460,9 +460,10 @@
                                                             <label for="IdCanal">¿Cómo nos conoció?</label>
                                                             <fieldset class="form-group">
                                                                 <select class="form-select" id="selectedIdCanal">
-                                                                    <option value="1">Facebook</option>
+                                                                    <option selected="selected" disabled="disabled">Seleccione</option>
+                                                                    <!-- <option value="1">Facebook</option>
                                                                     <option value="201">Local</option>
-                                                                    <option value="215">Referidos</option>
+                                                                    <option value="215">Referidos</option> -->
                                                                 </select>
                                                             </fieldset>
                                                         </div>
@@ -599,6 +600,49 @@
             });
         }
 
+        function cargarCanales(){
+            $.ajax({
+                type: "POST",
+                url: "Landings.aspx/BuscarCanal",
+                contentType: "application/json; charset=utf-8",                
+                dataType: "json",
+                success: function (data) {
+                    var json = $.parseJSON(data.d);
+                    var status = json.Status;
+
+                    if (status == 200) {
+
+                        var lista_canales = json.Data
+                        const select = document.getElementById("selectedIdCanal");
+                        for(let canal of lista_canales) {                           
+                            let nuevaOpcion = document.createElement("option");
+                            nuevaOpcion.value = canal.IdCanal;
+                            nuevaOpcion.text = canal.Nombre;
+                            select.add(nuevaOpcion);
+                            // select.appendChild(nuevaOpcion); <-- Así tambien funciona
+                            
+                        }
+
+
+                    } else {
+                        Swal.fire({
+                            title: "LO SIENTO ALGO SALIO MAL",
+                            html: "Verifica los datos ingresados",
+                            type: "warning",
+                            showCancelButton: false,
+                            showConfirmButton: true,
+                            cancelButtonColor: "#DD6B55",
+                            confirmButtonColor: "#DD6B55",
+
+                        });
+
+                    }
+
+                }
+            });
+
+        }
+        
 
 //        function CanalesBuscarTodos() {
 

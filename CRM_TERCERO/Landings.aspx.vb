@@ -118,6 +118,46 @@ Public Class Landing
     End Function
 
 
+    <WebMethod()>
+    <ScriptMethod(ResponseFormat:=ResponseFormat.Json)>
+    Public Shared Function BuscarCanal() As String
+        Try
+            Dim oDs As DataSet = New Lead().BuscarCanales
+
+            'oDs = oobjeto.ContactoTiposBuscarTodos
+            Dim IdTabla As Integer = 0
+
+            Dim e As CanalWS() = New CanalWS(oDs.Tables(IdTabla).Rows.Count - 1) {}
+
+            For i = 0 To oDs.Tables(IdTabla).Rows.Count - 1
+                e(i) = New CanalWS With {
+                    .IdCanal = oDs.Tables(IdTabla).Rows(i).Item("IdCanal").ToString(),
+                    .Nombre = oDs.Tables(IdTabla).Rows(i).Item("Nombre").ToString()
+                }
+            Next
+
+            Dim data = New With {
+                Key .Status = "200",
+                Key .Data = e
+            }
+            'Dim listaCanales As New List(Of String)()
+
+            'For Each dr As DataRow In oDs.Tables(0).Rows
+            '    listaCanales.Add(dr.Item("Nombre"))
+            'Next
+
+            'Dim data = New With {
+            '    Key .Status = "200",
+            '    Key .Canales = listaCanales
+            '}
+
+            Return New JavaScriptSerializer().Serialize(data)
+        Catch ex As Exception
+            Return Error401()
+        End Try
+    End Function
+
+
     Public Shared Function Error401()
 
         Dim data = New With {
