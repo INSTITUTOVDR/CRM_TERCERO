@@ -391,8 +391,11 @@
                                             <li>
                                                 <hr class="dropdown-divider" />
                                             </li>
-                                            <li><a class="dropdown-item" href="#"><i
-                                                        class="icon-mid bi bi-box-arrow-left me-2"></i>Salir</a></li>
+                                            <%--<li><a class="dropdown-item" href="#"><i class="icon-mid bi bi-box-arrow-left me-2"></i>Salir</a></li>--%>
+                                            <li>
+                                                <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" class='dropdown-item'
+                                                LogoutText="<i class='icon-mid bi bi-box-arrow-left me-2'></i>Salir" LogoutPageUrl="~/Landings.aspx" />
+                                            </li>
                                         </ul>
                                     </div>
                                 </div>
@@ -468,7 +471,7 @@
                                             <div id="bar"></div>
                                         </div>
                                     </div>
-                                </div>                                
+                                </div>
                             </div>
                         </div>
 
@@ -586,11 +589,11 @@
                                     height: 365,
                                     type: 'donut',
                                     toolbar: {
-                                        show: true,                                        
+                                        show: true,
                                         tools: {
                                         download: true}
                                     }
-                                }                                
+                                }
                             };
                             var chart = new ApexCharts(document.querySelector("#donut"), options);
                             chart.render();
@@ -694,7 +697,7 @@
                 });
 
             }
-       
-       </script>       
+
+       </script>
     </body>
     </html>

@@ -11,7 +11,7 @@ Option Strict On
 Option Explicit On
 
 
-Partial Public Class Dashboard
+Partial Public Class Login
 
     '''<summary>
     '''Control form1.
@@ -23,11 +23,11 @@ Partial Public Class Dashboard
     Protected WithEvents form1 As Global.System.Web.UI.HtmlControls.HtmlForm
 
     '''<summary>
-    '''Control HeadLoginStatus.
+    '''Control Login1.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents HeadLoginStatus As Global.System.Web.UI.WebControls.LoginStatus
+    Protected WithEvents Login1 As Global.System.Web.UI.WebControls.Login
 End Class

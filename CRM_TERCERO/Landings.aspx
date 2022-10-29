@@ -14,7 +14,49 @@
     <link rel="stylesheet" href="assets/css/pages/fontawesome.css" />
     <link rel="stylesheet" href="assets/css/pages/datatables.css" />
     <link rel="stylesheet" href="assets/css/pages/icon.css" />
+    <style>
+        .features-icons {
+            padding-top: 7rem;
+            padding-bottom: 7rem;
+        }
 
+            .features-icons .features-icons-item {
+                max-width: 20rem;
+            }
+
+                .features-icons .features-icons-item .features-icons-icon {
+                    height: 7rem;
+                }
+
+                    .features-icons .features-icons-item .features-icons-icon i {
+                        font-size: 4.5rem;
+                    }
+
+        .showcase{
+            margin:0 -2rem;
+        }
+        .showcase .showcase-text {
+            padding: 3rem !important;
+        }
+
+        .showcase .showcase-img {
+            min-height: 30rem;
+            background-size: cover;
+        }
+
+        @media (min-width: 768px) {
+            .showcase .showcase-text {
+                padding: 7rem !important;
+            }
+        }
+
+        .bg-image-full {
+            background-repeat: no-repeat;
+            background-attachment: scroll;
+            background-position: center;
+            background-size: cover;
+        }
+    </style>
 </head>
 <body onload="cargarCanales();">
     <form id="form2" runat="server">
@@ -402,8 +444,12 @@
                                         <li>
                                             <hr class="dropdown-divider" />
                                         </li>
-                                        <li><a class="dropdown-item" href="#"><i
-                                            class="icon-mid bi bi-box-arrow-left me-2"></i>Salir</a></li>
+                                        <%--  <li><a class="dropdown-item" href="#"><i
+                                            class="icon-mid bi bi-box-arrow-left me-2"></i>Salir</a></li>--%>
+                                        <li>
+                                            <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" class='dropdown-item'
+                                                LogoutText="<i class='icon-mid bi bi-box-arrow-left me-2'></i>Salir" LogoutPageUrl="~/Landings.aspx" />
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -412,16 +458,81 @@
                 </header>
                 <div id="main-content">
                     <div class="page-heading">
-                        <div class="page-title">
+                        <%--<div class="page-title">
                             <div class="row">
+                                <div class="col-12 col-md-6 order-md-1 order-last">
+                                    <h3>Bienvenido a ARECUBIA</h3>
+                                    <p class="text-subtitle text-muted"></p>
+                                </div>
+                                <div class="col-12 col-md-6 order-md-2 order-first">
+                                </div>
                             </div>
-                        </div>
+                        </div>--%>
+                        <section class="py-5 bg-image-full" style="background-image: url('assets/images/Background-landing.jpg'); margin: 0 -2rem;">
+                            <div class="text-center" style="margin-top: 7rem; margin-bottom: 7rem;">
+                                <%--<img class="img-fluid rounded-circle mb-4" src="https://dummyimage.com/150x150/6c757d/dee2e6.jpg" alt="..."/>--%>
+                                <h1 class="text-white fs-3 fw-bolder">Bienvenido a ARECUBIA</h1>
+                                <p class="text-white-50 mb-0">Landing Page Template</p>
+                            </div>
+                        </section>
+                        <section class="features-icons text-center">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+                                            <div class="features-icons-icon d-flex"><i class="bi-window m-auto text-primary"></i></div>
+                                            <h3>Fully Responsive</h3>
+                                            <p class="lead mb-0">This theme will look great on any device, no matter the size!</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+                                            <div class="features-icons-icon d-flex"><i class="bi-layers m-auto text-primary"></i></div>
+                                            <h3>Bootstrap 5 Ready</h3>
+                                            <p class="lead mb-0">Featuring the latest build of the new Bootstrap 5 framework!</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="features-icons-item mx-auto mb-0 mb-lg-3">
+                                            <div class="features-icons-icon d-flex"><i class="bi-terminal m-auto text-primary"></i></div>
+                                            <h3>Easy to Use</h3>
+                                            <p class="lead mb-0">Ready to use with your own content, or customize the source files!</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <section class="showcase mb-5">
+                            <div class="container-fluid p-0">
+                                <div class="row g-0">
+                                    <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('assets/images/bg-showcase-1.jpg')"></div>
+                                    <div class="col-lg-6 order-lg-1 my-auto showcase-text">
+                                        <h2>Fully Responsive Design</h2>
+                                        <p class="lead mb-0">When you use a theme created by Start Bootstrap, you know that the theme will look great on any device, whether it's a phone, tablet, or desktop the page will behave responsively!</p>
+                                    </div>
+                                </div>
+                                <div class="row g-0">
+                                    <div class="col-lg-6 text-white showcase-img" style="background-image: url('assets/images/bg-showcase-2.jpg')"></div>
+                                    <div class="col-lg-6 my-auto showcase-text">
+                                        <h2>Updated For Bootstrap 5</h2>
+                                        <p class="lead mb-0">Newly improved, and full of great utility classes, Bootstrap 5 is leading the way in mobile responsive web development! All of the themes on Start Bootstrap are now using Bootstrap 5!</p>
+                                    </div>
+                                </div>
+                                <div class="row g-0">
+                                    <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('assets/images/bg-showcase-3.jpg')"></div>
+                                    <div class="col-lg-6 order-lg-1 my-auto showcase-text">
+                                        <h2>Easy to Use &amp; Customize</h2>
+                                        <p class="lead mb-0">Landing Page is just HTML and CSS with a splash of SCSS for users who demand some deeper customization options. Out of the box, just add your content and images, and your new landing page will be ready to go!</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
                         <section id="multiple-column-form">
                             <div class="row match-height">
                                 <div class="col-12">
                                     <div class="card">
                                         <div class="card-header">
-                                            <h4 class="card-title">Bienvenido a ARECUBIA</h4>
+                                            <%--<h4 class="card-title">Bienvenido a ARECUBIA</h4>--%>
                                             <h4 class="card-title">Ingrese sus datos por favor</h4>
                                         </div>
                                         <div class="card-content">
@@ -600,11 +711,11 @@
             });
         }
 
-        function cargarCanales(){
+        function cargarCanales() {
             $.ajax({
                 type: "POST",
                 url: "Landings.aspx/BuscarCanal",
-                contentType: "application/json; charset=utf-8",                
+                contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (data) {
                     var json = $.parseJSON(data.d);
@@ -614,13 +725,13 @@
 
                         var lista_canales = json.Data
                         const select = document.getElementById("selectedIdCanal");
-                        for(let canal of lista_canales) {                           
+                        for (let canal of lista_canales) {
                             let nuevaOpcion = document.createElement("option");
                             nuevaOpcion.value = canal.IdCanal;
                             nuevaOpcion.text = canal.Nombre;
                             select.add(nuevaOpcion);
                             // select.appendChild(nuevaOpcion); <-- Así tambien funciona
-                            
+
                         }
 
 
@@ -642,7 +753,7 @@
             });
 
         }
-        
+
 
 //        function CanalesBuscarTodos() {
 
