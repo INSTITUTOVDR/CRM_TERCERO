@@ -22,5 +22,8 @@ Public Class Lead
     Public Function BuscarCanales() As DataSet
         Return o_Database.ExecuteDataSet("BuscarCanales")
     End Function
+    Public Function BuscarTodos() As DataSet
+        Return o_Database.ExecuteDataSet("LeadsBuscarTodos")
+    End Function
 
 End Class

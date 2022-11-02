@@ -15,6 +15,48 @@ Public Class Dashboard
 
     <WebMethod()>
     <ScriptMethod(ResponseFormat:=ResponseFormat.Json)>
+    Public Shared Function ProspectosBuscarTodo() As String
+        Try
+            Dim oDs As New DataSet
+            Dim oobjeto As New Lead
+            oDs = oobjeto.BuscarTodos
+            Dim IdTabla As Integer = 0
+
+            Dim e As LandingWS() = New LandingWS(oDs.Tables(IdTabla).Rows.Count - 1) {}
+
+            For i = 0 To oDs.Tables(IdTabla).Rows.Count - 1
+                e(i) = New LandingWS With {
+                    .IdLanding = oDs.Tables(IdTabla).Rows(i).Item("IdLanding").ToString(),
+                    .Nombre = oDs.Tables(IdTabla).Rows(i).Item("Nombre").ToString(),
+                    .Apellido = oDs.Tables(IdTabla).Rows(i).Item("Apellido").ToString(),
+                    .Gmail = oDs.Tables(IdTabla).Rows(i).Item("CorreoElectronico").ToString(),
+                    .Telefono = oDs.Tables(IdTabla).Rows(i).Item("Telefono").ToString(),
+                    .IdCanal = oDs.Tables(IdTabla).Rows(i).Item("Canal").ToString(),
+                    .FechaIngreso = oDs.Tables(IdTabla).Rows(i).Item("FechaIngreso").ToString(),
+                    .AlgoMas = oDs.Tables(IdTabla).Rows(i).Item("AlgoMas").ToString()
+                }
+            Next
+
+            Dim data = New With {
+                Key .Status = "200",
+                Key .Data = e
+            }
+
+            Dim serializer = New JavaScriptSerializer()
+            Dim json = serializer.Serialize(data)
+
+            Dim jsondatos = New JavaScriptSerializer().Serialize(data)
+
+            Return New JavaScriptSerializer().Serialize(data)
+        Catch ex As Exception
+            Return Error401()
+        End Try
+    End Function
+
+
+
+    <WebMethod()>
+    <ScriptMethod(ResponseFormat:=ResponseFormat.Json)>
     Public Shared Function LeadsPorMes() As String
         Try
             Dim oDs As DataSet = New Lead().BuscarPorMes

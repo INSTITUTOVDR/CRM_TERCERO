@@ -294,6 +294,31 @@
                                     </div>
                                 </div>
                             </div>
+
+                             <!--Tabla -->
+                            <section class="section">
+                                <div class="card">
+                                    <div class="card-header">Lista de prospectos</div>
+                                    <div class="card-body">
+                                        <table class="table table-hover" id="tablaProspectos">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">Nombre</th>
+                                                    <th scope="col">Apellido</th>
+                                                    <th scope="col">Correo</th>
+                                                    <th scope="col">Telefono</th>
+                                                    <th scope="col">Canal</th>
+                                                    <th scope="col">FechaIngreso</th>
+                                                    <th scope="col">Información Extra</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </section>
+
                         </div>
 
                         <footer>
@@ -324,6 +349,7 @@
                 grafico1()
                 grafico2()
                 grafico3()
+                llenarTabla()
             });
 
 
@@ -519,6 +545,74 @@
 
             }
 
-       </script>
+            function llenarTabla() {
+
+                var tabla = $('#tablaProspectos').DataTable();
+                tabla.destroy();
+
+                $('#tablaProspectos').DataTable({
+                    language: {
+                        url: "//cdn.datatables.net/plug-ins/1.12.1/i18n/es-ES.json"
+                    },
+
+                    ajax: {
+                        "type": "POST",
+                        "url": "Dashboard.aspx/ProspectosBuscarTodo",
+                        "contentType": "application/json; charset=utf-8",
+                        "dataType": "json",
+                        "dataSrc": function (data) {
+                            var json = $.parseJSON(data.d);
+
+                            if (json.Data.length > 0) {
+                                var return_data = new Array();
+                                for (var i = 0; i < json.Data.length; i++) {
+                                    var fecha = json.Data[i].FechaIngreso
+
+                                    return_data.push({
+                                        'IdLanding': json.Data[i].IdLanding,
+                                        'Nombre': json.Data[i].Nombre,
+                                        'Apellido': json.Data[i].Apellido,
+                                        'Correo': json.Data[i].Gmail,
+                                        'Telefono': json.Data[i].Telefono,
+                                        'Canal': json.Data[i].IdCanal,
+                                        'FechaIngreso': fecha.slice(0,8),
+                                        'Información Extra': json.Data[i].AlgoMas
+                                    })
+                                }
+                                return return_data;
+                            } else {
+                                Swal.fire("NO HAY REGISTROS CARGADOS", "Gracias por consultar", "success");
+                            }
+                        }
+                    },
+                    columns: [
+                        { 'data': 'Nombre' },
+                        { 'data': 'Apellido' },
+                        { 'data': 'Correo' },
+                        { 'data': 'Telefono' },
+                        { 'data': 'Canal' },
+                        { 'data': 'FechaIngreso' },
+                        { 'data': 'Información Extra' },
+                        //{
+                        //    'data': 'Estado', orderable: false,
+                        //    'render': function (data, type, row) {
+                        //        // return '<input type="checkbox" class="editor-active" ' + row.Estado + ' >'
+                        //        return `<div class="form-check form-switch">
+                        //                <input class="form-check-input" type="checkbox" ` + row.Estado + ` onchange="cambiarEstado(` + row.IdEmpresa + `)">
+                        //            </div>`
+                        //    }
+                        //},
+                        //{
+                        //    'data': 'IdEmpresa', orderable: false,
+                        //    'render': function (data, type, row) {
+                        //        return '<a onclick="empresaBuscarPorIdModal(' + row.IdEmpresa + ')"><i class="material-icons" role="button">edit</i></a>'
+                        //    }
+                        //},
+                    ],
+                });
+            }
+
+
+        </script>
     </body>
     </html>
