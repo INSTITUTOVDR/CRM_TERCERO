@@ -34,14 +34,18 @@ function addContacto(){
         imagenContacto.src= contactoTipoBuscarImg(Id)//"./ImagenesEmpresas/20228101097,34734655167ORi.png"//pathImagen
         imagenContacto.width = 50
 
+        let nombreContacto = document.createElement("p")
+        nombreContacto.textContent = selectContactoTipo.options[Id].text
+
         // let btnDelete = document.createElement('span')
         // btnDelete.className= 'close';
         // btnDelete.value = 'x';
 
         divFormasContacto.appendChild(formaContacto);
         formaContacto.innerHTML = "<span class='close'>&times;</span>"
-        formaContacto.innerHTML += "<input type='text' hidden='hidden' value=" + contactoCount + " />"
+        formaContacto.innerHTML += "<input type='text' hidden='hidden' value=" + contactoCount + " />"        
         formaContacto.appendChild(imagenContacto)
+        formaContacto.appendChild(nombreContacto)
 
         contactoValor.value = '';
         contactoCargo.value = '';
@@ -80,6 +84,7 @@ function contactoTipoBuscarImg(id){
     let Valor = document.getElementById('txtValorContactoTipo').value;
     // let Cargo = document.getElementById('txtCargoContactoTipo').value;
     // let Estado = document.getElementById('selectEstadoContactoTipo').value;
+    let pathImagen
 
     var cadena = {
         IdContactoTipo: id
@@ -95,6 +100,7 @@ function contactoTipoBuscarImg(id){
         contentType: "application/json; charset=utf-8",
         data: JSON.stringify(payload),
         dataType: "json",
+        async: false,
         success: function (data) {
 
             var json = $.parseJSON(data.d);
@@ -102,10 +108,11 @@ function contactoTipoBuscarImg(id){
             console.log(json)
             if (status == 200) {
                 console.log(json.Imagen)
-                let pathImagen = json.Imagen
-                return pathImagen
+                pathImagen = json.Imagen
+               
             }
         }
     });
+    return pathImagen
 }
 

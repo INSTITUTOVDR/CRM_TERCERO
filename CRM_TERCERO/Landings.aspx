@@ -14,9 +14,51 @@
     <link rel="stylesheet" href="assets/css/pages/fontawesome.css" />
     <link rel="stylesheet" href="assets/css/pages/datatables.css" />
     <link rel="stylesheet" href="assets/css/pages/icon.css" />
+    <style>
+        .features-icons {
+            padding-top: 7rem;
+            padding-bottom: 7rem;
+        }
 
-    </head>
-<body onload="">
+            .features-icons .features-icons-item {
+                max-width: 20rem;
+            }
+
+                .features-icons .features-icons-item .features-icons-icon {
+                    height: 7rem;
+                }
+
+                    .features-icons .features-icons-item .features-icons-icon i {
+                        font-size: 4.5rem;
+                    }
+
+        .showcase{
+            margin:0 -2rem;
+        }
+        .showcase .showcase-text {
+            padding: 3rem !important;
+        }
+
+        .showcase .showcase-img {
+            min-height: 30rem;
+            background-size: cover;
+        }
+
+        @media (min-width: 768px) {
+            .showcase .showcase-text {
+                padding: 7rem !important;
+            }
+        }
+
+        .bg-image-full {
+            background-repeat: no-repeat;
+            background-attachment: scroll;
+            background-position: center;
+            background-size: cover;
+        }
+    </style>
+</head>
+<body onload="cargarCanales();">
     <form id="form2" runat="server">
         <div id="app">
             <!--Barra Lateral -->
@@ -137,7 +179,7 @@
                             </button>
                             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                                    <li class="nav-item dropdown me-1">
+                                    <%--<li class="nav-item dropdown me-1">
                                         <a class="nav-link active dropdown-toggle text-gray-600" href="#" data-bs-toggle="dropdown"
                                             aria-expanded="false">
                                             <i class='bi bi-envelope bi-sub fs-4'></i>
@@ -160,13 +202,22 @@
                                             </li>
                                             <li><a class="dropdown-item">No notification available</a></li>
                                         </ul>
-                                    </li>
+                                    </li>--%>
                                 </ul>
                                 <div class="dropdown">
                                     <a href="#" data-bs-toggle="dropdown" aria-expanded="false">
                                         <div class="user-menu d-flex">
+                                        <asp:LoginView ID="LoginView1" runat="server">
+                                            <AnonymousTemplate>
                                             <div class="user-name text-end me-3">
-                                                <h6 class="mb-0 text-gray-600">John Ducky</h6>
+                                                <a class='btn btn-outline-primary' href="#formularioContacto">Contactanos</a>
+                                                <asp:LoginStatus ID="LoginStatus1" runat="server" LogoutAction="Redirect" class='btn btn-outline-primary'
+                                                LogoutText="<i class='icon-mid bi bi-box-arrow-left me-2'></i>Salir" LogoutPageUrl="~/Landings.aspx" />
+                                            </div>
+                                            </AnonymousTemplate>
+                                            <LoggedInTemplate>
+                                            <div class="user-name text-end me-3">
+                                                <h6 class="mb-0 text-gray-600">Admin</h6>
                                                 <p class="mb-0 text-sm text-gray-600">Administrador</p>
                                             </div>
                                             <div class="user-img d-flex align-items-center">
@@ -174,24 +225,32 @@
                                                     <img src="assets/images/faces/1.jpg" />
                                                 </div>
                                             </div>
+                                            </LoggedInTemplate>
+                                        </asp:LoginView>
                                         </div>
                                     </a>
-                                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton" style="min-width: 11rem;">
-                                        <li>
-                                            <h6 class="dropdown-header">Hello, John!</h6>
-                                        </li>
-                                        <li><a class="dropdown-item" href="#"><i class="icon-mid bi bi-person me-2"></i>
-                                            Mi Perfil</a></li>
-                                        <li><a class="dropdown-item" href="#"><i class="icon-mid bi bi-gear me-2"></i>
-                                            Configuración</a></li>
-                                        <li><a class="dropdown-item" href="#"><i class="icon-mid bi bi-wallet me-2"></i>
-                                            Wallet</a></li>
-                                        <li>
-                                            <hr class="dropdown-divider" />
-                                        </li>
-                                        <li><a class="dropdown-item" href="#"><i
-                                            class="icon-mid bi bi-box-arrow-left me-2"></i>Salir</a></li>
-                                    </ul>
+                                    <asp:LoginView ID="LoginView2" runat="server">
+                                        <LoggedInTemplate>
+                                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton" style="min-width: 11rem;">
+                                                <li>
+                                                    <h6 class="dropdown-header">Hello, John!</h6>
+                                                </li>
+                                                <li><a class="dropdown-item" href="#"><i class="icon-mid bi bi-person me-2"></i>
+                                                    Mi Perfil</a></li>
+                                                <li><a class="dropdown-item" href="#"><i class="icon-mid bi bi-gear me-2"></i>
+                                                    Configuración</a></li>
+                                                <li><a class="dropdown-item" href="#"><i class="icon-mid bi bi-wallet me-2"></i>
+                                                    Wallet</a></li>
+                                                <li>
+                                                    <hr class="dropdown-divider" />
+                                                </li>
+                                                <li>
+                                                    <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" class='dropdown-item'
+                                                        LogoutText="<i class='icon-mid bi bi-box-arrow-left me-2'></i>Salir" LogoutPageUrl="~/Landings.aspx" />
+                                                </li>
+                                            </ul>
+                                    </LoggedInTemplate>
+                                </asp:LoginView>
                                 </div>
                             </div>
                         </div>
@@ -199,98 +258,146 @@
                 </header>
                 <div id="main-content">
                     <div class="page-heading">
-                        <div class="page-title">
+                        <%--<div class="page-title">
                             <div class="row">
-                             
-                            
+                                <div class="col-12 col-md-6 order-md-1 order-last">
+                                    <h3>Bienvenido a ARECUBIA</h3>
+                                    <p class="text-subtitle text-muted"></p>
+                                </div>
+                                <div class="col-12 col-md-6 order-md-2 order-first">
+                                </div>
                             </div>
-                        </div>
-
+                        </div>--%>
+                        <section class="py-5 bg-image-full" style="background-image: url('assets/images/Background-landing.jpg'); margin: 0 -2rem;">
+                            <div class="text-center" style="margin-top: 7rem; margin-bottom: 7rem;">
+                                <%--<img class="img-fluid rounded-circle mb-4" src="https://dummyimage.com/150x150/6c757d/dee2e6.jpg" alt="..."/>--%>
+                                <h1 class="text-white fs-1 fw-bolder">Bienvenido a ARECUBIA</h1>
+                                <p class="text-white-50 fs-4 mb-0">CRM Enfocado en Marketing</p>
+                            </div>
+                        </section>
+                        <section class="features-icons text-center">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+                                            <div class="features-icons-icon d-flex"><i class="bi-bar-chart-line m-auto text-primary"></i></div>
+                                            <h3>Informes en Gráficos</h3>
+                                            <p class="lead mb-0">Informes detallados sobre tus prospectos y los canales de los que provienen.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+                                            <div class="features-icons-icon d-flex"><i class="bi-bullseye m-auto text-primary"></i></div>
+                                            <h3>Enfoca tus campañas</h3>
+                                            <p class="lead mb-0">El sistema procesa la información de tus clientes, ayudandote a promocionarte donde sea más conveniente.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="features-icons-item mx-auto mb-0 mb-lg-3">
+                                            <div class="features-icons-icon d-flex"><i class="bi-graph-up-arrow m-auto text-primary"></i></div>
+                                            <h3>Aumenta tus ventas</h3>
+                                            <p class="lead mb-0">Llevá un seguimiento detallado de tus potenciales clientes</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <section class="showcase mb-5">
+                            <div class="container-fluid p-0">
+                                <div class="row g-0">
+                                    <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('assets/images/landing-1.jpg')"></div>
+                                    <div class="col-lg-6 order-lg-1 my-auto showcase-text">
+                                        <h2>Tableros de mando expresivos y coloridos</h2>
+                                        <p class="lead mb-0">El cuadro de mando es la cara de cualquier aplicación y ayuda a expresar datos complejos en un formato sencillo para su mejor comprensión y análisis.</p>
+                                    </div>
+                                </div>
+                                <div class="row g-0">
+                                    <div class="col-lg-6 text-white showcase-img" style="background-image: url('assets/images/landing-2.jpg')"></div>
+                                    <div class="col-lg-6 my-auto showcase-text">
+                                        <h2>Tema claro y oscuro</h2>
+                                        <p class="lead mb-0">Posibilidad de elegir entre modo claro y oscuro, segun la preferencia del usuario para mejorar su experiencia.</p>
+                                    </div>
+                                </div>
+                               <%-- <div class="row g-0">
+                                    <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('assets/images/bg-showcase-3.jpg')"></div>
+                                    <div class="col-lg-6 order-lg-1 my-auto showcase-text">
+                                        <h2>Easy to Use &amp; Customize</h2>
+                                        <p class="lead mb-0">Landing Page is just HTML and CSS with a splash of SCSS for users who demand some deeper customization options. Out of the box, just add your content and images, and your new landing page will be ready to go!</p>
+                                    </div>
+                                </div>--%>
+                            </div>
+                        </section>
                         <section id="multiple-column-form">
                             <div class="row match-height">
                                 <div class="col-12">
                                     <div class="card">
-                                        <div class="card-header">
-                                            <h4 class="card-title">Bienvenido a ARECUBIA</h4>
+                                        <div class="card-header"  id="formularioContacto">
+                                            <%--<h4 class="card-title">Bienvenido a ARECUBIA</h4>--%>
                                             <h4 class="card-title">Ingrese sus datos por favor</h4>
                                         </div>
-                                        
-                                      
-                                                
-                                                  
-                                                       
-                                                     
-                                                       
-                                                    
-                                                      
-                                                       
-                                                       
-                                                    
+                                        <div class="card-content">
+                                            <div class="card-body">
+                                                <div class="form">
+                                                    <div class="row">
+                                                        <div class="form-group">
+                                                            <div class="form-group">
+                                                                <label for="txtNombre">Nombre</label>
+                                                                <input type="text" id="txtNombre" class="form-control"
+                                                                    placeholder="Nombre" name="fname" />
+                                                            </div>
+                                                        </div>
 
-                                                                              <div class="row">
-                                                                                <div class="form-group">
-                                                                                    <div class="form-group">
-                                                                                        <label for="txtNombre">Nombre</label>
-                                                                                        <input type="text" id="txtNombre" class="form-control"
-                                                                                            placeholder="Nombre" name="fname" />
-                                                                                    </div>
-                                                                                </div>
+                                                        <div class="form-group">
+                                                            <label for="txtApellido">Apellido</label>
+                                                            <input type="text" id="txtApellido" class="form-control"
+                                                                placeholder="Apellido" name="lname-column" />
+                                                        </div>
 
-                                                                                <div class="form-group">
-                                                                                    <label for="txtApellido">Apellido</label>
-                                                                                    <input type="text" id="txtApellido" class="form-control"
-                                                                                        placeholder="Apellido" name="lname-column" />
-                                                                                </div>
+                                                        <div class="form-group">
+                                                            <div class="form-group">
+                                                                <label for="txtGmail">Correo electronico</label>
+                                                                <input type="email" id="txtGmail" class="form-control"
+                                                                    placeholder="Correo electronico" name="lname-column" />
+                                                            </div>
+                                                        </div>
 
-                                                                                <div class="form-group">
-                                                                                    <div class="form-group">
-                                                                                        <label for="txtGmail">Correo electronico</label>
-                                                                                        <input type="email" id="txtGmail" class="form-control"
-                                                                                            placeholder="Correo electronico" name="lname-column" />
-                                                                                    </div>
-                                                                                </div>
+                                                        <div class="form-group">
+                                                            <label for="Telefono">Telefono</label>
+                                                            <input type="text" id="txtTelefono" class="form-control"
+                                                                placeholder="Numero de telefono" name="lname-column" />
+                                                        </div>
 
-                                                                                <div class="form-group">
-                                                                                    <label for="Telefono">Telefono</label>
-                                                                                    <input type="text" id="txtTelefono" class="form-control"
-                                                                                        placeholder="Numero de telefono" name="lname-column" />
-                                                                                </div>
+                                                        <div class="form-group">
+                                                            <label for="IdCanal">¿Cómo nos conoció?</label>
+                                                            <fieldset class="form-group">
+                                                                <select class="form-select" id="selectedIdCanal">
+                                                                    <option selected="selected" disabled="disabled">Seleccione</option>
+                                                                    <!-- <option value="1">Facebook</option>
+                                                                    <option value="201">Local</option>
+                                                                    <option value="215">Referidos</option> -->
+                                                                </select>
+                                                            </fieldset>
+                                                        </div>
 
-                                                                                <div class="form-group">
-                                                                                    <div class="form-group">
-                                                                                        <label for="IdCanal">¿Cómo nos conoció?</label>
-                                                                                        <fieldset class="form-group">
-                                                                                            <select class="form-select" id="selectedIdCanal">
-                                                                                                <option value="1">Facebook</option>
-                                                                                                <option value="201">Local</option>
-                                                                                                <option value="215">Referidos</option>
-                                                                                            </select>
-                                                                                        </fieldset>
-                                                                                    </div>
-                                                                                </div>
+                                                        <div class="form-group">
+                                                            <label for="txtAgregado">¿Quieres agregar algo más?</label>
+                                                            <input type="text" id="txtAlgoMas" class="form-control"
+                                                                placeholder="Agrega algo más" name="lname-column" />
+                                                        </div>
 
-                                                                            </div>
-
-                                                                            <label for="txtAgregado">¿Quieres agregar algo más?</label>
-                                                                            <input type="text" id="txtAlgoMas" class="form-control"
-                                                                                placeholder="Agrega algo más" name="lname-column" />
-
-
-                                                     
                                                         <div class="col-12 d-flex justify-content-end">
                                                             <button type="button" class="btn btn-secondary me-1 mb-1">Cancelar</button>
                                                             <button type="button" class="btn btn-primary me-1 mb-1" onclick="validar()">Agregar</button>
                                                         </div>
-                                               </div>
-                                    </div>
-                                
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                               
-            </section>
-               
-                
-
+                                </div>
+                            </div>
+                        </section>
+                    </div>
                     <footer>
                         <div class="footer clearfix mb-0 text-muted">
                             <div class="float-start">
@@ -302,13 +409,14 @@
                                 </p>
                             </div>
                         </div>
-                       
+
                     </footer>
-                    </div>
-                   </div>
+                </div>
+            </div>
+        </div>
     </form>
 
-   
+
     <script src="assets/js/app.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -320,87 +428,130 @@
     <script>
 
 
-function validar() {
-    let nombre = document.getElementById('txtNombre').value
-    let apellido = document.getElementById('txtApellido').value
-    if (nombre == "" || apellido == "") {
-        alerta();
-    } else {
-        agregar();
-    }
-}
-
-function agregar() {
-    let nombre = document.getElementById('txtNombre').value
-    let apellido = document.getElementById('txtApellido').value
-    let gmail = document.getElementById('txtGmail').value
-    let telefono = document.getElementById('txtTelefono').value
-    let canal = document.getElementById('selectedIdCanal').value
-    let algomas = document.getElementById('txtAlgoMas').value
-
-
-
-    var cadena = {
-        Nombre: nombre,
-        Apellido: apellido,
-        Gmail: gmail,
-        Telefono: telefono,
-        IdCanal: canal,
-        AlgoMas: algomas
-
-    };
-    var payload = { cadena: JSON.stringify(cadena) };
-    $.ajax({
-        type: "POST",
-        url: "Landings.aspx/LandingsAgregar",
-        contentType: "application/json; charset=utf-8",
-        data: JSON.stringify(payload),
-        dataType: "json",
-        success: function (data) {
-            var json = $.parseJSON(data.d);
-            var status = json.Status;
-
-            if (status == 200) {
-
-                Swal.fire({
-                    title: "OK",
-                    html: "Datos agregados correctamente",
-                    type: "success",
-                    showCancelButton: false,
-                    showConfirmButton: true,
-                    cancelButtonColor: "#DD6B55",
-                    confirmButtonColor: "#DD6B55",
-                })
-
-                txtNombre.value = "";
-                txtApellido.value = "";
-
-              
-
+        function validar() {
+            let nombre = document.getElementById('txtNombre').value
+            let apellido = document.getElementById('txtApellido').value
+            if (nombre == "" || apellido == "") {
+                alerta();
             } else {
-                Swal.fire({
-                    title: "LO SIENTO ALGO SALIO MAL",
-                    html: "Verifica los datos ingresados",
-                    type: "warning",
-                    showCancelButton: false,
-                    showConfirmButton: true,
-                    cancelButtonColor: "#DD6B55",
-                    confirmButtonColor: "#DD6B55",
-
-                });
-
+                agregar();
             }
+        }
+
+        function agregar() {
+            let nombre = document.getElementById('txtNombre').value
+            let apellido = document.getElementById('txtApellido').value
+            let gmail = document.getElementById('txtGmail').value
+            let telefono = document.getElementById('txtTelefono').value
+            let canal = document.getElementById('selectedIdCanal').value
+            let algomas = document.getElementById('txtAlgoMas').value
+
+
+
+            var cadena = {
+                Nombre: nombre,
+                Apellido: apellido,
+                Gmail: gmail,
+                Telefono: telefono,
+                IdCanal: canal,
+                AlgoMas: algomas
+
+            };
+            var payload = { cadena: JSON.stringify(cadena) };
+            $.ajax({
+                type: "POST",
+                url: "Landings.aspx/LandingsAgregar",
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(payload),
+                dataType: "json",
+                success: function (data) {
+                    var json = $.parseJSON(data.d);
+                    var status = json.Status;
+
+                    if (status == 200) {
+
+                        Swal.fire({
+                            title: "OK",
+                            html: "Datos agregados correctamente",
+                            type: "success",
+                            showCancelButton: false,
+                            showConfirmButton: true,
+                            cancelButtonColor: "#DD6B55",
+                            confirmButtonColor: "#DD6B55",
+                        })
+
+                        txtNombre.value = "";
+                        txtApellido.value = "";
+
+
+
+                    } else {
+                        Swal.fire({
+                            title: "LO SIENTO ALGO SALIO MAL",
+                            html: "Verifica los datos ingresados",
+                            type: "warning",
+                            showCancelButton: false,
+                            showConfirmButton: true,
+                            cancelButtonColor: "#DD6B55",
+                            confirmButtonColor: "#DD6B55",
+
+                        });
+
+                    }
+
+                }
+            });
 
         }
-    });
+        function alerta() {
+            Swal.fire({
+                title: "Error al agregar cliente",
+                text: "Complete todos los campos solicitados",
+                icon: "error"
+            });
+        }
 
-}
-function alerta() {
-    Swal.fire({
-        title: "Error al agregar cliente",
-        text: "Complete todos los campos solicitados",
-        icon: "error"
-    });
+        function cargarCanales() {
+            $.ajax({
+                type: "POST",
+                url: "Landings.aspx/BuscarCanal",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    var json = $.parseJSON(data.d);
+                    var status = json.Status;
+
+                    if (status == 200) {
+
+                        var lista_canales = json.Data
+                        const select = document.getElementById("selectedIdCanal");
+                        for (let canal of lista_canales) {
+                            let nuevaOpcion = document.createElement("option");
+                            nuevaOpcion.value = canal.IdCanal;
+                            nuevaOpcion.text = canal.Nombre;
+                            select.add(nuevaOpcion);
+                            // select.appendChild(nuevaOpcion); <-- Así tambien funciona
+
+                        }
+
+
+                    } else {
+                        Swal.fire({
+                            title: "LO SIENTO ALGO SALIO MAL",
+                            html: "Verifica los datos ingresados",
+                            type: "warning",
+                            showCancelButton: false,
+                            showConfirmButton: true,
+                            cancelButtonColor: "#DD6B55",
+                            confirmButtonColor: "#DD6B55",
+
+                        });
+
+                    }
+
+                }
+            });
+
         }
 
 
@@ -427,9 +578,9 @@ function alerta() {
 
 //    });
 //}
-     
+
     </script>
-    </body>
-    </html>
+</body>
+</html>
 
 

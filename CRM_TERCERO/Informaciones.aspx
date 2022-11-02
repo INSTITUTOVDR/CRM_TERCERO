@@ -165,7 +165,7 @@
                                     <a href="#" data-bs-toggle="dropdown" aria-expanded="false">
                                         <div class="user-menu d-flex">
                                             <div class="user-name text-end me-3">
-                                                <h6 class="mb-0 text-gray-600">Arecubia</h6>
+                                                <h6 class="mb-0 text-gray-600">Admin</h6>
                                                 <p class="mb-0 text-sm text-gray-600">Administrador</p>
                                             </div>
                                             <div class="user-img d-flex align-items-center">
@@ -188,8 +188,12 @@
                                         <li>
                                             <hr class="dropdown-divider" />
                                         </li>
-                                        <li><a class="dropdown-item" href="#"><i
-                                            class="icon-mid bi bi-box-arrow-left me-2"></i>Salir</a></li>
+                                        <%--<li><a class="dropdown-item" href="#"><i
+                                            class="icon-mid bi bi-box-arrow-left me-2"></i>Salir</a></li>--%>
+                                         <li>
+                                                <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" class='dropdown-item'
+                                                LogoutText="<i class='icon-mid bi bi-box-arrow-left me-2'></i>Salir" LogoutPageUrl="~/Landings.aspx" />
+                                            </li>
                                     </ul>
                                 </div>
                             </div>

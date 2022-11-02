@@ -129,6 +129,9 @@
     <Content Include="assets\fonts\vendor\%40fortawesome\fontawesome-free\webfa-regular-400.svg" />
     <Content Include="assets\fonts\vendor\%40fortawesome\fontawesome-free\webfa-solid-900.svg" />
     <Content Include="assets\images\4853433.png" />
+    <Content Include="assets\images\bg-showcase-1.jpg" />
+    <Content Include="assets\images\bg-showcase-2.jpg" />
+    <Content Include="assets\images\bg-showcase-3.jpg" />
     <Content Include="assets\images\bg\4853433.png" />
     <Content Include="assets\images\bootstrap-icons.svg" />
     <Content Include="assets\images\faces\1.jpg" />
@@ -139,9 +142,12 @@
     <Content Include="assets\images\faces\6.jpg" />
     <Content Include="assets\images\faces\7.jpg" />
     <Content Include="assets\images\faces\8.jpg" />
+    <Content Include="assets\images\landing-1.jpg" />
+    <Content Include="assets\images\landing-2.jpg" />
     <Content Include="assets\images\logo\favicon.png" />
     <Content Include="assets\images\logo\favicon.svg" />
     <Content Include="assets\images\logo\logo.svg" />
+    <Content Include="assets\images\Background-landing.jpg" />
     <Content Include="assets\images\samples\1.png" />
     <Content Include="assets\images\samples\2.png" />
     <Content Include="assets\images\samples\3.png" />
@@ -239,6 +245,7 @@
     <Content Include="ContactoTipos.aspx" />
     <Content Include="Dashboard.aspx" />
     <Content Include="Empresas.aspx" />
+    <Content Include="Global.asax" />
     <Content Include="index.aspx" />
     <Content Include="Landings.aspx" />
     <Content Include="Informaciones.aspx" />
@@ -248,6 +255,7 @@
     <Content Include="Librerias\Microsoft.Practices.Unity.dll" />
     <Content Include="Librerias\Microsoft.Practices.Unity.Interception.dll" />
     <Content Include="Librerias\System.Configuration.dll" />
+    <Content Include="Login.aspx" />
     <Content Include="Proyectos.aspx" />
     <Content Include="ProyectosTipo.aspx" />
     <Content Include="Scripts\Empresa.js" />
@@ -286,6 +294,9 @@
       <DependentUpon>Empresas.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
+    <Compile Include="Global.asax.vb">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
     <Compile Include="index.aspx.designer.vb">
       <DependentUpon>index.aspx</DependentUpon>
     </Compile>
@@ -305,6 +316,13 @@
     </Compile>
     <Compile Include="Informaciones.aspx.vb">
       <DependentUpon>Informaciones.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.vb">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.vb">
+      <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
