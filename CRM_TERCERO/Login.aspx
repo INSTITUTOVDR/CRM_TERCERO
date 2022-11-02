@@ -40,6 +40,7 @@
                                     <i class="bi bi-shield-lock"></i>
                                 </div>
                             </div>
+                            <asp:label runat="server" ID="FailureText" Visible="false" style="border-color: #dc3545; color: #dc3545;"></asp:label>
                             <div class="form-check form-check-lg d-flex align-items-end">
                                 <input id="RememberMe" runat="server" class="form-check-input me-2" type="checkbox" value="" />
                                 <label class="form-check-label text-gray-600" for="flexCheckDefault">

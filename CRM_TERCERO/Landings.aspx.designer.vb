@@ -23,11 +23,20 @@ Partial Public Class Landing
     Protected WithEvents form2 As Global.System.Web.UI.HtmlControls.HtmlForm
 
     '''<summary>
-    '''Control HeadLoginStatus.
+    '''Control LoginView1.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents HeadLoginStatus As Global.System.Web.UI.WebControls.LoginStatus
+    Protected WithEvents LoginView1 As Global.System.Web.UI.WebControls.LoginView
+
+    '''<summary>
+    '''Control LoginView2.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents LoginView2 As Global.System.Web.UI.WebControls.LoginView
 End Class

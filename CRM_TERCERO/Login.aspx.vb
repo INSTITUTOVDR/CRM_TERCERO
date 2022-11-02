@@ -3,7 +3,10 @@
 
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-
+        If Page.IsPostBack = False Then
+            Dim FText As Label = Login1.FindControl("FailureText")
+            FText.Visible = False
+        End If
     End Sub
 
 
@@ -39,5 +42,11 @@
 
     End Sub
 
+    Private Sub Login1_LoginError(sender As Object, e As EventArgs) Handles Login1.LoginError
+        Login1.FailureText = "Error de Usuario y/o Contraseña"
+        Dim FText As Label = Login1.FindControl("FailureText")
+        FText.Visible = True
+        'FText.CssClass = FText.CssClass.Replace("visually-hidden", "")
+    End Sub
 
 End Class

@@ -392,7 +392,7 @@
                             </button>
                             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                                    <li class="nav-item dropdown me-1">
+                                    <%--<li class="nav-item dropdown me-1">
                                         <a class="nav-link active dropdown-toggle text-gray-600" href="#" data-bs-toggle="dropdown"
                                             aria-expanded="false">
                                             <i class='bi bi-envelope bi-sub fs-4'></i>
@@ -415,11 +415,20 @@
                                             </li>
                                             <li><a class="dropdown-item">No notification available</a></li>
                                         </ul>
-                                    </li>
+                                    </li>--%>
                                 </ul>
                                 <div class="dropdown">
                                     <a href="#" data-bs-toggle="dropdown" aria-expanded="false">
                                         <div class="user-menu d-flex">
+                                        <asp:LoginView ID="LoginView1" runat="server">
+                                            <AnonymousTemplate>
+                                            <div class="user-name text-end me-3">
+                                                <a class='btn btn-outline-primary' href="#formularioContacto">Contactanos</a>
+                                                <asp:LoginStatus ID="LoginStatus1" runat="server" LogoutAction="Redirect" class='btn btn-outline-primary'
+                                                LogoutText="<i class='icon-mid bi bi-box-arrow-left me-2'></i>Salir" LogoutPageUrl="~/Landings.aspx" />
+                                            </div>
+                                            </AnonymousTemplate>
+                                            <LoggedInTemplate>
                                             <div class="user-name text-end me-3">
                                                 <h6 class="mb-0 text-gray-600">John Ducky</h6>
                                                 <p class="mb-0 text-sm text-gray-600">Administrador</p>
@@ -429,28 +438,32 @@
                                                     <img src="assets/images/faces/1.jpg" />
                                                 </div>
                                             </div>
+                                            </LoggedInTemplate>
+                                        </asp:LoginView>
                                         </div>
                                     </a>
-                                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton" style="min-width: 11rem;">
-                                        <li>
-                                            <h6 class="dropdown-header">Hello, John!</h6>
-                                        </li>
-                                        <li><a class="dropdown-item" href="#"><i class="icon-mid bi bi-person me-2"></i>
-                                            Mi Perfil</a></li>
-                                        <li><a class="dropdown-item" href="#"><i class="icon-mid bi bi-gear me-2"></i>
-                                            Configuración</a></li>
-                                        <li><a class="dropdown-item" href="#"><i class="icon-mid bi bi-wallet me-2"></i>
-                                            Wallet</a></li>
-                                        <li>
-                                            <hr class="dropdown-divider" />
-                                        </li>
-                                        <%--  <li><a class="dropdown-item" href="#"><i
-                                            class="icon-mid bi bi-box-arrow-left me-2"></i>Salir</a></li>--%>
-                                        <li>
-                                            <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" class='dropdown-item'
-                                                LogoutText="<i class='icon-mid bi bi-box-arrow-left me-2'></i>Salir" LogoutPageUrl="~/Landings.aspx" />
-                                        </li>
-                                    </ul>
+                                    <asp:LoginView ID="LoginView2" runat="server">
+                                        <LoggedInTemplate>
+                                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton" style="min-width: 11rem;">
+                                                <li>
+                                                    <h6 class="dropdown-header">Hello, John!</h6>
+                                                </li>
+                                                <li><a class="dropdown-item" href="#"><i class="icon-mid bi bi-person me-2"></i>
+                                                    Mi Perfil</a></li>
+                                                <li><a class="dropdown-item" href="#"><i class="icon-mid bi bi-gear me-2"></i>
+                                                    Configuración</a></li>
+                                                <li><a class="dropdown-item" href="#"><i class="icon-mid bi bi-wallet me-2"></i>
+                                                    Wallet</a></li>
+                                                <li>
+                                                    <hr class="dropdown-divider" />
+                                                </li>
+                                                <li>
+                                                    <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" class='dropdown-item'
+                                                        LogoutText="<i class='icon-mid bi bi-box-arrow-left me-2'></i>Salir" LogoutPageUrl="~/Landings.aspx" />
+                                                </li>
+                                            </ul>
+                                    </LoggedInTemplate>
+                                </asp:LoginView>
                                 </div>
                             </div>
                         </div>
@@ -471,8 +484,8 @@
                         <section class="py-5 bg-image-full" style="background-image: url('assets/images/Background-landing.jpg'); margin: 0 -2rem;">
                             <div class="text-center" style="margin-top: 7rem; margin-bottom: 7rem;">
                                 <%--<img class="img-fluid rounded-circle mb-4" src="https://dummyimage.com/150x150/6c757d/dee2e6.jpg" alt="..."/>--%>
-                                <h1 class="text-white fs-3 fw-bolder">Bienvenido a ARECUBIA</h1>
-                                <p class="text-white-50 mb-0">Landing Page Template</p>
+                                <h1 class="text-white fs-1 fw-bolder">Bienvenido a ARECUBIA</h1>
+                                <p class="text-white-50 fs-4 mb-0">CRM Enfocado en Marketing</p>
                             </div>
                         </section>
                         <section class="features-icons text-center">
@@ -480,23 +493,23 @@
                                 <div class="row">
                                     <div class="col-lg-4">
                                         <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
-                                            <div class="features-icons-icon d-flex"><i class="bi-window m-auto text-primary"></i></div>
-                                            <h3>Fully Responsive</h3>
-                                            <p class="lead mb-0">This theme will look great on any device, no matter the size!</p>
+                                            <div class="features-icons-icon d-flex"><i class="bi-bar-chart-line m-auto text-primary"></i></div>
+                                            <h3>Informes en Gráficos</h3>
+                                            <p class="lead mb-0">Informes detallados sobre tus prospectos y los canales de los que provienen.</p>
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
-                                            <div class="features-icons-icon d-flex"><i class="bi-layers m-auto text-primary"></i></div>
-                                            <h3>Bootstrap 5 Ready</h3>
-                                            <p class="lead mb-0">Featuring the latest build of the new Bootstrap 5 framework!</p>
+                                            <div class="features-icons-icon d-flex"><i class="bi-bullseye m-auto text-primary"></i></div>
+                                            <h3>Enfoca tus campañas</h3>
+                                            <p class="lead mb-0">El sistema procesa la información de tus clientes, ayudandote a promocionarte donde sea más conveniente.</p>
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="features-icons-item mx-auto mb-0 mb-lg-3">
-                                            <div class="features-icons-icon d-flex"><i class="bi-terminal m-auto text-primary"></i></div>
-                                            <h3>Easy to Use</h3>
-                                            <p class="lead mb-0">Ready to use with your own content, or customize the source files!</p>
+                                            <div class="features-icons-icon d-flex"><i class="bi-graph-up-arrow m-auto text-primary"></i></div>
+                                            <h3>Aumenta tus ventas</h3>
+                                            <p class="lead mb-0">Llevá un seguimiento detallado de tus potenciales clientes</p>
                                         </div>
                                     </div>
                                 </div>
@@ -505,33 +518,33 @@
                         <section class="showcase mb-5">
                             <div class="container-fluid p-0">
                                 <div class="row g-0">
-                                    <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('assets/images/bg-showcase-1.jpg')"></div>
+                                    <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('assets/images/landing-1.jpg')"></div>
                                     <div class="col-lg-6 order-lg-1 my-auto showcase-text">
-                                        <h2>Fully Responsive Design</h2>
-                                        <p class="lead mb-0">When you use a theme created by Start Bootstrap, you know that the theme will look great on any device, whether it's a phone, tablet, or desktop the page will behave responsively!</p>
+                                        <h2>Tableros de mando expresivos y coloridos</h2>
+                                        <p class="lead mb-0">El cuadro de mando es la cara de cualquier aplicación y ayuda a expresar datos complejos en un formato sencillo para su mejor comprensión y análisis.</p>
                                     </div>
                                 </div>
                                 <div class="row g-0">
-                                    <div class="col-lg-6 text-white showcase-img" style="background-image: url('assets/images/bg-showcase-2.jpg')"></div>
+                                    <div class="col-lg-6 text-white showcase-img" style="background-image: url('assets/images/landing-2.jpg')"></div>
                                     <div class="col-lg-6 my-auto showcase-text">
-                                        <h2>Updated For Bootstrap 5</h2>
-                                        <p class="lead mb-0">Newly improved, and full of great utility classes, Bootstrap 5 is leading the way in mobile responsive web development! All of the themes on Start Bootstrap are now using Bootstrap 5!</p>
+                                        <h2>Tema claro y oscuro</h2>
+                                        <p class="lead mb-0">Posibilidad de elegir entre modo claro y oscuro, segun la preferencia del usuario para mejorar su experiencia.</p>
                                     </div>
                                 </div>
-                                <div class="row g-0">
+                               <%-- <div class="row g-0">
                                     <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('assets/images/bg-showcase-3.jpg')"></div>
                                     <div class="col-lg-6 order-lg-1 my-auto showcase-text">
                                         <h2>Easy to Use &amp; Customize</h2>
                                         <p class="lead mb-0">Landing Page is just HTML and CSS with a splash of SCSS for users who demand some deeper customization options. Out of the box, just add your content and images, and your new landing page will be ready to go!</p>
                                     </div>
-                                </div>
+                                </div>--%>
                             </div>
                         </section>
                         <section id="multiple-column-form">
                             <div class="row match-height">
                                 <div class="col-12">
                                     <div class="card">
-                                        <div class="card-header">
+                                        <div class="card-header"  id="formularioContacto">
                                             <%--<h4 class="card-title">Bienvenido a ARECUBIA</h4>--%>
                                             <h4 class="card-title">Ingrese sus datos por favor</h4>
                                         </div>

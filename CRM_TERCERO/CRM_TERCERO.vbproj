@@ -142,6 +142,8 @@
     <Content Include="assets\images\faces\6.jpg" />
     <Content Include="assets\images\faces\7.jpg" />
     <Content Include="assets\images\faces\8.jpg" />
+    <Content Include="assets\images\landing-1.jpg" />
+    <Content Include="assets\images\landing-2.jpg" />
     <Content Include="assets\images\logo\favicon.png" />
     <Content Include="assets\images\logo\favicon.svg" />
     <Content Include="assets\images\logo\logo.svg" />
