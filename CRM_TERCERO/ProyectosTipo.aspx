@@ -64,17 +64,30 @@
                                 </a>
                             </li>
                              <li class="sidebar-item  ">
+                                <a href="Dashboard.aspx" class='sidebar-link'>
+                                    <i class="bi bi-pie-chart-fill"></i>
+                                      <span>Dashboard</span>
+                                </a>
+                            </li>
+                             <li class="sidebar-item  ">
                                 <a href="Empresas.aspx" class='sidebar-link'>
                                     <i class="bi bi-graph-up-arrow"></i>
                                       <span>Empresas</span>
                                 </a>
                             </li>
 
+
                             <li class="sidebar-item">
                                 <a href="Informaciones.aspx" class='sidebar-link'>
                                      <i class="bi bi-info-circle"></i>
                                     <span>Informaciones</span>
 
+                                </a>
+                                </li>
+                            <li class="sidebar-item">
+                                <a href="Landings.aspx" class='sidebar-link'>
+                                     <i class="bi bi-ui-checks"></i>
+                                    <span>Landing</span>
                                 </a>
                                 </li>
 
@@ -185,8 +198,24 @@
                         </div>
                     </nav>
                 </header>
-                <div id="main-content">
+                    <div id="main-content">
                     <div class="page-heading">
+                        <div class="page-title">
+                            <div class="row">
+                                <div class="col-12 col-md-6 order-md-1 order-last">
+                                    <h3>Tipos de Proyectos</h3>
+                                    <p class="text-subtitle text-muted"></p>
+                                </div>
+                                <div class="col-12 col-md-6 order-md-2 order-first">
+                                    <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
+                                        <ol class="breadcrumb">
+                                            <li class="breadcrumb-item"><a href="#">Inicio</a></li>
+                                            <li class="breadcrumb-item active" aria-current="page">Proyectos</li>
+                                        </ol>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
                       
 
                         <section id="multiple-column-form">
@@ -194,7 +223,7 @@
                                 <div class="col-12">
                                     <div class="card">
                                         <div class="card-header">
-                                            <h4 class="card-title">Proyectos Tipo</h4>
+                                            <h4 class="card-title">Agregar tipos de proyectos</h4>
                                         </div>
                                         <div class="card-content">
                                             <div class="card-body">

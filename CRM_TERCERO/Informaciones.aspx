@@ -56,60 +56,72 @@
                         <ul class="menu">
                             <li class="sidebar-title">Menu</li>
 
-                            <li class="sidebar-item  ">
+                           <li class="sidebar-item  ">
                                 <a href="ContactoTipos.aspx" class='sidebar-link'>
                                     <i class="bi bi-telephone-plus"></i>
-                                    <span>Contactos Tipo</span>
+                                      <span>Contactos Tipo</span>
                                 </a>
                             </li>
-                            <li class="sidebar-item  ">
+                             <li class="sidebar-item  ">
+                                <a href="Dashboard.aspx" class='sidebar-link'>
+                                    <i class="bi bi-pie-chart-fill"></i>
+                                      <span>Dashboard</span>
+                                </a>
+                            </li>
+                             <li class="sidebar-item  ">
                                 <a href="Empresas.aspx" class='sidebar-link'>
                                     <i class="bi bi-graph-up-arrow"></i>
-                                    <span>Empresas</span>
+                                      <span>Empresas</span>
                                 </a>
                             </li>
+
 
                             <li class="sidebar-item">
                                 <a href="Informaciones.aspx" class='sidebar-link'>
-                                    <i class="bi bi-info-circle"></i>
+                                     <i class="bi bi-info-circle"></i>
                                     <span>Informaciones</span>
 
                                 </a>
-                            </li>
+                                </li>
+                            <li class="sidebar-item">
+                                <a href="Landings.aspx" class='sidebar-link'>
+                                     <i class="bi bi-ui-checks"></i>
+                                    <span>Landing</span>
+                                </a>
+                                </li>
 
                             <li class="sidebar-item  has-sub">
                                 <a href="Proyectos.aspx" class='sidebar-link'>
-                                    <i class="bi bi-clipboard2-data"></i>
+                                     <i class="bi bi-clipboard2-data"></i>
                                     <span>Proyectos</span>
 
                                 </a>
                                 <ul class="submenu">
                                     <li class="submenu-item">
                                         <a href="ProyectosTipo.aspx">
-                                            <i class="bi bi-clipboard2-check"></i>
-                                            <span>Tipos de Proyectos</span>
-                                        </a>
+                                             <i class="bi bi-clipboard2-check"></i>
+                                                <span>Tipos de Proyectos</span>
+                                       </a>
                                     </li>
                                     <li class="submenu-item">
                                         <a href="Proyectos.aspx">
-                                            <i class="bi bi-clipboard2-check"></i>
-                                            <span>Proyectos</span>
-                                        </a>
+                                             <i class="bi bi-clipboard2-check"></i>
+                                                <span>Proyectos</span>
+                                       </a>
                                     </li>
-                                </ul>
+                                    </ul>
                             </li>
 
                             <li class="sidebar-item  ">
                                 <a href="Sucursales.aspx" class='sidebar-link'>
                                     <i class="bi bi-building"></i>
-                                    <span>Sucursales</span>
+                                      <span>Sucursales</span>
                                 </a>
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
-
             <div id="main" class='layout-navbar'>
                 <header class='mb-3'>
                     <nav class="navbar navbar-expand navbar-light ">
@@ -189,7 +201,7 @@
                         <div class="page-title">
                             <div class="row">
                                 <div class="col-12 col-md-6 order-md-1 order-last">
-                                    <h3>Administrar Información</h3>
+                                    <h3>Información</h3>
                                 </div>
                                 <div class="col-12 col-md-6 order-md-2 order-first">
                                     <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
@@ -206,7 +218,7 @@
                                 <div class="col-12">
                                     <div class="card">
                                         <div class="card-header">
-                                            <h4 class="card-title">Información</h4>
+                                            <h4 class="card-title">Administrar información</h4>
                                         </div>
                                         <div class="card-content">
                                             <div class="card-body">

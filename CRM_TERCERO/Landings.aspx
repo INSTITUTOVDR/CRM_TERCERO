@@ -54,287 +54,74 @@
                     <div class="sidebar-menu">
                         <ul class="menu">
                             <li class="sidebar-title">Menu</li>
-                            <li class="sidebar-item  ">
-                                <a href="Sucursales.aspx" class='sidebar-link'>
-                                    <i class="bi bi-grid-fill"></i>
-                                      <span>Sucursales</span>
+                                                       <li class="sidebar-item  ">
+                                <a href="ContactoTipos.aspx" class='sidebar-link'>
+                                    <i class="bi bi-telephone-plus"></i>
+                                      <span>Contactos Tipo</span>
                                 </a>
                             </li>
-                            <li class="sidebar-item  ">
+                             <li class="sidebar-item  ">
+                                <a href="Dashboard.aspx" class='sidebar-link'>
+                                    <i class="bi bi-pie-chart-fill"></i>
+                                      <span>Dashboard</span>
+                                </a>
+                            </li>
+                             <li class="sidebar-item  ">
                                 <a href="Empresas.aspx" class='sidebar-link'>
-                                    <i class="bi bi-grid-fill"></i>
+                                    <i class="bi bi-graph-up-arrow"></i>
                                       <span>Empresas</span>
                                 </a>
                             </li>
-                            <li class="sidebar-item  ">
+
+
+                            <li class="sidebar-item">
+                                <a href="Informaciones.aspx" class='sidebar-link'>
+                                     <i class="bi bi-info-circle"></i>
+                                    <span>Informaciones</span>
+
+                                </a>
+                                </li>
+                            <li class="sidebar-item">
+                                <a href="Landings.aspx" class='sidebar-link'>
+                                     <i class="bi bi-ui-checks"></i>
+                                    <span>Landing</span>
+                                </a>
+                                </li>
+
+                            <li class="sidebar-item  has-sub">
                                 <a href="Proyectos.aspx" class='sidebar-link'>
-                                    <i class="bi bi-grid-fill"></i>
-                                      <span>Proyectos</span>
+                                     <i class="bi bi-clipboard2-data"></i>
+                                    <span>Proyectos</span>
+
                                 </a>
+                                <ul class="submenu">
+                                    <li class="submenu-item">
+                                        <a href="ProyectosTipo.aspx">
+                                             <i class="bi bi-clipboard2-check"></i>
+                                                <span>Tipos de Proyectos</span>
+                                       </a>
+                                    </li>
+                                    <li class="submenu-item">
+                                        <a href="Proyectos.aspx">
+                                             <i class="bi bi-clipboard2-check"></i>
+                                                <span>Proyectos</span>
+                                       </a>
+                                    </li>
+                                    </ul>
                             </li>
-                            <li class="sidebar-item  ">
-                                <a href="ProyectosTipo.aspx" class='sidebar-link'>
-                                    <i class="bi bi-grid-fill"></i>
-                                      <span>Proyectos Tipos</span>
-                                </a>
-                            </li>
+
                             <li class="sidebar-item  ">
                                 <a href="Sucursales.aspx" class='sidebar-link'>
-                                    <i class="bi bi-grid-fill"></i>
+                                    <i class="bi bi-building"></i>
                                       <span>Sucursales</span>
                                 </a>
-                            </li>
-                            <li class="sidebar-item  ">
-                                <a href="ContactoTipos.aspx" class='sidebar-link'>
-                                    <i class="bi bi-grid-fill"></i>
-                                      <span>Contacto Tipos</span>
-                                </a>
-                            </li>
-                            <li class="sidebar-item  ">
-                                <a href="index.html" class='sidebar-link'>
-                                    <i class="bi bi-grid-fill"></i>
-                                    <span>Dashboard</span>
-                                </a>
-                            </li>
-
-                            <li class="sidebar-item  has-sub">
-                                <a href="#" class='sidebar-link'>
-                                    <i class="bi bi-stack"></i>
-                                    <span>Components</span>
-                                </a>
-                                <ul class="submenu">
-                                    <li class="submenu-item">
-                                        <a href="#">Item1</a>
-                                    </li>
-                                    <li class="submenu-item">
-                                        <a href="#">Item2</a>
-                                    </li>
-                                </ul>
-                            </li>
-
-                            <li class="sidebar-item  has-sub">
-                                <a href="#" class='sidebar-link'>
-                                    <i class="bi bi-collection-fill"></i>
-                                    <span>Extra Components</span>
-                                </a>
-                                <ul class="submenu">
-                                    <li class="submenu-item">
-                                        <a href="#">Item1</a>
-                                    </li>
-                                    <li class="submenu-item">
-                                        <a href="#">Item2</a>
-                                    </li>
-                                </ul>
-                            </li>
-
-                            <li class="sidebar-item has-sub">
-                                <a href="#" class='sidebar-link'>
-                                    <i class="bi bi-grid-1x2-fill"></i>
-                                    <span>Layouts</span>
-                                </a>
-                                <ul class="submenu">
-                                    <li class="submenu-item">
-                                        <a href="#">Item1</a>
-                                    </li>
-                                    <li class="submenu-item">
-                                        <a href="#">Item2</a>
-                                    </li>
-                                </ul>
-                            </li>
-
-                            <li class="sidebar-title">Forms &amp; Tables</li>
-
-                            <li class="sidebar-item  has-sub">
-                                <a href="#" class='sidebar-link'>
-                                    <i class="bi bi-hexagon-fill"></i>
-                                    <span>Form Elements</span>
-                                </a>
-                                <ul class="submenu">
-                                    <li class="submenu-item">
-                                        <a href="#">Item1</a>
-                                    </li>
-                                    <li class="submenu-item">
-                                        <a href="#">Item2</a>
-                                    </li>
-                                </ul>
-                            </li>
-
-                            <li class="sidebar-item">
-                                <a href="form-layout.html" class='sidebar-link'>
-                                    <i class="bi bi-file-earmark-medical-fill"></i>
-                                    <span>Form Layout</span>
-                                </a>
-                            </li>
-
-                            <li class="sidebar-item  has-sub">
-                                <a href="#" class='sidebar-link'>
-                                    <i class="bi bi-pen-fill"></i>
-                                    <span>Form Editor</span>
-                                </a>
-                                <ul class="submenu">
-                                    <li class="submenu-item">
-                                        <a href="#">Item1</a>
-                                    </li>
-                                    <li class="submenu-item">
-                                        <a href="#">Item2</a>
-                                    </li>
-                                </ul>
-                            </li>
-
-                            <li class="sidebar-item">
-                                <a href="table.html" class='sidebar-link'>
-                                    <i class="bi bi-grid-1x2-fill"></i>
-                                    <span>Table</span>
-                                </a>
-                            </li>
-
-                            <li class="sidebar-item  has-sub">
-                                <a href="#" class='sidebar-link'>
-                                    <i class="bi bi-file-earmark-spreadsheet-fill"></i>
-                                    <span>Datatables</span>
-                                </a>
-                                <ul class="submenu">
-                                    <li class="submenu-item">
-                                        <a href="#">Item1</a>
-                                    </li>
-                                    <li class="submenu-item">
-                                        <a href="#">Item2</a>
-                                    </li>
-                                </ul>
-                            </li>
-
-                            <li class="sidebar-title">Extra UI</li>
-
-                            <li class="sidebar-item  has-sub">
-                                <a href="#" class='sidebar-link'>
-                                    <i class="bi bi-pentagon-fill"></i>
-                                    <span>Widgets</span>
-                                </a>
-                                <ul class="submenu">
-                                    <li class="submenu-item">
-                                        <a href="#">Item1</a>
-                                    </li>
-                                    <li class="submenu-item">
-                                        <a href="#">Item2</a>
-                                    </li>
-                                </ul>
-                            </li>
-
-                            <li class="sidebar-item  has-sub">
-                                <a href="#" class='sidebar-link'>
-                                    <i class="bi bi-egg-fill"></i>
-                                    <span>Icons</span>
-                                </a>
-                                <ul class="submenu">
-                                    <li class="submenu-item">
-                                        <a href="#">Item1</a>
-                                    </li>
-                                    <li class="submenu-item">
-                                        <a href="#">Item2</a>
-                                    </li>
-                                </ul>
-                            </li>
-
-                            <li class="sidebar-item  has-sub">
-                                <a href="#" class='sidebar-link'>
-                                    <i class="bi bi-bar-chart-fill"></i>
-                                    <span>Charts</span>
-                                </a>
-                                <ul class="submenu">
-                                    <li class="submenu-item">
-                                        <a href="#">Item1</a>
-                                    </li>
-                                    <li class="submenu-item">
-                                        <a href="#">Item2</a>
-                                    </li>
-                                </ul>
-                            </li>
-
-                            <li class="sidebar-item">
-                                <a href="ui-file-uploader.html" class='sidebar-link'>
-                                    <i class="bi bi-cloud-arrow-up-fill"></i>
-                                    <span>File Uploader</span>
-                                </a>
-                            </li>
-
-                            <li class="sidebar-item  has-sub">
-                                <a href="#" class='sidebar-link'>
-                                    <i class="bi bi-map-fill"></i>
-                                    <span>Maps</span>
-                                </a>
-                                <ul class="submenu">
-                                    <li class="submenu-item">
-                                        <a href="#">Item1</a>
-                                    </li>
-                                    <li class="submenu-item">
-                                        <a href="#">Item2</a>
-                                    </li>
-                                </ul>
-                            </li>
-
-                            <li class="sidebar-title">Pages</li>
-
-                            <li class="sidebar-item  ">
-                                <a href="application-email.html" class='sidebar-link'>
-                                    <i class="bi bi-envelope-fill"></i>
-                                    <span>Email Application</span>
-                                </a>
-                            </li>
-
-                            <li class="sidebar-item  ">
-                                <a href="application-chat.html" class='sidebar-link'>
-                                    <i class="bi bi-chat-dots-fill"></i>
-                                    <span>Chat Application</span>
-                                </a>
-                            </li>
-
-                            <li class="sidebar-item  ">
-                                <a href="application-gallery.html" class='sidebar-link'>
-                                    <i class="bi bi-image-fill"></i>
-                                    <span>Photo Gallery</span>
-                                </a>
-                            </li>
-
-                            <li class="sidebar-item  ">
-                                <a href="application-checkout.html" class='sidebar-link'>
-                                    <i class="bi bi-basket-fill"></i>
-                                    <span>Checkout Page</span>
-                                </a>
-                            </li>
-
-                            <li class="sidebar-item  has-sub">
-                                <a href="#" class='sidebar-link'>
-                                    <i class="bi bi-person-badge-fill"></i>
-                                    <span>Authentication</span>
-                                </a>
-                                <ul class="submenu">
-                                    <li class="submenu-item">
-                                        <a href="#">Item1</a>
-                                    </li>
-                                    <li class="submenu-item">
-                                        <a href="#">Item2</a>
-                                    </li>
-                                </ul>
-                            </li>
-
-                            <li class="sidebar-item  has-sub">
-                                <a href="#" class='sidebar-link'>
-                                    <i class="bi bi-x-octagon-fill"></i>
-                                    <span>Errors</span>
-                                </a>
-                                <ul class="submenu">
-                                    <li class="submenu-item">
-                                        <a href="#">Item1</a>
-                                    </li>
-                                    <li class="submenu-item">
-                                        <a href="#">Item2</a>
-                                    </li>
-                                </ul>
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
+                            
+                            
 
             <div id="main" class='layout-navbar'>
                 <header class='mb-3'>

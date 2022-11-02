@@ -77,17 +77,30 @@
                                 </a>
                             </li>
                              <li class="sidebar-item  ">
+                                <a href="Dashboard.aspx" class='sidebar-link'>
+                                    <i class="bi bi-pie-chart-fill"></i>
+                                      <span>Dashboard</span>
+                                </a>
+                            </li>
+                             <li class="sidebar-item  ">
                                 <a href="Empresas.aspx" class='sidebar-link'>
                                     <i class="bi bi-graph-up-arrow"></i>
                                       <span>Empresas</span>
                                 </a>
                             </li>
 
+
                             <li class="sidebar-item">
                                 <a href="Informaciones.aspx" class='sidebar-link'>
                                      <i class="bi bi-info-circle"></i>
                                     <span>Informaciones</span>
 
+                                </a>
+                                </li>
+                            <li class="sidebar-item">
+                                <a href="Landings.aspx" class='sidebar-link'>
+                                     <i class="bi bi-ui-checks"></i>
+                                    <span>Landing</span>
                                 </a>
                                 </li>
 
