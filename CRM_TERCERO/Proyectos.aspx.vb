@@ -193,7 +193,7 @@ Public Class Proyectos
             Dim oobjeto As New Proyecto
 
 
-            oDs = oobjeto.ProyectoModificar(IdProyecto, Nombre, Descripcion, IdEmpresa, IdSucursal, IdProyectoTipo, "", IdEstado)
+            oDs = oobjeto.ProyectoModificar(IdProyecto, Nombre, Descripcion, IdEmpresa, IdSucursal, IdProyectoTipo, IdEstado)
 
             'Dim newUser As MembershipUser = Membership.GetUser
             'Dim newUserId As Guid = DirectCast(newUser.ProviderUserKey, Guid)
@@ -309,9 +309,7 @@ Public Class Proyectos
             Dim IdTabla As Integer = 0
 
 
-
             Dim e As EmpresaWS() = New EmpresaWS(oDs.Tables(IdTabla).Rows.Count - 1) {}
-
 
 
             For i = 0 To oDs.Tables(IdTabla).Rows.Count - 1

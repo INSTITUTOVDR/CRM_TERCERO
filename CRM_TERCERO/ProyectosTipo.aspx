@@ -263,9 +263,9 @@
                                                                 <label for="selectIdEstado">IdEstado</label>
                                                                 <fieldset class="form-group">
                                                                     <select class="form-select" id="selectIdEstado">
-                                                                        <option value="1">Opción 1</option>
-                                                                        <option value="2">Opción 2</option>
-                                                                        <option value="3">Opción 3</option>
+                                                                        <option selected="selected" disabled="disabled"> Seleccione estado</option>
+                                                                      <option value="1">Habilitado</option>
+                                                                        <option value="2">Deshabilitado</option>
                                                                     </select>
                                                                 </fieldset>
                                                             </div>
@@ -281,6 +281,7 @@
                                     </div>
                                 </div>
                             </div>
+                                </div>
                         </section>
                        <%-- <!-- Botón mostrar modal -->
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalEditar">Mostrar Modal(reemplazar por lápiz en la tabla)</button>--%>
@@ -294,7 +295,7 @@
                                             <i data-feather="x"></i>
                                         </button>
                                     </div>
-                                     <section id="multiple-column-form">
+                                     <section id="multiples-column-form">
                             <div class="row match-height">
                                 <div class="col-12">
                                     <div class="card">
@@ -308,36 +309,35 @@
                                                         <div class="col-md-6 col-12">
                                                             <div class="form-group">
                                                                 <label for="textBox1">Nombre</label>
-                                                                <input type="text" id="txtNombre" class="form-control" placeholder="Nombre" />
+                                                                <input type="text" id="txtNombreModificar" class="form-control" placeholder="Nombre" />
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6 col-12">
                                                             <div class="form-group">
                                                                 <label for="textBox2">Descripcion</label>
-                                                                <input type="text" id="txtDescripcion" class="form-control" placeholder="Descripcion" />
+                                                                <input type="text" id="txtDescripcionModificar" class="form-control" placeholder="Descripcion" />
                                                             </div>
                                                         </div>
                                                        
                                                          <div class="col-md-6 col-12">
                                                             <div class="form-group">
                                                                 <label for="btnImagen">Imagen</label>
-                                                                <input class="form-control" type="file" id="btnImagen" onchange="return validarExt('btnImagen', 'visorImagen','cadena')" accept="image/*" />
+                                                                <input class="form-control" type="file" id="btnImagenModificar" onchange="return validarExt('btnImagen', 'visorImagen','cadena')" accept="image/*" />
                                                             </div>
                                                         </div>
                                                           <div class="col-md-6 col-12">
                                                         </div>
                                                         <div class="col-md-6 col-12">
-                                                            <div id="visorImagen">
+                                                            <div id="visorImagenModificar">
                                                         </div>
                                                      
                                                         <div class="col-md-6 col-12">
                                                             <div class="form-group">
                                                                 <label for="selectIdEstado">IdEstado</label>
                                                                 <fieldset class="form-group">
-                                                                    <select class="form-select" id="selectIdEstado">
-                                                                        <option value="1">Opción 1</option>
-                                                                        <option value="2">Opción 2</option>
-                                                                        <option value="3">Opción 3</option>
+                                                                    <select class="form-select" id="selectIdEstadoModificar">
+                                                                        <option value="1">Activo</option>
+                                                                        <option value="2">Inactivo</option>
                                                                     </select>
                                                                 </fieldset>
                                                             </div>
