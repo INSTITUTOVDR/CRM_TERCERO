@@ -220,6 +220,7 @@
                                                                 <label for="selectIdProyectoTipo">ProyectoTipo</label>
                                                                 <fieldset class="form-group">
                                                                     <select class="form-select" id="selectIdProyectoTipo">
+                                                                        <option selected="selected" disabled="disabled" > Seleccione un tipo de Proyecto  </option>
                                                                     </select>
                                                                 </fieldset>
                                                             </div>
@@ -232,7 +233,9 @@
                                                             <div class="form-group">
                                                                 <label for="selectIdEmpresa">Empresa</label>
                                                                 <fieldset class="form-group">
+                                                                     
                                                                     <select class="form-select" id="selectIdEmpresa" onchange="sucursalesBuscarPorIdEmpresa(this)">
+                                                                        <option selected="selected" disabled="disabled" > Seleccione una Empresa  </option>
                                                                     </select>
                                                                 </fieldset>
                                                             </div>
@@ -241,7 +244,9 @@
                                                             <div class="form-group">
                                                                 <label for="selectIdSucursal">Sucursal</label>
                                                                 <fieldset class="form-group">
+
                                                                     <select class="form-select" id="selectIdSucursal">
+                                                                         <option selected="selected" disabled="disabled" > Seleccione una Sucursal  </option>
                                                                     </select>
                                                                 </fieldset>
                                                             </div>
@@ -249,7 +254,7 @@
                                                         
                                                         
                                                         <div class="col-12 d-flex justify-content-end">
-                                                            <button type="button" class="btn btn-secondary me-1 mb-1">Cancelar</button>
+                                                            <button type="button" class="btn btn-secondary me-1 mb-1" onclick="limpiar()">Cancelar</button>
                                                             <button type="button" class="btn btn-primary me-1 mb-1" onclick="validar()">Agregar</button>
                                                         </div>
                                                     </div>
@@ -272,7 +277,7 @@
                                             <i data-feather="x"></i>
                                         </button>
                                     </div>
-                                      <section id="multiple-column-form">
+                                      <section id="multiples-column-form">
                             <div class="row match-height">
                                 <div class="col-12">
                                     <div class="card">
@@ -289,20 +294,20 @@
                                                         <div class="col-md-6 col-12">
                                                             <div class="form-group">
                                                                 <label for="txtNombre">Nombre</label>
-                                                                <input type="text" id="txtNombre" class="form-control" placeholder="Ingrese nombre" />
+                                                                <input type="text" id="txtNombreModificar" class="form-control" placeholder="Ingrese nombre" />
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6 col-12">
                                                             <div class="form-group">
                                                                 <label for="txtDescripcion">Descripcion</label>
-                                                                <input type="text" id="txtDescripcion" class="form-control" placeholder="Ingrese descripcion" />
+                                                                <input type="text" id="txtDescripcionModificar" class="form-control" placeholder="Ingrese descripcion" />
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6 col-12">
                                                             <div class="form-group">
                                                                 <label for="selectIdProyectoTipo">ProyectoTipo</label>
                                                                 <fieldset class="form-group">
-                                                                    <select class="form-select" id="selectIdProyectoTipo">
+                                                                    <select class="form-select" id="selectIdProyectoTipoModificar">
                                                                     </select>
                                                                 </fieldset>
                                                             </div>
@@ -315,7 +320,7 @@
                                                             <div class="form-group">
                                                                 <label for="selectIdEmpresa">Empresa</label>
                                                                 <fieldset class="form-group">
-                                                                    <select class="form-select" id="selectIdEmpresa" onchange="sucursalesBuscarPorIdEmpresa(this)">
+                                                                    <select class="form-select" id="selectIdEmpresaModificar" onchange="sucursalesBuscarPorIdEmpresa(this)">
                                                                     </select>
                                                                 </fieldset>
                                                             </div>
@@ -324,7 +329,7 @@
                                                             <div class="form-group">
                                                                 <label for="selectIdSucursal">Sucursal</label>
                                                                 <fieldset class="form-group">
-                                                                    <select class="form-select" id="selectIdSucursal">
+                                                                    <select class="form-select" id="selectIdSucursalModificar">
                                                                     </select>
                                                                 </fieldset>
                                                             </div>

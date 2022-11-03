@@ -20,12 +20,8 @@ Public Class Proyecto
         End Try
     End Function
 
-    'Public Function ProyectoAgregar(ByVal Nombre As String, ByVal Descripcion As String, ByVal IdEmpresa As Integer, ByVal IdSucursal As Integer, ByVal IdProyectoTipo As Integer, ByVal Imagen As String, ByVal IdEstado As Integer) As Double
-    '    o_Database.ExecuteScalar("ProyectosAgregar", Nombre, Descripcion, IdEmpresa, IdSucursal, IdProyectoTipo, Imagen, IdEstado)
-    '    Return Nothing
-    'End Function
-    Public Function ProyectoModificar(ByVal IdProyecto As Integer, ByVal Nombre As String, ByVal Descripcion As String, ByVal IdEmpresa As Integer, ByVal IdSucursal As Integer, ByVal IdProyectoTipo As Integer, ByVal Imagen As String, ByVal IdEstado As Integer) As DataSet
-        o_Database.ExecuteDataSet("ProyectosModificar", IdProyecto, Nombre, Descripcion, IdEmpresa, IdSucursal, IdProyectoTipo, Imagen, IdEstado)
+    Public Function ProyectoModificar(ByVal IdProyecto As Integer, ByVal Nombre As String, ByVal Descripcion As String, ByVal IdEmpresa As Integer, ByVal IdSucursal As Integer, ByVal IdProyectoTipo As Integer, ByVal IdEstado As Integer) As DataSet
+        o_Database.ExecuteDataSet("ProyectosModificar", IdProyecto, Nombre, Descripcion, IdEmpresa, IdSucursal, IdProyectoTipo, IdEstado)
         Return Nothing
     End Function
     Public Function ProyectoEliminar(ByVal IdProyecto As Integer) As DataSet

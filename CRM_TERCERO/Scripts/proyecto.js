@@ -19,6 +19,7 @@ function validar() {
     }
 }
 
+
 function agregar(){
     let nombre = document.getElementById('txtNombre').value
     let descripcion = document.getElementById('txtDescripcion').value
@@ -277,7 +278,6 @@ function BuscarxID(IdProyecto) {
                 document.getElementById('selectIdEmpresaModificar').value = idEmpresa
                 document.getElementById('selectIdSucursalModificar').value = idSucursal
                 document.getElementById('selectIdProyectoTipoModificar').value = idProyectoTipo
-                document.getElementById('txtImagenModificar').value = imagen
                 document.getElementById('selectIdEstadoModificar').value = idEstado
 
 
@@ -359,9 +359,8 @@ function modificar() {
     let idEmpresa = document.getElementById('selectIdEmpresaModificar').value
     let idSucursal = document.getElementById('selectIdSucursalModificar').value
     let idProyectoTipo = document.getElementById('selectIdProyectoTipoModificar').value
-    let imagen = document.getElementById('txtImagenModificar').value
-    let idEstado = document.getElementById('selectIdEstadoModificar').value
-
+   
+ 
 
     var cadena = {
         IdProyecto: IdProyecto,
@@ -370,8 +369,7 @@ function modificar() {
         IdEmpresa: idEmpresa,
         IdSucursal: idSucursal,
         IdProyectoTipo: idProyectoTipo,
-        Imagen: imagen,
-        IdEstado: idEstado
+       
 
 
     };
@@ -398,11 +396,11 @@ function modificar() {
                     confirmButtonColor: "#DD6B55",
                 })
 
-                txtNombre.value = "";
-                txtDescripcion.value = "";
+                txtNombreModificar.value = "";
+                txtDescripcionModificar.value = "";
 
-
-                ProyectosBuscarTodos();
+                BuscarTodos2();
+                //ProyectosBuscarTodos();
 
 
             } else {
@@ -573,12 +571,13 @@ function EmpresasBuscarTodos() {
 
             var json = $.parseJSON(data.d);
             console.log(json)
-            $("#selectIdEmpresa").append('<option value="0" class="form-control">Seleccione</option>');
+          /*  $("#selectIdEmpresa").append('<option value="0" class="form-control">Seleccione</option>');*/
 
             for (var i = 0; i < json.Data.length; i++) {
                 var datosJson = json.Data[i];
                 // searchMotivoEdit(datosJson.Id);
                 $("#selectIdEmpresa").append('<option value="' + datosJson.IdEmpresa + '" class="form-control">' + datosJson.RazonSocial + '</option>');
+                $("#selectIdEmpresaModificar").append('<option value="' + datosJson.IdEmpresa + '" class="form-control">' + datosJson.RazonSocial + '</option>');
             }
         }
 
@@ -615,6 +614,7 @@ function sucursalesBuscarPorIdEmpresa(empresa) {
                 var datosJson = json.Data[i];
                 // searchMotivoEdit(datosJson.Id);
                 $("#selectIdSucursal").append('<option value="' + datosJson.IdSucursal + '" class="form-control">' + datosJson.Nombre + '</option>');
+                $("#selectIdSucursalModificar").append('<option value="' + datosJson.IdSucursal + '" class="form-control">' + datosJson.Nombre + '</option>');
             }
         }
     });
@@ -636,12 +636,13 @@ function ProyectosTipoBuscarTodos() {
 
             var json = $.parseJSON(data.d);
             console.log(json)
-            $("#selectIdProyectoTipo").append('<option value="0" class="form-control">Seleccione</option>');
+            //$("#selectIdProyectoTipo").append('<option value="0" class="form-control">Seleccione</option>');
 
             for (var i = 0; i < json.Data.length; i++) {
                 var datosJson = json.Data[i];
                 // searchMotivoEdit(datosJson.Id);
-                $("#selectIdProyectoTipo").append('<option value="' + datosJson.IdProyectoTipo + '" class="form-control">' + datosJson.Nombre + '</option>');
+               $("#selectIdProyectoTipo").append('<option value="' + datosJson.IdProyectoTipo + '" class="form-control">' + datosJson.Nombre + '</option>');
+               $("#selectIdProyectoTipoModificar").append('<option value="' + datosJson.IdProyectoTipo + '" class="form-control">' + datosJson.Nombre + '</option>');
             }
         }
 
