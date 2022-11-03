@@ -24,13 +24,14 @@ Public Class ProyectosTipo
             Dim Descripcion = dict(0).Descripcion.ToString
             Dim IdEstado = dict(0).IdEstado.ToString
             Dim Imagen = dict(0).Imagen.ToString
+            Dim rutaAbsoluta As String = New Img().Guardar("ImagenesProyectosT", Imagen)
 
 
             Dim oDs As New DataSet
 
             Dim oobjeto As New ProyectoTipo
 
-            oDs = oobjeto.ProyectoTipoAgregar(Nombre, Descripcion, Imagen, IdEstado)
+            oDs = oobjeto.ProyectoTipoAgregar(Nombre, Descripcion, rutaAbsoluta, IdEstado)
 
             'oDs = oobjeto.BuscarTodosSistema
 
@@ -99,6 +100,7 @@ Public Class ProyectosTipo
                 e(i).IdProyectoTipo = oDs.Tables(IdTabla).Rows(i).Item("IdProyectoTipo").ToString()
                 e(i).Nombre = oDs.Tables(IdTabla).Rows(i).Item("Nombre").ToString()
                 e(i).Descripcion = oDs.Tables(IdTabla).Rows(i).Item("Descripcion").ToString()
+                e(i).Imagen = oDs.Tables(IdTabla).Rows(i).Item("Imagen").ToString()
                 e(i).IdEstado = oDs.Tables(IdTabla).Rows(i).Item("IdEstado").ToString()
 
 
