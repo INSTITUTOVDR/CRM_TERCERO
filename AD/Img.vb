@@ -20,6 +20,8 @@
 
         Dim rutaServidor As String = "C:\Users\Guille\Desktop\TSDS\PP2\Proyecto\CRM_TERCERO\CRM_TERCERO\" & nombreCarpeta & "\" 'ImagenesEmpresas \
 
+        'Dim rutaServidor As String = "G:\FerozoWebHosting\institutosuperiorvilladelrosario.edu.ar\CRM\" & nombreCarpeta & "\"
+
         Dim urlBD As String = rutaServidor & nombre & "." & "png"
 
         Dim fileContents As Byte() = Convert.FromBase64String(Imagen.ToString()),
@@ -30,7 +32,7 @@
         fs.Write(fileContents, 0, fileContents.Length)
         fs.Close()
 
-        Dim rutaAbsoluta As String = "/ImagenesEmpresas/" & nombre & "." & "png"
+        Dim rutaAbsoluta As String = "./" & nombreCarpeta & "/" & nombre & "." & "png"
         Return rutaAbsoluta
     End Function
 

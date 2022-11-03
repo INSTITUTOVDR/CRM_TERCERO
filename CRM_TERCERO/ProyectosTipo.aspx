@@ -257,7 +257,7 @@
                                                         <div class="col-md-6 col-12">
                                                             <div id="visorImagen">
                                                         </div>
-                                                     
+                                                     <span style="display: none" id="cadena"></span>
                                                         <div class="col-md-6 col-12">
                                                             <div class="form-group">
                                                                 <label for="selectIdEstado">IdEstado</label>
@@ -308,12 +308,16 @@
                                                     <div class="row">
                                                         <div class="col-md-6 col-12">
                                                             <div class="form-group">
+                                                                <label for="txtNombreEdit">Nombre</label>
+                                                                <input type="text" id="txtNombreEdit" class="form-control" placeholder="Nombre" />
                                                                 <label for="textBox1">Nombre</label>
                                                                 <input type="text" id="txtNombreModificar" class="form-control" placeholder="Nombre" />
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6 col-12">
                                                             <div class="form-group">
+                                                                <label for="txtDescripcionEdit">Descripcion</label>
+                                                                <input type="text" id="txtDescripcionEdit" class="form-control" placeholder="Descripcion" />
                                                                 <label for="textBox2">Descripcion</label>
                                                                 <input type="text" id="txtDescripcionModificar" class="form-control" placeholder="Descripcion" />
                                                             </div>
@@ -321,6 +325,8 @@
                                                        
                                                          <div class="col-md-6 col-12">
                                                             <div class="form-group">
+                                                                <label for="btnImagenEdit">Imagen</label>
+                                                                <input class="form-control" type="file" id="btnImagenEdit" onchange="return validarExt('btnImagenEdit', 'visorImagenEdit','cadena2')" accept="image/*" />
                                                                 <label for="btnImagen">Imagen</label>
                                                                 <input class="form-control" type="file" id="btnImagenModificar" onchange="return validarExt('btnImagen', 'visorImagen','cadena')" accept="image/*" />
                                                             </div>
@@ -328,12 +334,15 @@
                                                           <div class="col-md-6 col-12">
                                                         </div>
                                                         <div class="col-md-6 col-12">
+                                                            <div id="visorImagenEdit">
+                                                            </div>
+                                                            <span style="display: none" id="cadena2"></span>
                                                             <div id="visorImagenModificar">
                                                         </div>
                                                      
                                                         <div class="col-md-6 col-12">
                                                             <div class="form-group">
-                                                                <label for="selectIdEstado">IdEstado</label>
+                                                                <label for="selectIdEstadoEdit">IdEstado</label>
                                                                 <fieldset class="form-group">
                                                                     <select class="form-select" id="selectIdEstadoModificar">
                                                                         <option value="1">Activo</option>

@@ -21,6 +21,22 @@ function validar() {
 }
 
 function agregar() {
+
+    var archivoInput = document.getElementById('btnImagen');
+    let cadenaImagen = document.getElementById("cadena").innerHTML;
+
+    if (cadenaImagen.includes("data:image/png;base64,")) {
+        var res = cadenaImagen.split("data:image/png;base64,");
+        var cadenaFinalImagen = res[1];
+    } else if (cadenaImagen.includes("data:image/jpg;base64,")) {
+        var res = cadenaImagen.split("data:image/jpg;base64,");
+        var cadenaFinalImagen = res[1];
+    } else if (cadenaImagen.includes("data:image/jpeg;base64,")) {
+        var res = cadenaImagen.split("data:image/jpeg;base64,");
+        var cadenaFinalImagen = res[1];
+    }
+
+
     let nombre = document.getElementById('txtNombre').value
     let descripcion = document.getElementById('txtDescripcion').value
     let imagen = document.getElementById('btnImagen').value
@@ -30,7 +46,7 @@ function agregar() {
     var cadena = {
         Nombre: nombre,
         Descripcion: descripcion,
-        Imagen: imagen,
+        Imagen: cadenaFinalImagen,
         IdEstado: idEstado
 
     };
@@ -104,7 +120,7 @@ function ProyectosTipoBuscarTodos() {
         language: {
             url: "//cdn.datatables.net/plug-ins/1.12.1/i18n/es-ES.json"
         },
-        //para usar los botones   
+        //para usar los botones
 
 
         ajax: {
@@ -422,7 +438,7 @@ function BuscarTodos2() {
 
                     <div style="display:flex;justify-content:flex-start" >
                     <img src="${element.Imagen}" class="card-img-top" style="width:50px; height:50px">
-                      
+
                         </div>
 
                         </div>
@@ -430,8 +446,8 @@ function BuscarTodos2() {
                     <div class="card-footer d-flex justify-content-between">
                       <span>Estado</span>
                         <p class="card-text">${element.IdEstado}</p>
-                        <div class="card-footer d-flex justify-content-between">                   
-                       
+                        <div class="card-footer d-flex justify-content-between">
+
                     <a data-bs-toggle="modal" data-bs-target="#modalEditar"><i class="material-icons" role="button">edit</i></a>
                     </div>
                     </div>
