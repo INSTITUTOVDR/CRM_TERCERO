@@ -18,9 +18,9 @@
         Dim nombre As String
         nombre = fecha & nuevacadena
 
-        Dim rutaServidor As String = "C:\Users\Guille\Desktop\TSDS\PP2\Proyecto\CRM_TERCERO\CRM_TERCERO\" & nombreCarpeta & "\" 'ImagenesEmpresas \
+        'Dim rutaServidor As String = "C:\Users\Guille\Desktop\TSDS\PP2\Proyecto\CRM_TERCERO\CRM_TERCERO\" & nombreCarpeta & "\" 'ImagenesEmpresas \
 
-        'Dim rutaServidor As String = "G:\FerozoWebHosting\institutosuperiorvilladelrosario.edu.ar\CRM\" & nombreCarpeta & "\"
+        Dim rutaServidor As String = "G:\FerozoWebHosting\institutosuperiorvilladelrosario.edu.ar\public_html\CRM\" & nombreCarpeta & "\"
 
         Dim urlBD As String = rutaServidor & nombre & "." & "png"
 
