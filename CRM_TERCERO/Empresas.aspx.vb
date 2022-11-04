@@ -103,7 +103,7 @@ Public Class Empresas
 
             Return jsondatos
         Catch ex As Exception
-            Return Error401()
+            Return ex.ToString() 'Error401()
         End Try
     End Function
 
